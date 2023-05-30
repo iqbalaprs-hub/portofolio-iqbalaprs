@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: montserrat, sans-serif;
+  font-size: var(--text-font-size-value);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  font-family: lato, sans-serif;
+}
+
+h1,
+h2,
+h3,
+button {
+  font-family: lato, sans-serif;
+}
+:root {
+  --body-bg-color: #fff;
+  --footer-bg-color: #f7faff;
+  --button-bg-color: #006bff;
+
+  --primary-text-color: #476788;
+  --header-navbar-text-color: #1d344b;
+  --secondary-link-hover-color: #006bff;
+  --button-text-color: #fff;
+
+  --small-padding-value: 20px;
+  --medium-padding-value: 40px;
+  --large-padding-value: 80px;
+  --Xlarge-padding-value: 120px;
+  --XXlarge-padding-value: 160px;
+  --XXXlarge-padding-value: 200px;
+  --XXXXlarge-padding-value: 240px;
+
+  --small-margin-value: 16px;
+  --medium-padding-value: 32px;
+  --large-padding-value: 50px;
+  --Xlarge-padding-value: 100px;
+
+  --text-font-size-value: 14px;
+  --contact-font-size-value: 30px;
+  --h1-font-size-value: 36px;
+  --h2-font-size-value: 30px;
+  --h3-font-size-value: 24px;
+  --h4-font-size-value: 18px;
+  --h5-font-size-value: 12px;
+  --h6-font-size-value: 6px;
+}
