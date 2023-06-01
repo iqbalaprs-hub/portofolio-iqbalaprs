@@ -53,3 +53,18 @@ button {
   --h5-font-size-value: 12px;
   --h6-font-size-value: 6px;
 }
+
+main {
+  background-color: var(--body-bg-color);
+  margin: 0 16px;
+
+  /* This height is only temporarly. It will be changed or removed later */
+  height: 500px;
+}
+
+footer {
+  background-color: var(--footer-bg-color);
+
+  /* This height is only temporarly. It will be changed or removed later */
+  height: 100px;
+}
