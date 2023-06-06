@@ -16,9 +16,11 @@ a {
 }
 
 h1,
+h2,
 button {
   font-family: lato, sans-serif;
 }
+
 :root {
   --body-bg-color: #fff;
   --footer-bg-color: #f7faff;
@@ -43,13 +45,33 @@ button {
   --Xlarge-padding-value: 100px;
 
   --text-font-size-value: 14px;
-  --contact-font-size-value: 30px;
+  --contact-font-size-value: 18px;
   --h1-font-size-value: 36px;
   --h2-font-size-value: 30px;
   --h3-font-size-value: 24px;
   --h4-font-size-value: 18px;
   --h5-font-size-value: 12px;
   --h6-font-size-value: 6px;
+}
+
+/* Components */
+
+h2 {
+  color: var(--header-navbar-text-color);
+  font-size: var(--h2-font-size-value);
+}
+p {
+  color: var(--primary-text-color);
+  font-size: var(--text-font-size-value);
+}
+
+button {
+  width: 100%;
+  height: 50px;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  font-size: var(--contact-font-size-value);
+  border: solid 2px var(--button-bg-color);
 }
 
 main {
