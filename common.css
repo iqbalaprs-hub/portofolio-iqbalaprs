@@ -23,7 +23,7 @@ button {
 
 :root {
   --body-bg-color: #fff;
-  --footer-bg-color: #f7faff;
+  --Header-Footer-bg-color: #f7faff;
   --button-bg-color: #006bff;
 
   --primary-text-color: #476788;
@@ -74,6 +74,56 @@ button {
   border: solid 2px var(--button-bg-color);
 }
 
+/* navigation bar */
+.navigation-bar {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background-color: var(--Header-Footer-bg-color);
+  border-bottom: 1px solid var(--header-navbar-text-color);
+}
+.checkbox-toggler {
+  display: none;
+}
+
+.logo {
+  margin-left: var(--small-margin-value);
+}
+
+.hamburger-menu {
+  height: 20px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  margin-right: var(--small-margin-value);
+}
+
+.nav-icon {
+  width: 50px;
+  height: 2px;
+  background: var(--button-bg-color);
+}
+
+.nav-icon::before,
+.nav-icon::after {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background: var(--button-bg-color);
+  position: absolute;
+}
+.nav-icon::before {
+  transform: translateY(-10px);
+}
+
+.nav-icon::after {
+  transform: translateY(10px);
+}
+
 main {
   background-color: var(--body-bg-color);
   margin: 0 16px;
@@ -83,7 +133,7 @@ main {
 }
 
 footer {
-  background-color: var(--footer-bg-color);
+  background-color: var(--Header-Footer-bg-color);
 
   /* This height is only temporarly. It will be changed or removed later */
   height: 100px;
