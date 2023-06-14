@@ -23,7 +23,7 @@ button {
 
 :root {
   --body-bg-color: #fff;
-  --Header-Footer-bg-color: #f7faff;
+  --section-bg-color: #f7faff;
   --button-bg-color: #006bff;
 
   --primary-text-color: #476788;
@@ -39,10 +39,10 @@ button {
   --XXXlarge-padding-value: 200px;
   --XXXXlarge-padding-value: 240px;
 
-  --small-margin-value: 16px;
-  --medium-padding-value: 32px;
-  --large-padding-value: 50px;
-  --Xlarge-padding-value: 100px;
+  --small-margin-value: 20px;
+  --medium-margin-value: 40px;
+  --large-margin-value: 80px;
+  --Xlarge-margin-value: 120px;
 
   --text-font-size-value: 14px;
   --contact-font-size-value: 18px;
@@ -79,11 +79,12 @@ button {
   width: 100%;
   height: 60px;
   position: fixed;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 100;
-  background-color: var(--Header-Footer-bg-color);
+  background-color: var(--section-bg-color);
   border-bottom: 1px solid var(--header-navbar-text-color);
 }
 .checkbox-toggler {
@@ -130,11 +131,4 @@ main {
 
   /* This height is only temporarly. It will be changed or removed later */
   height: 500px;
-}
-
-footer {
-  background-color: var(--Header-Footer-bg-color);
-
-  /* This height is only temporarly. It will be changed or removed later */
-  height: 100px;
 }
