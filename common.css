@@ -55,11 +55,35 @@ button {
 }
 
 /* Components */
+main {
+  background-color: var(--body-bg-color);
+  margin: 0 16px;
+  padding-top: var(--Xlarge-padding-value);
+}
+
+section {
+  margin-bottom: var(--medium-margin-value);
+}
+
+h1 {
+  color: var(--header-navbar-text-color);
+  font-size: var(--h1-font-size-value);
+}
 
 h2 {
   color: var(--header-navbar-text-color);
   font-size: var(--h2-font-size-value);
 }
+
+h3 {
+  color: var(--header-navbar-text-color);
+  font-size: var(--h3-font-size-value);
+}
+
+h4 {
+  font-size: var(--h4-font-size-value);
+}
+
 p {
   color: var(--primary-text-color);
   font-size: var(--text-font-size-value);
@@ -87,14 +111,17 @@ button {
   background-color: var(--section-bg-color);
   border-bottom: 1px solid var(--header-navbar-text-color);
 }
+
 .checkbox-toggler {
   display: none;
 }
 
+/* LOGO */
 .logo {
   margin-left: var(--small-margin-value);
 }
 
+/* HAMBURGER-MENU */
 .hamburger-menu {
   height: 20px;
   width: 30px;
@@ -123,12 +150,4 @@ button {
 
 .nav-icon::after {
   transform: translateY(10px);
-}
-
-main {
-  background-color: var(--body-bg-color);
-  margin: 0 16px;
-
-  /* This height is only temporarly. It will be changed or removed later */
-  height: 500px;
 }
