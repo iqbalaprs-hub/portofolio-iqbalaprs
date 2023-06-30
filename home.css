@@ -1,6 +1,6 @@
 /* Components */
 section {
-  margin-top: var(--Xlarge-margin-value);
+  /* margin-top: var(--Xlarge-margin-value); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,4 +11,8 @@ section {
   width: 100%;
   height: 200px;
   background-color: #c3d1f6;
+}
+
+a {
+  width: 100%;
 }

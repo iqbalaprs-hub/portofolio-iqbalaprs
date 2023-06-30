@@ -62,7 +62,7 @@ main {
 }
 
 section {
-  margin-bottom: var(--medium-margin-value);
+  margin-bottom: var(--Xlarge-margin-value);
 }
 
 h1 {
@@ -73,11 +73,13 @@ h1 {
 h2 {
   color: var(--header-navbar-text-color);
   font-size: var(--h2-font-size-value);
+  margin: var(--small-margin-value);
 }
 
 h3 {
   color: var(--header-navbar-text-color);
   font-size: var(--h3-font-size-value);
+  margin: var(--small-margin-value);
 }
 
 h4 {
@@ -87,6 +89,8 @@ h4 {
 p {
   color: var(--primary-text-color);
   font-size: var(--text-font-size-value);
+  line-height: 1.5;
+  margin: var(--small-margin-value);
 }
 
 button {
