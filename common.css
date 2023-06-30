@@ -13,7 +13,7 @@
 
   --primary-text-color: #476788;
   --header-navbar-text-color: #1d344b;
-  --secondary-link-hover-color: #006bff;
+  --secondary-link-hover-color: #c3d1f6;
   --button-text-color: #fff;
 
   --small-padding-value: 20px;
@@ -94,8 +94,33 @@ button {
   height: 50px;
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
+  font-weight: 700;
   font-size: var(--contact-font-size-value);
   border: solid 2px var(--button-bg-color);
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
+  position: relative;
+  transition: all 0.5s;
+}
+
+button:after {
+  content: "»";
+  font-size: var(--contact-font-size-value);
+  position: absolute;
+  opacity: 0;
+  right: 20px;
+  transition: 0.5s;
+}
+
+button:hover {
+  background-color: var(--secondary-link-hover-color);
+  color: var(--button-bg-color);
+  padding-right: 24px;
+  padding-left: 8px;
+}
+
+button:hover:after {
+  opacity: 1;
+  right: 120px;
 }
 
 /* navigation bar */
@@ -223,7 +248,7 @@ button {
   color: var(--button-text-color);
   background-color: var(--button-bg-color);
   padding: var(--small-padding-value);
-  transition: 0.3s;
+  transition: all 0.3s;
 }
 
 .checkbox-toggler:checked ~ .navigation {
