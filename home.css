@@ -1,6 +1,5 @@
 /* Components */
 section {
-  /* margin-top: var(--Xlarge-margin-value); */
   display: flex;
   flex-direction: column;
   align-items: center;
