@@ -219,6 +219,13 @@ button {
   font-size: var(--h1-font-size-value);
 }
 
+.nav-link:hover {
+  color: var(--button-text-color);
+  background-color: var(--button-bg-color);
+  padding: var(--small-padding-value);
+  transition: 0.3s;
+}
+
 .checkbox-toggler:checked ~ .navigation {
   display: block;
 }
