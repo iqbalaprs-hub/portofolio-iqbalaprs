@@ -125,13 +125,14 @@ button {
   margin-left: var(--small-margin-value);
 }
 
-/* HAMBURGER-MENU */
+/*  -------------     HAMBURGER-MENU ---------------    */
 .hamburger-menu {
   height: 20px;
   width: 30px;
   display: flex;
   align-items: center;
   margin-right: var(--small-margin-value);
+  z-index: 100;
 }
 
 .nav-icon {
@@ -147,6 +148,7 @@ button {
   height: 2px;
   background: var(--button-bg-color);
   position: absolute;
+  transition: transform 0.2s;
 }
 .nav-icon::before {
   transform: translateY(-10px);
@@ -154,4 +156,73 @@ button {
 
 .nav-icon::after {
   transform: translateY(10px);
+}
+
+/* HAMBURGER MENU WHEN HOVERED */
+.hamburger-menu:hover .nav-icon::before {
+  transform: translateY(-15px);
+}
+
+.hamburger-menu:hover .nav-icon::after {
+  transform: translateY(15px);
+}
+
+/* HAMBURGER MENU WHEN CLICKED */
+.checkbox-toggler {
+  display: none;
+}
+
+.checkbox-toggler:checked + .hamburger-menu .nav-icon {
+  background-color: transparent;
+}
+.checkbox-toggler:checked + .hamburger-menu .nav-icon::before {
+  transform: translateY(0px) rotate(135deg);
+}
+.checkbox-toggler:checked + .hamburger-menu .nav-icon::after {
+  transform: translateY(0px) rotate(-135deg);
+}
+
+/* HAMBUGER MENU ANIMATION */
+.nav-bg {
+  height: 1px;
+  width: 1px;
+  border-radius: 50%;
+  position: fixed;
+  top: 5%;
+  right: 11%;
+  background-color: var(--section-bg-color);
+  transition: transform 0.3s;
+}
+
+.checkbox-toggler:checked ~ .nav-bg {
+  transform: scale(5000);
+}
+
+/* THE LIST OF THE HAMBUGER MENU APPEAR */
+.navigation {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  display: none;
+  transition: transform 0.3s;
+}
+
+.nav-list {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nav-link {
+  color: var(--header-navbar-text-color);
+  font-size: var(--h1-font-size-value);
+}
+
+.checkbox-toggler:checked ~ .navigation {
+  display: block;
 }
