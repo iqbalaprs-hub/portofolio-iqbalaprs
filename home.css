@@ -15,3 +15,12 @@ section {
 a {
   width: 100%;
 }
+
+/* CONTACT ME */
+
+.contact-me span {
+  font-size: var(--h3-font-size-value);
+}
+.contact-me p {
+  margin-top: 0;
+}
