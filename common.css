@@ -89,7 +89,23 @@ p {
   margin: var(--small-margin-value);
 }
 
-/* Components */
+/* -------------------    Components    ---------------------   */
+
+.picture {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background-color: #c3d1f6;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* BUTTON */
 button {
   width: 100%;
   height: 50px;
@@ -145,6 +161,11 @@ button:hover:after {
 /* LOGO */
 .logo {
   margin-left: var(--small-margin-value);
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
 }
 
 /*  -------------     HAMBURGER-MENU ---------------    */

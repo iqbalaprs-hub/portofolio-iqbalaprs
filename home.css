@@ -6,11 +6,6 @@ section {
   gap: var(--small-padding-value);
   background-color: var(--section-bg-color);
 }
-.picture {
-  width: 100%;
-  height: 200px;
-  background-color: #c3d1f6;
-}
 
 a {
   width: 100%;
