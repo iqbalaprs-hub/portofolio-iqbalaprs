@@ -49,6 +49,16 @@
   }
 }
 
+@media screen and (min-width: 1200px) {
+  :root {
+    --text-font-size-value: 22px;
+    --h1-font-size-value: 38px;
+    --h2-font-size-value: 34px;
+    --h3-font-size-value: 30px;
+    --h4-font-size-value: 26px;
+  }
+}
+
 /* ELEMENTS */
 main {
   background-color: var(--body-bg-color);
