@@ -317,12 +317,31 @@ button:hover:after {
   .navigation-bar .menu {
     display: flex;
     align-items: center;
-    width: clamp(450px, 30%, 600px);
+    width: clamp(450px, 40%, 700px);
   }
 
   .navigation-bar .menu a {
-    padding: 0 var(--medium-padding-value);
+    margin: 0 var(--small-margin-value);
     font-weight: 600;
+    position: relative;
+  }
+
+  .navigation-bar .menu a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--button-bg-color);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .navigation-bar .menu a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }
 }
 
