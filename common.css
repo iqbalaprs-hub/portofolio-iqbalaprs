@@ -57,6 +57,7 @@ ul {
 a {
   text-decoration: none;
   font-family: lato, sans-serif;
+  color: var(--button-bg-color);
 }
 
 h1,
@@ -275,4 +276,28 @@ button:hover:after {
 
 .checkbox-toggler:checked ~ .navigation {
   display: block;
+}
+
+@media screen and (min-width: 700px) {
+  .hamburger-menu {
+    display: none;
+  }
+}
+
+/* MENU BAR */
+.navigation-bar .menu {
+  display: none;
+}
+
+@media screen and (min-width: 700px) {
+  .navigation-bar .menu {
+    display: flex;
+    align-items: center;
+    width: clamp(450px, 30%, 600px);
+  }
+
+  .navigation-bar .menu a {
+    padding: 0 var(--medium-padding-value);
+    font-weight: 600;
+  }
 }
