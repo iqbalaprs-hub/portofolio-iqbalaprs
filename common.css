@@ -301,3 +301,11 @@ button:hover:after {
     font-weight: 600;
   }
 }
+
+/* CONTACT ME */
+.contact-me {
+  gap: 0;
+}
+.contact-me h4 {
+  margin-top: 0;
+}
