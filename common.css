@@ -31,12 +31,22 @@
 
   --text-font-size-value: 14px;
   --contact-font-size-value: 18px;
-  --h1-font-size-value: 36px;
-  --h2-font-size-value: 30px;
-  --h3-font-size-value: 24px;
+  --h1-font-size-value: 30px;
+  --h2-font-size-value: 26px;
+  --h3-font-size-value: 22px;
   --h4-font-size-value: 18px;
-  --h5-font-size-value: 12px;
-  --h6-font-size-value: 6px;
+  --h5-font-size-value: 14px;
+  --h6-font-size-value: 10px;
+}
+
+@media screen and (min-width: 700px) {
+  :root {
+    --text-font-size-value: 18px;
+    --h1-font-size-value: 34px;
+    --h2-font-size-value: 30px;
+    --h3-font-size-value: 26px;
+    --h4-font-size-value: 22px;
+  }
 }
 
 /* ELEMENTS */
@@ -65,11 +75,15 @@ h2,
 button {
   font-family: lato, sans-serif;
   color: var(--header-navbar-text-color);
+}
+
+h1 {
   font-size: var(--h1-font-size-value);
 }
 
 h2 {
   margin: var(--small-margin-value);
+  font-size: var(--h2-font-size-value);
 }
 
 h3 {
