@@ -3,11 +3,6 @@
   text-align: center;
 }
 
-/* SECTION PICTURE */
-.picture {
-  margin: auto;
-}
-
 /* SECTION INFO ABOUT ME */
 .info-about-me {
   background-color: var(--section-bg-color);

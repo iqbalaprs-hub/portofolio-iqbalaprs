@@ -39,38 +39,16 @@
   --h6-font-size-value: 10px;
 }
 
-@media screen and (min-width: 700px) {
-  :root {
-    --text-font-size-value: 18px;
-    --contact-font-size-value: 22px;
-    --h1-font-size-value: 34px;
-    --h2-font-size-value: 30px;
-    --h3-font-size-value: 26px;
-    --h4-font-size-value: 22px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  :root {
-    --text-font-size-value: 22px;
-    --contact-font-size-value: 24px;
-    --h1-font-size-value: 38px;
-    --h2-font-size-value: 34px;
-    --h3-font-size-value: 30px;
-    --h4-font-size-value: 26px;
-  }
-}
-
 /* ELEMENTS */
+body {
+  max-width: 1300px;
+  margin: auto;
+}
 
 main {
   background-color: var(--body-bg-color);
   margin: 0 16px;
   padding-top: var(--Xlarge-padding-value);
-}
-
-section {
-  margin-bottom: var(--Xlarge-margin-value);
 }
 
 ul {
@@ -115,9 +93,18 @@ p {
   font-size: var(--text-font-size-value);
   line-height: 1.5;
   margin: var(--small-margin-value);
+  max-width: 800px;
 }
 
 /* -------------------    Components    ---------------------   */
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--small-padding-value);
+  background-color: var(--section-bg-color);
+  margin-bottom: var(--Xlarge-margin-value);
+}
 
 .picture {
   width: 100%;
@@ -177,16 +164,14 @@ button:hover:after {
   right: 120px;
 }
 
-@media screen and (min-width: 700px) {
-  button {
-    height: 70px;
-    border-radius: 50px;
-  }
+.button {
+  width: 100%;
 }
 
 /* navigation bar */
 .navigation-bar {
   width: 100%;
+  max-width: 1300px;
   height: 60px;
   position: fixed;
   top: 0;
@@ -205,6 +190,7 @@ button:hover:after {
 /* LOGO */
 .logo {
   margin-left: var(--small-margin-value);
+  cursor: pointer;
 }
 
 .logo img {
@@ -220,6 +206,7 @@ button:hover:after {
   align-items: center;
   margin-right: var(--small-margin-value);
   z-index: 100;
+  cursor: pointer;
 }
 
 .nav-icon {
@@ -321,18 +308,49 @@ button:hover:after {
   display: block;
 }
 
-@media screen and (min-width: 700px) {
-  .hamburger-menu {
-    display: none;
-  }
-}
-
 /* MENU BAR */
 .navigation-bar .menu {
   display: none;
 }
 
+/* CONTACT ME */
+.contact-me {
+  gap: 0;
+}
+.contact-me h4 {
+  margin-top: 0;
+}
+
+.contact-me span {
+  font-size: var(--h3-font-size-value);
+}
+.contact-me p {
+  margin-top: 0;
+}
+
+/* --------------------       MEDIA QUERIES       ------------------------    */
+
+/* MEDIA QUERIES HIGHER THAN 700PX */
 @media screen and (min-width: 700px) {
+  :root {
+    --text-font-size-value: 18px;
+    --contact-font-size-value: 22px;
+    --h1-font-size-value: 34px;
+    --h2-font-size-value: 30px;
+    --h3-font-size-value: 26px;
+    --h4-font-size-value: 22px;
+  }
+
+  button {
+    height: 70px;
+    border-radius: 50px;
+  }
+
+  /* HAMBURGER MENU DISAPPEAR AND MENU APPEAR */
+  .hamburger-menu {
+    display: none;
+  }
+
   .navigation-bar .menu {
     display: flex;
     align-items: center;
@@ -364,10 +382,14 @@ button:hover:after {
   }
 }
 
-/* CONTACT ME */
-.contact-me {
-  gap: 0;
-}
-.contact-me h4 {
-  margin-top: 0;
+/* MEDIA QUERIES HIGHER THAN 1200PX */
+@media screen and (min-width: 1200px) {
+  :root {
+    --text-font-size-value: 22px;
+    --contact-font-size-value: 24px;
+    --h1-font-size-value: 38px;
+    --h2-font-size-value: 34px;
+    --h3-font-size-value: 30px;
+    --h4-font-size-value: 26px;
+  }
 }
