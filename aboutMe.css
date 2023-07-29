@@ -5,9 +5,7 @@
 
 /* SECTION PICTURE */
 .picture {
-  width: 100%;
-  height: 200px;
-  background-color: #c3d1f6;
+  margin: auto;
 }
 
 /* SECTION INFO ABOUT ME */
