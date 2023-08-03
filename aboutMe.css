@@ -1,6 +1,6 @@
 /* SECTION INTRODUCTION */
 .intro {
-  text-align: center;
+  background-color: var(--body-bg-color);
 }
 
 /* SECTION INFO ABOUT ME */
