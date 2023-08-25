@@ -85,6 +85,20 @@ section {
   margin-bottom: var(--large-margin-value);
 }
 
+.picture {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 2;
+  position: relative;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* BUTTON */
 button {
   width: 150px;
