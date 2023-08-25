@@ -75,3 +75,61 @@ p {
   margin: var(--small-margin-value);
   max-width: 800px;
 }
+
+/* navigation bar */
+.navigation-bar {
+  width: 100%;
+  max-width: 1300px;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  border-bottom: 1px solid black;
+}
+
+.checkbox-toggler {
+  display: none;
+}
+
+/* LOGO */
+.logo {
+  margin-left: var(--small-margin-value);
+  cursor: pointer;
+}
+
+/*  -------------     HAMBURGER-MENU ---------------    */
+.hamburger-menu {
+  height: 20px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  margin-right: var(--small-margin-value);
+  z-index: 100;
+  cursor: pointer;
+}
+
+.nav-icon {
+  width: 50px;
+  height: 2px;
+  background: black;
+}
+
+.nav-icon::before,
+.nav-icon::after {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background: black;
+  position: absolute;
+  transition: transform 0.2s;
+}
+.nav-icon::before {
+  transform: translateY(-10px);
+}
+
+.nav-icon::after {
+  transform: translateY(10px);
+}
