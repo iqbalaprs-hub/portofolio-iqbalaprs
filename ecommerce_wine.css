@@ -85,6 +85,18 @@ section {
   margin-bottom: var(--large-margin-value);
 }
 
+/* BUTTON */
+button {
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+  color: var(--button-text-color);
+  font-weight: 700;
+  font-size: var(--contact-font-size-value);
+  border: solid 2px black;
+  border-radius: 50%;
+}
+
 /* navigation bar */
 .navigation-bar {
   width: 100%;
