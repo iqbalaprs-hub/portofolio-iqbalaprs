@@ -133,3 +133,12 @@ p {
 .nav-icon::after {
   transform: translateY(10px);
 }
+
+/* HAMBURGER MENU WHEN HOVERED */
+.hamburger-menu:hover .nav-icon::before {
+  transform: translateY(-15px);
+}
+
+.hamburger-menu:hover .nav-icon::after {
+  transform: translateY(15px);
+}
