@@ -76,6 +76,15 @@ p {
   max-width: 800px;
 }
 
+/* -------------------    Components    ---------------------   */
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--small-padding-value);
+  margin-bottom: var(--large-margin-value);
+}
+
 /* navigation bar */
 .navigation-bar {
   width: 100%;
