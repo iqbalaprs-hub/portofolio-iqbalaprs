@@ -72,7 +72,6 @@ h4 {
 p {
   font-size: var(--text-font-size-value);
   line-height: 1.5;
-  margin: var(--small-margin-value);
   max-width: 800px;
 }
 
@@ -83,6 +82,8 @@ section {
   align-items: center;
   gap: var(--small-padding-value);
   margin-bottom: var(--large-margin-value);
+  padding: var(--small-padding-value);
+  border: 1px solid black;
 }
 
 .picture {
@@ -101,8 +102,8 @@ img {
 
 /* BUTTON */
 button {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   cursor: pointer;
   color: var(--button-text-color);
   font-weight: 700;
@@ -176,4 +177,41 @@ button {
 
 .hamburger-menu:hover .nav-icon::after {
   transform: translateY(15px);
+}
+
+/*          --------------------    WINE BOTTLES  ---------------------     */
+.wine-bottles {
+  position: relative;
+  padding-bottom: var(--large-padding-value);
+}
+
+.wine-bottles img {
+  aspect-ratio: 0.25;
+  width: 100px;
+}
+
+.wine-bottles .wine-name {
+  width: 70%;
+  padding-bottom: var(--small-padding-value);
+  border-bottom: 1px solid black;
+}
+
+.wine-bottles .price {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+
+.wine-bottles .price span {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.wine-bottles button {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50%);
 }
