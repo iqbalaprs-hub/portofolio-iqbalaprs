@@ -193,13 +193,27 @@ button {
   padding-bottom: var(--large-padding-value);
 }
 
-.wine-bottles img {
-  aspect-ratio: 0.25;
-  width: 100px;
+.wine-bottles .slider {
+  width: 100%;
+  width: 450px;
+  border: 5px solid black;
 }
 
-.wine-bottles .wine-name {
+.wine-bottles .slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wine-bottles .slide img {
+  aspect-ratio: 0.25;
+  width: 100px;
+  padding-bottom: var(--small-padding-value);
+}
+
+.wine-bottles .slide .wine-name {
   width: 70%;
+  max-width: 300px;
   padding-bottom: var(--small-padding-value);
   border-bottom: 1px solid black;
 }
@@ -207,7 +221,9 @@ button {
 .wine-bottles .price {
   display: flex;
   width: 70%;
+  max-width: 300px;
   justify-content: space-between;
+  padding-top: var(--small-padding-value);
 }
 
 .wine-bottles .price span {
