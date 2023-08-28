@@ -14,6 +14,8 @@
   --normal-text-color: #2b2925;
   --button-hover-background-color: #808080;
   --button-hover-text-color: #fff;
+  --border-color: #2b2925;
+  --border-button-hover-color: #fff;
 
   --small-padding-value: 20px;
   --medium-padding-value: 40px;
@@ -91,7 +93,7 @@ section {
   gap: var(--small-padding-value);
   margin-bottom: var(--large-margin-value);
   padding: var(--small-padding-value);
-  border: 1px solid black;
+  border: 1px solid var(--border-color);
   background-color: var(--section-background-color);
 }
 
@@ -118,7 +120,7 @@ button {
   color: var(--normal-text-color);
   font-weight: 400;
   font-size: var(--contact-font-size-value);
-  border: solid 2px black;
+  border: solid 2px var(--border-color);
   border-radius: 50%;
   background-color: var(--section-background-color);
 }
@@ -126,6 +128,7 @@ button {
 button:hover {
   background-color: var(--button-hover-background-color);
   color: var(--button-hover-text-color);
+  border-color: var(--border-button-hover-color);
 }
 
 /* navigation bar */
@@ -139,7 +142,7 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   z-index: 100;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--border-color);
   background-color: var(--section-background-color);
 }
 
@@ -239,7 +242,7 @@ button:hover {
   width: 70%;
   max-width: 300px;
   padding-bottom: var(--small-padding-value);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .wine-bottles .price {
@@ -254,7 +257,7 @@ button:hover {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid var(--border-color);
   text-align: center;
 }
 

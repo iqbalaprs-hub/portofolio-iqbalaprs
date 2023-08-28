@@ -25,6 +25,14 @@ var newHoverBackgroundColor = hoverBackgroundColorArray[currentIndex];
 const hoverTextColorArray = ["#fff", "#191412", "#fdfafa", "#2b2925"];
 var newHoverTextColor = hoverTextColorArray[currentIndex];
 
+// Border color
+const borderColorArray = ["#2b2925", "#fff", "#191412", "#fdfafa"];
+var newBorderColor = borderColorArray[currentIndex];
+
+// Hover border color
+const hoverBorderColorArray = ["#fff", "#191412", "#fdfafa", "#2b2925"];
+var newHoverBorderColor = hoverBorderColorArray[currentIndex];
+
 // Getting access to root
 var root = document.querySelector(":root");
 console.log(root);
@@ -88,5 +96,15 @@ buttons.forEach((button) => {
     var newHoverTextColor = hoverTextColorArray[currentIndex];
     root.style.setProperty("--button-hover-text-color", newHoverTextColor);
     console.log(newHoverTextColor);
+
+    // Changing border color
+    var newBorderColor = borderColorArray[currentIndex];
+    root.style.setProperty("--border-color", newBorderColor);
+    console.log(newBorderColor);
+
+    // Changing hover border color
+    var newHoverBorderColor = hoverBorderColorArray[currentIndex];
+    root.style.setProperty("--border-button-hover-color", newHoverBorderColor);
+    console.log(newHoverBorderColor);
   });
 });
