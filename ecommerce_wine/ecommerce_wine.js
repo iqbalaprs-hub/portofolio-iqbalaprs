@@ -1,12 +1,16 @@
+var currentIndex = 0;
 // Body background color array
 const bodyBackgroundColorArray = ["#dad3c1", "#808080", "#dab0a4", "#781e1e"];
-var currentIndex = 0;
 var newBodyBackgroundColor = bodyBackgroundColorArray[currentIndex];
 console.log(newBodyBackgroundColor);
 
 // Section background color array
 var sectionBackgroundColorArray = ["#f9f4e5", "#D3D3D3", "#fecdbe", "#d11414"];
 var newSectionBackgroundColor = sectionBackgroundColorArray[currentIndex];
+
+// Normal text font color
+var normalTextColorArray = ["#2b2925", "#fff", "#191412", "#fdfafa"];
+var newNormalTextColor = normalTextColorArray[currentIndex];
 
 // Getting access to root
 var root = document.querySelector(":root");
@@ -53,5 +57,10 @@ buttons.forEach((button) => {
       newSectionBackgroundColor
     );
     console.log(newSectionBackgroundColor);
+
+    // Changing normal text color
+    var newNormalTextColor = normalTextColorArray[currentIndex];
+    root.style.setProperty("--normal-text-color", newNormalTextColor);
+    console.log(newNormalTextColor);
   });
 });
