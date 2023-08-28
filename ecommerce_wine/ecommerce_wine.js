@@ -1,8 +1,12 @@
 // Body background color array
 const bodyBackgroundColorArray = ["#dad3c1", "#808080", "#dab0a4", "#781e1e"];
-let currentColorIndex = 0;
-var newBodyBackgroundColor = bodyBackgroundColorArray[currentColorIndex];
+var currentIndex = 0;
+var newBodyBackgroundColor = bodyBackgroundColorArray[currentIndex];
 console.log(newBodyBackgroundColor);
+
+// Section background color array
+var sectionBackgroundColorArray = ["#f9f4e5", "#D3D3D3", "#fecdbe", "#d11414"];
+var newSectionBackgroundColor = sectionBackgroundColorArray[currentIndex];
 
 // Getting access to root
 var root = document.querySelector(":root");
@@ -34,12 +38,20 @@ buttons.forEach((button) => {
 
     delete activeSlide.dataset.active;
 
+    currentIndex = (currentIndex + 1) % bodyBackgroundColorArray.length;
+    console.log(currentIndex);
+
     // changing body background color
-    currentColorIndex =
-      (currentColorIndex + 1) % bodyBackgroundColorArray.length;
-    console.log(currentColorIndex);
-    var newBodyBackgroundColor = bodyBackgroundColorArray[currentColorIndex];
+    var newBodyBackgroundColor = bodyBackgroundColorArray[currentIndex];
     root.style.setProperty("--body-background-color", newBodyBackgroundColor);
     console.log(newBodyBackgroundColor);
+
+    // Changing section background color
+    var newSectionBackgroundColor = sectionBackgroundColorArray[currentIndex];
+    root.style.setProperty(
+      "--section-background-color",
+      newSectionBackgroundColor
+    );
+    console.log(newSectionBackgroundColor);
   });
 });
