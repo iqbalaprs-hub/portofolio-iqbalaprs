@@ -101,6 +101,7 @@ section {
   padding: var(--small-padding-value);
   border: 1px solid var(--border-color);
   background-color: var(--section-background-color);
+  position: relative;
 }
 
 .picture {
@@ -211,30 +212,28 @@ button:hover {
 
 /*          --------------------    WINE BOTTLES  ---------------------     */
 .wine-bottles {
-  position: relative;
   height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
 }
 
 .carousel {
-  display: flex;
 }
 
 .wine-bottles .slider {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  display: flex;
+  overflow: hidden;
 }
 
 .wine-bottles .slide {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  top: 40px;
-  width: 100%;
-  opacity: 0;
+  flex: 1 0 100%;
 }
 
 .wine-bottles .slide img {
@@ -267,10 +266,16 @@ button:hover {
   text-align: center;
 }
 
-.wine-bottles button {
+.wine-bottles button.before {
   position: absolute;
   bottom: 0;
   transform: translate(-50%, 50%);
+}
+
+.wine-bottles button.next {
+  position: absolute;
+  bottom: 0;
+  transform: translate(50%, 50%);
 }
 
 .slide[data-active] {
@@ -278,7 +283,6 @@ button:hover {
   z-index: 1;
 
   /* Animation */
-  /* transition-delay: 0ms; */
   transition: all 2s;
 }
 
@@ -302,6 +306,12 @@ button:hover {
     width: 150px;
     height: 150px;
   }
+
+  .wine-bottles button {
+    width: 120px;
+    height: 120px;
+  }
+
   /* HAMBURGER MENU DISAPPEAR AND MENU APPEAR */
   .hamburger-menu {
     display: none;

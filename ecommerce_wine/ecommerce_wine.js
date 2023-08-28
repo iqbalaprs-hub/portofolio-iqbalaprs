@@ -39,32 +39,30 @@ console.log(root);
 var rootStyles = getComputedStyle(root);
 console.log(rootStyles);
 
+var scrollContainer = document.querySelector(".slider");
 // Getting access to button
 const buttons = document.querySelectorAll("[data-carousel-button]");
 
+// Get the width needed to scroll
+const slideElement = document.querySelector(".slide");
+const slideWidth = slideElement.offsetWidth;
+console.log(slideWidth);
 // Click event
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
+    scrollContainer.style.scrollBehavior = "smooth";
     // Changing slide
     const offset = button.dataset.carouselButton === "next" ? 1 : -1;
 
-    const slides = button
-      .closest("[data-carousel]")
-      .querySelector("[data-slides]");
-
-    const activeSlide = slides.querySelector("[data-active]");
-
-    let newIndex = [...slides.children].indexOf(activeSlide) + offset;
-
-    if (newIndex < 0) newIndex = slides.children.length - 1;
-    if (newIndex >= slides.children.length) newIndex = 0;
-
-    slides.children[newIndex].dataset.active = true;
-
-    delete activeSlide.dataset.active;
-
-    currentIndex = (currentIndex + 1) % bodyBackgroundColorArray.length;
-    console.log(currentIndex);
+    if ((offset == 1) & (currentIndex < 3)) {
+      currentIndex = (currentIndex + 1) % bodyBackgroundColorArray.length;
+      console.log(currentIndex);
+      scrollContainer.scrollLeft += slideWidth;
+    } else if ((offset != 1) & (currentIndex > 0)) {
+      currentIndex = (currentIndex - 1) % bodyBackgroundColorArray.length;
+      console.log(currentIndex);
+      scrollContainer.scrollLeft -= slideWidth;
+    }
 
     // changing body background color
     var newBodyBackgroundColor = bodyBackgroundColorArray[currentIndex];
