@@ -187,6 +187,11 @@ button {
   transform: translateY(15px);
 }
 
+/* MENU BAR */
+.navigation-bar .menu {
+  display: none;
+}
+
 /*          --------------------    WINE BOTTLES  ---------------------     */
 .wine-bottles {
   position: relative;
