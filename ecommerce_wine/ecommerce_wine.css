@@ -190,19 +190,29 @@ button {
 /*          --------------------    WINE BOTTLES  ---------------------     */
 .wine-bottles {
   position: relative;
-  padding-bottom: var(--large-padding-value);
+  height: 600px;
+}
+
+.carousel {
+  display: flex;
 }
 
 .wine-bottles .slider {
-  width: 100%;
-  width: 450px;
-  border: 5px solid black;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .wine-bottles .slide {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  opacity: 0;
 }
 
 .wine-bottles .slide img {
@@ -237,5 +247,13 @@ button {
 .wine-bottles button {
   position: absolute;
   bottom: 0;
-  transform: translateY(50%);
+  transform: translate(-50%, 50%);
+}
+
+.slide[data-active] {
+  opacity: 1;
+  z-index: 1;
+
+  /* Animation */
+  transition-delay: 0ms;
 }

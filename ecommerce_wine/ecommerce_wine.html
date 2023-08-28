@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Wine E-commerce</title>
     <link rel="stylesheet" href="ecommerce_wine.css" />
+    <script src="ecommerce_wine.js" defer></script>
   </head>
   <body>
     <header>
@@ -28,45 +29,47 @@
         <button>View more</button>
       </section>
 
-      <section class="wine-bottles carousel" data-carousel>
-        <ul class="slider" data-slides>
-          <li class="slide" data-active>
-            <img src="images/whiteWine.png" alt="White Wine" />
-            <p class="wine-name">Wine Relax: White semi-sweet</p>
-            <div class="price">
-              <p>EUR 135</p>
-              <span>+</span>
-            </div>
-          </li>
-          <!-- <li class="slide">
-            <img src="images/blackWine.png" alt="Black Wine" />
-            <p class="wine-name">Wine Relax: Black semi-sweet</p>
-            <div class="price">
-              <p>EUR 130</p>
-              <span>+</span>
-            </div>
-          </li> -->
-          <!-- <li class="slide">
-            <img src="images/roseWine.png" alt="Rose Wine" />
-            <p class="wine-name">Wine Relax: Rose semi-sweet</p>
-            <div class="price">
-              <p>EUR 120</p>
-              <span>+</span>
-            </div>
-          </li> -->
-          <!-- <li class="slide">
-            <img src="images/redwine.png" alt="Red Wine" />
-            <p class="wine-name">Wine Relax: Red semi-sweet</p>
-            <div class="price">
-              <p>EUR 150</p>
-              <span>+</span>
-            </div>
-          </li> -->
-        </ul>
+      <section class="wine-bottles">
+        <div class="carousel" data-carousel>
+          <ul class="slider" data-slides>
+            <li class="slide" data-active>
+              <img src="images/whiteWine.png" alt="White Wine" />
+              <p class="wine-name">Wine Relax: White semi-sweet</p>
+              <div class="price">
+                <p>EUR 135</p>
+                <span>+</span>
+              </div>
+            </li>
+            <li class="slide">
+              <img src="images/blackWine.png" alt="Black Wine" />
+              <p class="wine-name">Wine Relax: Black semi-sweet</p>
+              <div class="price">
+                <p>EUR 130</p>
+                <span>+</span>
+              </div>
+            </li>
+            <li class="slide">
+              <img src="images/roseWine.png" alt="Rose Wine" />
+              <p class="wine-name">Wine Relax: Rose semi-sweet</p>
+              <div class="price">
+                <p>EUR 120</p>
+                <span>+</span>
+              </div>
+            </li>
+            <li class="slide">
+              <img src="images/redwine.png" alt="Red Wine" />
+              <p class="wine-name">Wine Relax: Red semi-sweet</p>
+              <div class="price">
+                <p>EUR 150</p>
+                <span>+</span>
+              </div>
+            </li>
+          </ul>
 
-        <button class="carousel-button next" data-carousel-button="next">
-          Next
-        </button>
+          <button class="carousel-button next" data-carousel-button="next">
+            Next
+          </button>
+        </div>
       </section>
 
       <section>
