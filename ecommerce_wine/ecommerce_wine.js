@@ -5,12 +5,25 @@ var newBodyBackgroundColor = bodyBackgroundColorArray[currentIndex];
 console.log(newBodyBackgroundColor);
 
 // Section background color array
-var sectionBackgroundColorArray = ["#f9f4e5", "#D3D3D3", "#fecdbe", "#d11414"];
+const sectionBackgroundColorArray = [
+  "#f9f4e5",
+  "#D3D3D3",
+  "#fecdbe",
+  "#d11414",
+];
 var newSectionBackgroundColor = sectionBackgroundColorArray[currentIndex];
 
 // Normal text font color
-var normalTextColorArray = ["#2b2925", "#fff", "#191412", "#fdfafa"];
+const normalTextColorArray = ["#2b2925", "#fff", "#191412", "#fdfafa"];
 var newNormalTextColor = normalTextColorArray[currentIndex];
+
+// Hover background color array
+const hoverBackgroundColorArray = ["#D3D3D3", "#fecdbe", "#d11414", "#f9f4e5"];
+var newHoverBackgroundColor = hoverBackgroundColorArray[currentIndex];
+
+// Hover text color
+const hoverTextColorArray = ["#fff", "#191412", "#fdfafa", "#2b2925"];
+var newHoverTextColor = hoverTextColorArray[currentIndex];
 
 // Getting access to root
 var root = document.querySelector(":root");
@@ -62,5 +75,18 @@ buttons.forEach((button) => {
     var newNormalTextColor = normalTextColorArray[currentIndex];
     root.style.setProperty("--normal-text-color", newNormalTextColor);
     console.log(newNormalTextColor);
+
+    // Changing hover background color
+    var newHoverBackgroundColor = hoverBackgroundColorArray[currentIndex];
+    root.style.setProperty(
+      "--button-hover-background-color",
+      newHoverBackgroundColor
+    );
+    console.log(newHoverBackgroundColor);
+
+    // Changing hover text color
+    var newHoverTextColor = hoverTextColorArray[currentIndex];
+    root.style.setProperty("--button-hover-text-color", newHoverTextColor);
+    console.log(newHoverTextColor);
   });
 });
