@@ -89,6 +89,9 @@ p {
 }
 
 /* -------------------    Components    ---------------------   */
+.white-circle-cursor {
+  cursor: url("images/circle.png"), auto;
+}
 section {
   display: flex;
   flex-direction: column;
@@ -118,7 +121,6 @@ img {
 button {
   width: 120px;
   height: 120px;
-  cursor: pointer;
   background-color: var(--section-background-color);
   color: var(--normal-text-color);
   font-weight: 400;
@@ -133,6 +135,7 @@ button:hover {
   background-color: var(--button-hover-background-color);
   color: var(--button-hover-text-color);
   border-color: var(--border-button-hover-color);
+  transition: all 1s;
 }
 
 /* navigation bar */
@@ -157,7 +160,6 @@ button:hover {
 /* LOGO */
 .logo {
   margin-left: var(--small-margin-value);
-  cursor: pointer;
 }
 
 /*  -------------     HAMBURGER-MENU ---------------    */
@@ -168,7 +170,6 @@ button:hover {
   align-items: center;
   margin-right: var(--small-margin-value);
   z-index: 100;
-  cursor: pointer;
 }
 
 .nav-icon {
@@ -253,6 +254,7 @@ button:hover {
   display: flex;
   width: 70%;
   max-width: 300px;
+  max-width: 300px;
   justify-content: space-between;
   padding-top: var(--small-padding-value);
 }
@@ -276,7 +278,8 @@ button:hover {
   z-index: 1;
 
   /* Animation */
-  transition-delay: 0ms;
+  /* transition-delay: 0ms; */
+  transition: all 2s;
 }
 
 /* SECTION INVITATION */
@@ -356,6 +359,10 @@ button:hover {
   }
 
   .wine-bottles .slide .wine-name {
+    max-width: 400px;
+  }
+
+  .wine-bottles .price {
     max-width: 400px;
   }
 }
