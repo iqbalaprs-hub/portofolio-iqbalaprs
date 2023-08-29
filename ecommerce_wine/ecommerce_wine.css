@@ -257,13 +257,19 @@ button:hover {
 
 .wine-bottles button.before {
   position: absolute;
-  bottom: 0;
+  top: 35%;
+  left: 15%;
+  width: 70px;
+  height: 70px;
   transform: translate(-50%, 50%);
 }
 
 .wine-bottles button.next {
   position: absolute;
-  bottom: 0;
+  top: 35%;
+  right: 15%;
+  width: 70px;
+  height: 70px;
   transform: translate(50%, 50%);
 }
 
@@ -288,9 +294,17 @@ button:hover {
     height: 150px;
   }
 
-  .wine-bottles button {
-    width: 120px;
-    height: 120px;
+  .wine-bottles button.before {
+    width: 150px;
+    height: 150px;
+    top: 25%;
+    left: 15%;
+  }
+  .wine-bottles button.next {
+    width: 150px;
+    height: 150px;
+    top: 25%;
+    right: 15%;
   }
 
   /* HAMBURGER MENU DISAPPEAR AND MENU APPEAR */
