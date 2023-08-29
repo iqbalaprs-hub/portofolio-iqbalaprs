@@ -204,7 +204,7 @@ button:hover {
 
 /*          --------------------    WINE BOTTLES  ---------------------     */
 .wine-bottles {
-  height: 600px;
+  height: 640px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -244,15 +244,28 @@ button:hover {
   max-width: 300px;
   max-width: 300px;
   justify-content: space-between;
-  padding-top: var(--small-padding-value);
+  align-items: center;
 }
 
 .wine-bottles .price span {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid var(--border-color);
-  text-align: center;
+  font-size: 35px;
+  color: var(--border-color);
+}
+
+.wine-bottles .price span:hover {
+  color: var(--button-hover-background-color);
+  animation: scaleAnimation 2s infinite;
+}
+
+@keyframes scaleAnimation {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
 }
 
 .wine-bottles button.before {
@@ -271,6 +284,12 @@ button:hover {
   width: 70px;
   height: 70px;
   transform: translate(50%, 50%);
+}
+
+.wine-bottles button.add-to-cart {
+  border-radius: 0;
+  width: 150px;
+  margin-top: var(--small-margin-value);
 }
 
 /* SECTION INVITATION */
@@ -294,6 +313,14 @@ button:hover {
     height: 150px;
   }
 
+  .wine-bottles {
+    height: 700px;
+  }
+
+  .wine-bottles .price {
+    padding-top: var(--small-padding-value);
+  }
+
   .wine-bottles button.before {
     width: 150px;
     height: 150px;
@@ -305,6 +332,10 @@ button:hover {
     height: 150px;
     top: 25%;
     right: 15%;
+  }
+
+  .wine-bottles .price span {
+    font-size: 40px;
   }
 
   /* HAMBURGER MENU DISAPPEAR AND MENU APPEAR */
