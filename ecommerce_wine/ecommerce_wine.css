@@ -1,4 +1,8 @@
 /* ELEMENTS */
+main {
+  padding-top: var(--large-padding-value);
+}
+
 h1 {
   font-size: var(--h1-font-size-value);
 }
@@ -29,6 +33,11 @@ button {
   width: 120px;
   height: 120px;
   font-size: var(--contact-font-size-value);
+}
+
+section {
+  margin-bottom: var(--small-margin-value);
+  padding: var(--small-padding-value);
 }
 
 /*          --------------------    WINE BOTTLES  ---------------------     */

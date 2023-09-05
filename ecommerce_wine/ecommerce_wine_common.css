@@ -49,7 +49,8 @@ body {
 
 main {
   padding: 0 16px;
-  padding-top: var(--Xlarge-padding-value);
+  display: flex;
+  flex-direction: column;
 }
 
 ul {
@@ -81,8 +82,6 @@ section {
   flex-direction: column;
   align-items: center;
   gap: var(--small-padding-value);
-  margin-bottom: var(--large-margin-value);
-  padding: var(--small-padding-value);
   border: 1px solid var(--border-color);
   background-color: var(--section-background-color);
   position: relative;
