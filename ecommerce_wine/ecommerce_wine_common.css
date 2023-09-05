@@ -186,3 +186,7 @@ button:hover {
 .invitation button {
   transform: rotate(-20deg);
 }
+
+.main .intro .invitation {
+  display: none;
+}
