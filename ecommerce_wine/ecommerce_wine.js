@@ -1,6 +1,6 @@
 var currentIndex = 0;
 // Body background color array
-const bodyBackgroundColorArray = ["#dad3c1", "#808080", "#dab0a4", "#781e1e"];
+const bodyBackgroundColorArray = ["#dad3c1", "#c2c0c0", "#966645", "#d11414"];
 var newBodyBackgroundColor = bodyBackgroundColorArray[currentIndex];
 console.log(newBodyBackgroundColor);
 
@@ -8,29 +8,29 @@ console.log(newBodyBackgroundColor);
 const sectionBackgroundColorArray = [
   "#f9f4e5",
   "#D3D3D3",
-  "#fecdbe",
-  "#d11414",
+  "#ad7650",
+  "#d13636",
 ];
 var newSectionBackgroundColor = sectionBackgroundColorArray[currentIndex];
 
 // Normal text font color
-const normalTextColorArray = ["#2b2925", "#fff", "#191412", "#fdfafa"];
+const normalTextColorArray = ["#2b2925", "#000", "#f2edd7", "#fdfafa"];
 var newNormalTextColor = normalTextColorArray[currentIndex];
 
 // Hover background color array
-const hoverBackgroundColorArray = ["#D3D3D3", "#fecdbe", "#d11414", "#f9f4e5"];
+const hoverBackgroundColorArray = ["#D3D3D3", "#ad7650", "#d13636", "#f9f4e5"];
 var newHoverBackgroundColor = hoverBackgroundColorArray[currentIndex];
 
 // Hover text color
-const hoverTextColorArray = ["#fff", "#191412", "#fdfafa", "#2b2925"];
+const hoverTextColorArray = ["#000", "#f2edd7", "#fdfafa", "#2b2925"];
 var newHoverTextColor = hoverTextColorArray[currentIndex];
 
 // Border color
-const borderColorArray = ["#2b2925", "#fff", "#191412", "#fdfafa"];
+const borderColorArray = ["#dad3c1", "#c2c0c0", "#966645", "#d11414"];
 var newBorderColor = borderColorArray[currentIndex];
 
 // Hover border color
-const hoverBorderColorArray = ["#fff", "#191412", "#fdfafa", "#2b2925"];
+const hoverBorderColorArray = ["#c2c0c0", "#966645", "#d11414", "#dad3c1"];
 var newHoverBorderColor = hoverBorderColorArray[currentIndex];
 
 // Getting access to root
