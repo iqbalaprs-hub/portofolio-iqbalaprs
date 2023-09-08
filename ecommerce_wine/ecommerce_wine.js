@@ -105,4 +105,9 @@ buttons.forEach((button) => {
     root.style.setProperty("--border-button-hover-color", newHoverBorderColor);
     console.log(newHoverBorderColor);
   });
+
+  // when the user resizes the browser window, the "resize" event is fired, and the anonymous function is executed, which, in turn, triggers a page reload, effectively refreshing the web page. This behavior can be used to automatically refresh the page when the user changes the size of the browser window, which may be useful in certain scenarios but should be used judiciously as it can interrupt the user's experience
+  window.addEventListener("resize", function () {
+    location.reload();
+  });
 });

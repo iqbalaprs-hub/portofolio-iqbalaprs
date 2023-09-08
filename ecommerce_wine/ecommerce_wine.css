@@ -47,7 +47,7 @@ section {
   align-items: center;
   justify-content: center;
   width: 100%;
-  overflow-x: scroll;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
