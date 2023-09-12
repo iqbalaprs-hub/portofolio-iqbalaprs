@@ -104,7 +104,7 @@ section {
   align-items: center;
   gap: var(--small-padding-value);
   background-color: var(--section-bg-color);
-  margin-bottom: var(--large-margin-value);
+  margin-bottom: var(--medium-margin-value);
 }
 
 .picture {
@@ -337,6 +337,10 @@ button:hover:after {
     --h4-font-size-value: 22px;
   }
 
+  section {
+    margin-bottom: var(--large-margin-value);
+  }
+
   button {
     height: 70px;
   }
@@ -349,7 +353,7 @@ button:hover:after {
   .navigation-bar .menu {
     display: flex;
     align-items: center;
-    width: clamp(450px, 40%, 700px);
+    width: clamp(500px, 50%, 1000px);
   }
 
   .navigation-bar .menu a:first-of-type {
