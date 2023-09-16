@@ -1,0 +1,28 @@
+# Node.js specific
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Cypress specific
+cypress/screenshots/
+cypress/videos/
+
+# Operating System specific
+.DS_Store  # macOS
+Thumbs.db  # Windows
+desktop.ini # Windows
+
+# Editors and IDEs
+*.swp       # Vim
+*.swo       # Vim
+*.idea/     # JetBrains IDEs
+*.vscode/   # Visual Studio Code
+*.log*
+
+# Build and cache
+.cache
+dist/
+build/
+
+# Environment variables
+.env
