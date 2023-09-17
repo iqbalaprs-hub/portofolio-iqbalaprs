@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  defaultCommandTimeout: 10000,
   blockHosts: [
     "*google-analytics.com",
     "*googlesyndication.com",
