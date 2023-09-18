@@ -89,10 +89,10 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("Nominal case: Both blue button (Calculate & Save!) and orange bar appears when clicking on button more", function () {
+  it("Nominal case: Both blue button (Calculate & Save!) and orange bar appears when clicking on button more and minus button", function () {
     //          --------------------        SECOND CHANGE: CLICK ON THE BUTTON MORE AND THE BUTTON MINUS   -----------------------------------------
 
-    // Cli ck on Button (submitbutton!)
+    // Click on Button (submitbutton!)
     cy.get("#submitbutton").click();
 
     // Calculation is done and a box appears saying:
