@@ -200,11 +200,6 @@ describe("Main page of Billzer: typing data for the Calculation page", function 
     cy.get(".calc").find(".userwrap").should("have.length", 2);
   });
 
-  it.only("My SecondTest case", function () {
-    cy.get(".input-hg").clear().type("41");
-    cy.get("#go").click();
-  });
-
   it("16.Nominal case: User is using the arrows to choose the number  in the Member count input", function () {
     // 16.1: Default number of member is 3
     // 16.1: Placeholder of name is "Roadtrip"
