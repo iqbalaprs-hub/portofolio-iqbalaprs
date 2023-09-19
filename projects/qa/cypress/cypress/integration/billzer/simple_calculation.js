@@ -265,7 +265,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it.only("7.Edge case: User cannot calculate if a negative number is entered", function () {
+  it("7.Edge case: User cannot calculate if a negative number is entered", function () {
     // Type in expense's amount in Person1: -
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("-");
 
