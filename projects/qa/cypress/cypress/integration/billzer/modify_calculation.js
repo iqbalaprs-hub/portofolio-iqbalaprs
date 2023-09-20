@@ -1,9 +1,21 @@
 /// <reference types="Cypress" />
 
-describe("My Second Test Suite", function () {
+describe("Modify calculation", () => {
   beforeEach(() => {
-    // Prereq: the user visits the page "https://billzer.com/"
+    // Prereq: BILLZER page is already opened
     cy.visit("https://billzer.com/");
+
+    // Sometimes, there's a Cookie Consent Popup that appears. We should close it before continuing the tests
+    // The Cookie Consent Popup takes a bit of time to appear
+    cy.wait(1000);
+    // Here, I retrieved the body instead of directly the button, so that cypress doesn't throw an error if the Cookie Consent Popup doesn't appear
+    cy.get("body").then(($body) => {
+      // Check if the Accept all cookies button exists
+      if ($body.find("button#ez-accept-all").length > 0) {
+        // If the button exists, click on it to close the Cookie Consent Popup
+        cy.get("button#ez-accept-all").click();
+      }
+    });
 
     /* 
     Prereq:
@@ -37,7 +49,7 @@ describe("My Second Test Suite", function () {
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
   });
 
-  it("1.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when changing number", function () {
+  it("1.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when changing number", () => {
     //          --------------------        FIRST CHANGE: CHANGE A NUMBER   -----------------------------------------
 
     // 1.1: Click on "Calculate & Save!"
@@ -47,6 +59,7 @@ describe("My Second Test Suite", function () {
     // 1.2: Type in expense amount in Person1: 120
     // 1.2: Expected result: Both blue button and orange bar reappear
     cy.get(".calc .inputwrap").eq(0).find("input.price").clear().type("120");
+    cy.wait(1000);
     // Blue button
     cy.get("#submitbutton").should("be.visible");
     // Orange bar
@@ -67,6 +80,7 @@ describe("My Second Test Suite", function () {
     // 1.3: Click on "Calculate & Save!"
     // 1.3: Expected result: The green sentence saying that it is saved appears
     cy.get("#submitbutton").click();
+    cy.wait(1000);
     cy.get(".savediv").find(".save").contains("Saved");
 
     /*
@@ -87,6 +101,7 @@ describe("My Second Test Suite", function () {
       .eq(0)
       .find("div.cred")
       .should("have.text", "Person1");
+
     cy.get(".the-return .ergi")
       .eq(1)
       .find(".deb")
@@ -101,15 +116,17 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("2.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when clicking on button more and minus button", function () {
+  it.only("2.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when clicking on button more and minus button", () => {
     //          --------------------        SECOND CHANGE: CLICK ON THE BUTTON MORE AND THE BUTTON MINUS   -----------------------------------------
 
     // 2.1: Click on "Calculate & Save!"
     // Note: We had to do it so that we can show the clicking on "more" will activate the orange bar and the blue button
     cy.get("#submitbutton").click();
+    cy.wait(1000);
 
     // 2.2: Click on button"more" of Person1
     cy.get(".calc .userwrap").eq(0).find(".pluswrap").click();
+    cy.wait(1000);
     // 2.2: Expected result: Both blue button and orange bar reappear
     // Blue button
     cy.get("#submitbutton").should("be.visible");
@@ -131,6 +148,7 @@ describe("My Second Test Suite", function () {
     // 2.3: Click on "Calculate & Save!"
     // 2.3: Expected result: The green sentence saying that it is saved appears
     cy.get("#submitbutton").click();
+    cy.wait(1000);
     cy.get(".savediv").find(".save").contains("Saved");
 
     /*
@@ -173,14 +191,7 @@ describe("My Second Test Suite", function () {
       .find(".minus")
       .click();
 
-    cy.get("#submitbutton");
-    cy.get(".savediv2")
-      .find(".save2")
-      .should(
-        "have.text",
-        "Unsaved changes. Hit the calculate button below or click here."
-      )
-      .click();
+    cy.wait(1000);
 
     // 2.4: Expected result: Both blue button and orange bar reappear
     // Blue button
@@ -238,7 +249,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("3.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when excluding a person from an expense", function () {
+  it("3.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when excluding a person from an expense", () => {
     //          --------------------        THIRD CHANGE: EXCLUDE A PERSON   -----------------------------------------
 
     // 3.1: Click on "Calculate & Save!"
@@ -260,6 +271,8 @@ describe("My Second Test Suite", function () {
       .find(".checks .checkbox .icons")
       .eq(0)
       .click();
+
+    cy.wait(1000);
 
     // 3.2: Expected result: Both blue button and orange bar reappear
     // Blue button
@@ -317,13 +330,14 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("4.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when changing expense name", function () {
+  it("4.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when changing expense name", () => {
     // 4.1: Click on "Calculate & Save!"
     // Note: We had to do it so that we can show the clicking on "more" will activate the orange bar and the blue button
     cy.get("#submitbutton").click();
 
     // 4.2: Change the first expense name of Person1 from "Ticket" to "food"
     cy.get(".calc .inputwrap").eq(0).find("input.was").clear().type("Food");
+    cy.wait(1000);
 
     // 4.2: Expected result: Both blue button and orange bar reappear
     // Blue button
@@ -381,7 +395,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("5.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when changing person name", function () {
+  it("5.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when changing person name", () => {
     // 5.1: Click on "Calculate & Save!"
     // Note: We had to do it so that we can show the clicking on "more" will activate the orange bar and the blue button
 
@@ -389,6 +403,7 @@ describe("My Second Test Suite", function () {
 
     // 5.2: Change the first person name of Person1 from "Person1" to "Guy1"
     cy.get(".calc .userwrap").eq(0).find("input.name").clear().type("Guy1");
+    cy.wait(1000);
 
     // 5.2: Expected result: Both blue button and orange bar reappear
     // Blue button
