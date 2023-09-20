@@ -1,9 +1,21 @@
 /// <reference types="Cypress" />
 
-describe("My Second Test Suite", function () {
+describe("Include and Exclude", () => {
   beforeEach(() => {
-    // Prereq: the user visits the page "https://billzer.com/"
+    // Prereq: BILLZER page is already opened
     cy.visit("https://billzer.com/");
+
+    // Sometimes, there's a Cookie Consent Popup that appears. We should close it before continuing the tests
+    // The Cookie Consent Popup takes a bit of time to appear
+    cy.wait(1000);
+    // Here, I retrieved the body instead of directly the button, so that cypress doesn't throw an error if the Cookie Consent Popup doesn't appear
+    cy.get("body").then(($body) => {
+      // Check if the Accept all cookies button exists
+      if ($body.find("button#ez-accept-all").length > 0) {
+        // If the button exists, click on it to close the Cookie Consent Popup
+        cy.get("button#ez-accept-all").click();
+      }
+    });
 
     /*
     Prereq: The user typed in the Main page the following information:
@@ -38,7 +50,7 @@ describe("My Second Test Suite", function () {
     cy.get(".calc .inputwrap").eq(2).find("input.price").type("100");
   });
 
-  it("1.Nominal case: User calculates the expenses by excluding Person1 from the expense Ticket of Person1", function () {
+  it("1.Nominal case: User calculates the expenses by excluding Person1 from the expense Ticket of Person1", () => {
     // 1.1: Click on the 2-persons" icon of the expense "Ticket" of the form Person1 and exclude Person1
     cy.get(".calc .userwrap")
       .eq(0)
@@ -99,7 +111,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("2.Nominal case: User calculates the expenses by excluding Person1 and Person2 from the expense Ticket of the form Person1", function () {
+  it("2.Nominal case: User calculates the expenses by excluding Person1 and Person2 from the expense Ticket of the form Person1", () => {
     // 2.1: Click on the 2-persons" icon of the expense "Ticket"of the form Person 1 and exclude both Person1 and Person2
     cy.get(".calc .userwrap")
       .eq(0)
@@ -169,7 +181,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person2");
   });
 
-  it("3.Nominal case: User calculates the expenses by excluding Person1 from the expense Ticket of the form Person1 and the expense Ticket of the form  Person2", function () {
+  it("3.Nominal case: User calculates the expenses by excluding Person1 from the expense Ticket of the form Person1 and the expense Ticket of the form  Person2", () => {
     // 3.1: Click on the 2-persons" icon of the expense "Ticket"of the form Person1 and exclude Person1
     cy.get(".calc .userwrap")
       .eq(0)
@@ -255,7 +267,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("4.Nominal case: User calculates the expenses by excluding Person1 from each expense in each of the three forms", function () {
+  it("4.Nominal case: User calculates the expenses by excluding Person1 from each expense in each of the three forms", () => {
     // 4.1: Click on the 2-persons" icon of the expense "Ticket"of the form Person1 and exclude Person1
     cy.get(".calc .userwrap")
       .eq(0)
@@ -365,7 +377,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("5.Nominal case: User calculates the expenses by excluding both Person1 and Person2 from all the expenses of all the forms", function () {
+  it("5.Nominal case: User calculates the expenses by excluding both Person1 and Person2 from all the expenses of all the forms", () => {
     // 5.1: Click on the 2-persons" icon of the expense "Ticket" of the form Person1 and exclude both Person2 and Person3
     cy.get(".calc .userwrap")
       .eq(0)
@@ -499,7 +511,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person3");
   });
 
-  it("6.Edge case: User cannot exclude all persons from an expense. At least one person should be included in each expense", function () {
+  it("6.Edge case: User cannot exclude all persons from an expense. At least one person should be included in each expense", () => {
     // 6.1: Click on the 2-persons" icon of the expense "Ticket" of the form Person1 and exclude both Person2 and Person3
     cy.get(".calc .userwrap")
       .eq(0)
@@ -545,7 +557,7 @@ describe("My Second Test Suite", function () {
     // BUG: All persons related to an expense are removed. At least one person should be included in each expense
   });
 
-  it("7.Nominal case: User can calculate even by mixing multiple expenses with include/exclude action", function () {
+  it("7.Nominal case: User can calculate even by mixing multiple expenses with include/exclude action", () => {
     // 7.1: Click on button "more" of Person1
     // Expected result: A second expense field is created
     cy.get(".calc .userwrap").eq(0).find(".pluswrap").click();
@@ -855,7 +867,15 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person3");
   });
 
-  it("8.Nominal case: User can include a person after excluding him from an expense", function () {
+  it("8.Nominal case: User can include a person after excluding him from an expense", () => {
+    // 8.1: Expected result: The 2-Persons icon related to the expense "Ticket" of the form "Person1" is colored in grey
+    cy.get(".calc .userwrap")
+      .eq(0)
+      .find(".inputwrap")
+      .eq(0)
+      .find(".tooltyp")
+      .should("have.css", "color", "rgb(204, 204, 204)");
+
     // 8.2: Type in expense's amount in Person1: 150
     cy.get(".calc .inputwrap").eq(0).find("input.price").clear().type("150");
 
@@ -964,6 +984,21 @@ describe("My Second Test Suite", function () {
       .eq(0)
       .find(".icons")
       .click();
+
+    // 8.6: Expected result: The 2-Persons icon related to the expense "Ticket" of the form "Person1" is colored in grey
+    cy.get(".calc .userwrap")
+      .eq(0)
+      .find(".inputwrap")
+      .eq(0)
+      .find(".tooltyp")
+      .click();
+
+    cy.get(".calc .userwrap")
+      .eq(0)
+      .find(".inputwrap")
+      .eq(0)
+      .find(".tooltyp")
+      .should("have.css", "color", "rgb(204, 204, 204)");
 
     // 8.7: Click the Button "Calculate & Save!"
     /*
