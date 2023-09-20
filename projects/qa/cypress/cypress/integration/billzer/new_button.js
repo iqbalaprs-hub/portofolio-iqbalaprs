@@ -1,9 +1,23 @@
 /// <reference types="Cypress" />
 
-describe("My Second Test Suite", function () {
+describe("New button", () => {
   beforeEach(() => {
     // Prereq: the user visits the page "https://billzer.com/"
     cy.visit("https://billzer.com/");
+
+    // Prereq: BILLZER page is already opened
+    cy.visit("https://billzer.com/");
+    // Sometimes, there's a Cookie Consent Popup that appears. We should close it before continuing the tests
+    // The Cookie Consent Popup takes a bit of time to appear
+    cy.wait(1000);
+    // Here, I retrieved the body instead of directly the button, so that cypress doesn't throw an error if the Cookie Consent Popup doesn't appear
+    cy.get("body").then(($body) => {
+      // Check if the Accept all cookies button exists
+      if ($body.find("button#ez-accept-all").length > 0) {
+        // If the button exists, click on it to close the Cookie Consent Popup
+        cy.get("button#ez-accept-all").click();
+      }
+    });
 
     /* 
     Prereq:
@@ -33,7 +47,7 @@ describe("My Second Test Suite", function () {
     cy.get(".calc .inputwrap").eq(2).find("input.was").type("Ticket");
   });
 
-  it("1: Nominal case: Return to the Main page for a new Calculation", function () {
+  it("1: Nominal case: Return to the Main page for a new Calculation", () => {
     // 1.1: Click on the "New" icon
     // Expected result: User is returned to the Main page https://billzer.com/
     cy.get(".icon-doc-new").click();
