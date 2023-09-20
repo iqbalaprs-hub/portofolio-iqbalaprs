@@ -1,0 +1,12 @@
+/* Test cases */
+.all-test-cases {
+  width: 100%;
+}
+
+.all-test-cases li {
+  display: flex;
+}
+
+.all-test-cases h4 {
+  width: 90%;
+}
