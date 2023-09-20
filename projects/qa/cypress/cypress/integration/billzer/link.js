@@ -1,9 +1,21 @@
 /// <reference types="Cypress" />
 
-describe("My Second Test Suite", function () {
+describe("Link", () => {
   beforeEach(() => {
-    // Prereq: the user visits the page "https://billzer.com/"
+    // Prereq: BILLZER page is already opened
     cy.visit("https://billzer.com/");
+
+    // Sometimes, there's a Cookie Consent Popup that appears. We should close it before continuing the tests
+    // The Cookie Consent Popup takes a bit of time to appear
+    cy.wait(1000);
+    // Here, I retrieved the body instead of directly the button, so that cypress doesn't throw an error if the Cookie Consent Popup doesn't appear
+    cy.get("body").then(($body) => {
+      // Check if the Accept all cookies button exists
+      if ($body.find("button#ez-accept-all").length > 0) {
+        // If the button exists, click on it to close the Cookie Consent Popup
+        cy.get("button#ez-accept-all").click();
+      }
+    });
 
     /* 
     Prereq:
@@ -35,8 +47,8 @@ describe("My Second Test Suite", function () {
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
   });
 
-  it("2.Nominal case: User gets the link of the calculation form the green sentence replacing the orange bar", function () {
-    // 2.1: Find the orange bar
+  it("1.Nominal case: User gets the link of the calculation form the green sentence replacing the orange bar", () => {
+    // 1.1: Find the orange bar
     cy.get(".savediv2")
       .find(".save2")
       .should(
@@ -46,7 +58,7 @@ describe("My Second Test Suite", function () {
       .click();
     cy.get(".savediv2").click();
 
-    // 2.1: Expected result: Alert appears saying that it is saved and carry a link of the page
+    // 1.1: Expected result: Alert appears saying that it is saved and carry a link of the page
     cy.on("window:alert", (Text) => {
       expect(Text).to.contains(
         "Saved. Result is at the bottom.  Use this link to share or edit with your friends"
@@ -54,12 +66,11 @@ describe("My Second Test Suite", function () {
     });
 
     /*
-    2.1: Expected result:
+    1.1: Expected result:
     calculation us done and box appears saying:
       -Person2 owns 33.3 to person1
       -Person3 owns 33.33 to Person1
     */
-
     cy.get(".the-return .ergi")
       .eq(0)
       .find(".deb")
@@ -86,8 +97,8 @@ describe("My Second Test Suite", function () {
       .find("div.cred")
       .should("have.text", "Person1");
 
-    // 2.2: Copy the link from the green sentence, compare it to the  URL
-    // 2.2: Expected result: The link extracted and the URL are the same
+    // 1.2: Copy the link from the green sentence, compare it to the  URL
+    // 1.2: Expected result: The link extracted and the URL are the same
     cy.get(".savediv")
       .find(".save")
       .invoke("text")
@@ -99,10 +110,10 @@ describe("My Second Test Suite", function () {
         cy.url().should("include", extractedURL);
       });
 
-    // Type in expense's amount in Person1: 1001
+    // 1.3: Type in expense's amount in Person1: 1001
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("1");
 
-    // Find the orange bar
+    // 1.3: Expected result:  Orange bar appear
     cy.get(".savediv2")
       .find(".save2")
       .should(
@@ -111,17 +122,17 @@ describe("My Second Test Suite", function () {
       )
       .click();
 
-    // Click on the orange bar
+    // 1.4 Click on the orange bar
     cy.get(".savediv2").click();
 
-    // Alert bar appear saying "Saved. Result is at the bottom.  Use this link to share or edit with your friends:  (link)"
+    // 1.4: Expected result: Alert appear saying
     cy.on("window:alert", (Text) => {
       expect(Text).to.contains(
         "Saved. Result is at the bottom.  Use this link to share or edit with your friends"
       );
     });
 
-    // Calculation is done and a box appears saying:
+    // 1.4: Expected result: Calculation is done and a box appears saying:
     // Person2 owns 333.67 to Person1
     cy.get(".the-return .ergi")
       .eq(0)
@@ -150,48 +161,58 @@ describe("My Second Test Suite", function () {
       .find("div.cred")
       .should("have.text", "Person1");
 
-    // Copy the link from the green sentence, compare it to the  URL
-    // The link extracted and the URL are the same
+    // 1.4: Expected result: Alert appears saying that it is saved and carry a link of the page
+    cy.get(".savediv").find(".save").contains("Saved");
+    // 1.4: Expected result: The orange bar turn to a green sentence containing the word "Saved" with the link of the page. The link extracted and the URL are the same
+    let extractedURL = "";
     cy.get(".savediv")
       .find(".save")
       .invoke("text")
       .then((text) => {
         const words = text.split(" ");
-        const extractedURL = words[words.length - 1];
+        extractedURL = words[words.length - 1];
         cy.log(words.length);
         cy.log(extractedURL);
         cy.url().should("include", extractedURL);
+        cy.log(extractedURL);
+        // 1.5: Go to the main page and try the link extracted from the green sentence
+        // 1.5: Expected result:It is showing the page related to this link
+        cy.visit("https://billzer.com/");
+        cy.visit("https://" + extractedURL);
       });
   });
 
-  it("Nominal case: User gets the link of the calculation form the Copy! icon", function () {
-    // Click the Button "Calculate & Save!"
+  it.only("2.Nominal case: User gets the link of the calculation form the Copy! icon", () => {
+    // 2.1: Click the Button "Calculate & Save!"
     cy.get("#submitbutton").click();
-
-    // Alert bar appears saying that it is saved and carry a link of the page
-    cy.get(".savediv").find(".save").contains("Saved");
-
+    // 2.1: Expected result: A box under the calculation appears and gives  you the option to copy the link
     cy.get("#shareurl")
       .invoke("val")
       .then((inputValue) => {
         cy.log(inputValue);
         cy.url().should("include", inputValue);
+        // 2.2: Go to the main page and paste the link of the box in the URL
+        // 2.2: Expected result: It is showing the page related to this link
+        cy.visit("https://billzer.com/");
+        cy.visit("https://" + inputValue);
       });
 
-    // Type in expense's amount in Person1: 1001
+    // 2.3: Type in expense's amount in Person1: 1001
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("1");
 
-    // Click the Button "Calculate & Save!"
+    // 2.4: Click the Button "Calculate & Save!"
     cy.get("#submitbutton").click();
 
-    // Alert bar appears saying that it is saved and carry a link of the page
-    cy.get(".savediv").find(".save").contains("Saved");
-
+    // 2.4: Expected result: A box under the calculation appears and gives  you the option to copy the link
     cy.get("#shareurl")
       .invoke("val")
       .then((inputValue) => {
         cy.log(inputValue);
         cy.url().should("include", inputValue);
+        // 2.5: Go to the main page and paste the link of the box in the URL
+        // 2.5: Expected result: It is showing the page related to this link
+        cy.visit("https://billzer.com/");
+        cy.visit("https://" + inputValue);
       });
   });
 });
