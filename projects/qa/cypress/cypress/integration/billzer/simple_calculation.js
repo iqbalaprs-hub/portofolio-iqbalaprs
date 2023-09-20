@@ -1,9 +1,24 @@
 /// <reference types="Cypress" />
 
-describe("My Second Test Suite", function () {
+describe("Simple calculation", () => {
   beforeEach(() => {
     // Prereq: the user visits the page "https://billzer.com/"
     cy.visit("https://billzer.com/");
+
+    // Prereq: BILLZER page is already opened
+    cy.visit("https://billzer.com/");
+
+    // Sometimes, there's a Cookie Consent Popup that appears. We should close it before continuing the tests
+    // The Cookie Consent Popup takes a bit of time to appear
+    cy.wait(1000);
+    // Here, I retrieved the body instead of directly the button, so that cypress doesn't throw an error if the Cookie Consent Popup doesn't appear
+    cy.get("body").then(($body) => {
+      // Check if the Accept all cookies button exists
+      if ($body.find("button#ez-accept-all").length > 0) {
+        // If the button exists, click on it to close the Cookie Consent Popup
+        cy.get("button#ez-accept-all").click();
+      }
+    });
 
     /* 
     Prereq:
@@ -33,7 +48,7 @@ describe("My Second Test Suite", function () {
     cy.get(".calc .inputwrap").eq(2).find("input.was").type("Ticket");
   });
 
-  it("1.Edge case: User cannot calculate if nobody paid ", function () {
+  it("1.Edge case: User cannot calculate if nobody paid ", () => {
     // 1.1: Type in expense's amount in Person1: 0
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("0");
 
@@ -57,7 +72,7 @@ describe("My Second Test Suite", function () {
       );
   });
 
-  it("2.Nominal case: User calculates if only one person paid", function () {
+  it("2.Nominal case: User calculates if only one person paid", () => {
     // 2.1: Type in expense's amount in Person1: 100
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
 
@@ -103,7 +118,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("3.Nominal case: User calculates if 3 persons paid and 2 of them paid identically", function () {
+  it("3.Nominal case: User calculates if 3 persons paid and 2 of them paid identically", () => {
     // 3.1: Type in expense's amount in Person1: 100
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
 
@@ -149,7 +164,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("4.Nominal case: User calculates if 3 persons paid differently", function () {
+  it("4.Nominal case: User calculates if 3 persons paid differently", () => {
     // 4.1: Type in expense's amount in Person1: 100
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
 
@@ -195,7 +210,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("5.Nominal case: User calculates if 3 persons paid identically", function () {
+  it("5.Nominal case: User calculates if 3 persons paid identically", () => {
     // 5.1: Type in expense's amount in Person1: 100
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
 
@@ -219,7 +234,7 @@ describe("My Second Test Suite", function () {
       );
   });
 
-  it("6.Nominal case: User calculates if number added are decimals", function () {
+  it("6.Nominal case: User calculates if number added are decimals", () => {
     // 6.1: Type in expense's amount in Person1: 100
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
 
@@ -265,16 +280,31 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("7.Edge case: User cannot calculate if a negative number is entered", function () {
-    // Type in expense's amount in Person1: -
-    cy.get(".calc .inputwrap").eq(0).find("input.price").type("-");
+  it("7.Edge case: User cannot calculate if a negative number is entered", () => {
+    // 7.1 Type in expense's amount in Person1: -
+    /* Expected result :
+        (1) Alert appears saying: "Please enter numbers correctly: 1234.56 (for numbers with decimals) or 1234 (for numbers without decimals)"
+        (2) The expense amount is empty
+     */
+    // Stub the Alert so I can test later that it was called
+    const stub = cy.stub();
+    cy.on("window:alert", stub);
 
-    cy.wait(3000);
-    cy.on("window:alert"),
-      (str) => {
-        expect(str).to.equal(
+    cy.get(".calc .inputwrap")
+      .eq(0)
+      .find("input.price")
+      .type("-")
+      .then(() => {
+        expect(stub.getCall(0)).to.be.calledWith(
           "Please enter numbers correctly: 1234.56 (for numbers with decimals) or 1234 (for numbers without decimals)"
         );
-      };
+      });
+
+    cy.get(".calc .inputwrap")
+      .eq(0)
+      .find("input.price")
+      .should("have.value", "");
+
+    // BUG: The negative sign did not automatically disappear after the alert has been removed. It passes in Cypress but it fails with manual test
   });
 });
