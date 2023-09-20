@@ -105,21 +105,22 @@ section {
   gap: var(--small-padding-value);
   background-color: var(--section-bg-color);
   margin-bottom: var(--medium-margin-value);
+  padding: 30px;
 }
 
-.picture {
+/* .picture {
   width: 100%;
   max-width: 800px;
   aspect-ratio: 2;
   position: relative;
   overflow: hidden;
   background-color: #c3d1f6;
-}
+} */
 
 img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 /* BUTTON */
@@ -172,7 +173,7 @@ button:hover:after {
 .navigation-bar {
   width: 100%;
   max-width: 1300px;
-  height: 60px;
+  height: 45px;
   position: fixed;
   top: 0;
   display: flex;
@@ -382,6 +383,11 @@ button:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
+
+  .introduction img {
+    width: 40%;
+    /* height: 100%; */
+  }
 }
 
 /* MEDIA QUERIES HIGHER THAN 1200PX */
@@ -393,5 +399,10 @@ button:hover:after {
     --h2-font-size-value: 34px;
     --h3-font-size-value: 30px;
     --h4-font-size-value: 26px;
+  }
+
+  .introduction img {
+    width: 30%;
+    /* height: 100%; */
   }
 }

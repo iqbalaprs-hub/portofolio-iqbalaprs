@@ -16,8 +16,8 @@
           <h3>Rony H</h3>
         </a>
         <div class="menu">
-          <a href="QA.html">QA portfolio</a>
-          <a href="webPortfolio.html">Web development portfolio</a>
+          <a href="#QA-portfolio">QA portfolio</a>
+          <a href="#webdev-portfolio">Web development portfolio</a>
           <a href="aboutMe.html">About me</a>
         </div>
 
@@ -31,14 +31,7 @@
             <li>
               <a href="index.html" class="nav-link">Homepage</a>
             </li>
-            <li>
-              <a href="QA.html" class="nav-link">QA portfolio</a>
-            </li>
-            <li>
-              <a href="webPortfolio.html" class="nav-link"
-                >Web development portfolio</a
-              >
-            </li>
+
             <li>
               <a href="aboutMe.html" class="nav-link">About me</a>
             </li>
@@ -49,51 +42,63 @@
 
     <main>
       <!-- INTRODUCTION -->
-      <section>
-        <div class="picture">
-          <img src="https://picsum.photos/1000/1000" alt="Random picture" />
-        </div>
+      <section class="introduction" id="intro">
+        <img src="images/Profile picture.jpg" alt="Random picture" />
+
         <p>
           Hello everyone, my name is Rony El Hourani, a passionate and dedicated
-          beginner website developer and software tester.
+          beginner website developer and software tester. You can see all my
+          <a href="#QA-portfolio">QA portfolio projects</a> and my
+          <a href="#webdev-portfolio">web developper portfolio projects</a>.
         </p>
         <a href="aboutMe.html" class="button">
           <button type="button">About me</button>
         </a>
       </section>
 
-      <!-- LINKS TO PORTFOLIO PAGE -->
-      <section>
-        <!-- WEB DEVELOPMENT PORTFOLIO -->
-        <h2>Web development portfolio</h2>
-        <div class="picture">
-          <img src="https://picsum.photos/1000/1000" alt="Portfolio picture" />
-        </div>
-        <p>
-          This is my web development portfolio, where I showcase my expertise,
-          creativity and knowledge through a collection of projects that
-          highlight my ability to build dynamic and visually stunning websites.
-        </p>
-        <a href="" class="button">
-          <button type="button">Portfolio</button>
-        </a>
-      </section>
-
-      <section>
+      <section class="portfolio" id="QA-portfolio">
         <!-- QA PORTFOLIO -->
         <h2>QA portfolio</h2>
-        <div class="picture">
-          <img src="https://picsum.photos/1000/1000" alt="Portfolio picture" />
-        </div>
         <p>
           This is my QA portfolio, where I showcase my expertise through a
           number of examples, which includes test plans, test cases, bug reports
           and many testing tools highlighting my proficiency in both manual and
-          automated testing.
+          automated testing.In this portfolio, I aim to share my experiences and
+          growth as I continue to build my skills and knowledge in the field of
+          software testing.(Return to <a href="#intro">introduction</a>)
         </p>
-        <a href="" class="button">
-          <button type="button">Portfolio</button>
-        </a>
+        <ul>
+          <li>
+            <div class="picture">
+              <a href="projects/qa/billzer/billzer.html"
+                ><img src="images/billzer.png" alt="billzer"
+              /></a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="portfolio" id="webdev-portfolio">
+        <!-- WEB DEVELOPMENT PORTFOLIO -->
+        <h2>Web portfolio</h2>
+        <p>
+          This is my web development portfolio, where I showcase my expertise,
+          creativity and knowledge through a collection of projects that
+          highlight my ability to build dynamic and visually stunning websites.I
+          am excited to show you the different kind of portfolio (E-commerce,
+          Business, artistic...). My diverse body of work represents not only my
+          skillset but also my dedication to continuous growth and
+          exploration.(Return to <a href="#intro">introduction</a>)
+        </p>
+        <ul>
+          <li>
+            <div class="picture">
+              <a href="projects/web_design/ecommerce_wine/"
+                ><img src="images/Wine-Ecommerce.png" alt="Wine-Ecommerce"
+              /></a>
+            </div>
+          </li>
+        </ul>
       </section>
 
       <!-- CONTACT ME -->
@@ -103,7 +108,6 @@
           Hello, if you want to talk to me about your project, I would love to
           hear from you. Feel free to call or send me an email
         </p>
-        <p><span>&#9990;</span> +961 3 250693</p>
         <p><span>&#9993;</span> ronyhourani@gmail.com</p>
         <h4>Thank you for your time <span>&#9786;</span></h4>
       </section>
