@@ -2,9 +2,6 @@
 
 describe("Simple calculation", () => {
   beforeEach(() => {
-    // Prereq: the user visits the page "https://billzer.com/"
-    cy.visit("https://billzer.com/");
-
     // Prereq: BILLZER page is already opened
     cy.visit("https://billzer.com/");
 

@@ -1,9 +1,21 @@
 /// <reference types="Cypress" />
 
-describe("My Second Test Suite", function () {
+describe("Multiple expenses", () => {
   beforeEach(() => {
-    // Prereq: the user visits the page "https://billzer.com/"
+    // Prereq: BILLZER page is already opened
     cy.visit("https://billzer.com/");
+
+    // Sometimes, there's a Cookie Consent Popup that appears. We should close it before continuing the tests
+    // The Cookie Consent Popup takes a bit of time to appear
+    cy.wait(1000);
+    // Here, I retrieved the body instead of directly the button, so that cypress doesn't throw an error if the Cookie Consent Popup doesn't appear
+    cy.get("body").then(($body) => {
+      // Check if the Accept all cookies button exists
+      if ($body.find("button#ez-accept-all").length > 0) {
+        // If the button exists, click on it to close the Cookie Consent Popup
+        cy.get("button#ez-accept-all").click();
+      }
+    });
 
     /* 
     Prereq:
@@ -33,7 +45,7 @@ describe("My Second Test Suite", function () {
     cy.get(".calc .inputwrap").eq(2).find("input.was").type("Ticket");
   });
 
-  it("1.Nominal case: User cannot remove all the expense field. Each form must have at least 1 expense field", function () {
+  it("1.Nominal case: User cannot remove all the expense field. Each form must have at least 1 expense field", () => {
     // 1.1: Expected result: By default a form has 1 expense field
     cy.get(".calc .userwrap")
       .eq(0)
@@ -87,7 +99,7 @@ describe("My Second Test Suite", function () {
     });
   });
 
-  it("2.Nominal case: User can calculate if only one person paid and he has multiple expenses", function () {
+  it("2.Nominal case: User can calculate if only one person paid and he has multiple expenses", () => {
     // 2.1: Type in the first expense amount of Person1: 100
     // Expected result: The total sum next to the Person1 name is 100
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
@@ -162,7 +174,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person1");
   });
 
-  it("3.Nominal case: User can calculate if one person paid multiple expenses, while all other persons have one expense", function () {
+  it("3.Nominal case: User can calculate if one person paid multiple expenses, while all other persons have one expense", () => {
     // 3.1: Type in the first expense amount of Person1: 100
     // Expected result: The total sum next to the Person1 name is 100
     cy.get(".calc .userwrap")
@@ -285,7 +297,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person3");
   });
 
-  it("4.Nominal case: User can calculate if all persons have multiple expenses and their total expense are different", function () {
+  it("4.Nominal case: User can calculate if all persons have multiple expenses and their total expense are different", () => {
     // 4.1: Type in the first expense amount of Person1: 100
     // Expected result: The total sum next to the Person1 name is 100
     cy.get(".calc .userwrap")
@@ -521,7 +533,7 @@ describe("My Second Test Suite", function () {
       .should("have.text", "Person3");
   });
 
-  it("Edge case: User doesn't owe anything if all persons have multiple expenses but nobody paid", function () {
+  it("5.Edge case: User doesn't owe anything if all persons have multiple expenses but nobody paid", () => {
     // 5.1: Type in the first expense amount of Person1: 0
     // Expected result: The total sum next to the Person1 name is 0
     cy.get(".calc .userwrap")
@@ -721,7 +733,7 @@ describe("My Second Test Suite", function () {
       );
   });
 
-  it("6.Nominal case: User cannot calculate if all persons have the same total expenses", function () {
+  it("6.Nominal case: User cannot calculate if all persons have the same total expenses", () => {
     // 6.1: Type in the first expense amount of Person1: 100
     // Expected result: The total sum next to the Person1 name is 100
     cy.get(".calc .userwrap")
@@ -919,7 +931,7 @@ describe("My Second Test Suite", function () {
       );
   });
 
-  it("7.Nominal case: User can choose and select any specific expense field and remove it with only one click. Expense fields are not removed by order (example: newest to oldest)", function () {
+  it("7.Nominal case: User can choose and select any specific expense field and remove it with only one click. Expense fields are not removed by order (example: newest to oldest)", () => {
     // 7.1: Type in the first expense amount of Person1: 100
     // Expected result: The total sum next to the Person1 name is 100
     cy.get(".calc .userwrap")

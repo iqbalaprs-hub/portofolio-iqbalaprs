@@ -2,9 +2,6 @@
 
 describe("New button", () => {
   beforeEach(() => {
-    // Prereq: the user visits the page "https://billzer.com/"
-    cy.visit("https://billzer.com/");
-
     // Prereq: BILLZER page is already opened
     cy.visit("https://billzer.com/");
     // Sometimes, there's a Cookie Consent Popup that appears. We should close it before continuing the tests
