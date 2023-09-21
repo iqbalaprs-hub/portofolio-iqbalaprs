@@ -511,7 +511,7 @@ describe("Include and Exclude", () => {
       .should("have.text", "Person3");
   });
 
-  it.only("6.Edge case: User cannot exclude all persons from an expense. At least one person should be included in each expense", () => {
+  it("6.Edge case: User cannot exclude all persons from an expense. At least one person should be included in each expense", () => {
     // 6.1: Click on the 2-persons" icon of the expense "Ticket" of the form Person1 and exclude both Person2 and Person3
     cy.get(".calc .userwrap")
       .eq(0)
