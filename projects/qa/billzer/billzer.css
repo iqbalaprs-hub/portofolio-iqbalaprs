@@ -23,9 +23,17 @@
   box-shadow: 0 1px 4px 0 var(--secondary-link-hover-color);
 }
 
+.accordion-item .test-case-title {
+  font-weight: 700;
+}
+
 .accordion-item th,
 td {
   padding: var(--small-padding-value);
+}
+
+.accordion-item thead tr:nth-child(1) {
+  text-decoration: underline;
 }
 
 .accordion-item:hover {

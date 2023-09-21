@@ -323,7 +323,7 @@ describe("Main page of Billzer: typing data for the Calculation page", () => {
     // 12.3: Click the button GO
     cy.get("#go").click();
 
-    // 11.3: Expected result:
+    // 12.3: Expected result:
     // A tooltip appears saying "Please enter a number."
     // Since this is a browser-specific tooltip (it's not present in the HTML), I used the solution from https://stackoverflow.com/a/71242279/471461
     cy.get(".input-hg").then(($input) => {

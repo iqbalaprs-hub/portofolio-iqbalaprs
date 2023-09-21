@@ -45,7 +45,628 @@
           <li class="accordion-item">
             <h4>Feature: Create calculation</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-            <div></div>
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>STEP</th>
+                    <th>ACTION</th>
+                    <th>EXPECTED RESULTS</th>
+                    <th>BUG</th>
+                    <th>TEST RESULT (Chrome)</th>
+                    <th>TEST RESULT (Edge)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>1- BILLZER page is already opened</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>1</td>
+                    <td>
+                      Nominal case: User creates a Calculation using valid name
+                      consisting of letters (Lowercase and uppercase) in the
+                      Name input
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.1</td>
+                    <td></td>
+                    <td>
+                      (1) Default number of member is 3<br />(2) Placeholder of
+                      name is &quot;Roadtrip&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.2</td>
+                    <td>Type in the Name input: Trip</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.3</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      (1)You are successfully taken to the Calculation page<br />(2)
+                      At the top of the page,I see the name &quot;Trip&quot;<br />(3)
+                      There are 3 members forms to fill
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>2</td>
+                    <td>
+                      Nominal case: User creates a Calculation using valid name
+                      consisting of special characters, numbers and spaces in
+                      the Name input.
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.1</td>
+                    <td>
+                      Type in the Name input:
+                      12345&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!@#$%^&amp;*()_+-{}|:?&gt;&lt;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.2</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      (1) You are successfully taken to the Calculation page<br />(2)
+                      At the top of the page,I see the name
+                      &quot;12345&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!@#$%^&amp;*()_+-{}|:?&gt;&lt;&quot;<br />(3)
+                      There are 3 members forms to fill
+                    </td>
+                    <td>
+                      Spaces are ignored. The Calculation name is:
+                      12345!@#$%^&amp;*()_+-{}|:?&gt;&lt;
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>3</td>
+                    <td>
+                      Nominal case: User creates a Calculation while leaving the
+                      Name input empty
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3.1</td>
+                    <td>Leave Name input empty</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3.2</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      (1)You are successfully taken to the Calculation page<br />(2)
+                      At the top of the page,I do not see any name<br />(3)
+                      There are 3 members forms to fill
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>4</td>
+                    <td>
+                      Edge case: User creates a Calculation with a name
+                      consisting of 40 characters in the Name input
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4.1</td>
+                    <td>
+                      Type in the Name input: Theycannot enter more than 40
+                      characters
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4.2</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      (1)You are successfully taken to the Calculation page<br />(2)
+                      At the top of the page,I see the name &quot;Theycannot
+                      enter more than 40 characters&quot;<br />(3) There are 3
+                      members forms to fill
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>
+                      Edge case: User cannot create a Calculation with a name
+                      consisting of more than 40 characters in the Name input
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>5.1</td>
+                    <td>
+                      Type in the Name input: Theycannot enter more than 40
+                      characters in this input name
+                    </td>
+                    <td>
+                      After 40 characters, the input does not take more
+                      characters. It stops after the word &quot;characters&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5.2</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      (1)You are successfully taken to the Calculation page<br />(2)
+                      At the top of the page,I see the name &quot;Theycannot
+                      enter more than 40 characters&quot;<br />(3) There are 3
+                      members forms to fill
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>6</td>
+                    <td>
+                      Edge case: User creates a Calculation with a name written
+                      in Arabic language in the Name input
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>6.1</td>
+                    <td>Type in the Name input: رحلة اجازة</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>6.2</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      (1)You are successfully taken to the Calculation page<br />(2)
+                      At the top of the page,I see the name &quot;رحلة
+                      اجازة&quot;<br />(3) There are 3 members forms to fill
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>7</td>
+                    <td>
+                      Nominal case: User creates a Calculation with 10 members
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.1</td>
+                    <td>Type in the Member count input: 10</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.2</td>
+                    <td>Type in the Name input: Trip</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.3</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      (1)You are successfully taken to the Calculation page<br />(2)
+                      At the top of the page,I see the name &quot;Trip&quot;<br />(3)
+                      There are 10 members forms to fill
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>8</td>
+                    <td>
+                      Nominal case: User creates a Calculation with 40 members
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>8.1</td>
+                    <td>Type in the Member count input: 40</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>8.2</td>
+                    <td>Type in the Name input: Trip</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>8.3</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      (1)You are successfully taken to the Calculation page<br />(2)
+                      At the top of the page,I see the name &quot;Trip&quot;<br />(3)
+                      There are 40 members forms to fill
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>9</td>
+                    <td>
+                      Nominal case: User creates a Calculation with 2 members
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>9.1</td>
+                    <td>Type in the Member count input: 2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>9.2</td>
+                    <td>Type in the Name input: Trip</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>9.3</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      (1)You are successfully taken to the Calculation page<br />(2)
+                      At the top of the page,I see the name &quot;Trip&quot;<br />(3)
+                      There are 2 members forms to fill
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>10</td>
+                    <td>
+                      Nominal case: User cannot create a Calculation with
+                      invalid number of members (Invalid number are less than 2
+                      or greater than 40 or decimal number)
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>10.1</td>
+                    <td>Type in the Name input: Trip</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>10.2</td>
+                    <td>Type in the Member count input: 41</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>10.3</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      A tooltip appears saying &quot;Value must be less than or
+                      equal to 40&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>10.4</td>
+                    <td>Type in the Member count input: 1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>10.5</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      A tooltip appears saying &quot;Value must be greater than
+                      or equal to 2&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>10.6</td>
+                    <td>Type in the Member count input: -10</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>10.7</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      A tooltip appears saying &quot;Value must be greater than
+                      or equal to 2&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>10.8</td>
+                    <td>Type in the Member count input: 39.5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>10.9</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      A tooltip appears saying &quot;&quot;Please enter a valid
+                      value. The two nearest values are 39 and 40&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>11</td>
+                    <td>
+                      Edge case: User cannot create a Calculation with letters
+                      in the Member count input
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>11.1</td>
+                    <td>Type in the Name input: Trip</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>11.2</td>
+                    <td>
+                      Type in the Member count input: qwertyuioplkjhgfdsazxcvbnm
+                    </td>
+                    <td>Member count input is empty</td>
+                    <td>BUG 1: Member count input should not contain "e".</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>11.3</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      A tooltip appears saying &quot;&quot;Please enter a
+                      number.&quot;
+                    </td>
+                    <td>
+                      (1) BUG 2: A page does not need to be created only for
+                      this notification A tooltip saying "Only groups between 2
+                      and 40 people are allowed." is sufficient<br />(2) BUG 3:
+                      Cypress and Chrome works differently. Cypress do NOT write
+                      "e" in the member count input. On the contrary, Chrome
+                      write write "e" in the member count input
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>12</td>
+                    <td>
+                      Edge case: User cannot create a Calculation with an empty
+                      Member count input
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>12.1</td>
+                    <td>Type spaces in the Member count input</td>
+                    <td>Member count input is empty</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>12.2</td>
+                    <td>Type in the Name input &quot;Trip&quot;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>12.3</td>
+                    <td>Click the button GO</td>
+                    <td>Member count input is empty</td>
+                    <td>
+                      BUG: A page does not need to be created only for this
+                      notification A tooltip saying "Only groups between 2 and
+                      40 people are allowed." is sufficient
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>13</td>
+                    <td>
+                      Nominal case: User is using the arrows to choose the
+                      number in the Member count input
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>13.1</td>
+                    <td></td>
+                    <td>
+                      (1) Default number of member is 3<br />(2) Placeholder of
+                      name is &quot;Roadtrip&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>13.2</td>
+                    <td>Click the blue minus button once</td>
+                    <td>
+                      The number decreases by 1 and displays the number 2 in the
+                      Member count input
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>13.3</td>
+                    <td>Click the blue minus button ten times</td>
+                    <td>
+                      The number does not decrease and stop at 2 in the Member
+                      count input
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>13.4</td>
+                    <td>Click the blue plus button until it reaches 40</td>
+                    <td>
+                      the number displayed is 40 in the Member count input
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>13.5</td>
+                    <td>Click the blue plus button 10 times</td>
+                    <td>
+                      the number does not increase more and stop at 40 in the
+                      Member count input
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>13.6</td>
+                    <td>Type in the Name input: Trip</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>13.7</td>
+                    <td>Click the button GO</td>
+                    <td>
+                      (1)You are successfully taken to the Calculation page<br />(2)
+                      At the top of the page,I see the name &quot;Trip&quot;<br />(3)
+                      There are 2 members forms to fill
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </li>
           <li class="accordion-item">
             <h4>Feature: Simple Calculations</h4>
@@ -83,6 +704,7 @@
                     <th>STEP</th>
                     <th>ACTION</th>
                     <th>EXPECTED RESULTS</th>
+                    <th>BUG</th>
                     <th>TEST RESULT (Chrome)</th>
                     <th>TEST RESULT (Edge)</th>
                   </tr>
@@ -96,22 +718,23 @@
                     <td>Prereq.</td>
                     <td>
                       The user typed in the Main page the following information:
-                      (1)Member count input: 3, (2)Name input: Trip, (3)Clicked
-                      on the Button "GO"
+                      <br />(1)Member count input: 3, <br />(2)Name input: Trip,
+                      <br />(3)Clicked on the Button "GO"
                     </td>
                   </tr>
                   <tr>
                     <td>Prereq.</td>
                     <td>
-                      In the calculation page, the user: (1)Type in Person's
-                      name in form 1: Person1, (2)Type in Person's name in form
-                      2: Person2, (3)Type in Person's name in form 3: Person3,
-                      (4)Type in expense's name in form1: Ticket, (5)Type in
-                      expense's name in form2: Ticket, (6)Type in expense's name
-                      in form3: Ticket
+                      In the calculation page, the user: <br />(1)Type in
+                      Person's name in form 1: Person1, <br />(2)Type in
+                      Person's name in form 2: Person2, <br />(3)Type in
+                      Person's name in form 3: Person3, <br />(4)Type in
+                      expense's name in form1: Ticket, <br />(5)Type in
+                      expense's name in form2: Ticket, <br />(6)Type in
+                      expense's name in form3: Ticket
                     </td>
                   </tr>
-                  <tr>
+                  <tr class="test-case-title">
                     <td>1</td>
                     <td>
                       Nominal case: Return to the Main page for a new
