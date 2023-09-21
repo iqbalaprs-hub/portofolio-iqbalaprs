@@ -97,6 +97,15 @@ p {
   max-width: 800px;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-link-hover-color);
+  border-radius: 10px;
+}
+
 /* -------------------    Components    ---------------------   */
 section {
   display: flex;
@@ -393,7 +402,7 @@ button:hover:after {
 /* MEDIA QUERIES HIGHER THAN 1200PX */
 @media screen and (min-width: 1200px) {
   :root {
-    --text-font-size-value: 22px;
+    --text-font-size-value: 16px;
     --contact-font-size-value: 24px;
     --h1-font-size-value: 38px;
     --h2-font-size-value: 34px;

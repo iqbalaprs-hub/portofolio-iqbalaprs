@@ -1,5 +1,5 @@
 /* Test cases */
-.all-test-cases {
+/* .all-test-cases {
   width: 100%;
 }
 
@@ -9,4 +9,72 @@
 
 .all-test-cases h4 {
   width: 90%;
+} */
+
+.test-cases {
+  margin-top: var(--XXXlarge-margin-value);
+  margin-bottom: var(--XXXlarge-margin-value);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-between-elements);
+}
+
+.accordion-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-top: 1px solid #000;
+  cursor: pointer;
+}
+
+.accordion-item h4 {
+  margin-left: 0;
+  margin-right: 0;
+  width: 90%;
+}
+
+.accordion-item i {
+  transform: rotate(0deg);
+  transition: transform 0.5s;
+}
+
+.accordion-item tr {
+  box-shadow: 0 1px 4px 0 var(--secondary-link-hover-color);
+}
+
+.accordion-item th,
+td {
+  padding: var(--small-padding-value);
+}
+
+.accordion-item:hover {
+  background-color: var(--secondary-link-hover-color);
+}
+
+/* The below is related to JavaScript */
+.accordion-item .table {
+  width: 100%;
+  overflow: hidden;
+  max-height: 0px;
+  border-collapse: collapse;
+  background-color: var(--body-bg-color);
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: max-height 0.5s;
+}
+
+.accordion-item.open .table {
+  overflow: hidden;
+  max-height: 450px;
+  transition: max-height 0.5s;
+  padding-bottom: var(--small-padding-value);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.accordion-item.open i {
+  transform: rotate(180deg);
+  transition: transform 0.5s;
 }

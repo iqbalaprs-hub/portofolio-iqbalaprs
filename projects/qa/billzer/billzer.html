@@ -10,6 +10,7 @@
     ></script>
     <link rel="stylesheet" href="billzer.css" />
     <link rel="stylesheet" href="../../../common.css" />
+    <script src="billzer.js" defer></script>
   </head>
 
   <body>
@@ -40,38 +41,89 @@
           executed manually, and will be automated below.
         </p>
 
-        <ul class="all-test-cases">
-          <li class="create-calculation">
+        <ul>
+          <li class="accordion-item">
             <h4>Create calculation</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div></div>
           </li>
-          <li class="include-and-Exclude">
+          <li class="accordion-item">
             <h4>Include and Exclude</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div></div>
           </li>
-          <li class="link">
+          <li class="accordion-item">
             <h4>Link</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div></div>
           </li>
-          <li class="multiple-expenses">
+          <li class="accordion-item">
             <h4>Multiple expenses</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div></div>
           </li>
-          <li class="new">
+          <li class="accordion-item">
             <h4>New</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-            <div></div>
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>STEP</th>
+                    <th>ACTION</th>
+                    <th>EXPECTED RESULTS</th>
+                    <th>TEST RESULT (Chrome)</th>
+                    <th>TEST RESULT (Edge)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>the user visits the page "https://billzer.com/"</td>
+                  </tr>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      The user typed in the Main page the following information:
+                      (1)Member count input: 3, (2)Name input: Trip, (3)Clicked
+                      on the Button "GO"
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      In the calculation page, the user: (1)Type in Person's
+                      name in form 1: Person1, (2)Type in Person's name in form
+                      2: Person2, (3)Type in Person's name in form 3: Person3,
+                      (4)Type in expense's name in form1: Ticket, (5)Type in
+                      expense's name in form2: Ticket, (6)Type in expense's name
+                      in form3: Ticket
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>
+                      Nominal case: Return to the Main page for a new
+                      Calculation
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1.1</td>
+                    <td>Click on the "New" icon</td>
+                    <td>
+                      User is returned to the Main page https://billzer.com/
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </li>
-          <li class="modicy-calculation">
+          <li class="accordion-item">
             <h4>Modify calculation</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div></div>
           </li>
-          <li class="simple-calculation">
+          <li class="accordion-item">
             <h4>Simple Calculation</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div></div>
