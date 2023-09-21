@@ -511,7 +511,7 @@ describe("Include and Exclude", () => {
       .should("have.text", "Person3");
   });
 
-  it("6.Edge case: User cannot exclude all persons from an expense. At least one person should be included in each expense", () => {
+  it.only("6.Edge case: User cannot exclude all persons from an expense. At least one person should be included in each expense", () => {
     // 6.1: Click on the 2-persons" icon of the expense "Ticket" of the form Person1 and exclude both Person2 and Person3
     cy.get(".calc .userwrap")
       .eq(0)
@@ -553,6 +553,16 @@ describe("Include and Exclude", () => {
       .eq(0)
       .find(".icons")
       .click();
+
+    // 6.2: Expected result: It doesn't let the user remove Person1
+    cy.get(".calc .userwrap")
+      .eq(0)
+      .find(".inputwrap")
+      .eq(0)
+      .find(".checks .checkbox")
+      .eq(0)
+      .find(".icons")
+      .should("be.checked");
 
     // BUG: All persons related to an expense are removed. At least one person should be included in each expense
   });
