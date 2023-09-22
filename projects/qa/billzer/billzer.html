@@ -1907,7 +1907,665 @@
           <li class="accordion-item">
             <h4>Feature: Include and Exclude members</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-            <div></div>
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>STEP</th>
+                    <th>ACTION</th>
+                    <th>EXPECTED RESULTS</th>
+                    <th>TEST RESULT (Chrome)</th>
+                    <th>TEST RESULT (Edge)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      the user visits the page &quot;https://billzer.com/&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      The user typed in the Main page the following
+                      information:<br />Member count input: 3<br />Name input:
+                      Trip<br />Clicked on the Button &quot;GO&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      In the calculation page,the user:<br />- Type in
+                      Person&#39;s name in form 1: Person1<br />- Type in
+                      Person&#39;s name in form 2: Person2<br />- Type in
+                      Person&#39;s name in form 3: Person3<br />- Type in
+                      expense&#39;s name in form1: Ticket<br />- Type in
+                      expense&#39;s name in form2: Ticket<br />- Type in
+                      expense&#39;s name in form3: Ticket<br />- Type in
+                      expense&#39;s amount in form1: 100<br />- Type in
+                      expense&#39;s amount in form2: 100<br />- Type in
+                      expense&#39;s amount in form3: 100
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>1</td>
+                    <td>
+                      Nominal case: User calculates the expenses by excluding
+                      Person1 from the expense &quot;Ticket&quot; of Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.1</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form Person1 and exclude Person1
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person1 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.2</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      A box appears with title &quot;Who pays whom how
+                      much&quot;<br />The result of the calculation:<br />(1)
+                      Person2 owns 16.67 to Person1<br />(2) Person3 owns 16.67
+                      to Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>2</td>
+                    <td>
+                      Nominal case: User calculates the expenses by excluding
+                      Person1 and Person2 from the expense &quot;Ticket&quot; of
+                      the form Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.1</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form Person 1 and exclude both
+                      Person1 and Person2
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person1 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.2</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      A box appears with title &quot;Who pays whom how
+                      much&quot;<br />The result of the calculation:<br />(1)
+                      Person3 owns 33.33 to Person1<br />(2) Person3 owns 33.33
+                      to Person2
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>3</td>
+                    <td>
+                      Nominal case: User calculates the expenses by excluding
+                      Person1 from the expense &quot;Ticket&quot; of the form
+                      Person1 and the expense &quot;Ticket&quot; of the form
+                      Person2
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3.1</td>
+                    <td>
+                      Click on the 2-persons&quot; icon of the expense
+                      &quot;Ticket&quot; of the form Person1 and exclude Person1
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person1 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3.2</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form Person2 and exclude Person1
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person2 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3.3</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      A box appears with title &quot;Who pays whom how
+                      much&quot;<br />The result of the calculation:<br />(1)
+                      Person2 owns 33.33 to Person1<br />(2) Person3 owns 33.33
+                      to Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>4</td>
+                    <td>
+                      Nominal case: User calculates the expenses by excluding
+                      Person1 from each expense in each of the three forms
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4.1</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form person1 and exclude Person1
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person1 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4.2</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form person 2 and exclude
+                      Person1
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person2 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4.3</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form person3 and exclude Person1
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person3 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4.4</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      A box appears with title &quot;Who pays whom how
+                      much&quot;<br />The result of the calculation:<br />(1)
+                      Person2 owns 50 to Person1<br />(2) Person3 owns 50 to
+                      Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>5</td>
+                    <td>
+                      Nominal case: User calculates the expenses by excluding
+                      both Person1 and Person2 from all the expenses of all the
+                      forms
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5.1</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form Person1 and exclude both
+                      Person2 and Person3
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person1 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5.2</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form Person2 and exclude both
+                      Person2 and Person3
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person2 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5.3</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form Person3 and exclude both
+                      Person2 and Person3
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person3 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5.4</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      A box appears with title &quot;Who pays whom how
+                      much&quot;<br />The result of the calculation:<br />(1)
+                      Person1 owns 100 to Person2<br />(2) Person1 owns 100 to
+                      Person3
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>6</td>
+                    <td>
+                      Edge case: User cannot exclude all persons from an
+                      expense. At least one person should be included in each
+                      expense
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>6.1</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form Person1 and exclude both
+                      Person2 and Person3
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person1 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>6.2</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form Person1 and exclude both
+                      Person1
+                    </td>
+                    <td>It doesn&#39;t let the user remove Person1</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>7</td>
+                    <td>
+                      Nominal case: User can calculate even by mixing multiple
+                      expenses with include/exclude action
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.1</td>
+                    <td>Click the button &quot;more&quot; of Person1</td>
+                    <td>A second expense field is created</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.2</td>
+                    <td>Type in the second expense name of Person1: Food</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.3</td>
+                    <td>Type in the second expense amount of Person1: 30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.4</td>
+                    <td>Click the button &quot;more&quot; of Person1</td>
+                    <td>A third expense field is created</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.5</td>
+                    <td>Type in the third expense name of Person1: Gas</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.6</td>
+                    <td>Type in the third expense amount of Person1: 20</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.7</td>
+                    <td>Click the button &quot;more&quot; of Person2</td>
+                    <td>A second expense field is created</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.8</td>
+                    <td>Type in the second expense name of Person2: Food</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.9</td>
+                    <td>Type in the second expense amount of Person2: 25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.10</td>
+                    <td>Click the button &quot;more&quot; of Person2</td>
+                    <td>A third expense field is created</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.11</td>
+                    <td>Type in the third expense name of Person2: Gas</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.12</td>
+                    <td>Type in the third expense amount of Person2: 25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.13</td>
+                    <td>Click the button &quot;more&quot; of Person3</td>
+                    <td>A second expense field is created</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.14</td>
+                    <td>Type in the second expense name of Person3: Food</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.15</td>
+                    <td>Type in the second expense amount of Person3: 10</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.16</td>
+                    <td>Click the button &quot;more&quot; of Person3</td>
+                    <td>A third expense field is created</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.17</td>
+                    <td>Type in the third expense name of Person3: Gas</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.18</td>
+                    <td>Type in the third expense amount of Person3: 40</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.19</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form Person1 and exclude both
+                      Person2 and Person3
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person1 is colored in
+                      orange&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.20</td>
+                    <td>
+                      Click on the 2-persons icon of the expense &quot;Gas&quot;
+                      of the form Person1 and exclude Person2
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense &quot;Gas&quot;
+                      of the form Person1 is colored in orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.21</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Food&quot; of the form Person2 and exclude Person1
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense &quot;Food&quot;
+                      of the form Person2 is colored in orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.22</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form Person3 and exclude Person1
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person1 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.23</td>
+                    <td>
+                      Click on the 2-persons icon of the expense &quot;Gas&quot;
+                      of the form Person3 and exclude Person2
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense &quot;Gas&quot;
+                      of the form Person3 is colored in orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.24</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      A box appears with title &quot;Who pays whom how
+                      much&quot;<br />The result of the calculation:<br />(1)
+                      Person1 owns 32.5 to Person2<br />(2) Person1 owns 2.5 to
+                      Person3
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>8</td>
+                    <td>
+                      Nominal case: User can include a person after excluding
+                      him from an expense
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>8.1</td>
+                    <td></td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person1 is colored in grey
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>8.2</td>
+                    <td>
+                      Type in the expense amount of &quot;Ticket&quot; of
+                      Person1: 150
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>8.3</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      A box appears with title &quot;Who pays whom how
+                      much&quot;<br />The result of the calculation:<br />(1)
+                      Person2 owns 16.67 to Person1<br />(2) Person3 owns 16.67
+                      to Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>8.4</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form Person1 and exclude Person1
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person1 is colored in
+                      orange
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>8.5</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      A box appears with title &quot;Who pays whom how
+                      much&quot;<br />The result of the calculation:<br />(1)
+                      Person2 owns 41.67 to Person1<br />(2) Person3 owns 41.67
+                      to Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>8.6</td>
+                    <td>
+                      Click on the 2-persons icon of the expense
+                      &quot;Ticket&quot; of the form Person1 and include Person1
+                    </td>
+                    <td>
+                      The 2-Persons icon related to the expense
+                      &quot;Ticket&quot; of the form Person1 is colored in grey
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>8.7</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      A box appears with title &quot;Who pays whom how
+                      much&quot;<br />The result of the calculation:<br />(1)
+                      Person2 owns 16.67 to Person1<br />(2) Person3 owns 16.67
+                      to Person1<br />Note: Including/exclude action didn&#39;t
+                      ruin the calculation
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </li>
           <li class="accordion-item">
             <h4>Feature: Modify calculation</h4>
