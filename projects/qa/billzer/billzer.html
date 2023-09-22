@@ -598,7 +598,328 @@
           <li class="accordion-item">
             <h4>Feature: Simple Calculations</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-            <div></div>
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>STEP</th>
+                    <th>ACTION</th>
+                    <th>EXPECTED RESULTS</th>
+                    <th>TEST RESULT (Chrome)</th>
+                    <th>TEST RESULT (Edge)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      the user visits the page &quot;https://billzer.com/&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      The user typed in the Main page the following
+                      information:<br />Member count input: 3<br />Name input:
+                      Trip<br />Clicked on the Button &quot;GO&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      &quot;In the calculation page, the user:<br />- Type in
+                      Person&#39;s name in form 1: Person1<br />- Type in
+                      Person&#39;s name in form 2: Person2<br />- Type in
+                      Person&#39;s name in form 3: Person3<br />- Type in
+                      expense&#39;s name in form1: Ticket<br />- Type in
+                      expense&#39;s name in form2: Ticket<br />- Type in
+                      expense&#39;s name in form3: Ticket
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>1</td>
+                    <td>Edge case: User cannot calculate if nobody paid</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.1</td>
+                    <td>Type in expense&#39;s amount in Person1: 0</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.2</td>
+                    <td>Type in expense&#39;s amount in Person2: 0</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.3</td>
+                    <td>Type in expense&#39;s amount in Person3: 0</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.4</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      A sentence under the title &quot;Who pays whom how
+                      much&quot; appears saying: No results to display,your
+                      group is even or there is no data.<br />Note: Since nobody
+                      paid,no calculation is needed
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>2</td>
+                    <td>
+                      Nominal case: User calculates if only one person paid
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.1</td>
+                    <td>Type in expense&#39;s amount in Person1: 100</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.2</td>
+                    <td>Type in expense&#39;s amount in Person2: 0</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.3</td>
+                    <td>Type in expense&#39;s amount in Person3: 0</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.4</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      Calculation is done and a box appears saying:<br />-
+                      Person2 owns 33.33 to Person1<br />- Person3 owns 33.33 to
+                      Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>3</td>
+                    <td>
+                      Nominal case: User calculates if 3 persons paid and 2 of
+                      them paid identically
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3.1</td>
+                    <td>Type in expense&#39;s amount in Person1: 100</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3.2</td>
+                    <td>Type in expense&#39;s amount in Person2: 50</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3.3</td>
+                    <td>Type in expense&#39;s amount in Person3: 50</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3.4</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      Calculation is done and a box appears saying:<br />-
+                      Person2 owns 16.67 to Person1<br />- Person3 owns 16.67 to
+                      Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>4</td>
+                    <td>
+                      Nominal case: User calculates if 3 persons paid
+                      differently
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4.1</td>
+                    <td>Type in expense&#39;s amount in Person1: 100</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4.2</td>
+                    <td>Type in expense&#39;s amount in Person2: 50</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4.3</td>
+                    <td>Type in expense&#39;s amount in Person3: 20</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4.4</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      Calculation is done and a box appears saying:<br />-
+                      Person2 owns 6.67 to Person1<br />- Person3 owns 36.67 to
+                      Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>5</td>
+                    <td>
+                      Nominal case: User calculates if 3 persons paid
+                      identically
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5.1</td>
+                    <td>Type in expense&#39;s amount in Person1: 100</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5.2</td>
+                    <td>Type in expense&#39;s amount in Person2: 100</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5.3</td>
+                    <td>Type in expense&#39;s amount in Person3: 100</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5.4</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      A sentence under the title &quot;Who pays whom how
+                      much&quot; appears saying: No results to display,your
+                      group is even or there is no data.<br />Note: Since
+                      initially everyboby paid equally,no calculation is needed
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>6</td>
+                    <td>
+                      Nominal case: User calculates if number added are decimals
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>6.1</td>
+                    <td>Type in expense&#39;s amount in Person1: 100</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>6.2</td>
+                    <td>Type in expense&#39;s amount in Person2: 50.5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>6.3</td>
+                    <td>Type in expense&#39;s amount in Person3: 30.4545</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>6.4</td>
+                    <td>Click the Button &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      Calculation is done and a box appears saying:<br />-
+                      Person2 owns 9.82 to Person1<br />- Person3 owns 29.87 to
+                      Person1<br />Note: Any result,even if we type the expense
+                      amount as integers is always rounded to 2 decimal places
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>7</td>
+                    <td>
+                      Edge case: User cannot calculate if a negative number is
+                      entered
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>7.1</td>
+                    <td>Type in expense&#39;s amount in form1: -</td>
+                    <td>
+                      Alert appears saying: &quot;Please enter numbers
+                      correctly: 1234.56 (for numbers with decimals) or 1234
+                      (for numbers without decimals)&quot;<br />(2) The expense
+                      amount is empty
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </li>
           <li class="accordion-item">
             <h4>Feature: Multiple expenses</h4>
