@@ -2570,7 +2570,304 @@
           <li class="accordion-item">
             <h4>Feature: Modify calculation</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-            <div></div>
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>STEP</th>
+                    <th>ACTION</th>
+                    <th>EXPECTED RESULTS</th>
+                    <th>TEST RESULT (Chrome)</th>
+                    <th>TEST RESULT (Edge)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      the user visits the page &quot;https://billzer.com/&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      The user typed in the Main page the following
+                      information:<br />Member count input: 3<br />Name input:
+                      Trip<br />Clicked on the Button &quot;GO&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      In the calculation page,the user:<br />- Type in
+                      Person&#39;s name in form 1: Person1<br />- Type in
+                      Person&#39;s name in form 2: Person2<br />- Type in
+                      Person&#39;s name in form 3: Person3<br />- Type in
+                      expense&#39;s name in form1: Ticket<br />- Type in
+                      expense&#39;s name in form2: Ticket<br />- Type in
+                      expense&#39;s name in form3: Ticket<br />-Type in expense
+                      amount in Person1: 100<br />NOTE: Both button
+                      &quot;Calculate &amp; Save!&quot; and the orange bar
+                      &quot;Unsaved changes. Hit the calculate button below or
+                      click here&quot; appear once you make any change in any
+                      form
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>1</td>
+                    <td>
+                      Nominal case: Both blue button (Calculate &amp; Save!) and
+                      orange bar appears when changing number
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.1</td>
+                    <td>Click on &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      Note: We had to do it so that we can show that changing
+                      number will activate the orange bar and the blue button
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.2</td>
+                    <td>Type in expense amount in Person1: 120</td>
+                    <td>
+                      Both blue button and orange bar reappear<br />The box
+                      calculation result disappears
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.3</td>
+                    <td>Click on &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      The green sentence saying that it is saved appears<br />Calculation
+                      is done and a box appears saying:<br />- Person2 owns 40
+                      to Person1<br />- Person3 owns 40 to Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>2</td>
+                    <td>
+                      Nominal case: Both blue button (Calculate &amp; Save!) and
+                      orange bar appears when clicking on button more and minus
+                      button
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.1</td>
+                    <td>Click on &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      Note: We had to do it so that we can show the clicking on
+                      &quot;more&quot; will activate the orange bar and the blue
+                      button
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.2</td>
+                    <td>Click on button &quot;more&quot;</td>
+                    <td>
+                      Both blue button and orange bar reappear<br />The box
+                      calculation result disappears
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.3</td>
+                    <td>Click on &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      The green sentence saying that it is saved appears<br />Calculation
+                      is done and a box appears saying:<br />- Person2 owns
+                      33.33 to Person1<br />- Person3 owns 33.33 to Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.4</td>
+                    <td>
+                      Click on minus button to remove the second expense of
+                      Person1
+                    </td>
+                    <td>
+                      Both blue button and orange bar reappear<br />The box
+                      calculation result disappears
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.5</td>
+                    <td>Click on &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      The green sentence saying that it is saved appears<br />Calculation
+                      is done and a box appears saying:<br />- Person2 owns
+                      33.33 to Person1<br />- Person3 owns 33.33 to Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>3</td>
+                    <td>
+                      Nominal case: Both blue button (Calculate &amp; Save!) and
+                      orange bar appears when excluding a person from an expense
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3.1</td>
+                    <td>Click on &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      Note: We had to do it so that we can show the clicking on
+                      &quot;more&quot; will activate the orange bar and the blue
+                      button
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3.2</td>
+                    <td>Exclude Person1 from the expense of Person1</td>
+                    <td>
+                      Both blue button and orange bar reappear<br />The box
+                      calculation result disappears
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3.3</td>
+                    <td>Click on &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      The green sentence saying that it is saved appears<br />Calculation
+                      is done and a box appears saying:<br />- Person2 owns 50
+                      to Person1<br />- Person3 owns 50 to Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>4</td>
+                    <td>
+                      Nominal case: Both blue button (Calculate &amp; Save!) and
+                      orange bar appears when changing expense name
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4.1</td>
+                    <td>Click on &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      Note: We had to do it so that we can show the clicking on
+                      &quot;more&quot; will activate the orange bar and the blue
+                      button
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4.2</td>
+                    <td>
+                      Change the first expense name of Person1 from
+                      &quot;Ticket&quot; to &quot;food&quot;
+                    </td>
+                    <td>
+                      Both blue button and orange bar reappear<br />The box
+                      calculation result disappears
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+
+                  <tr>
+                    <td>4.3</td>
+                    <td>Click on &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      The green sentence saying that it is saved appears<br />Calculation
+                      is done and a box appears saying:<br />- Person2 owns
+                      33.33 to Person1<br />- Person3 owns 33.33 to Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>5</td>
+                    <td>
+                      Nominal case: Both blue button (Calculate &amp; Save!) and
+                      orange bar appears when changing person name
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5.1</td>
+                    <td>Click on &quot;Calculate &amp; Save!&quot;</td>
+                    <td>
+                      Note: We had to do it so that we can show the clicking on
+                      &quot;more&quot; will activate the orange bar and the blue
+                      button
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5.2</td>
+                    <td>
+                      Change the first person name of Person1 from
+                      &quot;Person1&quot; to &quot;Guy1&quot;
+                    </td>
+                    <td>
+                      Both blue button and orange bar reappear<br />The box
+                      calculation result disappears
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5.3</td>
+                    <td>Click on orange bar</td>
+                    <td>
+                      Alert bar appear saying &quot;Saved. Result is at the
+                      bottom. Use this link to share or edit with your friends:
+                      (link)&quot;<br />Calculation is done and a box appears
+                      saying:<br />- Person2 owns 33.33 to Guy1<br />- Person3
+                      owns 33.33 to Guy1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </li>
           <li class="accordion-item">
             <h4>Feature: Link and share</h4>
