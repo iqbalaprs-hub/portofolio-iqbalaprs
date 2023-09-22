@@ -14,32 +14,66 @@
   </head>
 
   <body>
+    <header>
+      <div class="navigation-bar">
+        <a href="../../../index.html" class="logo">
+          <h3>Rony</h3>
+        </a>
+        <div class="menu">
+          <a href="../../../aboutMe.html">About me</a>
+        </div>
+
+        <input type="checkbox" class="checkbox-toggler" id="nav" />
+        <label for="nav" class="hamburger-menu">
+          <span class="nav-icon"></span>
+        </label>
+        <div class="nav-bg"></div>
+        <nav class="navigation">
+          <ul class="nav-list">
+            <li>
+              <a href="../../../index.html" class="nav-link">Homepage</a>
+            </li>
+
+            <li>
+              <a href="../../../aboutMe.html" class="nav-link">About me</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <main>
       <section>
-        <h1>Billzer</h1>
-        <p>
-          Billzer is a web application that helps users manage shared expenses.
-          It offers features to input expenses paid by group members, and the
-          platform automatically calculates the amount owned by each individual
-        </p>
+        <div class="section-intro">
+          <h1>Billzer</h1>
+          <p>
+            Billzer is a web application that helps users manage shared
+            expenses. It offers features to input expenses paid by group
+            members, and the platform automatically calculates the amount owned
+            by each individual
+          </p>
+        </div>
       </section>
 
       <section>
-        <h1>Specifications</h1>
-        <p>
-          To begin with, I familiarized myself with Billzer by exploring its
-          funtionalities. I then wrote down a specification of its features, in
-          order to provide me with a guide for writing test cases. Here are the
-          Billzer specifications:
-        </p>
+        <div class="section-intro">
+          <h1>Specifications</h1>
+          <p>
+            To begin with, I familiarized myself with Billzer by exploring its
+            funtionalities. I then wrote down a specification of its features,
+            in order to provide me with a guide for writing test cases. Here are
+            the Billzer specifications:
+          </p>
+        </div>
       </section>
 
       <section>
-        <h1>Test cases</h1>
-        <p>
-          Here are the test cases for Billzer, grouped by feature. They can be
-          executed manually, and will be automated below.
-        </p>
+        <div class="section-intro">
+          <h1>Test cases</h1>
+          <p>
+            Here are the test cases for Billzer, grouped by feature. They can be
+            executed manually, and will be automated below.
+          </p>
+        </div>
 
         <ul>
           <li class="accordion-item">
@@ -59,7 +93,7 @@
                 <tbody>
                   <tr>
                     <td>Prereq.</td>
-                    <td>1- BILLZER page is already opened</td>
+                    <td>BILLZER page is already opened</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -96,7 +130,7 @@
                     <td>1.3</td>
                     <td>Click the button GO</td>
                     <td>
-                      (1)You are successfully taken to the Calculation page<br />(2)
+                      (1) You are successfully taken to the Calculation page<br />(2)
                       At the top of the page,I see the name &quot;Trip&quot;<br />(3)
                       There are 3 members forms to fill
                     </td>
@@ -157,7 +191,7 @@
                     <td>3.2</td>
                     <td>Click the button GO</td>
                     <td>
-                      (1)You are successfully taken to the Calculation page<br />(2)
+                      (1) You are successfully taken to the Calculation page<br />(2)
                       At the top of the page,I do not see any name<br />(3)
                       There are 3 members forms to fill
                     </td>
@@ -196,7 +230,7 @@
                     <td></td>
                     <td></td>
                   </tr>
-                  <tr>
+                  <tr class="case-title">
                     <td>5</td>
                     <td>
                       Edge case: User cannot create a Calculation with a name
@@ -206,7 +240,7 @@
                     <td></td>
                     <td></td>
                   </tr>
-                  <tr class="case-title">
+                  <tr>
                     <td>5.1</td>
                     <td>
                       Type in the Name input: Theycannot enter more than 40
@@ -223,7 +257,7 @@
                     <td>5.2</td>
                     <td>Click the button GO</td>
                     <td>
-                      (1)You are successfully taken to the Calculation page<br />(2)
+                      (1) You are successfully taken to the Calculation page<br />(2)
                       At the top of the page,I see the name &quot;Theycannot
                       enter more than 40 characters&quot;<br />(3) There are 3
                       members forms to fill
@@ -252,7 +286,7 @@
                     <td>6.2</td>
                     <td>Click the button GO</td>
                     <td>
-                      (1)You are successfully taken to the Calculation page<br />(2)
+                      (1) You are successfully taken to the Calculation page<br />(2)
                       At the top of the page,I see the name &quot;رحلة
                       اجازة&quot;<br />(3) There are 3 members forms to fill
                     </td>
@@ -286,7 +320,7 @@
                     <td>7.3</td>
                     <td>Click the button GO</td>
                     <td>
-                      (1)You are successfully taken to the Calculation page<br />(2)
+                      (1) You are successfully taken to the Calculation page<br />(2)
                       At the top of the page,I see the name &quot;Trip&quot;<br />(3)
                       There are 10 members forms to fill
                     </td>
@@ -320,7 +354,7 @@
                     <td>8.3</td>
                     <td>Click the button GO</td>
                     <td>
-                      (1)You are successfully taken to the Calculation page<br />(2)
+                      (1) You are successfully taken to the Calculation page<br />(2)
                       At the top of the page,I see the name &quot;Trip&quot;<br />(3)
                       There are 40 members forms to fill
                     </td>
@@ -354,7 +388,7 @@
                     <td>9.3</td>
                     <td>Click the button GO</td>
                     <td>
-                      (1)You are successfully taken to the Calculation page<br />(2)
+                      (1) You are successfully taken to the Calculation page<br />(2)
                       At the top of the page,I see the name &quot;Trip&quot;<br />(3)
                       There are 2 members forms to fill
                     </td>
@@ -510,7 +544,7 @@
                   <tr>
                     <td>12.3</td>
                     <td>Click the button GO</td>
-                    <td>Member count input is empty</td>
+                    <td>A tooltip appears saying "Please enter a number."</td>
                     <td></td>
                     <td></td>
                   </tr>
@@ -584,7 +618,7 @@
                     <td>13.7</td>
                     <td>Click the button GO</td>
                     <td>
-                      (1)You are successfully taken to the Calculation page<br />(2)
+                      (1) You are successfully taken to the Calculation page<br />(2)
                       At the top of the page,I see the name &quot;Trip&quot;<br />(3)
                       There are 2 members forms to fill
                     </td>
@@ -613,7 +647,7 @@
                   <tr>
                     <td>Prereq.</td>
                     <td>
-                      the user visits the page &quot;https://billzer.com/&quot;
+                      The user visits the page &quot;https://billzer.com/&quot;
                     </td>
                     <td></td>
                     <td></td>
@@ -909,7 +943,7 @@
                     <td>7.1</td>
                     <td>Type in expense&#39;s amount in form1: -</td>
                     <td>
-                      Alert appears saying: &quot;Please enter numbers
+                      (1) Alert appears saying: &quot;Please enter numbers
                       correctly: 1234.56 (for numbers with decimals) or 1234
                       (for numbers without decimals)&quot;<br />(2) The expense
                       amount is empty
@@ -939,7 +973,7 @@
                   <tr>
                     <td>Prereq.</td>
                     <td>
-                      the user visits the page &quot;https://billzer.com/&quot;
+                      The user visits the page &quot;https://billzer.com/&quot;
                     </td>
                     <td></td>
                     <td></td>
@@ -948,9 +982,9 @@
                   <tr>
                     <td>Prereq.</td>
                     <td>
-                      (1) The user typed in the Main page the following
-                      information:<br />(1) Member count input: 3<br />Name
-                      input: Trip<br />(3) Clicked on the Button &quot;GO&quot;
+                      The user typed in the Main page the following
+                      information:<br />Member count input: 3<br />Name input:
+                      Trip<br />Clicked on the Button &quot;GO&quot;
                     </td>
                     <td></td>
                     <td></td>
@@ -990,7 +1024,7 @@
                   </tr>
                   <tr>
                     <td>1.2</td>
-                    <td>&quot;Click on &quot;more&quot; in Person1</td>
+                    <td>Click on &quot;more&quot; in Person1</td>
                     <td>Person1 has 2 expense input</td>
                     <td></td>
                     <td></td>
@@ -1218,10 +1252,7 @@
                   </tr>
                   <tr>
                     <td>4.5</td>
-                    <td>
-                      &quot;Click the button &quot;&quot;more&quot;&quot; in
-                      Person1&quot;
-                    </td>
+                    <td>Click the button &quot;more&quot; in Person1</td>
                     <td>A third expense field is created</td>
                     <td></td>
                     <td></td>
@@ -1249,10 +1280,7 @@
                   </tr>
                   <tr>
                     <td>4.9</td>
-                    <td>
-                      &quot;Click the button &quot;&quot;more&quot;&quot; of
-                      Person2&quot;
-                    </td>
+                    <td>Click the button &quot;more&quot; of Person2</td>
                     <td>A second expense field is created</td>
                     <td></td>
                     <td></td>
@@ -1697,7 +1725,7 @@
                     <td></td>
                     <td></td>
                   </tr>
-                  <tr>
+                  <tr class="case-title">
                     <td>7</td>
                     <td>
                       Nominal case: User can choose and select any specific
@@ -1892,7 +1920,7 @@
                       Click on the button &quot;Calculate &amp;Save!&quot;
                     </td>
                     <td>
-                      &quot;Calculation is done and a box appears saying:<br />-
+                      Calculation is done and a box appears saying:<br />-
                       Person3 owns 21.67 to Person1<br />- Person3 owns 26.67 to
                       Person2<br />Note: All numbers are rounded by 2 decimal
                       values
@@ -1922,7 +1950,7 @@
                   <tr>
                     <td>Prereq.</td>
                     <td>
-                      the user visits the page &quot;https://billzer.com/&quot;
+                      The user visits the page &quot;https://billzer.com/&quot;
                     </td>
                     <td></td>
                     <td></td>
@@ -2585,7 +2613,7 @@
                   <tr>
                     <td>Prereq.</td>
                     <td>
-                      the user visits the page &quot;https://billzer.com/&quot;
+                      The user visits the page &quot;https://billzer.com/&quot;
                     </td>
                     <td></td>
                     <td></td>
@@ -2611,7 +2639,7 @@
                       Person&#39;s name in form 3: Person3<br />- Type in
                       expense&#39;s name in form1: Ticket<br />- Type in
                       expense&#39;s name in form2: Ticket<br />- Type in
-                      expense&#39;s name in form3: Ticket<br />-Type in expense
+                      expense&#39;s name in form3: Ticket<br />- Type in expense
                       amount in Person1: 100<br />NOTE: Both button
                       &quot;Calculate &amp; Save!&quot; and the orange bar
                       &quot;Unsaved changes. Hit the calculate button below or
@@ -2887,7 +2915,7 @@
                   <tr>
                     <td>Prereq.</td>
                     <td>
-                      the user visits the page &quot;https://billzer.com/&quot;
+                      The user visits the page &quot;https://billzer.com/&quot;
                     </td>
                     <td></td>
                     <td></td>
@@ -3078,20 +3106,19 @@
                     <td>Prereq.</td>
                     <td>
                       The user typed in the Main page the following information:
-                      <br />(1)Member count input: 3, <br />(2)Name input: Trip,
-                      <br />(3)Clicked on the Button "GO"
+                      <br />Member count input: 3, <br />Name input: Trip,
+                      <br />Clicked on the Button "GO"
                     </td>
                   </tr>
                   <tr>
                     <td>Prereq.</td>
                     <td>
-                      In the calculation page, the user: <br />(1)Type in
-                      Person's name in form 1: Person1, <br />(2)Type in
-                      Person's name in form 2: Person2, <br />(3)Type in
-                      Person's name in form 3: Person3, <br />(4)Type in
-                      expense's name in form1: Ticket, <br />(5)Type in
-                      expense's name in form2: Ticket, <br />(6)Type in
-                      expense's name in form3: Ticket
+                      In the calculation page, the user: <br />- Type in
+                      Person's name in form 1: Person1, <br />- Type in Person's
+                      name in form 2: Person2, <br />- Type in Person's name in
+                      form 3: Person3, <br />- Type in expense's name in form1:
+                      Ticket, <br />- Type in expense's name in form2: Ticket,
+                      <br />- Type in expense's name in form3: Ticket
                     </td>
                   </tr>
                   <tr class="case-title">
@@ -3116,25 +3143,33 @@
       </section>
 
       <section>
-        <h1>Cypress tests</h1>
-        <p>
-          All test cases above where rewritten as automated tests using cypress.
-          You can find them in my <a>github repository</a>. You can find a video
-          capture of running all tests.
-        </p>
+        <div class="section-intro">
+          <h1>Cypress tests</h1>
+          <p>
+            All test cases above where rewritten as automated tests using
+            cypress. You can find them in my
+            <i class="fa-brands fa-github"></i> <a>github repository</a>. Here's
+            a video capture of all test runs. tests.
+          </p>
+        </div>
       </section>
 
       <section>
-        <h1>Test reports</h1>
-        <p>Here is the results of running 'npx cypress run' on all tests</p>
+        <div class="section-intro">
+          <h1>Test reports</h1>
+          <p>Here is the results of running 'npx cypress run' on all tests</p>
+        </div>
       </section>
 
       <section>
-        <h1>🐞 Bug reports</h1>
-        <p>
-          My tests found 3 bugs in the billzer app. These bugs can be
-          transferred to the development team for fixing
-        </p>
+        <div class="section-intro">
+          <h1>🐞 Bug reports</h1>
+          <p>
+            My tests found 3 bugs in the billzer app. These bugs can be
+            transferred to the development team for fixing
+          </p>
+        </div>
+
         <ul>
           <li class="accordion-item">
             <h4>Bug 1: Spaces are ignored in the calculation name</h4>
@@ -3148,10 +3183,10 @@
 
               <h5>Steps to reproduce</h5>
               <p>
-                Prereq. BILLZER page is already opened <br />
-                (1) Type in the Name input:
+                (1) Prereq. BILLZER page is already opened <br />
+                (2) Type in the Name input:
                 12345&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!@#$%^&amp;*()_+-{}|:?&gt;&lt;
-                <br />(2) Click the button GO
+                <br />(3) Click the button GO
               </p>
 
               <h5>Actual result 🐞</h5>
@@ -3185,19 +3220,19 @@
 
               <h5>Steps to reproduce</h5>
               <p>
-                Prereq. BILLZER is already opened<br />(1) Type in the Member
-                count input: qwertyuioplkjhgfdsazxcvbnm<br />(2)Click the button
-                GO
+                (1) Prereq. BILLZER is already opened<br />(2) Type in the
+                Member count input: qwertyuioplkjhgfdsazxcvbnm<br />(3) Click
+                the button GO
               </p>
 
               <h5>Actual result 🐞</h5>
               <p>
-                Cypress and Chrome works differently. Cypress do NOT write "e"
-                in the member count input. On the contrary, Chrome write write
-                "e" in the member count input. Member count input should not
-                contain "e".<br />A new page is created only for this
-                notification &quot;Only groups between 2 and 40 people are
-                allowed.&quot;
+                Member count input should not contain "e".<br />Cypress and
+                Chrome works differently. Cypress do NOT write "e" in the member
+                count input and create a new page for one notification "only
+                groups between 2 and 40 people are allowed.<br />On the
+                contrary, Chrome write write "e" in the member count input and
+                then the tooltip appears saying "Please enter a number."
               </p>
               <img
                 src="images/bug2.png"
@@ -3225,14 +3260,16 @@
 
               <h5>Steps to reproduce</h5>
               <p>
-                Prereq. BILLZER page is already opened <br />
-                (1) Leave the Name input empty<br />(2) Click the button GO
+                (1) Prereq. BILLZER page is already opened <br />
+                (2) Leave the Name input empty<br />(3) Click the button GO
               </p>
 
               <h5>Actual result 🐞</h5>
               <p>
                 A new page is created only for this notification &quot;Only
-                groups between 2 and 40 people are allowed.&quot;
+                groups between 2 and 40 people are allowed&quot;.<br />A page
+                does not need to be created only for this notification.<br />A
+                tooltip is sufficient
               </p>
               <img
                 src="images/bug3.png"
@@ -3274,14 +3311,18 @@
               </p>
 
               <h5>Actual result 🐞</h5>
-              <p>User was able to exclude Person1</p>
+              <p>
+                User was able to exclude Person1. All persons related to an
+                expense are removed. At least one person should be included in
+                each expense
+              </p>
               <img
                 src="images/bug4.png"
                 alt="Bug 4: Not all persons related to an expense should be excluded"
               />
 
               <h5>Expected result</h5>
-              <p>It doesn't let the user exclude Person1</p>
+              <p>It doesn't let the user exclude Person1.</p>
             </div>
           </li>
           <li class="accordion-item">

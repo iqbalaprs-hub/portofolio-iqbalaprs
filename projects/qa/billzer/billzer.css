@@ -1,6 +1,7 @@
-section > h1,
-section > p {
-  text-align: center;
+.section-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 img {
@@ -50,6 +51,7 @@ img {
 .accordion-item th,
 td {
   padding: var(--small-padding-value);
+  line-height: 1.5;
 }
 
 /* The below is related to JavaScript */

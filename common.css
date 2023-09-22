@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@100;200;300;500;600;700;800;900&family=Ultra&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -35,8 +37,8 @@
   --h2-font-size-value: 24px;
   --h3-font-size-value: 20px;
   --h4-font-size-value: 16px;
-  --h5-font-size-value: 12px;
-  --h6-font-size-value: 8px;
+  --h5-font-size-value: 14px;
+  --h6-font-size-value: 10px;
 }
 
 /* ELEMENTS */
@@ -196,7 +198,7 @@ button:hover:after {
   align-items: center;
   justify-content: space-between;
   z-index: 100;
-  background-color: var(--section-bg-color);
+  background-color: var(--body-bg-color);
   border-bottom: 1px solid var(--secondary-link-hover-color);
 }
 
@@ -212,6 +214,7 @@ button:hover:after {
 
 .logo h3 {
   color: var(--button-bg-color);
+  font-family: Ultra, sans-serif;
 }
 
 /*  -------------     HAMBURGER-MENU ---------------    */
@@ -352,6 +355,7 @@ button:hover:after {
     --h2-font-size-value: 26px;
     --h3-font-size-value: 22px;
     --h4-font-size-value: 20px;
+    --h5-font-size-value: 16px;
   }
 
   button {
@@ -411,6 +415,7 @@ button:hover:after {
     --h2-font-size-value: 32px;
     --h3-font-size-value: 30px;
     --h4-font-size-value: 18px;
+    --h5-font-size-value: 16px;
   }
 
   .introduction img {
