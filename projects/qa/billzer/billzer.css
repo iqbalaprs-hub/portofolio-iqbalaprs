@@ -1,17 +1,24 @@
+/* Accordion-item */
 .accordion-item {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   flex-wrap: wrap;
   border-top: 1px solid #000;
   cursor: pointer;
 }
 
+.accordion-item:hover {
+  background-color: var(--secondary-link-hover-color);
+}
+
 .accordion-item h4 {
-  margin-left: 0;
   margin-right: 0;
-  width: 90%;
+  width: 95%;
+}
+
+.accordion-item .case-title {
+  font-weight: 700;
 }
 
 .accordion-item i {
@@ -19,12 +26,9 @@
   transition: transform 0.5s;
 }
 
+/* SPECIFIC TO THE TABLE */
 .accordion-item tr {
   box-shadow: 0 1px 4px 0 var(--secondary-link-hover-color);
-}
-
-.accordion-item .test-case-title {
-  font-weight: 700;
 }
 
 .accordion-item th,
@@ -32,16 +36,8 @@ td {
   padding: var(--small-padding-value);
 }
 
-.accordion-item thead tr:nth-child(1) {
-  text-decoration: underline;
-}
-
-.accordion-item:hover {
-  background-color: var(--secondary-link-hover-color);
-}
-
 /* The below is related to JavaScript */
-.accordion-item .table {
+.accordion-item .hidden-content {
   width: 100%;
   overflow: hidden;
   max-height: 0px;
@@ -52,7 +48,7 @@ td {
   transition: max-height 0.5s;
 }
 
-.accordion-item.open .table {
+.accordion-item.open .hidden-content {
   overflow: hidden;
   max-height: 450px;
   transition: max-height 0.5s;

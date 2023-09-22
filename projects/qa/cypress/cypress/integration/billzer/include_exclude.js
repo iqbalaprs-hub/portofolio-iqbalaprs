@@ -554,7 +554,7 @@ describe("Include and Exclude", () => {
       .find(".icons")
       .click();
 
-    // 6.2: Expected result: It doesn't let the user remove Person1
+    // 6.2: Expected result: It doesn't let the user exclude Person1
     cy.get(".calc .userwrap")
       .eq(0)
       .find(".inputwrap")

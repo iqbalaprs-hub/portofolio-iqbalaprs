@@ -89,6 +89,12 @@ h4 {
   color: var(--primary-text-color);
 }
 
+h5 {
+  font-size: var(--h5-font-size-value);
+  margin: var(--small-margin-value);
+  color: var(--primary-text-color);
+}
+
 p {
   color: var(--primary-text-color);
   font-size: var(--text-font-size-value);
