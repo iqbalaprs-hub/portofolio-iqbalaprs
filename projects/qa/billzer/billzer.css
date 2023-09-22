@@ -1,3 +1,8 @@
+section > h1,
+section > p {
+  text-align: center;
+}
+
 /* Accordion-item */
 .accordion-item {
   width: 100%;
@@ -14,7 +19,13 @@
 
 .accordion-item h4 {
   margin-right: 0;
-  width: 95%;
+  width: 90%;
+}
+
+@media screen and (max-width: 500px) {
+  .accordion-item h4 {
+    width: 85%;
+  }
 }
 
 .accordion-item .case-title {
@@ -43,18 +54,20 @@ td {
   max-height: 0px;
   border-collapse: collapse;
   background-color: var(--body-bg-color);
-  overflow-x: hidden;
-  overflow-y: auto;
+  white-space: nowrap;
   transition: max-height 0.5s;
 }
 
+.accordion-item .hidden-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
 .accordion-item.open .hidden-content {
-  overflow: hidden;
+  overflow: auto;
   max-height: 450px;
   transition: max-height 0.5s;
   padding-bottom: var(--small-padding-value);
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
 .accordion-item.open i {

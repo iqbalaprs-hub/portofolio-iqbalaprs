@@ -1,3 +1,7 @@
+section {
+  align-items: center;
+}
+
 /* SECTION INTRODUCTION */
 .introduction {
   background-color: var(--body-bg-color);
