@@ -3159,6 +3159,10 @@
                 Spaces are ignored. The calculation is created with name:
                 12345!@#$%^&amp;*()_+-{}|:?&gt;&lt;
               </p>
+              <img
+                src="images/bug1.png"
+                alt="Bug 1: Spaces are ignored in the calculation name"
+              />
 
               <h5>Expected result</h5>
               <p>
@@ -3191,8 +3195,14 @@
                 Cypress and Chrome works differently. Cypress do NOT write "e"
                 in the member count input. On the contrary, Chrome write write
                 "e" in the member count input. Member count input should not
-                contain "e".
+                contain "e".<br />A new page is created only for this
+                notification &quot;Only groups between 2 and 40 people are
+                allowed.&quot;
               </p>
+              <img
+                src="images/bug2.png"
+                alt="Bug 2: Not all letters are ignored in the Member count input"
+              />
 
               <h5>Expected result</h5>
               <p>
@@ -3224,6 +3234,10 @@
                 A new page is created only for this notification &quot;Only
                 groups between 2 and 40 people are allowed.&quot;
               </p>
+              <img
+                src="images/bug3.png"
+                alt="Bug 3: Not all letters are ignored in the Member count input"
+              />
 
               <h5>Expected result</h5>
               <p>A tooltip appears saying &quot;Please enter a number.&quot;</p>
@@ -3261,6 +3275,10 @@
 
               <h5>Actual result</h5>
               <p>User was able to exclude Person1</p>
+              <img
+                src="images/bug4.png"
+                alt="Bug 4: Not all persons related to an expense should be excluded"
+              />
 
               <h5>Expected result</h5>
               <p>It doesn't let the user exclude Person1</p>
@@ -3295,6 +3313,10 @@
                 alert has been removed.It passes in Cypress but it fails with
                 manual test
               </p>
+              <img
+                src="images/bug5.png"
+                alt="Bug 5: Negative sign should not be allowed in the expense amount"
+              />
 
               <h5>Expected result</h5>
               <p>

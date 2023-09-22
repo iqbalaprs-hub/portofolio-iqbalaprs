@@ -307,6 +307,7 @@ describe("Main page of Billzer: typing data for the Calculation page", () => {
 
     // BUG 1: Member count input should not contain "e".
     // BUG 2: Cypress and Chrome works differently. Cypress do NOT write "e" in the member count input. On the contrary, Chrome write write "e" in the member count input
+    // BUG 3: A page does not need to be created only for this notification  A tooltip  is sufficient
   });
 
   it("12.Edge case: User cannot create a Calculation with an empty Member count input", () => {
