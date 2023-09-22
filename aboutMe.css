@@ -1,15 +1,40 @@
-section {
+main {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-/* SECTION INTRODUCTION */
-.introduction {
+section.picture-of-me {
   background-color: var(--body-bg-color);
+  max-width: 500px;
+  margin-bottom: 0;
 }
 
-/* SECTION INFO ABOUT ME */
-.info-about-me {
-  background-color: var(--section-bg-color);
-  padding-top: var(--small-padding-value);
-  padding-bottom: var(--small-padding-value);
+section.introduction {
+  background-color: var(--body-bg-color);
+  text-align: center;
+}
+
+.get-in-touch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.get-in-touch p {
+  margin: 5px;
+}
+
+@media screen and (min-width: 900px) {
+  main {
+    flex-direction: row;
+  }
+
+  .picture-of-me {
+    order: 2;
+  }
+
+  section.introduction {
+    order: 1;
+  }
 }
