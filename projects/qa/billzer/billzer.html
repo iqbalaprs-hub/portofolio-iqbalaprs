@@ -2872,7 +2872,187 @@
           <li class="accordion-item">
             <h4>Feature: Link and share</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-            <div></div>
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>STEP</th>
+                    <th>ACTION</th>
+                    <th>EXPECTED RESULTS</th>
+                    <th>TEST RESULT (Chrome)</th>
+                    <th>TEST RESULT (Edge)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      the user visits the page &quot;https://billzer.com/&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      The user typed in the Main page the following
+                      information:<br />Member count input: 3<br />Name input:
+                      Trip<br />Clicked on the Button &quot;GO&quot;
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Prereq.</td>
+                    <td>
+                      In the calculation page,the user:<br />- Type in
+                      Person&#39;s name in form 1: Person1<br />- Type in
+                      Person&#39;s name in form 2: Person2<br />- Type in
+                      Person&#39;s name in form 3: Person3<br />- Type in
+                      expense&#39;s name in form1: Ticket<br />- Type in
+                      expense&#39;s name in form2: Ticket<br />- Type in
+                      expense&#39;s name in form3: Ticket<br />- Type in the
+                      expense amount of the &quot;ticket&quot; in Person1: 100
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>1</td>
+                    <td>
+                      Nominal case: User gets the link of the calculation form
+                      the green sentence replacing the orange bar
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.1</td>
+                    <td>Click on the orange bar</td>
+                    <td>
+                      Alert appears saying that it is saved and carry a link of
+                      the page<br />calculation us done and box appears
+                      saying:<br />-Person2 owns 33.3 to person1<br />-Person3
+                      owns 33.33 to Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.2</td>
+                    <td>
+                      Copy the link from the green sentence, compare it to the
+                      URL
+                    </td>
+                    <td>The link extracted and the URL are the same</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.3</td>
+                    <td>
+                      Type in the expense amount &quot;Ticket&quot; of Person1:
+                      1001
+                    </td>
+                    <td>Orange bar appear</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.4</td>
+                    <td>Click on the orange bar</td>
+                    <td>
+                      Alert appears saying that it is saved<br />The orange bar
+                      turn to a green sentence containing the word
+                      &quot;Saved&quot; with the link of the page. The link
+                      extracted and the URL are the same<br />Calculation is
+                      done and a box appears saying:<br />-Person2 owns 333.67
+                      to Person1<br />-Person3 owns 333.67 to Person1
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1.5</td>
+                    <td>
+                      Go to the main page and try the link extracted from the
+                      green sentence
+                    </td>
+                    <td>It is showing the page related to this link</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="test-case-title">
+                    <td>2</td>
+                    <td>
+                      Nominal case: User gets the link of the calculation form
+                      the &quot;Copy!&quot; icon
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.1</td>
+                    <td>
+                      Click on the button &quot;Calculate &amp; Save!&quot;
+                    </td>
+                    <td>
+                      A box under the calculation appears and gives you the
+                      option to copy the link
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.2</td>
+                    <td>
+                      Go to the main page and paste the link of the box in the
+                      URL
+                    </td>
+                    <td>It is showing the page related to this link</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.3</td>
+                    <td>
+                      Type in the expense amount &quot;Ticket&quot; of Person1:
+                      1001
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.4</td>
+                    <td>
+                      Click on the button &quot;Calculate &amp; Save!&quot;
+                    </td>
+                    <td>
+                      A box under the calculation appears and gives you the
+                      option to copy the link
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2.5</td>
+                    <td>
+                      Go to the main page and paste the link of the box in the
+                      URL
+                    </td>
+                    <td>It is showing the page related to this link</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </li>
 
           <li class="accordion-item">
