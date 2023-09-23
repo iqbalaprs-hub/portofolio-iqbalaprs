@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@100;200;300;500;600;700;800;900&family=Ultra&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -214,7 +213,7 @@ button:hover:after {
 
 .logo h3 {
   color: var(--button-bg-color);
-  font-family: Ultra, sans-serif;
+  font-family: Aclonica, sans-serif;
 }
 
 /*  -------------     HAMBURGER-MENU ---------------    */
