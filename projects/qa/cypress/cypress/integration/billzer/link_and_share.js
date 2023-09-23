@@ -48,22 +48,11 @@ describe("Link", () => {
   });
 
   it("1.Nominal case: User gets the link of the calculation form the green sentence replacing the orange bar", () => {
-    // 1.1: Find the orange bar
-    cy.get(".savediv2")
-      .find(".save2")
-      .should(
-        "have.text",
-        "Unsaved changes. Hit the calculate button below or click here."
-      )
-      .click();
-    cy.get(".savediv2").click();
+    // 1.1: Click the Button "Calculate & Save!"
+    cy.get("#submitbutton").click();
 
-    // 1.1: Expected result: Alert appears saying that it is saved and carry a link of the page
-    cy.on("window:alert", (Text) => {
-      expect(Text).to.contains(
-        "Saved. Result is at the bottom.  Use this link to share or edit with your friends"
-      );
-    });
+    // 1.1: Expected result: Alert bar appears saying that it is saved and carry a link of the page
+    cy.get(".savediv").find(".save").contains("Saved");
 
     /*
     1.1: Expected result:
@@ -119,18 +108,10 @@ describe("Link", () => {
       .should(
         "have.text",
         "Unsaved changes. Hit the calculate button below or click here."
-      )
-      .click();
-
-    // 1.4 Click on the orange bar
-    cy.get(".savediv2").click();
-
-    // 1.4: Expected result: Alert appear saying
-    cy.on("window:alert", (Text) => {
-      expect(Text).to.contains(
-        "Saved. Result is at the bottom.  Use this link to share or edit with your friends"
       );
-    });
+
+    // 1.4: Click the Button "Calculate & Save!"
+    cy.get("#submitbutton").click();
 
     // 1.4: Expected result: Calculation is done and a box appears saying:
     // Person2 owns 333.67 to Person1
@@ -161,7 +142,7 @@ describe("Link", () => {
       .find("div.cred")
       .should("have.text", "Person1");
 
-    // 1.4: Expected result: Alert appears saying that it is saved and carry a link of the page
+    // 1.4: Expected result: Alert bar appears saying that it is saved
     cy.get(".savediv").find(".save").contains("Saved");
     // 1.4: Expected result: The orange bar turn to a green sentence containing the word "Saved" with the link of the page. The link extracted and the URL are the same
     let extractedURL = "";
@@ -182,7 +163,7 @@ describe("Link", () => {
       });
   });
 
-  it.only("2.Nominal case: User gets the link of the calculation form the Copy! icon", () => {
+  it("2.Nominal case: User gets the link of the calculation form the Copy! icon", () => {
     // 2.1: Click the Button "Calculate & Save!"
     cy.get("#submitbutton").click();
     // 2.1: Expected result: A box under the calculation appears and gives  you the option to copy the link
