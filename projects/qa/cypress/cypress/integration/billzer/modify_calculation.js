@@ -50,8 +50,6 @@ describe("Modify calculation", () => {
   });
 
   it("1.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when changing expense amount", () => {
-    //          --------------------        FIRST CHANGE: CHANGE A NUMBER   -----------------------------------------
-
     // 1.1: Click on "Calculate & Save!"
     // Note: We had to do it so that we can show that changing number will activate the orange bar and the blue button
     cy.get("#submitbutton").click();
@@ -116,15 +114,13 @@ describe("Modify calculation", () => {
       .should("have.text", "Person1");
   });
 
-  it.only("2.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when clicking on plus and minus button", () => {
-    //          --------------------        SECOND CHANGE: CLICK ON THE BUTTON MORE AND THE BUTTON MINUS   -----------------------------------------
-
+  it("2.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when clicking on plus and minus button", () => {
     // 2.1: Click on "Calculate & Save!"
     // Note: We had to do it so that we can show the clicking on "more" will activate the orange bar and the blue button
     cy.get("#submitbutton").click();
     cy.wait(1000);
 
-    // 2.2: Click on button"more" of Person1
+    // 2.2: Click on button "more" of Person1
     cy.get(".calc .userwrap").eq(0).find(".pluswrap").click();
     cy.wait(1000);
     // 2.2: Expected result: Both blue button and orange bar reappear
@@ -250,8 +246,6 @@ describe("Modify calculation", () => {
   });
 
   it("3.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when excluding a person from an expense", () => {
-    //          --------------------        THIRD CHANGE: EXCLUDE A PERSON   -----------------------------------------
-
     // 3.1: Click on "Calculate & Save!"
     // Note: We had to do it so that we can show the clicking on "more" will activate the orange bar and the blue button
     cy.get("#submitbutton").click();

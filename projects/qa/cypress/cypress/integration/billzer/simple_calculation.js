@@ -279,7 +279,8 @@ describe("Simple calculation", () => {
 
   it("7.Edge case : Cannot determine amounts owed if a negative number is entered", () => {
     // 7.1 Type in expense's amount in Person1: -
-    /* Expected result :
+    /* 
+    7.1 Expected result :
         (1) Alert appears saying: "Please enter numbers correctly: 1234.56 (for numbers with decimals) or 1234 (for numbers without decimals)"
         (2) The expense amount is empty
      */
@@ -297,6 +298,10 @@ describe("Simple calculation", () => {
         );
       });
 
+    /*
+      7.1 Expected result :
+      The expense amount is empty
+      */
     cy.get(".calc .inputwrap")
       .eq(0)
       .find("input.price")

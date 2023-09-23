@@ -168,16 +168,6 @@ describe("Main page of Billzer: typing data for the Calculation page", () => {
     cy.get(".calc").find(".userwrap").should("have.length", 10);
   });
 
-  it("8.Edge case: User creates a Calculation by writing a plus sign with a number 10", () => {
-    // Type in the Member count input: +10
-    // cy.get(".input-hg").clear().type("{+}10");
-    // cy.get(".input-hg").should("have.value", "+10");
-    // cy.get("#text").type("Trip");
-    // cy.get("#go").click();
-    // cy.get("#occasion").contains("Trip");
-    // cy.get(".calc").find(".userwrap").should("have.length", 10);
-  });
-
   it("8.Nominal case: User creates a Calculation with 40 members", () => {
     // 8.1: Type in the Member count input: 40
     cy.get(".input-hg").clear().type("40");
