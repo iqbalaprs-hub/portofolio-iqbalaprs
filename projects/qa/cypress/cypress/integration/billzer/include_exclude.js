@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Include and Exclude", () => {
+describe("Feature: Include and Exclude members", () => {
   beforeEach(() => {
     // Prereq: BILLZER page is already opened
     cy.visit("https://billzer.com/");

@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Link", () => {
+describe("Feature: Link and share", () => {
   beforeEach(() => {
     // Prereq: BILLZER page is already opened
     cy.visit("https://billzer.com/");

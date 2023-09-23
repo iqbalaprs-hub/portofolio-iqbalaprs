@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("New button", () => {
+describe("Feature: New button (reset)", () => {
   beforeEach(() => {
     // Prereq: BILLZER page is already opened
     cy.visit("https://billzer.com/");

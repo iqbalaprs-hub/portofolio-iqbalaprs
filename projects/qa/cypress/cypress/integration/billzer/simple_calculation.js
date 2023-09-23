@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Simple calculation", () => {
+describe("Feature: Simple Calculations", () => {
   beforeEach(() => {
     // Prereq: BILLZER page is already opened
     cy.visit("https://billzer.com/");

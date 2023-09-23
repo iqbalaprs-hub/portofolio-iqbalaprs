@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Multiple expenses", () => {
+describe("Feature: Multiple expenses", () => {
   beforeEach(() => {
     // Prereq: BILLZER page is already opened
     cy.visit("https://billzer.com/");
