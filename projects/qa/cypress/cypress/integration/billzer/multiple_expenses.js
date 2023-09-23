@@ -99,7 +99,7 @@ describe("Multiple expenses", () => {
     });
   });
 
-  it("2.Nominal case: User can calculate if only one person paid and he has multiple expenses", () => {
+  it("2.Nominal case : Determine amounts owed if only one person paid and he has multiple expenses", () => {
     // 2.1: Type in the first expense amount of Person1: 100
     // Expected result: The total sum next to the Person1 name is 100
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
@@ -174,7 +174,7 @@ describe("Multiple expenses", () => {
       .should("have.text", "Person1");
   });
 
-  it("3.Nominal case: User can calculate if one person paid multiple expenses, while all other persons have one expense", () => {
+  it("3.Nominal case : Determine amounts owed if one person paid multiple expenses, while all other persons have one expense", () => {
     // 3.1: Type in the first expense amount of Person1: 100
     // Expected result: The total sum next to the Person1 name is 100
     cy.get(".calc .userwrap")
@@ -297,7 +297,7 @@ describe("Multiple expenses", () => {
       .should("have.text", "Person3");
   });
 
-  it("4.Nominal case: User can calculate if all persons have multiple expenses and their total expense are different", () => {
+  it("4.Nominal case : Determine amounts owed if all persons have multiple expenses and their total expense are different", () => {
     // 4.1: Type in the first expense amount of Person1: 100
     // Expected result: The total sum next to the Person1 name is 100
     cy.get(".calc .userwrap")
@@ -533,7 +533,7 @@ describe("Multiple expenses", () => {
       .should("have.text", "Person3");
   });
 
-  it("5.Edge case: User doesn't owe anything if all persons have multiple expenses but nobody paid", () => {
+  it("5.Edge case: Users doesn't owe anything if all persons have multiple expenses but nobody paid", () => {
     // 5.1: Type in the first expense amount of Person1: 0
     // Expected result: The total sum next to the Person1 name is 0
     cy.get(".calc .userwrap")
@@ -733,7 +733,7 @@ describe("Multiple expenses", () => {
       );
   });
 
-  it("6.Nominal case: User cannot calculate if all persons have the same total expenses", () => {
+  it("6.Nominal case: Users doesn't owe anything if all persons have the same total expenses", () => {
     // 6.1: Type in the first expense amount of Person1: 100
     // Expected result: The total sum next to the Person1 name is 100
     cy.get(".calc .userwrap")
@@ -931,7 +931,7 @@ describe("Multiple expenses", () => {
       );
   });
 
-  it("7.Nominal case: User can choose and select any specific expense field and remove it with only one click. Expense fields are not removed by order (example: newest to oldest)", () => {
+  it("7.Nominal case: User can choose and select any specific expense field and remove it", () => {
     // 7.1: Type in the first expense amount of Person1: 100
     // Expected result: The total sum next to the Person1 name is 100
     cy.get(".calc .userwrap")

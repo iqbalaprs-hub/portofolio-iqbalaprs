@@ -45,7 +45,7 @@ describe("Simple calculation", () => {
     cy.get(".calc .inputwrap").eq(2).find("input.was").type("Ticket");
   });
 
-  it("1.Edge case: User cannot calculate if nobody paid ", () => {
+  it("1.Edge case : Cannot determine amounts owed if nobody paid ", () => {
     // 1.1: Type in expense's amount in Person1: 0
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("0");
 
@@ -69,7 +69,7 @@ describe("Simple calculation", () => {
       );
   });
 
-  it("2.Nominal case: User calculates if only one person paid", () => {
+  it("2.Nominal case : Determine amounts owed if only one person paid", () => {
     // 2.1: Type in expense's amount in Person1: 100
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
 
@@ -115,7 +115,7 @@ describe("Simple calculation", () => {
       .should("have.text", "Person1");
   });
 
-  it("3.Nominal case: User calculates if 3 persons paid and 2 of them paid identically", () => {
+  it("3.Nominal case : Determine amounts owed if 3 persons paid and 2 of them paid identically", () => {
     // 3.1: Type in expense's amount in Person1: 100
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
 
@@ -161,7 +161,7 @@ describe("Simple calculation", () => {
       .should("have.text", "Person1");
   });
 
-  it("4.Nominal case: User calculates if 3 persons paid differently", () => {
+  it("4.Nominal case : Determine amounts owed if 3 persons paid differently", () => {
     // 4.1: Type in expense's amount in Person1: 100
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
 
@@ -207,7 +207,7 @@ describe("Simple calculation", () => {
       .should("have.text", "Person1");
   });
 
-  it("5.Nominal case: User calculates if 3 persons paid identically", () => {
+  it("5.Nominal case : Determine amounts owed if 3 persons paid identically", () => {
     // 5.1: Type in expense's amount in Person1: 100
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
 
@@ -231,7 +231,7 @@ describe("Simple calculation", () => {
       );
   });
 
-  it("6.Nominal case: User calculates if number added are decimals", () => {
+  it("6.Nominal case : Determine amounts owed with decimal numbers", () => {
     // 6.1: Type in expense's amount in Person1: 100
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
 
@@ -277,7 +277,7 @@ describe("Simple calculation", () => {
       .should("have.text", "Person1");
   });
 
-  it("7.Edge case: User cannot calculate if a negative number is entered", () => {
+  it("7.Edge case : Cannot determine amounts owed if a negative number is entered", () => {
     // 7.1 Type in expense's amount in Person1: -
     /* Expected result :
         (1) Alert appears saying: "Please enter numbers correctly: 1234.56 (for numbers with decimals) or 1234 (for numbers without decimals)"
@@ -301,7 +301,5 @@ describe("Simple calculation", () => {
       .eq(0)
       .find("input.price")
       .should("have.value", "");
-
-    // BUG: The negative sign did not automatically disappear after the alert has been removed. It passes in Cypress but it fails with manual test
   });
 });

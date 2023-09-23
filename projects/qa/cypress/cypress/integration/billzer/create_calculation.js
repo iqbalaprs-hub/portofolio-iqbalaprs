@@ -61,7 +61,6 @@ describe("Main page of Billzer: typing data for the Calculation page", () => {
       "have.text",
       "12345                     !@#$%^&*()_+-{}|:?><"
     );
-    // BUG: Spaces are ignored. The Calculation name is: "12345!@#$%^&*()_+-{}|:?><"
   });
 
   it("3.Nominal case: User creates a Calculation while leaving the Name input empty", () => {
@@ -294,7 +293,6 @@ describe("Main page of Billzer: typing data for the Calculation page", () => {
     // 11.2: Expected result: Member count input is empty
     cy.get(".input-hg").should("have.text", "");
 
-    // BUG:
     // 11.3: Click the button GO
     cy.get("#go").click();
 
@@ -304,9 +302,6 @@ describe("Main page of Billzer: typing data for the Calculation page", () => {
     cy.get(".input-hg").then(($input) => {
       expect($input[0].validationMessage).to.include("Please enter a number.");
     });
-
-    // BUG 1: Member count input should not contain "e".
-    // BUG 2: Cypress and Chrome works differently. Cypress do NOT write "e" in the member count input and create a new page for one notification "only groups between 2 and 40 people are allowed. On the contrary, Chrome write write "e" in the member count input and then the tooltip appears saying "Please enter a number."
   });
 
   it("12.Edge case: User cannot create a Calculation with an empty Member count input", () => {
@@ -328,8 +323,6 @@ describe("Main page of Billzer: typing data for the Calculation page", () => {
     cy.get(".input-hg").then(($input) => {
       expect($input[0].validationMessage).to.include("Please enter a number.");
     });
-
-    // BUG: A page does not need to be created only for this notification  A tooltip saying "Only groups between 2 and 40 people are allowed." is sufficient
   });
 
   it("13.Nominal case: User is using the arrows to choose the number  in the Member count input", () => {

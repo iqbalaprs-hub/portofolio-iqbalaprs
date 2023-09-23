@@ -50,7 +50,7 @@ describe("Include and Exclude", () => {
     cy.get(".calc .inputwrap").eq(2).find("input.price").type("100");
   });
 
-  it("1.Nominal case: User calculates the expenses by excluding Person1 from the expense Ticket of Person1", () => {
+  it("1.Nominal case: Determine amounts owed by excluding Person1 from the expense Ticket of Person1", () => {
     // 1.1: Click on the 2-persons" icon of the expense "Ticket" of the form Person1 and exclude Person1
     cy.get(".calc .userwrap")
       .eq(0)
@@ -111,7 +111,7 @@ describe("Include and Exclude", () => {
       .should("have.text", "Person1");
   });
 
-  it("2.Nominal case: User calculates the expenses by excluding Person1 and Person2 from the expense Ticket of the form Person1", () => {
+  it("2.Nominal case: Determine amounts owed by excluding Person1 and Person2 from the expense Ticket of Person1", () => {
     // 2.1: Click on the 2-persons" icon of the expense "Ticket"of the form Person 1 and exclude both Person1 and Person2
     cy.get(".calc .userwrap")
       .eq(0)
@@ -181,7 +181,7 @@ describe("Include and Exclude", () => {
       .should("have.text", "Person2");
   });
 
-  it("3.Nominal case: User calculates the expenses by excluding Person1 from the expense Ticket of the form Person1 and the expense Ticket of the form  Person2", () => {
+  it("3.Nominal case: Determine amounts owed by excluding Person1 from the expense Ticket of Person1 and the expense Ticket of Person2", () => {
     // 3.1: Click on the 2-persons" icon of the expense "Ticket"of the form Person1 and exclude Person1
     cy.get(".calc .userwrap")
       .eq(0)
@@ -267,7 +267,7 @@ describe("Include and Exclude", () => {
       .should("have.text", "Person1");
   });
 
-  it("4.Nominal case: User calculates the expenses by excluding Person1 from each expense in each of the three forms", () => {
+  it("4.Nominal case: Determine amounts owed by excluding Person1 from each expense in each of the three forms", () => {
     // 4.1: Click on the 2-persons" icon of the expense "Ticket"of the form Person1 and exclude Person1
     cy.get(".calc .userwrap")
       .eq(0)
@@ -377,7 +377,7 @@ describe("Include and Exclude", () => {
       .should("have.text", "Person1");
   });
 
-  it("5.Nominal case: User calculates the expenses by excluding both Person1 and Person2 from all the expenses of all the forms", () => {
+  it("5.Nominal case: Determine amounts owed by excluding both Person1 and Person2 from all the expenses of all the forms", () => {
     // 5.1: Click on the 2-persons" icon of the expense "Ticket" of the form Person1 and exclude both Person2 and Person3
     cy.get(".calc .userwrap")
       .eq(0)
@@ -563,11 +563,9 @@ describe("Include and Exclude", () => {
       .eq(0)
       .find(".icons")
       .should("be.checked");
-
-    // BUG: All persons related to an expense are removed. At least one person should be included in each expense
   });
 
-  it("7.Nominal case: User can calculate even by mixing multiple expenses with include/exclude action", () => {
+  it("7.Nominal case: Determine amounts owed by mixing multiple expenses with include/exclude action", () => {
     // 7.1: Click on button "more" of Person1
     // Expected result: A second expense field is created
     cy.get(".calc .userwrap").eq(0).find(".pluswrap").click();

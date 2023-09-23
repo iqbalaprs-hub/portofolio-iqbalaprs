@@ -49,7 +49,7 @@ describe("Modify calculation", () => {
     cy.get(".calc .inputwrap").eq(0).find("input.price").type("100");
   });
 
-  it("1.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when changing number", () => {
+  it("1.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when changing expense amount", () => {
     //          --------------------        FIRST CHANGE: CHANGE A NUMBER   -----------------------------------------
 
     // 1.1: Click on "Calculate & Save!"
@@ -116,7 +116,7 @@ describe("Modify calculation", () => {
       .should("have.text", "Person1");
   });
 
-  it.only("2.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when clicking on button more and minus button", () => {
+  it.only("2.Nominal case: Both blue button (Calculate & Save!) and orange bar appears when clicking on plus and minus button", () => {
     //          --------------------        SECOND CHANGE: CLICK ON THE BUTTON MORE AND THE BUTTON MINUS   -----------------------------------------
 
     // 2.1: Click on "Calculate & Save!"
