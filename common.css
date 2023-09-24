@@ -341,6 +341,23 @@ button:hover:after {
   margin: 5px;
 }
 
+/* IT IS ABOUT THE GITHUB ICON */
+.navigation-bar .fa-github::after {
+  content: "My Git repository";
+  position: absolute;
+  transform: scaleX(0);
+  top: 45px;
+  left: 45%;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  font-size: 10px;
+}
+
+.navigation-bar .fa-github:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
 /* --------------------       MEDIA QUERIES       ------------------------    */
 
 /* MEDIA QUERIES HIGHER THAN 700PX */
@@ -401,6 +418,22 @@ button:hover:after {
     width: 40%;
     /* height: 100%; */
   }
+
+  .navigation-bar .fa-github::after {
+    left: 34%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .navigation-bar .fa-github::after {
+    left: 36%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .navigation-bar .fa-github::after {
+    left: 38%;
+  }
 }
 
 /* MEDIA QUERIES HIGHER THAN 1200PX */
@@ -418,5 +451,9 @@ button:hover:after {
   .introduction img {
     width: 30%;
     /* height: 100%; */
+  }
+
+  .navigation-bar .fa-github::after {
+    left: 40%;
   }
 }
