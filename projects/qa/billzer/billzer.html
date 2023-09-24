@@ -62,7 +62,7 @@
         </div>
       </section>
 
-      <section>
+      <section class="specifications">
         <div class="section-intro">
           <h1>Specifications</h1>
           <p>
@@ -71,6 +71,159 @@
             in order to provide me with a guide for writing test cases. Here are
             the Billzer specifications:
           </p>
+        </div>
+        <div class="accordion-item">
+          <h4>All specifications (Click in order to see)</h4>
+          <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+          <ul class="hidden-content">
+            <li class="parent-menu">
+              1- The user can create a calculation by filling:
+              <ul class="submenu">
+                <li>
+                  a- Member count:
+                  <ul class="sub-submenu">
+                    <li>1- The Member count is an integer</li>
+                    <li>2- The Member should be between 2 and 40</li>
+                  </ul>
+                </li>
+                <li>b- Name of the Calculation:</li>
+              </ul>
+            </li>
+            <li class="parent-menu">
+              2- Inside a calculation:
+              <ul class="submenu">
+                <li>a- The Calculation name is displayed on Top</li>
+                <li>b- for each Member, there is a Form</li>
+              </ul>
+            </li>
+            <li class="parent-menu">
+              3- In each form:
+              <ul class="submenu">
+                <li>
+                  a- The user can:
+                  <ul class="sub-submenu">
+                    <li>1- Fill the Person's name</li>
+                    <li>2- Fill the Expense's name</li>
+                    <li>
+                      3- Fill the Expense's amount:
+                      <ul class="sub-sub-submenu">
+                        <li>• Positive number (Integer or decimal)</li>
+                      </ul>
+                    </li>
+                    <li>
+                      4- Can add or remove expense:
+                      <ul class="sub-sub-submenu">
+                        <li>• You cannot delete all expenses.</li>
+                        <li>
+                          • Only 1 input field of expense for each person must
+                          remain.
+                        </li>
+                        <li>
+                          • If the person has no expense, the expense’s amount
+                          must be zero
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      5- Can include or exclude persons from an expense:
+                      <ul class="sub-sub-submenu">
+                        <li>
+                          • In any Expense, at least one member must be included
+                        </li>
+                        <li>
+                          • If any member of the expense is excluded, the 2
+                          Person Icon is colored in orange
+                        </li>
+                        <li>
+                          • If no member of the expense is excluded, the 2
+                          Person Icon remains grey
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  b- The total amount of the list of expenses paid is displayed
+                  next to the person name
+                </li>
+              </ul>
+            </li>
+            <li class="parent-menu">
+              4- When changing any value, an orange bar appears saying: “Unsaved
+              changes. Hit the calculate button below or click here"
+            </li>
+            <li class="parent-menu">
+              5- In order to calculate, you either:
+              <ul class="submenu">
+                <li>a- Click the blue button “Calculate and Save”</li>
+                <li>
+                  b- Click the orange bar saying: “Unsaved changes. Hit the
+                  calculate button below or click here”
+                </li>
+              </ul>
+            </li>
+            <li class="parent-menu">
+              6- When clicking on Calculate, the app calculates how much each
+              Member owes to the other
+              <ul class="submenu">
+                <li>
+                  a- The Calculation is done so that, when every member pays
+                  what he owes to the other, all members have paid the same
+                  amount
+                  <ul class="sub-submenu">
+                    <li>
+                      1- Formula or Process or Algorithm to Calculate what each
+                      member owes to the other (given by the product owner)
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  b- There are 2 ways the user can get the link of the
+                  calculation:
+                  <ul class="sub-submenu">
+                    <li>
+                      1- The orange bar is replaced by a green sentence saying
+                      that the calculation is saved and it has provided you a
+                      link of the calculation
+                    </li>
+                    <li>
+                      2- A box under the calculation result appears. Inside it,
+                      a link is generated and can be shared, so that other users
+                      can check the Calculation
+                      <ul class="sub-sub-submenu">
+                        <li>• A button allows the user to copy the link</li>
+                        <li>
+                          • A link to Facebook and WhatsApp allows the user to
+                          share the link
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  c- Every time an expense is changed:
+                  <ul class="sub-submenu">
+                    <li>1- The result of the Calculation is erased</li>
+                    <li>
+                      2- Orange bar reappears telling the user that there are
+                      unsaved changes
+                    </li>
+                    <li>3- The button “Calculate and Save!” reappears</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="parent-menu">
+              7- Inside the Calculation, a “New” button situated at the top left
+              allows the user to create a new Calculation
+              <ul class="submenu">
+                <li>
+                  a- When clicking on it, the user is redirected to the home
+                  page
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </section>
 
