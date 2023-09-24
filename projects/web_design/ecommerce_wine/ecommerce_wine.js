@@ -8,7 +8,7 @@ console.log(newBodyBackgroundColor);
 const sectionBackgroundColorArray = [
   "#f9f4e5",
   "#D3D3D3",
-  "#5ae0da",
+  "#77c5c1",
   "#d45454",
 ];
 var newSectionBackgroundColor = sectionBackgroundColorArray[currentIndex];
@@ -18,7 +18,7 @@ const normalTextColorArray = ["#2b2925", "#000", "#f2edd7", "#fdfafa"];
 var newNormalTextColor = normalTextColorArray[currentIndex];
 
 // Hover background color array
-const hoverBackgroundColorArray = ["#D3D3D3", "#5ae0da", "#d45454", "#f9f4e5"];
+const hoverBackgroundColorArray = ["#D3D3D3", "#77c5c1", "#d45454", "#f9f4e5"];
 var newHoverBackgroundColor = hoverBackgroundColorArray[currentIndex];
 
 // Hover text color
