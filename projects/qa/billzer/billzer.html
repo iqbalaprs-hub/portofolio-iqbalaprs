@@ -3133,7 +3133,7 @@
           <h1>Cypress tests</h1>
           <p>
             All test cases above where rewritten as automated tests using
-            cypress. You can find them in my
+            Cypress. You can find them in my
             <i class="fa-brands fa-github"></i>
             <a
               href="https://github.com/ronyelhourani/portfolio/tree/main/projects/qa/cypress/cypress/integration/billzer"
@@ -3198,14 +3198,15 @@
           </li>
           <li class="accordion-item">
             <h4>
-              Bug 2: Not all letters are ignored in the Member count input
+              Bug 2: User can type a letter in the Member count input
+              <em>(Bug only apppears in manual tests, not in Cypress)</em>
             </h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div class="hidden-content">
               <h5>Summary</h5>
               <p>
-                When typing letters in the Member count input, only the letter
-                "e" is not ignored
+                Member count input only accepts numbers. But the user can type
+                the letter "e"
               </p>
 
               <h5>Steps to reproduce</h5>
@@ -3216,17 +3217,10 @@
               </p>
 
               <h5>Actual result 🐞</h5>
-              <p>
-                Member count input should not contain "e".<br />Cypress and
-                Chrome works differently. Cypress do NOT write "e" in the member
-                count input and create a new page for one notification "only
-                groups between 2 and 40 people are allowed.<br />On the
-                contrary, Chrome write write "e" in the member count input and
-                then the tooltip appears saying "Please enter a number."
-              </p>
+              <p>Member count input contains "e".</p>
               <img
                 src="images/bug2.png"
-                alt="Bug 2: Not all letters are ignored in the Member count input"
+                alt="Bug 2: User can type a letter in the Member count input (Bug only apppears in manual tests, not in Cypress)"
               />
 
               <h5>Expected result</h5>
@@ -3238,7 +3232,8 @@
           </li>
           <li class="accordion-item">
             <h4>
-              Bug 3: Not all letters are ignored in the Member count input
+              Bug 3: An error tooltip should appear when the Member count input
+              is empty, instead of displaying the error in a new page
             </h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div class="hidden-content">
@@ -3257,9 +3252,7 @@
               <h5>Actual result 🐞</h5>
               <p>
                 A new page is created only for this notification &quot;Only
-                groups between 2 and 40 people are allowed&quot;.<br />A page
-                does not need to be created only for this notification.<br />A
-                tooltip is sufficient
+                groups between 2 and 40 people are allowed&quot;.
               </p>
               <img
                 src="images/bug3.png"
@@ -3267,20 +3260,22 @@
               />
 
               <h5>Expected result</h5>
-              <p>A tooltip appears saying &quot;Please enter a number.&quot;</p>
+              <p>
+                A tooltip appears saying &quot;Please enter a number.&quot;.<br />A
+                page does not need to be created only for this notification.<br />A
+                tooltip is sufficient
+              </p>
             </div>
           </li>
 
           <li class="accordion-item">
-            <h4>
-              Bug 4: Not all persons related to an expense should be excluded
-            </h4>
+            <h4>Bug 4: You should not exclude all members from an expense</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div class="hidden-content">
               <h5>Summary</h5>
               <p>
-                Not all persons related to an expense should be excluded, but
-                this website is allowing us
+                You should not exclude all members from an expense, but the app
+                is allowing it.
               </p>
 
               <h5>Steps to reproduce</h5>
@@ -3303,8 +3298,7 @@
               <h5>Actual result 🐞</h5>
               <p>
                 User was able to exclude Person1. All persons related to an
-                expense are removed. At least one person should be included in
-                each expense
+                expense are removed.
               </p>
               <img
                 src="images/bug4.png"
@@ -3312,12 +3306,16 @@
               />
 
               <h5>Expected result</h5>
-              <p>It doesn't let the user exclude Person1.</p>
+              <p>
+                The user is not allowed to exclude Person1. At least one person
+                should be included in each expense
+              </p>
             </div>
           </li>
           <li class="accordion-item">
             <h4>
-              Bug 5: Negative sign should not be allowed in the expense amount
+              Bug 5: Negative sign should not be allowed in the expense
+              amount<em>(Bug only appears in manual tests, not in Cypress)</em>
             </h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div class="hidden-content">
@@ -3353,7 +3351,7 @@
               <p>
                 Alert appears saying: "Please enter numbers correctly: 1234.56
                 (for numbers with decimals) or 1234 (for numbers without
-                decimals)"<br />(2) The expense amount is empty
+                decimals)".
               </p>
             </div>
           </li>
