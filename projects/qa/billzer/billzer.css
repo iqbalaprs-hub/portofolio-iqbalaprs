@@ -14,15 +14,21 @@
   }
 }
 
+/* SECTION INTRO */
 .section-intro {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* SPECIFIC TO BILLZER */
 img {
   max-width: 500px;
   margin: var(--small-margin-value);
+}
+
+img.Bug2 {
+  max-width: 250px;
 }
 
 /* Accordion-item */
