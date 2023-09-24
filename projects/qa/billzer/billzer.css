@@ -1,3 +1,19 @@
+/* billzer-intro */
+.billzer-intro img {
+  width: 150px;
+  margin-bottom: 0;
+}
+
+.billzer-intro p {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .billzer-intro img {
+    width: 120px;
+  }
+}
+
 .section-intro {
   display: flex;
   flex-direction: column;
