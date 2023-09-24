@@ -102,6 +102,7 @@ p {
   line-height: 1.5;
   margin: var(--small-margin-value);
   max-width: 800px;
+  text-align: justify;
 }
 
 ::-webkit-scrollbar {
