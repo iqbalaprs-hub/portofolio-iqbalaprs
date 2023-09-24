@@ -4,17 +4,45 @@ main {
   align-items: center;
 }
 
+/* Section picture */
 section.picture-of-me {
   background-color: var(--body-bg-color);
   max-width: 500px;
   margin-bottom: 0;
 }
 
+/* Section introduction */
 section.introduction {
   background-color: var(--body-bg-color);
   text-align: center;
 }
 
+/* Section tools logo */
+.tools-logo ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+div.tools-logo img {
+  width: 60px;
+  height: 60px;
+  margin: var(--small-margin-value);
+}
+
+div.tools-logo img.long-logo {
+  width: 100px;
+  height: 60px;
+}
+
+@media screen and (max-width: 700px) {
+  div.tools-logo img {
+    width: 50px;
+  }
+}
+
+/* Section Get in touch */
 .get-in-touch {
   display: flex;
   flex-direction: column;
