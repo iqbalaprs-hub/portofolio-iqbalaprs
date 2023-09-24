@@ -18,7 +18,6 @@ section {
   align-items: center;
   margin: var(--small-margin-value);
   box-shadow: 0 1px 4px 0 var(--secondary-link-hover-color);
-  aspect-ratio: 2;
 }
 
 .portfolio .list-projects figcaption {
@@ -51,9 +50,6 @@ section {
 }
 
 @media screen and (min-width: 1200px) {
-  /* .portfolio li {
-    width: 20%;
-  } */
   .portfolio .list-projects figure {
     width: 20%;
   }
