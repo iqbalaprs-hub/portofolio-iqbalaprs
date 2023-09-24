@@ -336,12 +336,9 @@ button:hover:after {
 .contact-me {
   gap: 0;
 }
-.contact-me h4 {
-  font-weight: 400;
-}
 
 .contact-me p {
-  margin: 0;
+  margin: 5px;
 }
 
 /* --------------------       MEDIA QUERIES       ------------------------    */
