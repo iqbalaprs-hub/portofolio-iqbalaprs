@@ -19,6 +19,7 @@
 .specifications .parent-menu {
   font-weight: 700;
   margin-left: 20px;
+  color: var(--primary-text-color);
 }
 .specifications .submenu {
   margin-left: 40px;
