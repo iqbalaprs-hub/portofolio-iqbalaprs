@@ -369,7 +369,7 @@ button:hover:after {
   .navigation-bar .menu {
     display: flex;
     align-items: center;
-    width: clamp(500px, 50%, 1000px);
+    /* width: clamp(500px, 50%, 1000px); */
   }
 
   .navigation-bar .menu a:first-of-type {
