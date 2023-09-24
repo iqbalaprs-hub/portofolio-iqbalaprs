@@ -341,21 +341,33 @@ button:hover:after {
   margin: 5px;
 }
 
-/* IT IS ABOUT THE GITHUB ICON */
-.navigation-bar .fa-github::after {
-  content: "My Git repository";
+/* TOOLTIP GITHUB ICON */
+.tooltip-text {
+  visibility: hidden;
   position: absolute;
-  transform: scaleX(0);
-  top: 45px;
-  left: 45%;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-  font-size: 10px;
+  z-index: 1;
+  width: 170px;
+  color: var(--button-text-color);
+  font-size: var(--text-font-size-value);
+  background-color: var(--button-bg-color);
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
 }
 
-.navigation-bar .fa-github:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+.hover-text:hover .tooltip-text {
+  visibility: visible;
+}
+
+#bottom {
+  top: 37px;
+  left: -200%;
+}
+
+.hover-text {
+  position: relative;
+  display: inline-block;
+  margin: 40px;
+  text-align: center;
 }
 
 /* --------------------       MEDIA QUERIES       ------------------------    */
@@ -418,22 +430,6 @@ button:hover:after {
     width: 40%;
     /* height: 100%; */
   }
-
-  .navigation-bar .fa-github::after {
-    left: 34%;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  .navigation-bar .fa-github::after {
-    left: 36%;
-  }
-}
-
-@media screen and (min-width: 1000px) {
-  .navigation-bar .fa-github::after {
-    left: 38%;
-  }
 }
 
 /* MEDIA QUERIES HIGHER THAN 1200PX */
@@ -451,9 +447,5 @@ button:hover:after {
   .introduction img {
     width: 30%;
     /* height: 100%; */
-  }
-
-  .navigation-bar .fa-github::after {
-    left: 40%;
   }
 }
