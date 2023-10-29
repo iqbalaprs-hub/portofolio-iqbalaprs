@@ -23,3 +23,6 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// I took the advice about cy.tab() from "https://www.programsbuzz.com/article/how-press-tab-key-cypress" and I also did "npm install cypress-real-events --save-dev"
+require("cypress-plugin-tab");

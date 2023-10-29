@@ -62,4 +62,23 @@ describe("Feature: Create and manage lists", () => {
       "You have 5 initial files and 1 file we just created called 'Test todo list'"
     );
   });
+
+  it("2- Nominal case: The user can go from list to the next list by clicking 'TAB'", () => {
+    // 2.1: Select the list "Today's tasks"
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(0)")
+      .find(".listname")
+      .should("have.text", "Today's Tasks ")
+      .click();
+
+    cy.wait(1000);
+    // 2.2: Click on the TAB button 5 times
+    // Expected result: You went from the list "Today's tasks" to the list "Test todo list"
+    for (let i = 0; i < 5; i++) {
+      cy.tab();
+    }
+
+    // 2.3: Click on the TAB button 1 time
+    // Expected result: Since "Test todo list" was the last list, it returned to the beginning of the lists which is "Today's tasks"
+    cy.tab();
+  });
 });
