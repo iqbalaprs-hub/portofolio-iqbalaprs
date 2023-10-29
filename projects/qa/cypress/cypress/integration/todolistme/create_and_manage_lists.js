@@ -81,4 +81,35 @@ describe("Feature: Create and manage lists", () => {
     // Expected result: Since "Test todo list" was the last list, it returned to the beginning of the lists which is "Today's tasks"
     cy.tab();
   });
+
+  it("3- Nominal case: The user can create a list ", () => {
+    // 3.1: Create new list by clicking the icon "add new list"
+    cy.get("#addlist").click();
+
+    // 3.2: Click "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: A new list is created, and it is called "New List" (Which is the default name)
+    // Check if there are 7 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 7);
+    // Check if the name of the new file is "New List"
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "New List ");
+    cy.log(
+      "There are 7 files now and the 7th file has taken by default the name 'New List'"
+    );
+
+    // 3.3: Create another new list by clicking the icon "add new list"
+    cy.get("#addlist").click();
+
+    // 3.4: Click "cancel" button
+    cy.get("#inplaceeditor").find('input[type="button"]').click();
+    // Expected result: No new list is created
+    // Check if there are STILL 7 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 7);
+  });
 });
