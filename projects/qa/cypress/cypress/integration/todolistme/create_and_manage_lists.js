@@ -182,6 +182,7 @@ describe("Feature: Create and manage lists", () => {
 
     PS: If it is copied, I expected it to be named also "Test todo list" instead of adding the words "Copy of". It will not be considered a bug since it is just a preference if the creators of this web application wants to choose how to name the copied list
     */
+
     // Check if there are 7 files now
     cy.get("#listmanager #lists #container_0")
       .find("li")
@@ -199,6 +200,8 @@ describe("Feature: Create and manage lists", () => {
       .parent("li")
       .click();
 
+    //  Check title is "Copy of Test todo list "
+    cy.get("#mytitle").should("have.text", "Copy of Test todo list");
     // Check if there are 2 items in to-do items
     cy.get("#todolistpanel #mytodos").find("li").should("have.length", 2);
     // Check the names of the items
@@ -255,6 +258,8 @@ describe("Feature: Create and manage lists", () => {
       .parent("li")
       .click();
 
+    //  Check title is 'Copy of Copy of Test todo list '
+    cy.get("#mytitle").should("have.text", "Copy of Copy of Test todo list");
     // Check if there are 2 items in to-do items
     cy.get("#todolistpanel #mytodos").find("li").should("have.length", 2);
     // Check the names of the items
