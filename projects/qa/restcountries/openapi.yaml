@@ -19,6 +19,19 @@ paths:
                 items:
                   $ref: "#/components/schemas/country"
 
+  /country:
+    get:
+      summary: Retrieve information about a specific country.
+      responses:
+        "200":
+          description: A specific country
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/country"
+
 components:
   schemas:
     country:
