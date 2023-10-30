@@ -735,4 +735,97 @@ describe("Feature: Create and manage lists", () => {
     // Expected result: the list's name stays "Test-list"
     cy.get("#mytitle").should("have.text", "Test-list");
   });
+
+  it("10- Edge case: The user can have multiple lists with the same name", () => {
+    // 10.1: Create new list by clicking the icon "add new list"
+    cy.get("#addlist").click();
+
+    // 10.2: Click "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: A new list is created, and it is called "New List" (Which is the default name)
+    // Check if there are 7 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 7);
+    // Check if the name of the new file is "New List"
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "New List ");
+    cy.log(
+      "There are 7 files now and the 7th file has taken by default the name 'New List'"
+    );
+
+    // 10.3: Create new list by clicking the icon "add new list"
+    cy.get("#addlist").click();
+
+    // 10.4: Click "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: A new list is created, and it is called "New List" (Which is the default name)
+    // Check if there are 8 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 8);
+    // Check if the name of the new file is "New List"
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(7)")
+      .find(".listname")
+      .should("have.text", "New List ");
+    cy.log(
+      "There are 8 files now and the 8th file has taken by default the name 'New List'"
+    );
+
+    // 10.5: Create new list by clicking the icon "add new list"
+    cy.get("#addlist").click();
+
+    // 10.6: Click "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: A new list is created, and it is called "New List" (Which is the default name)
+    // Check if there are 9 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 9);
+    // Check if the name of the new file is "New List"
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(8)")
+      .find(".listname")
+      .should("have.text", "New List ");
+    cy.log(
+      "There are 9 files now and the 9th file has taken by default the name 'New List'"
+    );
+
+    // 10.7: Double-click on the first list "New list" and name it "Test-list"
+    cy.get("#lists #mylist_6").find("span.listname").dblclick();
+
+    cy.wait(1000);
+    // 10.8: Click "save" button
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Test-list");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: The list's name changed from "New List" to "Test-list"
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "Test-list ");
+
+    // 10.9: Double-click on the first list "New list" and name it "Test-list"
+    cy.get("#lists #mylist_7").find("span.listname").dblclick();
+
+    cy.wait(1000);
+    // 10.10: Click "save" button
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Test-list");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: The list's name changed from "New List" to "Test-list"
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(7)")
+      .find(".listname")
+      .should("have.text", "Test-list ");
+
+    // 10.11: Double-click on the first list "New list" and name it "Test-list"
+    cy.get("#lists #mylist_8").find("span.listname").dblclick();
+
+    cy.wait(1000);
+    // 10.12: Click "save" button
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Test-list");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: The list's name changed from "New List" to "Test-list"
+    // PS: It shows that naming the list with the same name either by default or by the user is not a problem
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(8)")
+      .find(".listname")
+      .should("have.text", "Test-list ");
+  });
 });
