@@ -733,7 +733,9 @@ describe("Feature: Create and manage lists", () => {
     // 9.6: Click "cancel" button
     cy.get("#inplaceeditor").find('input[type="button"]').click();
     // Expected result: the list's name stays "Test-list"
-    cy.get("#mytitle").should("have.text", "Test-list");
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "Test-list ");
   });
 
   it("10- Edge case: The user can have multiple lists with the same name", () => {
@@ -893,5 +895,27 @@ describe("Feature: Create and manage lists", () => {
     cy.log("There are 7 files now and the 7th file is named '!@#$%^&*( '");
     //  Check title is "!@#$%^&*("
     cy.get("#mytitle").should("have.text", "!@#$%^&*()");
+  });
+
+  it("14- Edge case: The user cannot leave the list without a name", () => {
+    // 14.1: Create new list by clicking the icon "add new list" and do not name it
+    cy.get("#addlist").click();
+    cy.wait(1000);
+    cy.get("#lists #inplaceeditor").find("#updatebox").clear();
+
+    // 14.2: Click "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: An alert appears with sentence "Name can't be blank"
+    // 14.3: Click "OK" on the alert
+    cy.on("window:alert", (Text) => {
+      expect(Text).to.contains("Name can't be blank");
+    });
+
+    // 14.4: Click on "cancel" button
+    cy.get("#inplaceeditor").find('input[type="button"]').click();
+    // Expected result: The list's name returns to its default name "New List"
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "New List ");
   });
 });
