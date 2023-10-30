@@ -645,4 +645,37 @@ describe("Feature: Create and manage lists", () => {
       .find("li")
       .should("have.length", 5);
   });
+
+  it("8- Nominal case: The user can name a list when creating it", () => {
+    // 8.1: Create new list by clicking the icon "add new list" and name it "Work"
+    cy.get("#addlist").click();
+    cy.wait(1000);
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Work");
+
+    // 8.2: Click "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: A new list is created, and it is called "Work"
+    // Check if there are 7 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 7);
+    // Check if the name of the new file is "Work "
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "Work ");
+    cy.log("There are 7 files now and the 7th file is named 'Work '");
+
+    // 8.3: Create new list by clicking the icon "add new list" and name it "Home"
+    cy.get("#addlist").click();
+    cy.wait(1000);
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Home");
+
+    // 8.4: Click "cancel" button
+    cy.get("#inplaceeditor").find('input[type="button"]').click();
+    // Expected result: No new list is created
+    // Check if there are STILL 7 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 7);
+  });
 });
