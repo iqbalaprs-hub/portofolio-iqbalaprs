@@ -625,4 +625,24 @@ describe("Feature: Create and manage lists", () => {
       .find("span")
       .should("have.text", "Task3");
   });
+
+  it("7- Nominal case: The user can delete a list ", () => {
+    /*
+    7.1: Hover over the list "Test todo list"
+      AND
+    7.2: Click on the red X
+    */
+    cy.get("li span.listname")
+      .filter(':contains("Test todo list")')
+      .parent("li")
+      .find("img.delete")
+      .invoke("css", "visibility", "visible")
+      .click();
+
+    // Expected result: The list "Test todo list" is deleted
+    // Check if there are 5 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 5);
+  });
 });
