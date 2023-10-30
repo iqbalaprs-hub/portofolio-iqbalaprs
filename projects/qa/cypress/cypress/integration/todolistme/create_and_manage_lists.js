@@ -828,4 +828,24 @@ describe("Feature: Create and manage lists", () => {
       .find(".listname")
       .should("have.text", "Test-list ");
   });
+
+  it("11- Edge case: The user can create a list with an arabic name", () => {
+    // 11.1: Create new list by clicking the icon "add new list" and named it "قائمة جديدة"
+    cy.get("#addlist").click();
+    cy.wait(1000);
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("قائمة جديدة");
+
+    // 11.2: Click "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: The new list is named  "قائمة جديدة" and the title of its content also is named "قائمة جديدة"
+    // Check if there are 7 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 7);
+    // Check if the name of the new file is "قائمة جديدة "
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "قائمة جديدة ");
+    cy.log("There are 7 files now and the 7th file is named 'قائمة جديدة '");
+  });
 });
