@@ -918,4 +918,27 @@ describe("Feature: Create and manage lists", () => {
       .find(".listname")
       .should("have.text", "New List ");
   });
+
+  it("15- Edge case: The user cannot name the list using only spaces", () => {
+    // 15.1: Create new list by clicking the icon "add new list" and name it "     "
+    cy.get("#addlist").click();
+    cy.wait(1000);
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("     ");
+
+    // 15.2: Click "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // Expected result: An alert appears with sentence "Name can't be blank"
+    // 15.3: Click "OK" on the alert
+    cy.on("window:alert", (Text) => {
+      expect(Text).to.contains("Name can't be blank");
+    });
+
+    // 15.4: Click on "cancel" button
+    cy.get("#inplaceeditor").find('input[type="button"]').click();
+    // Expected result: The list's name returns to its default name "New List"
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "New List ");
+  });
 });
