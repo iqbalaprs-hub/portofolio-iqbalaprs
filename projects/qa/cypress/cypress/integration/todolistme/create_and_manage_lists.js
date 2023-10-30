@@ -354,9 +354,7 @@ describe("Feature: Create and manage lists", () => {
     cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
       .find(".listname")
       .should("have.text", "Copy-list ");
-    cy.log(
-      "There are 7 files now and the 7th file is named 'Copy of Test todo list '"
-    );
+    cy.log("There are 7 files now and the 7th file is named 'Copy-list '");
     // Select the file 'Copy-list '
     cy.get("li span.listname")
       .filter(':contains("Copy-list ")')
@@ -403,5 +401,228 @@ describe("Feature: Create and manage lists", () => {
     cy.get("#listmanager #lists #container_0")
       .find("li")
       .should("have.length", 7);
+  });
+
+  it("6- Edge case: The user can copy a list and make several copies with the same name", () => {
+    // 6.1: Select the list "Test todo list"
+    cy.get("li span.listname")
+      .filter(':contains("Test todo list")')
+      .parent("li")
+      .click();
+
+    // 6.2: Create new item "Task1"
+    cy.get("#additempanel").find("#newtodo").type("Task1").type("{enter}");
+
+    // 6.3: Create new item "Task2"
+    cy.get("#additempanel").find("#newtodo").type("Task2").type("{enter}");
+
+    // 6.4: Create new item "Task3"
+    cy.get("#additempanel").find("#newtodo").type("Task3").type("{enter}");
+
+    // 6.5: Check the item "Task3"
+    cy.get("#todolistpanel #mytodos #todo_2")
+      .find('input[type="checkbox"]')
+      .click();
+
+    cy.wait(1000);
+
+    /*
+    Expected result:
+    The list "Test todo list" has:
+      - 2 items (Task1 and task2) in the to-do items
+      - 1 item (Task3) in the done-items
+    */
+    // Check if there are 2 items in to-do items
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 2);
+    // Check the names of the items
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find("span")
+      .should("have.text", "Task1");
+    cy.get("#todolistpanel #mytodos #todo_1")
+      .find("span")
+      .should("have.text", "Task2");
+
+    // Check if there is 1 item in done-items and the name
+    cy.get("#doneitemspanel #mydonetodos").find("li").should("have.length", 1);
+    cy.get("#doneitemspanel #mydonetodos #todo_2")
+      .find("span")
+      .should("have.text", "Task3");
+
+    /*
+    6.6: Hover over the list "Test todo list" 
+      AND
+    6.7: Click on the double-paper icon "copy list" and name it "copy-list"
+    */
+    cy.get("li span.listname")
+      .filter(':contains("Test todo list")')
+      .parent("li")
+      .find("img.copylist")
+      .invoke("css", "visibility", "visible")
+      .click();
+
+    cy.wait(1000);
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Copy-list");
+
+    // 6.8: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    /*
+    Expected result:
+    A new list "Copy-list". The title in its content is also named "Copy-list"
+    Like the list "Test todo list", this new list has also:
+      - 2 items  (Task1 and task2) in the to-do items
+      - 1 item (Task3) in the done-items
+    */
+    // Check if there are 7 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 7);
+    // Check if the name of the new file is "Copy-list "
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "Copy-list ");
+    cy.log("There are 7 files now and the 7th file is named 'Copy-list '");
+    // Select the file 'Copy-list '
+    cy.get("li span.listname")
+      .filter(':contains("Copy-list ")')
+      .parent("li")
+      .click();
+
+    // Check title is "Copy-list "
+    cy.get("#mytitle").should("have.text", "Copy-list");
+    // Check if there are 2 items in to-do items
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 2);
+    // Check the names of the items
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find("span")
+      .should("have.text", "Task1");
+    cy.get("#todolistpanel #mytodos #todo_1")
+      .find("span")
+      .should("have.text", "Task2");
+
+    // Check if there is 1 item in done-items and the name
+    cy.get("#doneitemspanel #mydonetodos").find("li").should("have.length", 1);
+    cy.get("#doneitemspanel #mydonetodos #todo_2")
+      .find("span")
+      .should("have.text", "Task3");
+
+    /*
+    6.9: Hover over the list "Test todo list" 
+      AND
+    6.10: Click on the double-paper icon "copy list" and name it "copy-list"
+    */
+    cy.get("li span.listname")
+      .filter(':contains("Test todo list")')
+      .parent("li")
+      .find("img.copylist")
+      .invoke("css", "visibility", "visible")
+      .click();
+
+    cy.wait(1000);
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Copy-list");
+
+    // 6.11: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    /*
+    Expected result:
+    A new list "Copy-list". The title in its content is also named "Copy-list"
+    Like the list "Test todo list", this new list has also:
+      - 2 items  (Task1 and task2) in the to-do items
+      - 1 item (Task3) in the done-items
+    */
+    // Check if there are 8 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 8);
+    // Check if the name of the new file is "Copy-list "
+    // The copied file is create right below the original file
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "Copy-list ");
+    cy.log("There are 8 files now and the 8th file is named 'Copy-list '");
+    // Select the file 'Copy-list '
+    cy.get("li span.listname")
+      .filter(':contains("Copy-list ")')
+      .first()
+      .parent("li")
+      .click();
+
+    // Check title is "Copy-list "
+    cy.get("#mytitle").should("have.text", "Copy-list");
+    // Check if there are 2 items in to-do items
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 2);
+    // Check the names of the items
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find("span")
+      .should("have.text", "Task1");
+    cy.get("#todolistpanel #mytodos #todo_1")
+      .find("span")
+      .should("have.text", "Task2");
+
+    // Check if there is 1 item in done-items and the name
+    cy.get("#doneitemspanel #mydonetodos").find("li").should("have.length", 1);
+    cy.get("#doneitemspanel #mydonetodos #todo_2")
+      .find("span")
+      .should("have.text", "Task3");
+
+    /*
+    6.12: Hover over the list "Test todo list" 
+      AND
+    6.13: Click on the double-paper icon "copy list" and name it "copy-list"
+    */
+    cy.get("li span.listname")
+      .filter(':contains("Test todo list")')
+      .parent("li")
+      .find("img.copylist")
+      .invoke("css", "visibility", "visible")
+      .click();
+
+    cy.wait(1000);
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Copy-list");
+
+    // 6.14: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    /*
+    Expected result:
+    A new list "Copy-list". The title in its content is also named "Copy-list"
+    Like the list "Test todo list", this new list has also:
+      - 2 items  (Task1 and task2) in the to-do items
+      - 1 item (Task3) in the done-items
+    */
+    // Check if there are 9 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 9);
+    // Check if the name of the new file is "Copy-list "
+    // The copied file is create right below the original file
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "Copy-list ");
+    cy.log("There are 9 files now and the 9th file is named 'Copy-list '");
+    // Select the file 'Copy-list '
+    cy.get("li span.listname")
+      .filter(':contains("Copy-list ")')
+      .first()
+      .parent("li")
+      .click();
+
+    // Check title is "Copy-list "
+    cy.get("#mytitle").should("have.text", "Copy-list");
+    // Check if there are 2 items in to-do items
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 2);
+    // Check the names of the items
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find("span")
+      .should("have.text", "Task1");
+    cy.get("#todolistpanel #mytodos #todo_1")
+      .find("span")
+      .should("have.text", "Task2");
+
+    // Check if there is 1 item in done-items and the name
+    cy.get("#doneitemspanel #mydonetodos").find("li").should("have.length", 1);
+    cy.get("#doneitemspanel #mydonetodos #todo_2")
+      .find("span")
+      .should("have.text", "Task3");
   });
 });
