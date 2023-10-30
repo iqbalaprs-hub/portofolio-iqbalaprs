@@ -678,4 +678,61 @@ describe("Feature: Create and manage lists", () => {
       .find("li")
       .should("have.length", 7);
   });
+
+  it("9- Nominal case: The user can rename a list ", () => {
+    // 9.1: Create new list by clicking the icon "add new list"
+    cy.get("#addlist").click();
+
+    // 9.2: Click "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: A new list is created, and it is called "New List" (Which is the default name)
+    // Check if there are 7 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 7);
+    // Check if the name of the new file is "New List"
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "New List ");
+    cy.log(
+      "There are 7 files now and the 7th file has taken by default the name 'New List'"
+    );
+
+    // 9.3: Double-click on the list "New list" and name it "Test-list"
+    cy.get("#lists #mylist_6").find("span.listname").dblclick();
+
+    cy.wait(1000);
+    // 9.4: Click "save" button
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Test-list");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: The list is named "Test-list", and the title inside the content of this list is also named "Test-list"
+    // Check if there are 7 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 7);
+    // Check if the name of the new file is "Test-list "
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "Test-list ");
+    cy.log("There are 7 files now and the 7th file is named 'Test-list '");
+    // Select the file 'Test-list '
+    cy.get("li span.listname")
+      .filter(':contains("Test-list ")')
+      .first()
+      .parent("li")
+      .click();
+
+    // Check title is "Test-list "
+    cy.get("#mytitle").should("have.text", "Test-list");
+
+    // 9.5: Double-click on the list "Test-list" and name it "Second test-list"
+    cy.get("#lists #mylist_6").find("span.listname").dblclick();
+
+    cy.wait(1000);
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Second test-list");
+    // 9.6: Click "cancel" button
+    cy.get("#inplaceeditor").find('input[type="button"]').click();
+    // Expected result: the list's name stays "Test-list"
+    cy.get("#mytitle").should("have.text", "Test-list");
+  });
 });
