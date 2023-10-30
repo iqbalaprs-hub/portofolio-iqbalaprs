@@ -941,4 +941,13 @@ describe("Feature: Create and manage lists", () => {
       .find(".listname")
       .should("have.text", "New List ");
   });
+
+  it("16- Nominal case: The user can reorder the list by dragging it", () => {
+    // 16.1: Drag the list "Test todo list" which is in the bottom to be at the top of all the lists
+    cy.get("#lists #mylist_5").drag("#lists ul.categorycontainer #mylist_0");
+    cy.wait(2000);
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(0)")
+      .find(".listname")
+      .should("have.text", "Test todo list ");
+  });
 });
