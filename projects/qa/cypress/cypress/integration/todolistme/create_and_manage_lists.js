@@ -847,5 +847,29 @@ describe("Feature: Create and manage lists", () => {
       .find(".listname")
       .should("have.text", "قائمة جديدة ");
     cy.log("There are 7 files now and the 7th file is named 'قائمة جديدة '");
+    //  Check title is "قائمة جديدة"
+    cy.get("#mytitle").should("have.text", "قائمة جديدة");
+  });
+
+  it("12- Edge case: The user can create a list with a chinese name", () => {
+    // 12.1: Create new list by clicking the icon "add new list" and named it "新名单"
+    cy.get("#addlist").click();
+    cy.wait(1000);
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("新名单");
+
+    // 12.2: Click "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: The new list is named "新名单" and the title of its content also is named "新名单"
+    // Check if there are 7 files now
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 7);
+    // Check if the name of the new file is "新名单"
+    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
+      .find(".listname")
+      .should("have.text", "新名单 ");
+    cy.log("There are 7 files now and the 7th file is named '新名单 '");
+    //  Check title is "新名单"
+    cy.get("#mytitle").should("have.text", "新名单");
   });
 });
