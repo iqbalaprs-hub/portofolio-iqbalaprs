@@ -191,4 +191,28 @@ describe("Feature: create and manage categories", () => {
       .find("span")
       .should("have.text", "!@#$%^&*()");
   });
+
+  it("7- Edge case: The user cannot leave the category without a name", () => {
+    // 7.1: Click on the icon "add new category" and do not name it
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").clear();
+
+    // 7.2: Click "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: An alert appears with sentence "Name can't be blank"
+    // 7.3: Click "OK" on the alert
+    cy.on("window:alert", (Text) => {
+      expect(Text).to.contains("Name can't be blank");
+    });
+
+    // 7.4: Click "cancel" button
+    cy.get("#inplaceeditor").find('input[type="button"]').click();
+    // Expected return: The category's name returns to its default name "New Category"
+    // Check if there is only 1 category
+    cy.get("#lists #mycategories ").find("li").should("have.length", 1);
+    // Check if the name of the file is "New Category"
+    cy.get("#lists #mycategories li:eq(0)")
+      .find("span")
+      .should("have.text", "New Category");
+  });
 });
