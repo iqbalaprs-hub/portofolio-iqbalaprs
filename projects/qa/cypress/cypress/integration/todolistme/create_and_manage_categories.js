@@ -100,4 +100,47 @@ describe("Feature: create and manage categories", () => {
     // Check if there are STILL 2 categories
     cy.get("#lists #mycategories ").find("li").should("have.length", 2);
   });
+
+  it("3- Nominal case: The user can rename categories", () => {
+    // 3.1: Click on the icon "add new category"
+    cy.get("img.adddivider").click();
+
+    // 3.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: A new category is created. It is named "New Category" (which is the default name)
+    // Check if there is only 1 category
+    cy.get("#lists #mycategories ").find("li").should("have.length", 1);
+    // Check if the name of the new file is "New Category"
+    cy.get("#lists #mycategories li:eq(0)")
+      .find("span")
+      .should("have.text", "New Category");
+
+    // 3.3: Double-click on the category "New Category" and name it "Work"
+    cy.get("#lists #mycategories li:eq(0)").dblclick();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Work");
+
+    // 3.4: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: The category is now named "Work"
+    // Check if there is STILL only 1 category
+    cy.get("#lists #mycategories ").find("li").should("have.length", 1);
+    // Check if the name of the file is "Work"
+    cy.get("#lists #mycategories li:eq(0)")
+      .find("span")
+      .should("have.text", "Work");
+
+    // 3.5: Double-click on the category "Work" and name it "Home"
+    cy.get("#lists #mycategories li:eq(0)").dblclick();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Home");
+
+    // 3.6: Click on the "cancel" button
+    cy.get("#inplaceeditor").find('input[type="button"]').click();
+    // Expected return: The category's name remains "Work"
+    // Check if there is STILL only 1 category
+    cy.get("#lists #mycategories ").find("li").should("have.length", 1);
+    // Check if the name of the file is "Work"
+    cy.get("#lists #mycategories li:eq(0)")
+      .find("span")
+      .should("have.text", "Work");
+  });
 });
