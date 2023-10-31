@@ -159,4 +159,20 @@ describe("Feature: create and manage categories", () => {
       .find("span")
       .should("have.text", "فئة جديدة");
   });
+
+  it("5- Edge case: The user can rename the category with chinese name", () => {
+    // 5.1: Click on the icon "add new category" and name it "新类别"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("新类别");
+
+    // 5.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: The new category is named  "新类别"
+    // Check if there is only 1 category
+    cy.get("#lists #mycategories ").find("li").should("have.length", 1);
+    // Check if the name of the new file is "新类别"
+    cy.get("#lists #mycategories li:eq(0)")
+      .find("span")
+      .should("have.text", "新类别");
+  });
 });
