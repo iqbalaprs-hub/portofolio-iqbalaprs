@@ -670,4 +670,41 @@ describe("Feature: create and manage categories", () => {
       .find("li")
       .should("have.length", 2);
   });
+
+  it("15- Nominal case: The user can delete the lists inside the  categories", () => {
+    // 15.1: Click on the icon "add new category" and name it "Home"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Home");
+
+    // 15.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 15.3: Create new list by clicking the icon "add new list" and name it "Clean"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Clean");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 15.4: Drag the list "Clean" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Clean")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    /*
+    15.5: Hover over the list "Clean"
+      AND
+    15.6: Click on the red  X
+    */
+    cy.get("#mycategory_1 li span.listname")
+      .filter(':contains("Clean")')
+      .parent("li")
+      .find("img.delete")
+      .invoke("css", "visibility", "visible")
+      .click();
+
+    // Expected result: The list "Clean" is deleted
+    cy.get("#mycategory_1 ul.categorycontainer")
+      .find("li")
+      .should("have.length", 0);
+  });
 });
