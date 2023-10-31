@@ -143,4 +143,20 @@ describe("Feature: create and manage categories", () => {
       .find("span")
       .should("have.text", "Work");
   });
+
+  it("4- Edge case: The user can rename the category with arabic name", () => {
+    // 4.1: Click on the icon "add new category" and name it "فئة جديدة"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("فئة جديدة");
+
+    // 4.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: The new category is named  "فئة جديدة"
+    // Check if there is only 1 category
+    cy.get("#lists #mycategories ").find("li").should("have.length", 1);
+    // Check if the name of the new file is "فئة جديدة"
+    cy.get("#lists #mycategories li:eq(0)")
+      .find("span")
+      .should("have.text", "فئة جديدة");
+  });
 });
