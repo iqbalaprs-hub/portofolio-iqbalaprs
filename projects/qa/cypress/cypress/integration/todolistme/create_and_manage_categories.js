@@ -801,4 +801,52 @@ describe("Feature: create and manage categories", () => {
     cy.get("#mylist_8").should("not.exist");
     cy.get("#mylist_9").should("not.exist");
   });
+
+  it("17- Nominal case: The user can hide lists in the  categories", () => {
+    // 17.1: Click on the icon "add new category" and name it "Home"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Home");
+
+    // 17.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 17.3: Create new list by clicking the icon "add new list" and name it "Clean"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Clean");
+    // 17.4: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 17.5: Create new list by clicking the icon "add new list" and name it "Cook"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Cook");
+    // 17.6: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 17.7: Drag the list "Clean" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Clean")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    // 17.8: Drag the list "Cook" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Cook")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    /*
+    17.9: Hover over the category "Home"
+      AND
+    17.10: Click on the blue arrow
+    */
+    cy.get("#mycategories #category_1")
+      .find("img.categorycollapsed")
+      .invoke("css", "visibility", "visible")
+      .click();
+    // 17.11: Click on the blue arrow
+    cy.get("#mycategories #category_1")
+      .find("img.categorycollapsed")
+      .invoke("css", "visibility", "visible")
+      .click();
+  });
 });
