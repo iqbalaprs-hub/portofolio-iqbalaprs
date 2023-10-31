@@ -60,4 +60,44 @@ describe("Feature: create and manage categories", () => {
     // Check if there are STILL 2 categories
     cy.get("#lists #mycategories ").find("li").should("have.length", 2);
   });
+
+  it("2- Nominal case: The user can name categories when created", () => {
+    // 2.1: Click on the icon "add new category" and name it "Work"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Work");
+
+    // 2.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected result: A new category is created. It is named "Work"
+    // Check if there is only 1 category
+    cy.get("#lists #mycategories ").find("li").should("have.length", 1);
+    // Check if the name of the new file is "Work"
+    cy.get("#lists #mycategories li:eq(0)")
+      .find("span")
+      .should("have.text", "Work");
+
+    // 2.3: Click on the icon "add new category" and name it "Home"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Home");
+
+    // 2.4: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: A new category is created. It is named "Home"
+    // Check if there is only 2 category
+    cy.get("#lists #mycategories ").find("li").should("have.length", 2);
+    // Check if the name of the new file is "Home"
+    cy.get("#lists #mycategories li:eq(1)")
+      .find("span")
+      .should("have.text", "Home");
+
+    // 2.5: Click on the icon "add new category" and name it "Travel"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Travel");
+
+    // 2.6: Click on the "cancel" button
+    cy.get("#inplaceeditor").find('input[type="button"]').click();
+    // Expected return: The category was not created
+    // Check if there are STILL 2 categories
+    cy.get("#lists #mycategories ").find("li").should("have.length", 2);
+  });
 });
