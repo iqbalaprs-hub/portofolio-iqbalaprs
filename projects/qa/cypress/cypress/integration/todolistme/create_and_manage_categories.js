@@ -707,4 +707,98 @@ describe("Feature: create and manage categories", () => {
       .find("li")
       .should("have.length", 0);
   });
+
+  it("16- Edge case: The user can delete the category with all its list with one delete step", () => {
+    // 16.1: Click on the icon "add new category" and name it "Home"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Home");
+
+    // 16.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 16.3: Create new list by clicking the icon "add new list" and name it "Clean"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Clean");
+    // 16.4: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 16.5: Create new list by clicking the icon "add new list" and name it "Programming"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Programming");
+    // 16.6: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 16.7: Create new list by clicking the icon "add new list" and name it "Cook"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Cook");
+    // 16.8: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 16.9: Create new list by clicking the icon "add new list" and name it "Lunch break"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Lunch break");
+    // 16.10: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 16.11: Drag the list "Clean" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Clean")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    // 16.12: Drag the list "Programming" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Programming")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    // 16.13: Drag the list "Cook" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Cook")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    // 16.14: Drag the list "Lunch break" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Lunch break")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    /*
+    Expected result: 
+    The category "Home":
+      -Clean
+      - Programming
+      - Cook
+      - Lunch break   
+    */
+    cy.get("#mycategory_1 ul.categorycontainer")
+      .find("li span.listname")
+      .should("have.length", 4)
+      .each(($item) => {
+        const itemText = $item.text();
+        expect(itemText).to.be.oneOf([
+          "Clean ",
+          "Programming ",
+          "Cook ",
+          "Lunch break ",
+        ]);
+      });
+
+    /*
+    16.15: Hover over the category "Home"
+      AND
+    16.16: Click on the red X 
+    */
+    cy.get("#mycategories #category_1")
+      .find("img.delete")
+      .invoke("css", "visibility", "visible")
+      .click();
+    // Expected result: The category "Home" with all of its lists is deleted
+    cy.get("#lists #mycategories ").find("li").should("have.length", 0);
+    cy.get("#mylist_6").should("not.exist");
+    cy.get("#mylist_7").should("not.exist");
+    cy.get("#mylist_8").should("not.exist");
+    cy.get("#mylist_9").should("not.exist");
+  });
 });
