@@ -479,4 +479,57 @@ describe("Feature: create and manage categories", () => {
       .find("span.listname")
       .should("have.text", "Lunch break ");
   });
+
+  it("13- Nominal case: The user can change the order of the lists inside the  categories", () => {
+    // 13.1: Click on the icon "add new category" and name it "Home"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Home");
+
+    // 13.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 13.3: Create new list by clicking the icon "add new list" and name it "Clean"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Clean");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 13.4: Create new list by clicking the icon "add new list" and name it "Programming"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Programming");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 13.5: Create new list by clicking the icon "add new list" and name it "Cook"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Cook");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 13.6: Create new list by clicking the icon "add new list" and name it "Lunch break"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Lunch break");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 13.7: Drag the list "Clean" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Clean")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    // 13.8: Drag the list "Programming" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Programming")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    // 13.9: Drag the list "Cook" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Cook")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    // 13.10: Drag the list "Lunch break" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Lunch break")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+  });
 });
