@@ -351,4 +351,49 @@ describe("Feature: create and manage categories", () => {
     // Expected return: The category "New Category" is deleted
     cy.get("#lists #mycategories ").find("li").should("have.length", 0);
   });
+
+  it("11- Nominal case: The user can reorder the categories by dragging them", () => {
+    // 11.1: Click on the icon "add new category" and name it "Home"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Home");
+
+    // 11.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 11.3: Click on the icon "add new category" and name it "Work"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Work");
+
+    // 11.4: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 11.5: Click on the icon "add new category" and name it "Travel"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Travel");
+
+    // 11.6: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 11.7: Create new list by clicking the icon "add new list" and name it "France"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("France");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 11.8: Create new list by clicking the icon "add new list" and name it "Germany"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Germany");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 11.9: Drag the list "France" into the category "Travel"
+    cy.get("li span.listname")
+      .filter(':contains("France")')
+      .parent("li")
+      .drag("#mycategory_3 ul.categorycontainer");
+
+    // 11.10: Drag the list "Germany" into the category "Travel"
+    cy.get("li span.listname")
+      .filter(':contains("Germany")')
+      .parent("li")
+      .drag("#mycategory_3 ul.categorycontainer");
+  });
 });
