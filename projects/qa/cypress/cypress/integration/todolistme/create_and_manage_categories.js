@@ -30,7 +30,7 @@ describe("Feature: create and manage categories", () => {
 
     // 1.2: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: A new category is created. It is named "New Category" (which is the default name)
+    // Expected result: A new category is created. It is named "New Category" (which is the default name)
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
     // Check if the name of the new category is "New Category"
@@ -43,7 +43,7 @@ describe("Feature: create and manage categories", () => {
 
     // 1.4: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: A new category is created. It is named "New Category" (which is the default name)
+    // Expected result: A new category is created. It is named "New Category" (which is the default name)
     // Check if there are 2 categories
     cy.get("#lists #mycategories ").find("li").should("have.length", 2);
     // Check if the name of the new category is "New Category"
@@ -56,7 +56,7 @@ describe("Feature: create and manage categories", () => {
 
     // 1.6: Click on the "cancel" button
     cy.get("#inplaceeditor").find('input[type="button"]').click();
-    // Expected return: The category was not created
+    // Expected result: The category was not created
     // Check if there are STILL 2 categories
     cy.get("#lists #mycategories ").find("li").should("have.length", 2);
   });
@@ -82,7 +82,7 @@ describe("Feature: create and manage categories", () => {
 
     // 2.4: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: A new category is created. It is named "Home"
+    // Expected result: A new category is created. It is named "Home"
     // Check if there is only 2 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 2);
     // Check if the name of the new category is "Home"
@@ -96,7 +96,7 @@ describe("Feature: create and manage categories", () => {
 
     // 2.6: Click on the "cancel" button
     cy.get("#inplaceeditor").find('input[type="button"]').click();
-    // Expected return: The category was not created
+    // Expected result: The category was not created
     // Check if there are STILL 2 categories
     cy.get("#lists #mycategories ").find("li").should("have.length", 2);
   });
@@ -107,7 +107,7 @@ describe("Feature: create and manage categories", () => {
 
     // 3.2: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: A new category is created. It is named "New Category" (which is the default name)
+    // Expected result: A new category is created. It is named "New Category" (which is the default name)
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
     // Check if the name of the new category is "New Category"
@@ -121,7 +121,7 @@ describe("Feature: create and manage categories", () => {
 
     // 3.4: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: The category is now named "Work"
+    // Expected result: The category is now named "Work"
     // Check if there is STILL only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
     // Check if the name of the category is "Work"
@@ -135,7 +135,7 @@ describe("Feature: create and manage categories", () => {
 
     // 3.6: Click on the "cancel" button
     cy.get("#inplaceeditor").find('input[type="button"]').click();
-    // Expected return: The category's name remains "Work"
+    // Expected result: The category's name remains "Work"
     // Check if there is STILL only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
     // Check if the name of the category is "Work"
@@ -151,7 +151,7 @@ describe("Feature: create and manage categories", () => {
 
     // 4.2: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: The new category is named  "فئة جديدة"
+    // Expected result: The new category is named  "فئة جديدة"
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
     // Check if the name of the new category is "فئة جديدة"
@@ -167,7 +167,7 @@ describe("Feature: create and manage categories", () => {
 
     // 5.2: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: The new category is named  "新类别"
+    // Expected result: The new category is named  "新类别"
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
     // Check if the name of the new category is "新类别"
@@ -183,7 +183,7 @@ describe("Feature: create and manage categories", () => {
 
     // 6.2: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: The new category is named  "!@#$%^&*()"
+    // Expected result: The new category is named  "!@#$%^&*()"
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
     // Check if the name of the new category is "!@#$%^&*()"
@@ -199,7 +199,7 @@ describe("Feature: create and manage categories", () => {
 
     // 7.2: Click "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: An alert appears with sentence "Name can't be blank"
+    // Expected result: An alert appears with sentence "Name can't be blank"
     // 7.3: Click "OK" on the alert
     cy.on("window:alert", (Text) => {
       expect(Text).to.contains("Name can't be blank");
@@ -207,7 +207,7 @@ describe("Feature: create and manage categories", () => {
 
     // 7.4: Click "cancel" button
     cy.get("#inplaceeditor").find('input[type="button"]').click();
-    // Expected return: The category's name returns to its default name "New Category"
+    // Expected result: The category's name returns to its default name "New Category"
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
     // Check if the name of the category is "New Category"
@@ -223,7 +223,7 @@ describe("Feature: create and manage categories", () => {
 
     // 8.2: Click "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: An alert appears with sentence "Name can't be blank"
+    // Expected result: An alert appears with sentence "Name can't be blank"
     // 8.3: Click "OK" on the alert
     cy.on("window:alert", (Text) => {
       expect(Text).to.contains("Name can't be blank");
@@ -231,7 +231,7 @@ describe("Feature: create and manage categories", () => {
 
     // 8.4: Click "cancel" button
     cy.get("#inplaceeditor").find('input[type="button"]').click();
-    // Expected return: The category's name returns to its default name "New Category"
+    // Expected result: The category's name results to its default name "New Category"
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
     // Check if the name of the category is "New Category"
@@ -246,7 +246,7 @@ describe("Feature: create and manage categories", () => {
 
     // 9.2: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: A new category is created. It is named "New Category" (which is the default name)
+    // Expected result: A new category is created. It is named "New Category" (which is the default name)
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
     // Check if the name of the new category is "New Category"
@@ -259,7 +259,7 @@ describe("Feature: create and manage categories", () => {
 
     // 9.4: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: A new category is created. It is named "New Category" (which is the default name)
+    // Expected result: A new category is created. It is named "New Category" (which is the default name)
     // Check if there are 2 categories
     cy.get("#lists #mycategories ").find("li").should("have.length", 2);
     // Check if the name of the new category is "New Category"
@@ -272,7 +272,7 @@ describe("Feature: create and manage categories", () => {
 
     // 9.6: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: A new category is created. It is named "New Category" (which is the default name)
+    // Expected result: A new category is created. It is named "New Category" (which is the default name)
     // Check if there are 3 categories
     cy.get("#lists #mycategories ").find("li").should("have.length", 3);
     // Check if the name of the new category is "New Category"
@@ -286,7 +286,7 @@ describe("Feature: create and manage categories", () => {
 
     // 9.8: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: This category is named  "Copy-category"
+    // Expected result: This category is named  "Copy-category"
     // Check if there are STILL 3 categories
     cy.get("#lists #mycategories ").find("li").should("have.length", 3);
     // Check if the name of the first category is "Copy-category"
@@ -300,7 +300,7 @@ describe("Feature: create and manage categories", () => {
 
     // 9.10: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: This category is named  "Copy-category"
+    // Expected result: This category is named  "Copy-category"
     // Check if there are STILL 3 categories
     cy.get("#lists #mycategories ").find("li").should("have.length", 3);
     // Check if the name of the second category is "Copy-category"
@@ -314,7 +314,7 @@ describe("Feature: create and manage categories", () => {
 
     // 9.12: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: This category is named  "Copy-category"
+    // Expected result: This category is named  "Copy-category"
     // Check if there are STILL 3 categories
     cy.get("#lists #mycategories ").find("li").should("have.length", 3);
     // Check if the name of the second category is "Copy-category".
@@ -331,7 +331,7 @@ describe("Feature: create and manage categories", () => {
 
     // 10.2: Click on the "save" button
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
-    // Expected return: A new category is created. It is named "New Category"
+    // Expected result: A new category is created. It is named "New Category"
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
     // Check if the name of the new category is "New Category"
@@ -348,7 +348,7 @@ describe("Feature: create and manage categories", () => {
       .find("img.delete")
       .invoke("css", "visibility", "visible")
       .click();
-    // Expected return: The category "New Category" is deleted
+    // Expected result: The category "New Category" is deleted
     cy.get("#lists #mycategories ").find("li").should("have.length", 0);
   });
 
@@ -457,7 +457,7 @@ describe("Feature: create and manage categories", () => {
       .drag("#mycategory_2 ul.categorycontainer");
 
     /*
-    Expected return:
+    Expected result:
     The category "Home" has:
     - Clean
     - Cook
@@ -531,5 +531,143 @@ describe("Feature: create and manage categories", () => {
       .filter(':contains("Lunch break")')
       .parent("li")
       .drag("#mycategory_1 ul.categorycontainer");
+  });
+
+  it("14- Nominal case: The user can copy the lists inside the  categories", () => {
+    // 14.1: Click on the icon "add new category" and name it "Home"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Home");
+
+    // 14.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 14.3: Create new list by clicking the icon "add new list" and name it "Cook"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Cook");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 14.4: Create new item "Task1"
+    cy.get("#additempanel").find("#newtodo").type("Task1").type("{enter}");
+
+    // 14.5: Create new item "Task2"
+    cy.get("#additempanel").find("#newtodo").type("Task2").type("{enter}");
+
+    // 14.6: Create new item "Task3"
+    cy.get("#additempanel").find("#newtodo").type("Task3").type("{enter}");
+
+    // 14.7: Check the item "Task3"
+    cy.get("#todolistpanel #mytodos #todo_2")
+      .find('input[type="checkbox"]')
+      .click();
+
+    /*
+    Expected result:
+    The list "Cook" has:
+      - 2 items (Task1 and task2) in the to-do items
+      - 1 item (Task3) in the done-items
+    */
+    // Check if there are 2 items in to-do items
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 2);
+    // Check the names of the items
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find("span")
+      .should("have.text", "Task1");
+    cy.get("#todolistpanel #mytodos #todo_1")
+      .find("span")
+      .should("have.text", "Task2");
+
+    // Check if there is 1 item in done-items and the name
+    cy.get("#doneitemspanel #mydonetodos").find("li").should("have.length", 1);
+    cy.get("#doneitemspanel #mydonetodos #todo_2")
+      .find("span")
+      .should("have.text", "Task3");
+
+    // 14.8: Drag the list "Cook" to the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Cook")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    //
+    /*
+    14.9: Hover over the list "Cook"
+      AND
+    14.10: Click on the double-paper icon "copy list"
+    */
+    cy.get("#container_1 li span.listname")
+      .filter(':contains("Cook")')
+      .parent("li")
+      .find("img.copylist")
+      .invoke("css", "visibility", "visible")
+      .click();
+
+    // 14.11: Click "save" button
+    cy.get("#lists #inplaceeditor").find('input[type="submit"]').click();
+    cy.wait(1000);
+    /*
+    Expected result:
+    A new list inside the category "Home" is created. It is named "Copy of Cook"
+
+    The list "Copy of Cook" has:
+      - 2 items (Task1 and task2) in the to-do items
+      - 1 item (Task3) in the done-items
+    */
+    // Check if there are 2 files in category "Home" now
+    cy.get("#mycategory_1 ul.categorycontainer")
+      .find("li")
+      .should("have.length", 2);
+    // Check if the name of the new file is "Copy of Cook "
+    cy.get("#mycategory_1 #container_1 li:eq(1)")
+      .find(".listname")
+      .should("have.text", "Copy of Cook ");
+    cy.log(
+      "There are 2 files now in category 'Home' and the second file is named 'Copy of Cook '"
+    );
+    // Select the file 'Copy of Cook '
+    cy.get("#container_1 li span.listname")
+      .filter(':contains("Copy of Cook ")')
+      .parent("li")
+      .click();
+    // Check title is "Copy of Cook "
+    cy.get("#mytitle").should("have.text", "Copy of Cook");
+
+    // Check if there are 2 items in to-do items
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 2);
+    // Check the names of the items
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find("span")
+      .should("have.text", "Task1");
+    cy.get("#todolistpanel #mytodos #todo_1")
+      .find("span")
+      .should("have.text", "Task2");
+
+    // Check if there is 1 item in done-items and the name
+    cy.get("#doneitemspanel #mydonetodos").find("li").should("have.length", 1);
+    cy.get("#doneitemspanel #mydonetodos #todo_2")
+      .find("span")
+      .should("have.text", "Task3");
+
+    /*
+    14.12: Hover over the list "Copy of Cook"  
+      AND
+    14.13: Click on the double-paper icon "copy list" and name it "Travel"
+    */
+    cy.get("#container_1 li span.listname")
+      .filter(':contains("Copy of Cook ")')
+      .parent("li")
+      .find("img.copylist")
+      .invoke("css", "visibility", "visible")
+      .click();
+    cy.wait(1000);
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Travel");
+
+    // 14.14: Click "Cancel" button
+    cy.get("#inplaceeditor").find('input[type="button"]').click();
+
+    // Expected result: The copied list of "Copy of Cook" is deleted
+    // Check if there are STILL 2 files in category "Home" now
+    cy.get("#mycategory_1 ul.categorycontainer")
+      .find("li")
+      .should("have.length", 2);
   });
 });

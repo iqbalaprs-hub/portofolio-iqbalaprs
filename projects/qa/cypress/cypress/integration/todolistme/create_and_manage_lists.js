@@ -965,34 +965,34 @@ describe("Feature: Create and manage lists", () => {
       .find('input[type="checkbox"]')
       .click();
 
-    // Expected return: "Testtodolist" bar has (0/1) [(Nb of To-do-items tasks)/(Nb of Done-items tasks)]
+    // Expected result: "Testtodolist" bar has (0/1) [(Nb of To-do-items tasks)/(Nb of Done-items tasks)]
     cy.get("#lists #mylist_5").find("span.info").should("have.text", "(0/1)");
 
     // 17.4: Create new item in the To-do-items: Task2
     cy.get("#additempanel").find("#newtodo").type("Task2").type("{enter}");
-    // Expected return: "Testtodolist" bar has (1/1) [(Nb of To-do-items tasks)/(Nb of Done-items tasks)]
+    // Expected result: "Testtodolist" bar has (1/1) [(Nb of To-do-items tasks)/(Nb of Done-items tasks)]
     cy.get("#lists #mylist_5").find("span.info").should("have.text", "(1/1)");
 
     // 17.5: Create new item in the To-do-items: Task3
     cy.get("#additempanel").find("#newtodo").type("Task3").type("{enter}");
-    // Expected return: "Testtodolist" bar has (2/1) [(Nb of To-do-items tasks)/(Nb of Done-items tasks)]
+    // Expected result: "Testtodolist" bar has (2/1) [(Nb of To-do-items tasks)/(Nb of Done-items tasks)]
     cy.get("#lists #mylist_5").find("span.info").should("have.text", "(2/1)");
 
     // 17.6: Create new item in the To-do-items: Task4
     cy.get("#additempanel").find("#newtodo").type("Task4").type("{enter}");
-    // Expected return: "Testtodolist" bar has (3/1) [(Nb of To-do-items tasks)/(Nb of Done-items tasks)]
+    // Expected result: "Testtodolist" bar has (3/1) [(Nb of To-do-items tasks)/(Nb of Done-items tasks)]
     cy.get("#lists #mylist_5").find("span.info").should("have.text", "(3/1)");
 
     // 17.7: Create new item in the To-do-items: Task5
     cy.get("#additempanel").find("#newtodo").type("Task5").type("{enter}");
-    // expected return: "Testtodolist" bar has (4/1) [(Nb of To-do-items tasks)/(Nb of Done-items tasks)]
+    // expected result: "Testtodolist" bar has (4/1) [(Nb of To-do-items tasks)/(Nb of Done-items tasks)]
     cy.get("#lists #mylist_5").find("span.info").should("have.text", "(4/1)");
 
     // 17.8: Check item "Task2"
     cy.get("#todolistpanel #mytodos #todo_1")
       .find('input[type="checkbox"]')
       .click();
-    // Expected return: "Testtodolist" bar has (3/2) [(Nb of To-do-items tasks)/(Nb of Done-items tasks)]
+    // Expected result: "Testtodolist" bar has (3/2) [(Nb of To-do-items tasks)/(Nb of Done-items tasks)]
     cy.get("#lists #mylist_5").find("span.info").should("have.text", "(3/2)");
   });
 });
