@@ -324,4 +324,31 @@ describe("Feature: create and manage categories", () => {
 
     cy.log("Thus there is no problem that categories are named the same thing");
   });
+
+  it("10- Nominal case: The user can delete categories", () => {
+    // 10.1: Click on the icon "add new category"
+    cy.get("img.adddivider").click();
+
+    // 10.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: A new category is created. It is named "New Category"
+    // Check if there is only 1 category
+    cy.get("#lists #mycategories ").find("li").should("have.length", 1);
+    // Check if the name of the new category is "New Category"
+    cy.get("#lists #mycategories li:eq(0)")
+      .find("span")
+      .should("have.text", "New Category");
+
+    /*
+    10.3: Hover over the category "New Category"
+      AND
+    10.4: Click on the red X
+    */
+    cy.get("#mycategories #category_1")
+      .find("img.delete")
+      .invoke("css", "visibility", "visible")
+      .click();
+    // Expected return: The category "New Category" is deleted
+    cy.get("#lists #mycategories ").find("li").should("have.length", 0);
+  });
 });
