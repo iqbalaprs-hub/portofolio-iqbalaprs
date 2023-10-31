@@ -396,4 +396,87 @@ describe("Feature: create and manage categories", () => {
       .parent("li")
       .drag("#mycategory_3 ul.categorycontainer");
   });
+
+  it("12- Nominal case: The user can insert lists into the  categories", () => {
+    // 12.1: Click on the icon "add new category" and name it "Home"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Home");
+
+    // 12.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 12.3: Click on the icon "add new category" and name it "Work"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Work");
+
+    // 12.4: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 12.5: Create new list by clicking the icon "add new list" and name it "Clean"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Clean");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 12.6: Create new list by clicking the icon "add new list" and name it "Programming"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Programming");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 12.7: Create new list by clicking the icon "add new list" and name it "Cook"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Cook");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 12.8: Create new list by clicking the icon "add new list" and name it "Lunch break"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Lunch break");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 12.9: Drag the list "Clean" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Clean")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    // 12.10: Drag the list "Programming" into the category "Work"
+    cy.get("li span.listname")
+      .filter(':contains("Programming")')
+      .parent("li")
+      .drag("#mycategory_2 ul.categorycontainer");
+
+    // 12.11: Drag the list "Cook" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Cook")')
+      .parent("li")
+      .drag("#mycategory_1 ul.categorycontainer");
+
+    // 12.12: Drag the list "Lunch break" into the category "Work"
+    cy.get("li span.listname")
+      .filter(':contains("Lunch break")')
+      .parent("li")
+      .drag("#mycategory_2 ul.categorycontainer");
+
+    /*
+    Expected return:
+    The category "Home" has:
+    - Clean
+    - Cook
+
+    The category "Work" has:
+      - Programming
+      - Lunch break
+    */
+    cy.get("#container_1 li:eq(0)")
+      .find("span.listname")
+      .should("have.text", "Clean ");
+    cy.get("#container_1 li:eq(1)")
+      .find("span.listname")
+      .should("have.text", "Cook ");
+    cy.get("#container_2 li:eq(0)")
+      .find("span.listname")
+      .should("have.text", "Programming ");
+    cy.get("#container_2 li:eq(1)")
+      .find("span.listname")
+      .should("have.text", "Lunch break ");
+  });
 });
