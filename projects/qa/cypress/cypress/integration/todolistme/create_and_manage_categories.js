@@ -33,7 +33,7 @@ describe("Feature: create and manage categories", () => {
     // Expected return: A new category is created. It is named "New Category" (which is the default name)
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
-    // Check if the name of the new file is "New Category"
+    // Check if the name of the new category is "New Category"
     cy.get("#lists #mycategories li:eq(0)")
       .find("span")
       .should("have.text", "New Category");
@@ -46,7 +46,7 @@ describe("Feature: create and manage categories", () => {
     // Expected return: A new category is created. It is named "New Category" (which is the default name)
     // Check if there are 2 categories
     cy.get("#lists #mycategories ").find("li").should("have.length", 2);
-    // Check if the name of the new file is "New Category"
+    // Check if the name of the new category is "New Category"
     cy.get("#lists #mycategories li:eq(1)")
       .find("span")
       .should("have.text", "New Category");
@@ -71,7 +71,7 @@ describe("Feature: create and manage categories", () => {
     // Expected result: A new category is created. It is named "Work"
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
-    // Check if the name of the new file is "Work"
+    // Check if the name of the new category is "Work"
     cy.get("#lists #mycategories li:eq(0)")
       .find("span")
       .should("have.text", "Work");
@@ -85,7 +85,7 @@ describe("Feature: create and manage categories", () => {
     // Expected return: A new category is created. It is named "Home"
     // Check if there is only 2 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 2);
-    // Check if the name of the new file is "Home"
+    // Check if the name of the new category is "Home"
     cy.get("#lists #mycategories li:eq(1)")
       .find("span")
       .should("have.text", "Home");
@@ -110,7 +110,7 @@ describe("Feature: create and manage categories", () => {
     // Expected return: A new category is created. It is named "New Category" (which is the default name)
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
-    // Check if the name of the new file is "New Category"
+    // Check if the name of the new category is "New Category"
     cy.get("#lists #mycategories li:eq(0)")
       .find("span")
       .should("have.text", "New Category");
@@ -124,7 +124,7 @@ describe("Feature: create and manage categories", () => {
     // Expected return: The category is now named "Work"
     // Check if there is STILL only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
-    // Check if the name of the file is "Work"
+    // Check if the name of the category is "Work"
     cy.get("#lists #mycategories li:eq(0)")
       .find("span")
       .should("have.text", "Work");
@@ -138,7 +138,7 @@ describe("Feature: create and manage categories", () => {
     // Expected return: The category's name remains "Work"
     // Check if there is STILL only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
-    // Check if the name of the file is "Work"
+    // Check if the name of the category is "Work"
     cy.get("#lists #mycategories li:eq(0)")
       .find("span")
       .should("have.text", "Work");
@@ -154,7 +154,7 @@ describe("Feature: create and manage categories", () => {
     // Expected return: The new category is named  "فئة جديدة"
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
-    // Check if the name of the new file is "فئة جديدة"
+    // Check if the name of the new category is "فئة جديدة"
     cy.get("#lists #mycategories li:eq(0)")
       .find("span")
       .should("have.text", "فئة جديدة");
@@ -170,7 +170,7 @@ describe("Feature: create and manage categories", () => {
     // Expected return: The new category is named  "新类别"
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
-    // Check if the name of the new file is "新类别"
+    // Check if the name of the new category is "新类别"
     cy.get("#lists #mycategories li:eq(0)")
       .find("span")
       .should("have.text", "新类别");
@@ -186,7 +186,7 @@ describe("Feature: create and manage categories", () => {
     // Expected return: The new category is named  "!@#$%^&*()"
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
-    // Check if the name of the new file is "!@#$%^&*()"
+    // Check if the name of the new category is "!@#$%^&*()"
     cy.get("#lists #mycategories li:eq(0)")
       .find("span")
       .should("have.text", "!@#$%^&*()");
@@ -210,7 +210,7 @@ describe("Feature: create and manage categories", () => {
     // Expected return: The category's name returns to its default name "New Category"
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
-    // Check if the name of the file is "New Category"
+    // Check if the name of the category is "New Category"
     cy.get("#lists #mycategories li:eq(0)")
       .find("span")
       .should("have.text", "New Category");
@@ -234,9 +234,94 @@ describe("Feature: create and manage categories", () => {
     // Expected return: The category's name returns to its default name "New Category"
     // Check if there is only 1 category
     cy.get("#lists #mycategories ").find("li").should("have.length", 1);
-    // Check if the name of the file is "New Category"
+    // Check if the name of the category is "New Category"
     cy.get("#lists #mycategories li:eq(0)")
       .find("span")
       .should("have.text", "New Category");
+  });
+
+  it("9- Edge case: The user can have categories with the same name", () => {
+    // 9.1: Click on the icon "add new category"
+    cy.get("img.adddivider").click();
+
+    // 9.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: A new category is created. It is named "New Category" (which is the default name)
+    // Check if there is only 1 category
+    cy.get("#lists #mycategories ").find("li").should("have.length", 1);
+    // Check if the name of the new category is "New Category"
+    cy.get("#lists #mycategories li:eq(0)")
+      .find("span")
+      .should("have.text", "New Category");
+
+    // 9.3: Click on the icon "add new category"
+    cy.get("img.adddivider").click();
+
+    // 9.4: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: A new category is created. It is named "New Category" (which is the default name)
+    // Check if there are 2 categories
+    cy.get("#lists #mycategories ").find("li").should("have.length", 2);
+    // Check if the name of the new category is "New Category"
+    cy.get("#lists #mycategories li:eq(1)")
+      .find("span")
+      .should("have.text", "New Category");
+
+    // 9.5: Click on the icon "add new category"
+    cy.get("img.adddivider").click();
+
+    // 9.6: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: A new category is created. It is named "New Category" (which is the default name)
+    // Check if there are 3 categories
+    cy.get("#lists #mycategories ").find("li").should("have.length", 3);
+    // Check if the name of the new category is "New Category"
+    cy.get("#lists #mycategories li:eq(2)")
+      .find("span")
+      .should("have.text", "New Category");
+
+    // 9.7: Select the first category "New Category" and name it "Copy-category"
+    cy.get("#lists #mycategories li:eq(0)").dblclick();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Copy-category");
+
+    // 9.8: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: This category is named  "Copy-category"
+    // Check if there are STILL 3 categories
+    cy.get("#lists #mycategories ").find("li").should("have.length", 3);
+    // Check if the name of the first category is "Copy-category"
+    cy.get("#lists #mycategories li:eq(0)")
+      .find("span")
+      .should("have.text", "Copy-category");
+
+    // 9.9: Select the second category "New Category" and name it "Copy-category"
+    cy.get("#lists #mycategories li:eq(1)").dblclick();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Copy-category");
+
+    // 9.10: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: This category is named  "Copy-category"
+    // Check if there are STILL 3 categories
+    cy.get("#lists #mycategories ").find("li").should("have.length", 3);
+    // Check if the name of the second category is "Copy-category"
+    cy.get("#lists #mycategories li:eq(1)")
+      .find("span")
+      .should("have.text", "Copy-category");
+
+    // 9.11: Select the third category "New Category" and name it "Copy-category"
+    cy.get("#lists #mycategories li:eq(2)").dblclick();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Copy-category");
+
+    // 9.12: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+    // Expected return: This category is named  "Copy-category"
+    // Check if there are STILL 3 categories
+    cy.get("#lists #mycategories ").find("li").should("have.length", 3);
+    // Check if the name of the second category is "Copy-category".
+    cy.get("#lists #mycategories li:eq(2)")
+      .find("span")
+      .should("have.text", "Copy-category");
+
+    cy.log("Thus there is no problem that categories are named the same thing");
   });
 });
