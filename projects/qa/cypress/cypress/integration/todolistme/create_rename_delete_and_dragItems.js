@@ -427,4 +427,22 @@ describe("Feature: Create, rename, delete and drag items", () => {
       .find("span#mytodo_0")
       .should("have.text", "جملة جديدة");
   });
+
+  it("9- Edge case: The user can name the item in chinese", () => {
+    // 9.1: Create new item and name it "新句子"
+    cy.get("#additempanel").find("#newtodo").type("新句子").type("{enter}");
+    // Expected result: A new item is created and is named "新句子"
+    cy.get("#todolistpanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "新句子");
+
+    // 9.2: Check the item "新句子"
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find('input[type="checkbox"]')
+      .click();
+    // Expected result: Done-items has no problem with chinese
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "新句子");
+  });
 });
