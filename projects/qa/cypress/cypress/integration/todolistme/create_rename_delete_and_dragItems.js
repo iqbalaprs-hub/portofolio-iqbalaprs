@@ -313,4 +313,14 @@ describe("Feature: Create, rename, delete and drag items", () => {
       "#doneitemspanel #mydonetodos"
     );
   });
+
+  it("5- Edge case: The user cannot create an item without a name", () => {
+    // 5.1: Select The input that create a new item has a placeholder “Type and hit Enter to add” and click "enter"
+    cy.get("#additempanel").find("#newtodo").type("{enter}");
+    // Expected result: An alert appears with sentence "Did you forget to type your item?"
+    // 5.2: Click "OK" on the alert
+    cy.on("window:alert", (Text) => {
+      expect(Text).to.contains("Did you forget to type your item?");
+    });
+  });
 });
