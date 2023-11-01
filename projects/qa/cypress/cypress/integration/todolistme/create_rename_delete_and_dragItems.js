@@ -409,4 +409,22 @@ describe("Feature: Create, rename, delete and drag items", () => {
       .find("span#mytodo_0")
       .should("have.text", "Task1");
   });
+
+  it("8- Edge case: The user can name the item in arabic", () => {
+    // 8.1: Create new item and name it "جملة جديدة"
+    cy.get("#additempanel").find("#newtodo").type("جملة جديدة").type("{enter}");
+    // Expected result: A new item is created and is named "جملة جديدة"
+    cy.get("#todolistpanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "جملة جديدة");
+
+    // 8.2:Check the item "جملة جديد"
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find('input[type="checkbox"]')
+      .click();
+    // Expected result: Done-items has no problem with arabic
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "جملة جديدة");
+  });
 });
