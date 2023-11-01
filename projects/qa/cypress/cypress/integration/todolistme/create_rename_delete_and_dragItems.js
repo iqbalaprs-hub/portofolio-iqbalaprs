@@ -463,4 +463,14 @@ describe("Feature: Create, rename, delete and drag items", () => {
       .find("span#mytodo_0")
       .should("have.text", "!@#$%^&*()");
   });
+
+  it("11- Edge case: The user cannot name the item using only spaces", () => {
+    // 11.1: Create new item and name it "        "
+    cy.get("#additempanel").find("#newtodo").type("        ").type("{enter}");
+    // Expected result: An alert appears with sentence "Name can't be blank"
+    // 11.2: Click "OK" on the alert
+    cy.on("window:alert", (Text) => {
+      expect(Text).to.contains("Did you forget to type your item?");
+    });
+  });
 });
