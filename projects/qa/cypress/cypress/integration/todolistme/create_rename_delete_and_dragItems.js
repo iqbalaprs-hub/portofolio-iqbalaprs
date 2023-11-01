@@ -445,4 +445,22 @@ describe("Feature: Create, rename, delete and drag items", () => {
       .find("span#mytodo_0")
       .should("have.text", "新句子");
   });
+
+  it("10- Edge case: The user can name the item using special characters", () => {
+    // 10.1: Create new item and name it "!@#$%^&*()"
+    cy.get("#additempanel").find("#newtodo").type("!@#$%^&*()").type("{enter}");
+    // Expected result: A new item is created and is named "!@#$%^&*()"
+    cy.get("#todolistpanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "!@#$%^&*()");
+
+    // 10.2: Check the item "!@#$%^&*()"
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find('input[type="checkbox"]')
+      .click();
+    // Expected result: Done-items has no problem with special characters
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "!@#$%^&*()");
+  });
 });
