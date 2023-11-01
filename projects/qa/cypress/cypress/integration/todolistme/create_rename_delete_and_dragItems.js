@@ -473,4 +473,46 @@ describe("Feature: Create, rename, delete and drag items", () => {
       expect(Text).to.contains("Did you forget to type your item?");
     });
   });
+
+  it("12- Edge case: The user can have multiple items with the same name", () => {
+    // 12.1: Create new item in the To-do-items: Task1
+    cy.get("#additempanel").find("#newtodo").type("Task1").type("{enter}");
+    // 12.2: Create new item in the To-do-items: Task1
+    cy.get("#additempanel").find("#newtodo").type("Task1").type("{enter}");
+    // 12.3: Create new item in the To-do-items: Task1
+    cy.get("#additempanel").find("#newtodo").type("Task1").type("{enter}");
+    // Expected result: We have similar 3 items named "Task1" in to-do items
+    cy.get("#todolistpanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "Task1");
+    cy.get("#todolistpanel #todo_1")
+      .find("span#mytodo_1")
+      .should("have.text", "Task1");
+    cy.get("#todolistpanel #todo_2")
+      .find("span#mytodo_2")
+      .should("have.text", "Task1");
+
+    // 12.4: Check first item "Task1"
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find('input[type="checkbox"]')
+      .click();
+    // 12.5: Check second item "Task1"
+    cy.get("#todolistpanel #mytodos #todo_1")
+      .find('input[type="checkbox"]')
+      .click();
+    // 12.6: Check third item "Task1"
+    cy.get("#todolistpanel #mytodos #todo_2")
+      .find('input[type="checkbox"]')
+      .click();
+    // Expected result: We have similar 3 items named "Task1" in done-items
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "Task1");
+    cy.get("#doneitemspanel #mydonetodos #todo_1")
+      .find("span#mytodo_1")
+      .should("have.text", "Task1");
+    cy.get("#doneitemspanel #mydonetodos #todo_2")
+      .find("span#mytodo_2")
+      .should("have.text", "Task1");
+  });
 });
