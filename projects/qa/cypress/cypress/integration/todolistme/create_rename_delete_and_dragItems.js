@@ -244,4 +244,73 @@ describe("Feature: Create, rename, delete and drag items", () => {
       .find('input[type="checkbox"]')
       .should("be.checked");
   });
+
+  it("4- Nominal case: The user can move the items between to-do-items, done-items and scheduled-items, either by dragging, checking and unchecking", () => {
+    // 4.1: Create new item in the To-do-items: Task1
+    cy.get("#additempanel").find("#newtodo").type("Task1").type("{enter}");
+    // Expected result: A new item called "Task1" in the To-do-items. The new item "Task1" is unchecked
+    cy.get("#todolistpanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "Task1");
+    cy.get("#todolistpanel #todo_0")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+
+    // 4.2: Create new item in the To-do-items: Task2
+    cy.get("#additempanel").find("#newtodo").type("Task2").type("{enter}");
+    // Expected result: A new item called "Task2" in the To-do-items. The new item "Task2" is unchecked
+    cy.get("#todolistpanel #todo_1")
+      .find("span#mytodo_1")
+      .should("have.text", "Task2");
+    cy.get("#todolistpanel #todo_1")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+
+    // 4.3: Create new item in the To-do-items: Task3
+    cy.get("#additempanel").find("#newtodo").type("Task3").type("{enter}");
+    // Expected result: A new item called "Task3" in the To-do-items. The new item "Task3" is unchecked
+    cy.get("#todolistpanel #todo_2")
+      .find("span#mytodo_2")
+      .should("have.text", "Task3");
+    cy.get("#todolistpanel #todo_2")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+
+    // 4.4: Create new item in the To-do-items: Task4
+    cy.get("#additempanel").find("#newtodo").type("Task4").type("{enter}");
+    // Expected result: A new item called "Task4" in the To-do-items. The new item "Task4" is unchecked
+    cy.get("#todolistpanel #todo_3")
+      .find("span#mytodo_3")
+      .should("have.text", "Task4");
+    cy.get("#todolistpanel #todo_3")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+
+    // 4.5: Create new item in the To-do-items: Task5
+    cy.get("#additempanel").find("#newtodo").type("Task5").type("{enter}");
+    // Expected result: A new item called "Task5" in the To-do-items. The new item "Task5" is unchecked
+    cy.get("#todolistpanel #todo_4")
+      .find("span#mytodo_4")
+      .should("have.text", "Task5");
+    cy.get("#todolistpanel #todo_4")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+
+    // 4.6: Check the item "Task5"
+    cy.get("#todolistpanel #mytodos #todo_4")
+      .find('input[type="checkbox"]')
+      .click();
+    // Expected result: The item "Task5" is in the done-items. "Task5" is checked
+    cy.get("#doneitemspanel #mydonetodos #todo_4")
+      .find("span#mytodo_4")
+      .should("have.text", "Task5");
+    cy.get("#doneitemspanel #mydonetodos #todo_4")
+      .find('input[type="checkbox"]')
+      .should("be.checked");
+
+    // 4.7: Drag the item "Task4" to done-items
+    cy.get("#todolistpanel #mytodos #todo_3").drag(
+      "#doneitemspanel #mydonetodos"
+    );
+  });
 });
