@@ -323,4 +323,39 @@ describe("Feature: Create, rename, delete and drag items", () => {
       expect(Text).to.contains("Did you forget to type your item?");
     });
   });
+
+  it("6- Edge case: The user cannot rename an item without a name in to-do-items", () => {
+    // 6.1: Create new item in the To-do-items: Task1
+    cy.get("#additempanel").find("#newtodo").type("Task1").type("{enter}");
+    // Expected result: A new item called "Task1" in the To-do-items. The new item "Task1" is unchecked
+    cy.get("#todolistpanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "Task1");
+    cy.get("#todolistpanel #todo_0")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+
+    // 6.2: Double-click on "Task1" and remove the name
+    cy.get("#todolistpanel #mytodos #todo_0").dblclick();
+    cy.get("#todolistpanel #mytodos #todo_0").find("input[type=text]").clear();
+
+    // 6.3: Click "save" button
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find("input[type=submit]")
+      .click();
+    // Expected result: An alert appears with sentence "Name can't be blank"
+    // 6.4: Click "OK" on the alert
+    cy.on("window:alert", (Text) => {
+      expect(Text).to.contains("Name can't be blank.");
+    });
+
+    // 6.5: Click "cancel" button
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find("input[type=button]")
+      .click();
+    // Expected result: The item's name returns to its original name which is "Task1"
+    cy.get("#todolistpanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "Task1");
+  });
 });
