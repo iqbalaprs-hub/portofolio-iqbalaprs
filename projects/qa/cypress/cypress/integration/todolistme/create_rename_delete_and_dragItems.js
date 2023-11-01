@@ -358,4 +358,55 @@ describe("Feature: Create, rename, delete and drag items", () => {
       .find("span#mytodo_0")
       .should("have.text", "Task1");
   });
+
+  it("7- Edge case: The user cannot rename an item without a name in Done-items", () => {
+    // 7.1: Create new item in the To-do-items: Task1
+    cy.get("#additempanel").find("#newtodo").type("Task1").type("{enter}");
+    // Expected result: A new item called "Task1" in the To-do-items. The new item "Task1" is unchecked
+    cy.get("#todolistpanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "Task1");
+    cy.get("#todolistpanel #todo_0")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+
+    // 7.2: Check the item "Task1"
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find('input[type="checkbox"]')
+      .click();
+
+    // Expected result: "Task1" is in the Done-items. "Task1" is checked
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "Task1");
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find('input[type="checkbox"]')
+      .should("be.checked");
+
+    // 7.3: Double-click on "Task1" and remove the name
+    cy.get("#doneitemspanel #mydonetodos #todo_0").dblclick();
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find("input[type=text]")
+      .clear();
+
+    // 7.4: Click "save" button
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find("input[type=submit]")
+      .click();
+    // Expected result: An alert appears with sentence "Name can't be blank"
+    // 7.5: Click "OK" on the alert
+    cy.on("window:alert", (Text) => {
+      expect(Text).to.contains("Name can't be blank.");
+    });
+
+    // 7.6: Click "cancel" button
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find("input[type=button]")
+      .click();
+    // Expected result: The item's name returns to its original name which is "Task1"
+    // PS: Since we showed before that we cannot rename in the scheduled-items, it is pointless to try it in the scheduled-items
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "Task1");
+  });
 });
