@@ -76,10 +76,35 @@ describe("Feature: Create and manage lists", () => {
     for (let i = 0; i < 5; i++) {
       cy.tab();
     }
+    /*
+    You went from the list "Today's tasks" to the list "Test todo list" :
+      - "Test todo list" should have a green background, while the other lists have not
+      - The title of the list'content on the left is "Test todo list"
+    */
+    cy.get("#lists #container_0 #mylist_5").should(
+      "have.css",
+      "background-color",
+      "rgb(207, 244, 220)"
+    );
+    cy.get("#mytitle").should("have.text", "Test todo list");
+
+    cy.wait(3000);
 
     // 2.3: Click on the TAB button 1 time
     // Expected result: Since "Test todo list" was the last list, it returned to the beginning of the lists which is "Today's tasks"
     cy.tab();
+    /*
+    Expected result: 
+    Since "Test todo list" was the last list, it returned to the beginning of the lists which is "Today's tasks":
+      -"Today's tasks should have a green background, while the other lists have not
+      - The title of the list'content on the left is "Today's tasks
+    */
+    cy.get("#lists #container_0 #mylist_0").should(
+      "have.css",
+      "background-color",
+      "rgb(207, 244, 220)"
+    );
+    cy.get("#mytitle").should("have.text", "Today's Tasks");
   });
 
   it("3- Nominal case: The user can create a list ", () => {
