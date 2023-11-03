@@ -155,6 +155,30 @@ describe("Feature: Create, rename, delete and drag items", () => {
 
     // 2.12: Create new item in the To-do-items: Task3
     cy.get("#additempanel").find("#newtodo").type("Task3").type("{enter}");
+
+    // 2.13: Drag the item "Task3" to the "tomorrow" part in the scheduled-items
+    cy.get("#todolistpanel #mytodos #todo_2").drag("#tomorrowtitle", {
+      force: true,
+    });
+    // Expected result: The item "Task3" is in the scheduled-items. "Task3" is unchecked
+    cy.get("#tomorrowitemspanel #todo_2")
+      .find("span#mytodo_2")
+      .should("have.text", "Task3");
+    cy.get("#tomorrowitemspanel #todo_2")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+
+    /*
+    2.14: Double-click on the item "Task3" and name it "Item3"
+      AND
+    2.15: Click "save" button
+    */
+    //  Expected result: The item "Task3" is now named "Item3"
+    cy.get("#tomorrowitemspanel #todo_2").dblclick();
+    cy.get("#tomorrowitemspanel #todo_2")
+      .find("input[type=text]")
+      .type("Item2");
+    cy.get("#tomorrowitemspanel #todo_2").find("input[type=submit]").click();
   });
 
   it("3- Nominal case: The user can delete list items ", () => {
