@@ -553,6 +553,13 @@ describe("Feature: Create, rename, delete and drag items", () => {
     cy.get("#doneitemspanel #mydonetodos #todo_0")
       .find("span#mytodo_0")
       .should("have.text", "!@#$%^&*()");
+
+    // 10.3: Drag the item "!@#$%^&*()" to scheduled-items
+    cy.get("#doneitemspanel #todo_0").drag("#tomorrowtitle", { force: true });
+    // Expected result: Scheduled-items has no problem with special characters
+    cy.get("#tomorrowitemspanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "!@#$%^&*()");
   });
 
   it("11- Edge case: The user cannot name the item using only spaces", () => {
