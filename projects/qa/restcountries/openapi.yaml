@@ -19,18 +19,27 @@ paths:
                 items:
                   $ref: "#/components/schemas/country"
 
-  /country:
+  /name/{name}:
     get:
-      summary: Retrieve information about a specific country.
+      summary: Search for a country by name
+      parameters:
+        - in: path
+          name: name
+          schema:
+            type: string
+          required: true
+          description: The search term. This endpoint performs a case-insensitive substring match against the common name, official name, or altSpellings of the country.
       responses:
         "200":
-          description: A specific country
+          description: The are countries that matched the search term.
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: "#/components/schemas/country"
+        "404":
+          description: No country matched the name.
 
 components:
   schemas:
