@@ -503,6 +503,13 @@ describe("Feature: Create, rename, delete and drag items", () => {
     cy.get("#doneitemspanel #mydonetodos #todo_0")
       .find("span#mytodo_0")
       .should("have.text", "جملة جديدة");
+
+    // 8.3: Drag the item "جملة جديد" to scheduled-items
+    cy.get("#doneitemspanel #todo_0").drag("#tomorrowtitle", { force: true });
+    // Expected result: Scheduled-items has no problem with arabic
+    cy.get("#tomorrowitemspanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "جملة جديدة");
   });
 
   it("9- Edge case: The user can name the item in chinese", () => {
