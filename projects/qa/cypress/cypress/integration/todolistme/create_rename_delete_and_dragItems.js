@@ -528,6 +528,13 @@ describe("Feature: Create, rename, delete and drag items", () => {
     cy.get("#doneitemspanel #mydonetodos #todo_0")
       .find("span#mytodo_0")
       .should("have.text", "新句子");
+
+    // 9.3: Drag the item "新句子" to scheduled-items
+    cy.get("#doneitemspanel #todo_0").drag("#tomorrowtitle", { force: true });
+    // Expected result: Scheduled-items has no problem with chinese
+    cy.get("#tomorrowitemspanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "新句子");
   });
 
   it("10- Edge case: The user can name the item using special characters", () => {
