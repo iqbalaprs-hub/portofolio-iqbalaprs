@@ -267,6 +267,59 @@ describe("Feature: Create, rename, delete and drag items", () => {
     cy.get("#doneitemspanel #mydonetodos #todo_3")
       .find('input[type="checkbox"]')
       .should("be.checked");
+
+    // 3.9: Drag the item "Task5" to the "tomorrow" part in the scheduled-items
+    cy.get("#todolistpanel #todo_4").drag("#tomorrowtitle", { force: true });
+    // Expected result: The item "Task5" is in the scheduled-items. "Task5" is unchecked
+    cy.get("#tomorrowpanel #tomorrowitemspanel #todo_4")
+      .find("span#mytodo_4")
+      .should("have.text", "Task5");
+    cy.get("#tomorrowpanel #tomorrowitemspanel #todo_4")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+
+    // 3.10: Hover over "Task1" and click the red X
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find("img.delete")
+      .invoke("css", "visibility", "visible")
+      .click();
+    // Expected result: "Task1" is deleted. Since to-do-items is empty, the default sentence "No items. Why not add one below." appears
+    // Checking if the to-do-items is empty
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 0);
+    // If it is empty, it should have the text "No items. Why not add one below."
+    cy.get("div#todolistpanel p.notodos")
+      .should("exist")
+      .contains("No items. Why not add one below.");
+
+    // 3.11: Hover over "Task2" and click the red X
+    cy.get("#doneitemspanel li span")
+      .filter(':contains("Task2")')
+      .parent("li")
+      .find("img.delete")
+      .invoke("css", "visibility", "visible")
+      .click();
+    // Expected result: "Task2" is deleted
+    cy.get("#doneitemspanel li span")
+      .filter(':contains("Task2")')
+      .should("not.exist");
+
+    // 3.12: Click the trash icon in the done-items
+    cy.get("#belowdoneitemspanel").find("a.purge img").click();
+    // Expected result: The items "Task3" and "Task4" are deleted. Since done-items is empty, the default sentence "No done items." appears
+    // Checking if the done-items is empty
+    cy.get("#doneitemspanel #mydonetodos").find("li").should("have.length", 0);
+    // If it is empty, it should have the text "No done items."
+    cy.get("#doneitemspanel p.notodos")
+      .should("exist")
+      .contains("No done items.");
+
+    // 3.13: Hover over "task5" and click the red X
+    cy.get("#tomorrowitemspanel li span")
+      .filter(':contains("Task5")')
+      .parent("li")
+      .find("img.delete")
+      .invoke("css", "visibility", "visible")
+      .click();
   });
 
   it("4- Nominal case: The user can move the items between to-do-items, done-items and scheduled-items, either by dragging, checking and unchecking", () => {
