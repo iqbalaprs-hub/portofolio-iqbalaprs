@@ -612,5 +612,24 @@ describe("Feature: Create, rename, delete and drag items", () => {
     cy.get("#doneitemspanel #mydonetodos #todo_2")
       .find("span#mytodo_2")
       .should("have.text", "Task1");
+
+    // 12.7: Drag first item "Task1" to scheduled-items
+    cy.get("#doneitemspanel #todo_2").drag("#tomorrowtitle", { force: true });
+
+    // 12.8: Drag second item "Task1" to scheduled-items
+    cy.get("#doneitemspanel #todo_1").drag("#tomorrowtitle", { force: true });
+
+    // 12.9: Drag third item "Task1" to scheduled-items
+    cy.get("#doneitemspanel #todo_0").drag("#tomorrowtitle", { force: true });
+    // Expected result: We have similar 3 items named "Task1" in scheduled-items
+    cy.get("#tomorrowitemspanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "Task1");
+    cy.get("#tomorrowitemspanel #todo_1")
+      .find("span#mytodo_1")
+      .should("have.text", "Task1");
+    cy.get("#tomorrowitemspanel #todo_2")
+      .find("span#mytodo_2")
+      .should("have.text", "Task1");
   });
 });
