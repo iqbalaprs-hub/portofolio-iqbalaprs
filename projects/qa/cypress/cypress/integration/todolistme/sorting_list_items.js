@@ -323,4 +323,130 @@ describe("Feature: Sorting list items", () => {
       .find("span")
       .should("have.text", "e");
   });
+
+  it("3- Nominal case: The user can sort items in the done-items alphabetically", () => {
+    // 3.1: Create new item in the To-do-list: e
+    cy.get("#additempanel").find("#newtodo").type("e").type("{enter}");
+
+    // 3.2: Create new item in the To-do-list: b
+    cy.get("#additempanel").find("#newtodo").type("b").type("{enter}");
+
+    // 3.3: Create new item in the To-do-list: k
+    cy.get("#additempanel").find("#newtodo").type("k").type("{enter}");
+
+    // 3.4: Create new item in the To-do-list: a
+    cy.get("#additempanel").find("#newtodo").type("a").type("{enter}");
+
+    // 3.5: Create new item in the To-do-list: i
+    cy.get("#additempanel").find("#newtodo").type("i").type("{enter}");
+
+    // 3.6: Create new item in the To-do-list: x
+    cy.get("#additempanel").find("#newtodo").type("x").type("{enter}");
+    // Expected result: The order of the items for top to bottom is: e, b, k, a, i, x)
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 6);
+    cy.get("#todolistpanel #mytodos li")
+      .eq(0)
+      .find("span")
+      .should("have.text", "e");
+    cy.get("#todolistpanel #mytodos li")
+      .eq(1)
+      .find("span")
+      .should("have.text", "b");
+    cy.get("#todolistpanel #mytodos li")
+      .eq(2)
+      .find("span")
+      .should("have.text", "k");
+    cy.get("#todolistpanel #mytodos li")
+      .eq(3)
+      .find("span")
+      .should("have.text", "a");
+    cy.get("#todolistpanel #mytodos li")
+      .eq(4)
+      .find("span")
+      .should("have.text", "i");
+    cy.get("#todolistpanel #mytodos li")
+      .eq(5)
+      .find("span")
+      .should("have.text", "x");
+
+    // 3.7: Ckeck all items (from bottom to top)
+    cy.get("#todolistpanel #mytodos li")
+      .eq(5)
+      .find('input[type="checkbox"]')
+      .click();
+    cy.get("#todolistpanel #mytodos li")
+      .eq(4)
+      .find('input[type="checkbox"]')
+      .click();
+    cy.get("#todolistpanel #mytodos li")
+      .eq(3)
+      .find('input[type="checkbox"]')
+      .click();
+    cy.get("#todolistpanel #mytodos li")
+      .eq(2)
+      .find('input[type="checkbox"]')
+      .click();
+    cy.get("#todolistpanel #mytodos li")
+      .eq(1)
+      .find('input[type="checkbox"]')
+      .click();
+    cy.get("#todolistpanel #mytodos li")
+      .eq(0)
+      .find('input[type="checkbox"]')
+      .click();
+    // Expected result: All items moved from To-do-items to Done-items. The order of the items for top to bottom is: e, b, k, a, i, x)
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(0)
+      .find("span")
+      .should("have.text", "e");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(1)
+      .find("span")
+      .should("have.text", "b");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(2)
+      .find("span")
+      .should("have.text", "k");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(3)
+      .find("span")
+      .should("have.text", "a");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(4)
+      .find("span")
+      .should("have.text", "i");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(5)
+      .find("span")
+      .should("have.text", "x");
+
+    // 3.8: Choose the option "Alphabetical" to sort the items alphabetically
+    cy.get("#sortselect").find("#sort1").click();
+    cy.wait(1000);
+    // Expected result: The items are sorted alphabetically (from top to bottom: a, b, e, i, k, x)
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(0)
+      .find("span")
+      .should("have.text", "a");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(1)
+      .find("span")
+      .should("have.text", "b");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(2)
+      .find("span")
+      .should("have.text", "e");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(3)
+      .find("span")
+      .should("have.text", "i");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(4)
+      .find("span")
+      .should("have.text", "k");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(5)
+      .find("span")
+      .should("have.text", "x");
+  });
 });
