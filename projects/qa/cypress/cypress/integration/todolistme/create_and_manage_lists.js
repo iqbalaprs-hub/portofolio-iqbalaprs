@@ -969,11 +969,34 @@ describe("Feature: Create and manage lists", () => {
 
   it("16- Nominal case: The user can reorder the list by dragging it", () => {
     // 16.1: Drag the list "Test todo list" which is in the bottom to be at the top of all the lists
-    cy.get("#lists #mylist_5").drag("#lists ul.categorycontainer #mylist_0");
-    cy.wait(2000);
-    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(0)")
-      .find(".listname")
-      .should("have.text", "Test todo list ");
+    cy.get("#lists #container_0 #mylist_5").drag(
+      "#lists #container_0 #mylist_0",
+      {
+        source: { x: 0, y: 0 }, // applies to the element being dragged
+        target: { position: "top" }, // applies to the drop target
+        force: true, // applied to both the source and target element
+      }
+    );
+    // Expected result: The list "Test todo list" is at the top of all lists
+    cy.get("#lists #container_0")
+      .find("li")
+      .first()
+      .should("have.attr", "id", "mylist_5");
+
+    // 16.2: Drag the list "Test todo list" down in order for the list to be the third from the top
+    cy.get("#lists #container_0 #mylist_5").drag(
+      "#lists #container_0 #mylist_1",
+      {
+        source: { x: 0, y: 0 }, // applies to the element being dragged
+        target: { position: "bottom" }, // applies to the drop target
+        force: true, // applied to both the source and target element
+      }
+    );
+    // Expected result: The list "Test todo list" is in the third place from the top of the lists
+    cy.get("#lists #container_0")
+      .find("li")
+      .eq(2)
+      .should("have.attr", "id", "mylist_5");
   });
 
   it("17- Nominal case: The user can see number of to-do and done items next to the name of the list without looking at the content of the list", () => {
