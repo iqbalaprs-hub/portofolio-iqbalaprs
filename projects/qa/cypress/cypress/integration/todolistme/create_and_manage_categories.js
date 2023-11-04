@@ -514,17 +514,23 @@ describe("Feature: create and manage categories", () => {
       .parent("li")
       .drag("#mycategory_1 ul.categorycontainer");
 
+    cy.wait(1000);
+
     // 13.8: Drag the list "Programming" into the category "Home"
     cy.get("li span.listname")
       .filter(':contains("Programming")')
       .parent("li")
       .drag("#mycategory_1 ul.categorycontainer");
 
+    cy.wait(1000);
+
     // 13.9: Drag the list "Cook" into the category "Home"
     cy.get("li span.listname")
       .filter(':contains("Cook")')
       .parent("li")
       .drag("#mycategory_1 ul.categorycontainer");
+
+    cy.wait(1000);
 
     // 13.10: Drag the list "Lunch break" into the category "Home"
     cy.get("li span.listname")
