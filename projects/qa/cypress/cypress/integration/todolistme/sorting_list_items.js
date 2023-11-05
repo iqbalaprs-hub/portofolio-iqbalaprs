@@ -496,4 +496,87 @@ describe("Feature: Sorting list items", () => {
       .find("span")
       .should("have.css", "color", "rgb(221, 221, 221)");
   });
+
+  it("6- Nominal case: The user can sort items in the schedule-items by dragging items", () => {
+    // 6.1: Create new item in the To-do-list: e
+    cy.get("#additempanel").find("#newtodo").type("e").type("{enter}");
+
+    // 6.2: Create new item in the To-do-list: b
+    cy.get("#additempanel").find("#newtodo").type("b").type("{enter}");
+
+    // 6.3: Create new item in the To-do-list: k
+    cy.get("#additempanel").find("#newtodo").type("k").type("{enter}");
+
+    // 6.4: Create new item in the To-do-list: a
+    cy.get("#additempanel").find("#newtodo").type("a").type("{enter}");
+
+    // 6.5: Create new item in the To-do-list: i
+    cy.get("#additempanel").find("#newtodo").type("i").type("{enter}");
+
+    // 6.6: Create new item in the To-do-list: x
+    cy.get("#additempanel").find("#newtodo").type("x").type("{enter}");
+    // Expected result: The order of the items for top to bottom is: e, b, k, a, i, x)
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 6);
+    cy.get("#todolistpanel #mytodos li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["e", "b", "k", "a", "i", "x"];
+
+      // Use a negation assertion to check that the order is not equal
+      expect(textArray).to.deep.equal(expectedOrder);
+    });
+
+    // 6.7: Drag all items to the "tomorrow" part of the scheduled-items (from bottom to top)
+    cy.get("#tomorrowpanel #tomorrowheader img#tomorrowarrow").click();
+    cy.get("#todolistpanel #mytodos li")
+      .eq(5)
+      .drag("#tomorrowtitle", { force: true });
+    cy.get("#todolistpanel #mytodos li")
+      .eq(4)
+      .drag("#tomorrowtitle", { force: true });
+    cy.get("#todolistpanel #mytodos li")
+      .eq(3)
+      .drag("#tomorrowtitle", { force: true });
+    cy.get("#todolistpanel #mytodos li")
+      .eq(2)
+      .drag("#tomorrowtitle", { force: true });
+    cy.get("#todolistpanel #mytodos li")
+      .eq(1)
+      .drag("#tomorrowtitle", { force: true });
+    cy.get("#todolistpanel #mytodos li")
+      .eq(0)
+      .drag("#tomorrowtitle", { force: true });
+    // Expected result: All items moved from To-do-items to scheduled-items. The order of the items for top to bottom is: e, b, k, a, i, x)
+    cy.get("#tomorrowitemspanel ul li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["e", "b", "k", "a", "i", "x"];
+
+      // Use a negation assertion to check that the order is not equal
+      expect(textArray).to.deep.equal(expectedOrder);
+    });
+
+    // 6.8: Drag the item "e" to be the bottom item in the scheduled-items
+    cy.get("#tomorrowitemspanel #todo_0").drag("#tomorrowitemspanel #todo_5", {
+      source: { x: 0, y: 0 }, // applies to the element being dragged
+      target: { position: "bottom" }, // applies to the drop target
+      force: true, // applied to both the source and target element
+    });
+    // Expected result: The item "e" is the last item in the scheduled-items (from top to bottom:  b, k, a, i, x, e)
+    cy.get("#tomorrowitemspanel ul li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      cy.wait(1000);
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["b", "k", "a", "i", "x", "e"];
+
+      // Use a negation assertion to check that the order is not equal
+      expect(textArray).to.deep.equal(expectedOrder);
+    });
+  });
 });
