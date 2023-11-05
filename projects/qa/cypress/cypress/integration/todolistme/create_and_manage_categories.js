@@ -866,4 +866,59 @@ describe("Feature: create and manage categories", () => {
       "showcategory"
     );
   });
+
+  it("18- Nominal case: The user can drag a list to be outside a category", () => {
+    // 18.1: Click on the icon "add new category" and name it "Home"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Home");
+
+    // 18.2: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 18.3: Click on the icon "add new category" and name it "Work"
+    cy.get("img.adddivider").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Work");
+
+    // 18.4: Click on the "save" button
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 18.5: Create new list by clicking the icon "add new list" and name it "Lunch break"
+    cy.get("#addlist").click();
+    cy.get("#lists #inplaceeditor").find("#updatebox").type("Lunch break");
+    cy.get("#inplaceeditor").find('input[type="submit"]').click();
+
+    // 18.6: Drag the list "Lunch break" into the category "Home"
+    cy.get("li span.listname")
+      .filter(':contains("Lunch break")')
+      .parent("li")
+      .drag("#mycategory_1 #container_1");
+
+    // 18.7: Drag the list "Lunch break" from category "Home" to category "Work"
+    cy.get("#mycategory_1 #mylist_6").drag("#mycategory_2 #container_2");
+    // Expected result: The list "Lunch break" is in the category "Work"
+    // Check category "Home" is empty
+    cy.get("#mycategory_1 #container_1").find("li").should("have.length", 0);
+    // Check category "Work" has one list item
+    cy.get("#mycategory_2 #container_2").find("li").should("have.length", 1);
+    cy.get("#mycategory_2 #container_2 li:eq(0)")
+      .find("span.listname")
+      .should("have.text", "Lunch break ");
+
+    // 18.8: Drag the list "Lunch break" from category "Work" to be at the top of the lists with no category
+    cy.get("#mycategory_2 #container_2 li:eq(0)").drag(
+      "#lists #container_0 #mylist_0",
+      {
+        source: { x: 150, y: 0 }, // applies to the element being dragged
+        target: { position: "top" }, // applies to the drop target
+        force: true, // applied to both the source and target element
+      }
+    );
+    // Expected result: The list "Lunch break" is outside the category "Work" and at the top of the lists with no category
+    // Check category "Work" is empty
+    cy.get("#mycategory_2 #container_2").find("li").should("have.length", 0);
+    // Check first list is "Lunch break"
+    cy.get("#lists #container_0 li:eq(0)")
+      .find("span.listname")
+      .should("have.text", "Lunch break ");
+  });
 });
