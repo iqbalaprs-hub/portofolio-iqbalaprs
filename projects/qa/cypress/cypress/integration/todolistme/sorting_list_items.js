@@ -644,7 +644,7 @@ describe("Feature: Sorting list items", () => {
     });
 
     // 7.8: Choose the option "Alphabetical" to sort the items alphabetically
-    cy.get("#sortselect").find("#sort2").click();
+    cy.get("#sortselect").find("#sort1").click();
     // Expected result: The items are sorted alphabetically (from top to bottom: a, b, e, i, k, x)
     cy.get("#tomorrowitemspanel ul li").should(($lis) => {
       // Convert the list items into an array of their text content
@@ -655,6 +655,84 @@ describe("Feature: Sorting list items", () => {
 
       // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
+    });
+  });
+
+  it("8- Nominal case: The user can sort items in the schedule-items randomly", () => {
+    // 8.1: Create new item in the To-do-list: e
+    cy.get("#additempanel").find("#newtodo").type("e").type("{enter}");
+
+    // 8.2: Create new item in the To-do-list: b
+    cy.get("#additempanel").find("#newtodo").type("b").type("{enter}");
+
+    // 8.3: Create new item in the To-do-list: k
+    cy.get("#additempanel").find("#newtodo").type("k").type("{enter}");
+
+    // 8.4: Create new item in the To-do-list: a
+    cy.get("#additempanel").find("#newtodo").type("a").type("{enter}");
+
+    // 8.5: Create new item in the To-do-list: i
+    cy.get("#additempanel").find("#newtodo").type("i").type("{enter}");
+
+    // 8.6: Create new item in the To-do-list: x
+    cy.get("#additempanel").find("#newtodo").type("x").type("{enter}");
+    // Expected result: The order of the items for top to bottom is: e, b, k, a, i, x)
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 6);
+    cy.get("#todolistpanel #mytodos li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["e", "b", "k", "a", "i", "x"];
+
+      // Use a negation assertion to check that the order is not equal
+      expect(textArray).to.deep.equal(expectedOrder);
+    });
+
+    // 8.7: Drag all items to the "tomorrow" part of the scheduled-items (from bottom to top)
+    cy.get("#tomorrowpanel #tomorrowheader img#tomorrowarrow").click();
+    cy.get("#todolistpanel #mytodos li")
+      .eq(5)
+      .drag("#tomorrowtitle", { force: true });
+    cy.get("#todolistpanel #mytodos li")
+      .eq(4)
+      .drag("#tomorrowtitle", { force: true });
+    cy.get("#todolistpanel #mytodos li")
+      .eq(3)
+      .drag("#tomorrowtitle", { force: true });
+    cy.get("#todolistpanel #mytodos li")
+      .eq(2)
+      .drag("#tomorrowtitle", { force: true });
+    cy.get("#todolistpanel #mytodos li")
+      .eq(1)
+      .drag("#tomorrowtitle", { force: true });
+    cy.get("#todolistpanel #mytodos li")
+      .eq(0)
+      .drag("#tomorrowtitle", { force: true });
+    // Expected result: All items moved from To-do-items to scheduled-items. The order of the items for top to bottom is: e, b, k, a, i, x)
+    cy.get("#tomorrowitemspanel ul li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["e", "b", "k", "a", "i", "x"];
+
+      // Use a negation assertion to check that the order is not equal
+      expect(textArray).to.deep.equal(expectedOrder);
+    });
+
+    // 8.8: Choose the option "Random" to sort the items randomly
+    cy.get("#sortselect").find("#sort2").click();
+    // Expected result: The items change their places
+    cy.get("#tomorrowitemspanel ul li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["e", "b", "k", "a", "i", "x"];
+
+      // Use a negation assertion to check that the order is not equal
+      expect(textArray).to.not.deep.equal(expectedOrder);
     });
   });
 });
