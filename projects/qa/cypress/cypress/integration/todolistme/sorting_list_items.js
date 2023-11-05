@@ -399,4 +399,101 @@ describe("Feature: Sorting list items", () => {
       expect(textArray).to.not.deep.equal(expectedOrder);
     });
   });
+
+  it("5- Nominal case: The user can sort items in the done-items by selecting the top 3", () => {
+    // 5.1: Create new item in the To-do-list: e
+    cy.get("#additempanel").find("#newtodo").type("e").type("{enter}");
+
+    // 5.2: Create new item in the To-do-list: b
+    cy.get("#additempanel").find("#newtodo").type("b").type("{enter}");
+
+    // 5.3: Create new item in the To-do-list: k
+    cy.get("#additempanel").find("#newtodo").type("k").type("{enter}");
+
+    // 5.4: Create new item in the To-do-list: a
+    cy.get("#additempanel").find("#newtodo").type("a").type("{enter}");
+
+    // 5.5: Create new item in the To-do-list: i
+    cy.get("#additempanel").find("#newtodo").type("i").type("{enter}");
+
+    // 5.6: Create new item in the To-do-list: x
+    cy.get("#additempanel").find("#newtodo").type("x").type("{enter}");
+    // Expected result: The order of the items for top to bottom is: e, b, k, a, i, x)
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 6);
+    cy.get("#todolistpanel #mytodos li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["e", "b", "k", "a", "i", "x"];
+
+      // Use a negation assertion to check that the order is not equal
+      expect(textArray).to.deep.equal(expectedOrder);
+    });
+
+    // 5.7: Ckeck all items (from bottom to top)
+    cy.get("#todolistpanel #mytodos li")
+      .eq(5)
+      .find('input[type="checkbox"]')
+      .click();
+    cy.get("#todolistpanel #mytodos li")
+      .eq(4)
+      .find('input[type="checkbox"]')
+      .click();
+    cy.get("#todolistpanel #mytodos li")
+      .eq(3)
+      .find('input[type="checkbox"]')
+      .click();
+    cy.get("#todolistpanel #mytodos li")
+      .eq(2)
+      .find('input[type="checkbox"]')
+      .click();
+    cy.get("#todolistpanel #mytodos li")
+      .eq(1)
+      .find('input[type="checkbox"]')
+      .click();
+    cy.get("#todolistpanel #mytodos li")
+      .eq(0)
+      .find('input[type="checkbox"]')
+      .click();
+    // Expected result: All items moved from To-do-items to Done-items. The order of the items for top to bottom is: e, b, k, a, i, x)
+    cy.get("#doneitemspanel #mydonetodos li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["e", "b", "k", "a", "i", "x"];
+
+      // Use a negation assertion to check that the order is not equal
+      expect(textArray).to.deep.equal(expectedOrder);
+    });
+
+    // 5.8: Choose the option "Top3" to select the top 3 items (from top to downward) on the To-do-items
+    cy.get("#sortselect").find("#sort3").click();
+    // Expected result: The top 3 items are colored in black (e,b,k). The other items are colored in light grey (a,i,x)
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(0)
+      .find("span")
+      .should("have.css", "color", "rgb(51, 51, 51)");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(1)
+      .find("span")
+      .should("have.css", "color", "rgb(51, 51, 51)");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(2)
+      .find("span")
+      .should("have.css", "color", "rgb(51, 51, 51)");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(3)
+      .find("span")
+      .should("have.css", "color", "rgb(221, 221, 221)");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(4)
+      .find("span")
+      .should("have.css", "color", "rgb(221, 221, 221)");
+    cy.get("#doneitemspanel #mydonetodos li")
+      .eq(5)
+      .find("span")
+      .should("have.css", "color", "rgb(221, 221, 221)");
+  });
 });
