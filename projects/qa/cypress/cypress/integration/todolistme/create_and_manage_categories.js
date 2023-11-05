@@ -849,10 +849,21 @@ describe("Feature: create and manage categories", () => {
       .find("img.categorycollapsed")
       .invoke("css", "visibility", "visible")
       .click();
+    // Expected result: The lists "Clean" and "Cook" are hidden
+    cy.get("#lists #mycategories li#mycategory_1").should(
+      "have.class",
+      "hidecategory"
+    );
+
     // 17.11: Click on the blue arrow
     cy.get("#mycategories #category_1")
       .find("img.categorycollapsed")
       .invoke("css", "visibility", "visible")
       .click();
+    // Expected result: The lists "Clean and "Cook" are visible again
+    cy.get("#lists #mycategories li#mycategory_1").should(
+      "have.class",
+      "showcategory"
+    );
   });
 });
