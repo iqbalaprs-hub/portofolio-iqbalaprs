@@ -51,7 +51,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -69,7 +68,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["b", "k", "a", "i", "x", "e"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -84,7 +82,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["a", "b", "e", "i", "k", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -112,7 +109,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["b", "k", "a", "i", "x", "e"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -172,7 +168,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -209,7 +204,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -227,7 +221,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["b", "k", "a", "i", "x", "e"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
   });
@@ -259,7 +252,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -296,7 +288,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -312,7 +303,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["a", "b", "e", "i", "k", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
   });
@@ -344,7 +334,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -381,7 +370,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -427,7 +415,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -464,7 +451,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -524,7 +510,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -556,7 +541,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -575,7 +559,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["b", "k", "a", "i", "x", "e"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
   });
@@ -607,7 +590,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -639,7 +621,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -653,7 +634,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["a", "b", "e", "i", "k", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
   });
@@ -685,7 +665,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -717,7 +696,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -763,7 +741,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
@@ -795,7 +772,6 @@ describe("Feature: Sorting list items", () => {
       // Define the expected order
       const expectedOrder = ["e", "b", "k", "a", "i", "x"];
 
-      // Use a negation assertion to check that the order is not equal
       expect(textArray).to.deep.equal(expectedOrder);
     });
 
