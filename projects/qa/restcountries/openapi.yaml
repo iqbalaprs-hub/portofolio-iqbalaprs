@@ -29,6 +29,12 @@ paths:
             type: string
           required: true
           description: The search term. This endpoint performs a case-insensitive substring match against the common name, official name, or altSpellings of the country.
+        - in: query
+          name: fullText
+          schema:
+            type: boolean
+          required: false
+          description: If set to true, the endpoint performs a perfect match against the common name and official name (NOT altSpellings).
       responses:
         "200":
           description: The are countries that matched the search term.
