@@ -47,6 +47,30 @@ paths:
         "404":
           description: No country matched the name.
 
+  /alpha/{code}:
+    get:
+      summary: request a country by its code
+      parameters:
+        - in: path
+          name: code
+          schema:
+            type: string
+          required: true
+          description: The country code. This endpoint performs a case-insensitive perfect match against the country codes which are:cca2, cca3, ccn3 or cioc.
+      responses:
+        "200":
+          description: The country that matched the country code.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/country"
+        "400":
+          description: if the number of characters in the code was less than 2 or greater than 3.
+        "404":
+          description: No country matched the code.
+
 components:
   schemas:
     country:
