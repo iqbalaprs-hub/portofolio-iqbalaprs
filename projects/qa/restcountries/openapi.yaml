@@ -115,6 +115,28 @@ paths:
         "404":
           description: No country matched the currency.
 
+  /demonym/{demonym}:
+    get:
+      summary: search for a country by its demonym
+      parameters:
+        - in: path
+          name: demonym
+          schema:
+            type: string
+          required: true
+          description: The search term. This endpoint performs a case-insensitive substring match against the demonym in any language.
+      responses:
+        "200":
+          description: The country that matched the search term.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/country"
+        "404":
+          description: No country matched the demonym.
+
 components:
   schemas:
     country:
