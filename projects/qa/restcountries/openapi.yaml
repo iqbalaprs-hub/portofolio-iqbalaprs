@@ -159,6 +159,28 @@ paths:
         "404":
           description: No country matched the language.
 
+  /capital/{capital}:
+    get:
+      summary: search for a country by its capital
+      parameters:
+        - in: path
+          name: capital
+          schema:
+            type: string
+          required: true
+          description: The search term. This endpoint performs a case-insensitive substring match against the capital's name.
+      responses:
+        "200":
+          description: There are one or more countries that matched the search term.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/country"
+        "404":
+          description: No country matched the capital.
+
 components:
   schemas:
     country:
