@@ -71,6 +71,28 @@ paths:
         "404":
           description: No country matched the code.
 
+  /alpha:
+    get:
+      summary: request for one or more countries by their code
+      parameters:
+        - in: query
+          name: codes
+          schema:
+            type: string
+          required: true
+          description: The parameter value can have a list of codes separated by comma (?codes={code},{code},{code}). This endpoint performs a case-insensitive perfect match against the country codes which are cca2, cca3, ccn3 or cioc. You can request multiple countries at the same time. Even if there are errors in the codes given, if at least one of the codes is correct, it will not affect the search and will not give you an error response. Even if the code is repeated, it will not affect the search and will not give you an error response.
+      responses:
+        "200":
+          description: At least one code matched the country.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/country"
+        "404":
+          description: No country matched the codes.
+
 components:
   schemas:
     country:
