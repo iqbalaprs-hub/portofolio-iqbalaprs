@@ -93,6 +93,28 @@ paths:
         "404":
           description: No country matched the codes.
 
+  /currency/{currency}:
+    get:
+      summary: search for a country by its currency
+      parameters:
+        - in: path
+          name: currency
+          schema:
+            type: string
+          required: true
+          description: The search term. This endpoint performs a case-insensitive perfect match against the currency code and a lowercase substring match against currency's name. But it does not read the currency's symbol.
+      responses:
+        "200":
+          description: The country that matched the search term.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/country"
+        "404":
+          description: No country matched the currency.
+
 components:
   schemas:
     country:
