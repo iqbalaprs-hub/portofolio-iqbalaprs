@@ -203,6 +203,28 @@ paths:
         "404":
           description: No country matched the region or subregion.
 
+  /subregion/{subregion}:
+    get:
+      summary: search for a country by its subregion
+      parameters:
+        - in: path
+          name: subregion
+          schema:
+            type: string
+          required: true
+          description: The search term. This endpoints performs a case-insensitive substring match against the subregion's name.
+      responses:
+        "200":
+          description: There are one or more countries that matched the search term.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/country"
+        "404":
+          description: No country matched the subregion.
+
 components:
   schemas:
     country:
