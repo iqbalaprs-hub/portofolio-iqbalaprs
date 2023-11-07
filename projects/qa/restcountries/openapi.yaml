@@ -137,6 +137,28 @@ paths:
         "404":
           description: No country matched the demonym.
 
+  /lang/{language}:
+    get:
+      summary: search for a country by its language
+      parameters:
+        - in: path
+          name: language
+          schema:
+            type: string
+          required: true
+          description: The search term. This endpoint performs a case-insensitive perfect match against the language's name and a case-insensitive perfect match against the abbreviation of languages (examples ara for arabic, fra for french, eng for english" ...)
+      responses:
+        "200":
+          description: There are one or more countries that matched the search term.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/country"
+        "404":
+          description: No country matched the language.
+
 components:
   schemas:
     country:
