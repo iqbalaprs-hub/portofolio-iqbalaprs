@@ -92,4 +92,39 @@ describe("Feature: Sorting list items", () => {
       expect(textArray).to.deep.equal(expectedOrder);
     });
   });
+
+  it("3- Nominal case: The user can sort items in the to-do-items randomly", () => {
+    // 3.1: Create new item in the To-do-list: e
+    cy.get("#additempanel").find("#newtodo").type("e").type("{enter}");
+
+    // 3.2: Create new item in the To-do-list: b
+    cy.get("#additempanel").find("#newtodo").type("b").type("{enter}");
+
+    // 3.3: Create new item in the To-do-list: k
+    cy.get("#additempanel").find("#newtodo").type("k").type("{enter}");
+
+    // 3.4: Create new item in the To-do-list: a
+    cy.get("#additempanel").find("#newtodo").type("a").type("{enter}");
+
+    // 3.5: Create new item in the To-do-list: i
+    cy.get("#additempanel").find("#newtodo").type("i").type("{enter}");
+
+    // 3.6: Create new item in the To-do-list: x
+    cy.get("#additempanel").find("#newtodo").type("x").type("{enter}");
+
+    // 3.7: Choose the option "Random" to sort the items randomly
+    cy.get("#sortselect").find("#sort2").click();
+    cy.wait(1000);
+    // Expected result: The items are sorted randomly
+    cy.get("#todolistpanel #mytodos li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["e", "b", "k", "a", "i", "x"];
+
+      // Use a negation assertion to check that the order is not equal
+      expect(textArray).to.not.deep.equal(expectedOrder);
+    });
+  });
 });
