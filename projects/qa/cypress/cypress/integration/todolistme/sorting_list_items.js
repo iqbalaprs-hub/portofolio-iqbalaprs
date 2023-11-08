@@ -58,4 +58,38 @@ describe("Feature: Sorting list items", () => {
       expect(textArray).to.deep.equal(expectedOrder);
     });
   });
+
+  it("2- Nominal case: The user can sort items in the to-do-items alphabetically", () => {
+    // 2.1: Create new item in the To-do-list: e
+    cy.get("#additempanel").find("#newtodo").type("e").type("{enter}");
+
+    // 2.2: Create new item in the To-do-list: b
+    cy.get("#additempanel").find("#newtodo").type("b").type("{enter}");
+
+    // 2.3: Create new item in the To-do-list: k
+    cy.get("#additempanel").find("#newtodo").type("k").type("{enter}");
+
+    // 2.4: Create new item in the To-do-list: a
+    cy.get("#additempanel").find("#newtodo").type("a").type("{enter}");
+
+    // 2.5: Create new item in the To-do-list: i
+    cy.get("#additempanel").find("#newtodo").type("i").type("{enter}");
+
+    // 2.6: Create new item in the To-do-list: x
+    cy.get("#additempanel").find("#newtodo").type("x").type("{enter}");
+
+    // 2.7: Choose the option "Alphabetical" to sort the items alphabetically
+    cy.get("#sortselect").find("#sort1").click();
+    cy.wait(1000);
+    // Expected result: The items are sorted alphabetically (from top to bottom: a, b, e, i, k, x)
+    cy.get("#todolistpanel #mytodos li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["a", "b", "e", "i", "k", "x"];
+
+      expect(textArray).to.deep.equal(expectedOrder);
+    });
+  });
 });
