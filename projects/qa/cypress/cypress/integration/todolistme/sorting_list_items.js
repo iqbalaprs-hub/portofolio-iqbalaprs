@@ -220,4 +220,52 @@ describe("Feature: Sorting list items", () => {
       expect(textArray).to.deep.equal(expectedOrder);
     });
   });
+
+  it("5- Nominal case: The user can select the top 3 items in to-do-items", () => {
+    // 5.1: Create new item in the To-do-list: e
+    cy.get("#additempanel").find("#newtodo").type("e").type("{enter}");
+
+    // 5.2: Create new item in the To-do-list: b
+    cy.get("#additempanel").find("#newtodo").type("b").type("{enter}");
+
+    // 5.3: Create new item in the To-do-list: k
+    cy.get("#additempanel").find("#newtodo").type("k").type("{enter}");
+
+    // 5.4: Create new item in the To-do-list: a
+    cy.get("#additempanel").find("#newtodo").type("a").type("{enter}");
+
+    // 5.5: Create new item in the To-do-list: i
+    cy.get("#additempanel").find("#newtodo").type("i").type("{enter}");
+
+    // 5.6: Create new item in the To-do-list: x
+    cy.get("#additempanel").find("#newtodo").type("x").type("{enter}");
+
+    // 5.7: Choose the option "Top3" to select the top 3 items (from top to downward) on the To-do-items
+    cy.get("#sortselect").find("#sort3").click();
+    // Expected result: The top 3 items are colored in black (e,b,k). The other items are colored in light grey (a,i,x)
+    cy.get("#todolistpanel #mytodos li")
+      .eq(0)
+      .find("span")
+      .should("have.css", "color", "rgb(51, 51, 51)");
+    cy.get("#todolistpanel #mytodos li")
+      .eq(1)
+      .find("span")
+      .should("have.css", "color", "rgb(51, 51, 51)");
+    cy.get("#todolistpanel #mytodos li")
+      .eq(2)
+      .find("span")
+      .should("have.css", "color", "rgb(51, 51, 51)");
+    cy.get("#todolistpanel #mytodos li")
+      .eq(3)
+      .find("span")
+      .should("have.css", "color", "rgb(221, 221, 221)");
+    cy.get("#todolistpanel #mytodos li")
+      .eq(4)
+      .find("span")
+      .should("have.css", "color", "rgb(221, 221, 221)");
+    cy.get("#todolistpanel #mytodos li")
+      .eq(5)
+      .find("span")
+      .should("have.css", "color", "rgb(221, 221, 221)");
+  });
 });
