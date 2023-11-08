@@ -44,7 +44,7 @@ describe("Feature: Sorting list items", () => {
     cy.get("#additempanel").find("#newtodo").type("x").type("{enter}");
 
     // 1.7: Drag the item "e" to be the bottom item in the To-do-items
-    // Exxpected result: The item "e" is the last item in the To-do-items (from top to bottom:  b, k, a, i, x, e)
+    // Expected result: The item "e" is the last item in the To-do-items (from top to bottom:  b, k, a, i, x, e)
     cy.get("#todolistpanel #mytodos #todo_0").drag(
       "#todolistpanel #mytodos #todo_5"
     );
@@ -125,6 +125,99 @@ describe("Feature: Sorting list items", () => {
 
       // Use a negation assertion to check that the order is not equal
       expect(textArray).to.not.deep.equal(expectedOrder);
+    });
+  });
+
+  it("4- Nominal case: The user can return the order of the items in to-do-items to normal (dragging items is also considered part of the normal order)", () => {
+    // 4.1: Create new item in the To-do-list: e
+    cy.get("#additempanel").find("#newtodo").type("e").type("{enter}");
+
+    // 4.2: Create new item in the To-do-list: b
+    cy.get("#additempanel").find("#newtodo").type("b").type("{enter}");
+
+    // 4.3: Create new item in the To-do-list: k
+    cy.get("#additempanel").find("#newtodo").type("k").type("{enter}");
+
+    // 4.4: Create new item in the To-do-list: a
+    cy.get("#additempanel").find("#newtodo").type("a").type("{enter}");
+
+    // 4.5: Create new item in the To-do-list: i
+    cy.get("#additempanel").find("#newtodo").type("i").type("{enter}");
+
+    // 4.6: Create new item in the To-do-list: x
+    cy.get("#additempanel").find("#newtodo").type("x").type("{enter}");
+
+    // 4.7: Choose the option "Random" to sort the items randomly
+    cy.get("#sortselect").find("#sort2").click();
+    cy.wait(1000);
+    // Expected result: The items are sorted randomly
+    cy.get("#todolistpanel #mytodos li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["e", "b", "k", "a", "i", "x"];
+
+      // Use a negation assertion to check that the order is not equal
+      expect(textArray).to.not.deep.equal(expectedOrder);
+    });
+
+    // 4.8: Choose the option "Normal" to sort the items
+    cy.get("#sortselect").find("#sort0").click();
+    cy.wait(1000);
+    // Expected result: The items are sorted as they were originally  (from top to bottom: e, b, k, a, i, x)
+    cy.get("#todolistpanel #mytodos li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["e", "b", "k", "a", "i", "x"];
+
+      expect(textArray).to.deep.equal(expectedOrder);
+    });
+
+    // 4.9: Drag the item "e" to be the bottom item in the To-do-items
+    // Expected result: The item "e" is the last item in the To-do-items (from top to bottom:  b, k, a, i, x, e)
+    cy.get("#todolistpanel #mytodos #todo_0").drag(
+      "#todolistpanel #mytodos #todo_5"
+    );
+    cy.get("#todolistpanel #mytodos li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["b", "k", "a", "i", "x", "e"];
+
+      expect(textArray).to.deep.equal(expectedOrder);
+    });
+
+    // 4.10: Choose the option "Random" to sort the items randomly
+    cy.get("#sortselect").find("#sort2").click();
+    cy.wait(1000);
+    // Expected result: The items are sorted randomly
+    cy.get("#todolistpanel #mytodos li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["b", "k", "a", "i", "x", "e"];
+
+      // Use a negation assertion to check that the order is not equal
+      expect(textArray).to.not.deep.equal(expectedOrder);
+    });
+
+    // 4.11: Choose the option "Normal" to sort the items
+    cy.get("#sortselect").find("#sort0").click();
+    cy.wait(1000);
+    // Expected result: The items are sorted as they were before step 4.10  (from top to bottom: b, k, a, i, x, e)
+    cy.get("#todolistpanel #mytodos li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["b", "k", "a", "i", "x", "e"];
+
+      expect(textArray).to.deep.equal(expectedOrder);
     });
   });
 });
