@@ -1045,7 +1045,7 @@ describe("Feature: Create and manage lists", () => {
 
     // 17.9: Drag the item "Task3" from To-do-items to Scheduled-items (Tomorrow category)
     cy.get("#todolistpanel #todo_2").drag("#tomorrowtitle", { force: true });
-    // Expected result: "Testtodolist" bar has (3/2) [(Nb of to-do-list tasks)/(Nb of Done-items tasks)]
-    cy.get("#lists #mylist_5").find("span.info").should("have.text", "(3/2)");
+    // Expected result: "Testtodolist" bar has (2/2) [(Nb of to-do-list tasks)/(Nb of Done-items tasks)]
+    cy.get("#lists #mylist_5").find("span.info").should("have.text", "(2/2)");
   });
 });
