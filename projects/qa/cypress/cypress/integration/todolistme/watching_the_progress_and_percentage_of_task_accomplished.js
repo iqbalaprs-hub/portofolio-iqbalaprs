@@ -789,4 +789,274 @@ describe("Watching the progress and percentage of task accomplished", () => {
       );
     });
   });
+
+  it("5- Nominal case: Progress line from changing items between Done-items and Scheduled-items", () => {
+    // 5.1: Create new item in the To-do-items: Task1
+    cy.get("#additempanel").find("#newtodo").type("Task1").type("{enter}");
+    cy.wait(1000);
+    /*
+    Expected result:
+    Progress line in To-do-items: width is 0%
+    Progress line in Done-items: width is 0%
+    */
+    cy.get("#todoprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there is only 1 item in todolist and no item in donelist, the width of the progress bar in todolist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    cy.get("#doneprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there is only 1 item in todolist and no item in donelist, the width of the progress bar in donelist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    // 5.2: Check item "Task1"
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find('input[type="checkbox"]')
+      .click();
+    cy.wait(1000);
+    /*
+    Expected result:
+    Task1 is now in the Done-items
+    Progress line in To-do-items: width is 100% 
+    Progress line in Done-items: width is 100% 
+    */
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "Task1");
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find('input[type="checkbox"]')
+      .should("be.checked");
+    cy.wait(1000);
+    cy.get("#todoprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there is no item in todolist and 1 item in donelist, the width of the progress bar in todolist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    cy.get("#doneprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there is no item in todolist and 1 item in donelist, the width of the progress bar in donelist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    // 5.3: Create new item in the To-do-items: Task2
+    cy.get("#additempanel").find("#newtodo").type("Task2").type("{enter}");
+    cy.wait(1000);
+    /*
+    Expected result:
+    Progress line in To-do-items: width is 50% 
+    Progress line in Done-items: width is 50% 
+    */
+    cy.get("#todoprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there is 1 item in todolist and 1 item in donelist, the width of the progress bar in todolist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    cy.get("#doneprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there is 1 item in todolist and 1 item in donelist, the width of the progress bar in donelist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    // 5.4: Create new item in the To-do-items: Task3
+    cy.get("#additempanel").find("#newtodo").type("Task3").type("{enter}");
+    cy.wait(1000);
+    /*
+    Expected result:
+    Progress line in To-do-items: width is 33% 
+    Progress line in Done-items: width is 33% 
+    */
+    cy.get("#todoprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there are 2 items in todolist and 1 item in donelist, the width of the progress bar in todolist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    cy.get("#doneprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there are 2 items in todolist and 1 item in donelist, the width of the progress bar in donelist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    // 5.5: Create new item in the To-do-items: Task4
+    cy.get("#additempanel").find("#newtodo").type("Task4").type("{enter}");
+    cy.wait(1000);
+    /*
+    Expected result:
+    Progress line in To-do-items: width is 25% 
+    Progress line in Done-items: width is 25% 
+    */
+    cy.get("#todoprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there are 3 items in todolist and 1 item in donelist, the width of the progress bar in todolist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    cy.get("#doneprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there are 3 items in todolist and 1 item in donelist, the width of the progress bar in donelist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    // 5.6: Create new item in the To-do-items: Task5
+    cy.get("#additempanel").find("#newtodo").type("Task5").type("{enter}");
+    cy.wait(1000);
+    /*
+    Expected result:
+    Progress line in To-do-items: width is 20% 
+    Progress line in Done-items: width is 20% 
+    */
+    cy.get("#todoprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there are 4 items in todolist and 1 item in donelist, the width of the progress bar in todolist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    cy.get("#doneprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there are 4 items in todolist and 1 item in donelist, the width of the progress bar in donelist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    // 5.7: Check item "Task2"
+    cy.get("#todolistpanel #mytodos #todo_1")
+      .find('input[type="checkbox"]')
+      .click();
+    cy.wait(1000);
+    /*
+    Task2 is now in the Done-items
+    Progress line in To-do-items: width is 40% 
+    Progress line in Done-items: width is 40% 
+    */
+    cy.get("#doneitemspanel #mydonetodos #todo_1")
+      .find("span#mytodo_1")
+      .should("have.text", "Task2");
+    cy.get("#doneitemspanel #mydonetodos #todo_1")
+      .find('input[type="checkbox"]')
+      .should("be.checked");
+    cy.wait(1000);
+    cy.get("#todoprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there are 3 items in todolist and 2 items in donelist, the width of the progress bar in todolist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    cy.get("#doneprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there are 3 items in todolist and 2 items in donelist, the width of the progress bar in donelist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    // 5.8: Drag the item "Task2" from done-items to Scheduled-items
+    cy.get("#doneitemspanel #todo_1").drag("#tomorrowtitle", { force: true });
+    cy.wait(1000);
+    /*
+    Expected result:
+    Task2 is now in the Scheduled-items
+    Progress line in To-do-items: width is 25% 
+    Progress line in Done-items: width is 25% 
+    */
+    cy.get("#tomorrowitemspanel #todo_1")
+      .find("span#mytodo_1")
+      .should("have.text", "Task2");
+    cy.get("#tomorrowitemspanel #todo_1")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+    cy.wait(1000);
+
+    cy.get("#todoprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there are 3 items in todolist and 1 item in donelist, the width of the progress bar in todolist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    cy.get("#doneprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there are 3 items in todolist and 1 item in donelist, the width of the progress bar in donelist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+  });
 });
