@@ -86,4 +86,78 @@ describe("Watching the progress and percentage of task accomplished", () => {
       );
     });
   });
+
+  it("2- Nominal case: Progress line at 100% with items changing between To-do-items and Done-items", () => {
+    // 2.1: Create new item in the To-do-items: Task1
+    cy.get("#additempanel").find("#newtodo").type("Task1").type("{enter}");
+    /*
+    Progress line in To-do-items: width is 0%
+
+    Progress line in Done-items: width is 0%
+    */
+    cy.get("#todoprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there is only 1 item in todolist and no item in donelist, the width of the progress bar in todolist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    cy.get("#doneprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there is only 1 item in todolist and no item in donelist, the width of the progress bar in donelist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    // 2.2: Check item "Task1"
+    cy.get("#todolistpanel #mytodos #todo_0")
+      .find('input[type="checkbox"]')
+      .click();
+    /*
+    Task1 is now in the Done-items
+
+    Progress line in To-do-items: width is 100% 
+
+    Progress line in Done-items: width is 100% 
+
+      */
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "Task1");
+    cy.get("#doneitemspanel #mydonetodos #todo_0")
+      .find('input[type="checkbox"]')
+      .should("be.checked");
+
+    cy.wait(2000);
+
+    cy.get("#todoprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there is no item in todolist and 1 item in donelist, the width of the progress bar in todolist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+
+    cy.get("#doneprogress").then(($progressBar) => {
+      const width = parseFloat($progressBar.css("width"));
+      const fullWidth = parseFloat($progressBar.parent().css("width")) + 10;
+      const percentageWidth = (width / fullWidth) * 100;
+      cy.log(
+        `Since there is no item in todolist and 1 item in donelist, the width of the progress bar in donelist is: ${width.toFixed(
+          2
+        )}px/${fullWidth.toFixed(2)}px, ${percentageWidth.toFixed(2)}%`
+      );
+    });
+  });
 });
