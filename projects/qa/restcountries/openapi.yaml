@@ -37,7 +37,7 @@ paths:
           description: If set to true, the endpoint performs a perfect match against the common name and official name (NOT altSpellings).
       responses:
         "200":
-          description: The are countries that matched the search term.
+          description: There are countries that matched the search term.
           content:
             application/json:
               schema:
@@ -224,6 +224,28 @@ paths:
                   $ref: "#/components/schemas/country"
         "404":
           description: No country matched the subregion.
+
+  /translation/{translation}:
+    get:
+      summary: search for a country by its name in any language
+      parameters:
+        - in: path
+          name: translation
+          schema:
+            type: string
+          required: true
+          description: The search term. This endpoint performs a case-insensitive substring match against the country's translated name in any languages. This endpoints does not read from the "name" section and does not read the language abbreviation in the "Translations" section.
+      responses:
+        "200":
+          description: There are one or more countries that matched the search term.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/country"
+        "404":
+          description: No country matched the name in this specific language.
 
 components:
   schemas:
