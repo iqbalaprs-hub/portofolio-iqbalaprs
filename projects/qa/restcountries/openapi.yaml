@@ -9,6 +9,8 @@ paths:
   /all:
     get:
       summary: Retrieve information about all countries.
+      parameters:
+        - $ref: "#/components/parameters/fieldQueryParameter"
       responses:
         "200":
           description: A list of countries
@@ -23,6 +25,7 @@ paths:
     get:
       summary: Search for a country by name
       parameters:
+        - $ref: "#/components/parameters/fieldQueryParameter"
         - in: path
           name: name
           schema:
@@ -51,6 +54,7 @@ paths:
     get:
       summary: request a country by its code
       parameters:
+        - $ref: "#/components/parameters/fieldQueryParameter"
         - in: path
           name: code
           schema:
@@ -75,6 +79,7 @@ paths:
     get:
       summary: request for one or more countries by their code
       parameters:
+        - $ref: "#/components/parameters/fieldQueryParameter"
         - in: query
           name: codes
           schema:
@@ -97,6 +102,7 @@ paths:
     get:
       summary: search for a country by its currency
       parameters:
+        - $ref: "#/components/parameters/fieldQueryParameter"
         - in: path
           name: currency
           schema:
@@ -119,6 +125,7 @@ paths:
     get:
       summary: search for a country by its demonym
       parameters:
+        - $ref: "#/components/parameters/fieldQueryParameter"
         - in: path
           name: demonym
           schema:
@@ -141,6 +148,7 @@ paths:
     get:
       summary: search for a country by its language
       parameters:
+        - $ref: "#/components/parameters/fieldQueryParameter"
         - in: path
           name: language
           schema:
@@ -163,6 +171,7 @@ paths:
     get:
       summary: search for a country by its capital
       parameters:
+        - $ref: "#/components/parameters/fieldQueryParameter"
         - in: path
           name: capital
           schema:
@@ -185,6 +194,7 @@ paths:
     get:
       summary: search for a country by its region or subregion
       parameters:
+        - $ref: "#/components/parameters/fieldQueryParameter"
         - in: path
           name: region
           schema:
@@ -207,6 +217,7 @@ paths:
     get:
       summary: search for a country by its subregion
       parameters:
+        - $ref: "#/components/parameters/fieldQueryParameter"
         - in: path
           name: subregion
           schema:
@@ -229,6 +240,7 @@ paths:
     get:
       summary: search for a country by its name in any language
       parameters:
+        - $ref: "#/components/parameters/fieldQueryParameter"
         - in: path
           name: translation
           schema:
@@ -248,6 +260,14 @@ paths:
           description: No country matched the name in this specific language.
 
 components:
+  parameters:
+    fieldQueryParameter:
+      in: query
+      name: fields
+      schema:
+        type: string
+      required: false
+      description: A comma-separated list of properties (case-sensitive). When this query parameter is present, the returned objects contain only the properties that are listed.
   schemas:
     country:
       type: "object"
