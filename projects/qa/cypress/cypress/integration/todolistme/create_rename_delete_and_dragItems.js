@@ -174,10 +174,11 @@ describe("Feature: Create, rename, delete and drag items", () => {
     2.15: Click "save" button
     */
     //  Expected result: The item "Task3" is now named "Item3"
-    cy.get("#tomorrowitemspanel #todo_2").dblclick();
+    cy.get("#tomorrowitemspanel #todo_2").dblclick({ force: true });
+    cy.wait(1000);
     cy.get("#tomorrowitemspanel #todo_2")
       .find("input[type=text]")
-      .type("Item2");
+      .type("Item3");
     cy.get("#tomorrowitemspanel #todo_2").find("input[type=submit]").click();
   });
 
@@ -319,7 +320,7 @@ describe("Feature: Create, rename, delete and drag items", () => {
       .parent("li")
       .find("img.delete")
       .invoke("css", "visibility", "visible")
-      .click();
+      .click({ force: true });
   });
 
   it("4- Nominal case: The user can move the items between to-do-items, done-items and scheduled-items, either by dragging, checking and unchecking", () => {
@@ -389,6 +390,158 @@ describe("Feature: Create, rename, delete and drag items", () => {
     cy.get("#todolistpanel #mytodos #todo_3").drag(
       "#doneitemspanel #mydonetodos"
     );
+    /*
+    The item "Task4" is in the done-items
+    "Task4" is checked
+    NB: I had to do the assert this way because the ID of the items are changing when dragged
+     */
+    cy.get("#doneitemspanel #mydonetodos").find("li").should("have.length", 2);
+    cy.get("#doneitemspanel #mydonetodos li:eq(0)")
+      .find("span")
+      .should("have.text", "Task4");
+    cy.get("#doneitemspanel #mydonetodos li:eq(0)")
+      .find('input[type="checkbox"]')
+      .should("be.checked");
+    cy.get("#doneitemspanel #mydonetodos li:eq(1)")
+      .find("span")
+      .should("have.text", "Task5");
+    cy.get("#doneitemspanel #mydonetodos li:eq(1)")
+      .find('input[type="checkbox"]')
+      .should("be.checked");
+
+    // 4.8: Drag the item "Task3" to the "tomorrow" part in the scheduled-items
+    cy.get("#todolistpanel #mytodos #todo_2").drag("#tomorrowtitle", {
+      force: true,
+    });
+
+    // 4.9: Drag the item "Task2" to the "tomorrow" part in the scheduled-items
+    cy.get("#todolistpanel #mytodos #todo_1").drag("#tomorrowtitle", {
+      force: true,
+    });
+
+    // 4.10: Drag the item "Task1" to the "tomorrow" part in the scheduled-items
+    cy.get("#todolistpanel #mytodos #todo_0").drag("#tomorrowtitle", {
+      force: true,
+    });
+
+    cy.wait(1000);
+    cy.get("#tomorrowpanel img#tomorrowarrow").click();
+    /*
+    Expected result:
+    The item "Task1" is in the scheduled-items
+    "Task1" is unchecked
+
+    The item "Task2" is in the scheduled-items
+    "Task2" is unchecked
+
+    The item "Task3" is in the scheduled-items
+    "Task3" is unchecked
+
+    NB: I had to do the assert this way because the ID of the items are changing when dragged
+    */
+    cy.get("#tomorrowpanel #tomorrowitemspanel li:eq(0)")
+      .find("span")
+      .should("have.text", "Task1");
+    cy.get("#tomorrowpanel #tomorrowitemspanel li:eq(0)")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+    cy.get("#tomorrowpanel #tomorrowitemspanel li:eq(1)")
+      .find("span")
+      .should("have.text", "Task2");
+    cy.get("#tomorrowpanel #tomorrowitemspanel li:eq(1)")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+    cy.get("#tomorrowpanel #tomorrowitemspanel li:eq(2)")
+      .find("span")
+      .should("have.text", "Task3");
+    cy.get("#tomorrowpanel #tomorrowitemspanel li:eq(2)")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+
+    // 4.11: Check the item "Task3"
+    cy.get("#tomorrowpanel #tomorrowitemspanel li:eq(2)")
+      .find('input[type="checkbox"]')
+      .click();
+
+    // 4.12: Drag the item "Task2" to the done-items
+    cy.get("#tomorrowpanel #tomorrowitemspanel li:eq(1)").drag(
+      "#doneitemspanel #mydonetodos li:eq(0)",
+      {
+        source: { x: 0, y: 0 }, // applies to the element being dragged
+        target: { position: "top" }, // applies to the drop target
+        force: true, // applied to both the source and target element
+      }
+    );
+
+    // 4.13: Uncheck the item "Task5"
+    cy.get("#doneitemspanel #mydonetodos li:eq(3)")
+      .find('input[type="checkbox"]')
+      .click();
+
+    cy.wait(1000);
+
+    // 4.14: Drag the item "Task1" to the to-do-items
+    cy.get("#tomorrowpanel #tomorrowitemspanel li:eq(0)").drag(
+      "#todolistpanel #mytodos li:eq(0)",
+      {
+        source: { x: 150, y: 0 }, // applies to the element being dragged
+        target: { position: "bottom" }, // applies to the drop target
+        force: true, // applied to both the source and target element
+      }
+    );
+
+    /*
+    Expected result:
+    The item "Task1" is in the to-do-items
+    "Task1" is unchecked
+
+    The item "Task5" is in the to-do-items
+    "Task1" is unchecked
+
+    The item "Task2" is in the done-items
+    "Task2" is checked
+
+    The item "Task3" is in the done-items
+    "Task3" is checked
+
+    The item "Task4" is in the done-items
+    "Task3" is checked
+
+    NB: I had to do the assert this way because the ID of the items are changing when dragged
+    */
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 2);
+    cy.get("#todolistpanel #mytodos li:eq(0)")
+      .find("span")
+      .should("have.text", "Task5");
+    cy.get("#todolistpanel #mytodos li:eq(0)")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+    cy.get("#todolistpanel #mytodos li:eq(1)")
+      .find("span")
+      .should("have.text", "Task1");
+    cy.get("#todolistpanel #mytodos li:eq(1)")
+      .find('input[type="checkbox"]')
+      .should("not.be.checked");
+
+    cy.get("#doneitemspanel #mydonetodos").find("li").should("have.length", 3);
+    cy.get("#doneitemspanel #mydonetodos li:eq(0)")
+      .find("span")
+      .should("have.text", "Task2");
+    cy.get("#doneitemspanel #mydonetodos li:eq(0)")
+      .find('input[type="checkbox"]')
+      .should("be.checked");
+    cy.get("#doneitemspanel #mydonetodos li:eq(1)")
+      .find("span")
+      .should("have.text", "Task3");
+    cy.get("#doneitemspanel #mydonetodos li:eq(1)")
+      .find('input[type="checkbox"]')
+      .should("be.checked");
+    cy.get("#doneitemspanel #mydonetodos li:eq(2)")
+      .find("span")
+      .should("have.text", "Task4");
+    cy.get("#doneitemspanel #mydonetodos li:eq(2)")
+      .find('input[type="checkbox"]')
+      .should("be.checked");
   });
 
   it("5- Edge case: The user cannot create an item without a name", () => {
@@ -481,7 +634,6 @@ describe("Feature: Create, rename, delete and drag items", () => {
       .find("input[type=button]")
       .click();
     // Expected result: The item's name returns to its original name which is "Task1"
-    // PS: Since we showed before that we cannot rename in the scheduled-items, it is pointless to try it in the scheduled-items
     cy.get("#doneitemspanel #mydonetodos #todo_0")
       .find("span#mytodo_0")
       .should("have.text", "Task1");
