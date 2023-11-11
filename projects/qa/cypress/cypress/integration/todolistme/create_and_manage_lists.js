@@ -76,6 +76,8 @@ describe("Feature: Create and manage lists", () => {
     for (let i = 0; i < 5; i++) {
       cy.tab();
     }
+    cy.wait(1000);
+
     /*
     You went from the list "Today's tasks" to the list "Test todo list" :
       - "Test todo list" should have a green background, while the other lists have not
@@ -88,11 +90,12 @@ describe("Feature: Create and manage lists", () => {
     );
     cy.get("#mytitle").should("have.text", "Test todo list");
 
-    cy.wait(3000);
+    cy.wait(1000);
 
     // 2.3: Click on the TAB button 1 time
     // Expected result: Since "Test todo list" was the last list, it returned to the beginning of the lists which is "Today's tasks"
     cy.tab();
+    cy.wait(1000);
     /*
     Expected result: 
     Since "Test todo list" was the last list, it returned to the beginning of the lists which is "Today's tasks":
@@ -105,6 +108,12 @@ describe("Feature: Create and manage lists", () => {
       "rgb(207, 244, 220)"
     );
     cy.get("#mytitle").should("have.text", "Today's Tasks");
+
+    cy.get("#lists #container_0 #mylist_1").should(
+      "have.css",
+      "background-color",
+      "rgb(0, 0, 0)"
+    );
   });
 
   it("3- Nominal case: The user can create a list ", () => {
@@ -652,10 +661,14 @@ describe("Feature: Create and manage lists", () => {
   });
 
   it("7- Nominal case: The user can delete a list ", () => {
+    // 7.1: Expected result: There are 6 files
+    cy.get("#listmanager #lists #container_0")
+      .find("li")
+      .should("have.length", 6);
     /*
-    7.1: Hover over the list "Test todo list"
+    7.2: Hover over the list "Test todo list"
       AND
-    7.2: Click on the red X
+    7.3: Click on the red X
     */
     cy.get("li span.listname")
       .filter(':contains("Test todo list")')
