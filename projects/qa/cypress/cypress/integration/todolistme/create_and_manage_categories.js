@@ -144,7 +144,7 @@ describe("Feature: create and manage categories", () => {
       .should("have.text", "Work");
   });
 
-  it("4- Edge case: The user can rename the category with arabic name", () => {
+  it("4- Edge case: The user can name the category with arabic name", () => {
     // 4.1: Click on the icon "add new category" and name it "فئة جديدة"
     cy.get("img.adddivider").click();
     cy.get("#lists #inplaceeditor").find("#updatebox").type("فئة جديدة");
@@ -160,7 +160,7 @@ describe("Feature: create and manage categories", () => {
       .should("have.text", "فئة جديدة");
   });
 
-  it("5- Edge case: The user can rename the category with chinese name", () => {
+  it("5- Edge case: The user can name the category with chinese name", () => {
     // 5.1: Click on the icon "add new category" and name it "新类别"
     cy.get("img.adddivider").click();
     cy.get("#lists #inplaceeditor").find("#updatebox").type("新类别");
@@ -176,7 +176,7 @@ describe("Feature: create and manage categories", () => {
       .should("have.text", "新类别");
   });
 
-  it("6- Edge case: The user can rename the category using special characters", () => {
+  it("6- Edge case: The user can name the category using special characters", () => {
     // 6.1: Click on the icon "add new category" and name it "!@#$%^&*()"
     cy.get("img.adddivider").click();
     cy.get("#lists #inplaceeditor").find("#updatebox").type("!@#$%^&*()");
@@ -395,6 +395,16 @@ describe("Feature: create and manage categories", () => {
       .filter(':contains("Germany")')
       .parent("li")
       .drag("#mycategory_3 ul.categorycontainer");
+    cy.wait(1000);
+
+    cy.get("#lists #mycategories #mycategory_3").drag(
+      "#lists #mycategories #mycategory_1",
+      {
+        source: { x: 150, y: 0 }, // applies to the element being dragged
+        target: { position: "top" }, // applies to the drop target
+        force: true, // applied to both the source and target element
+      }
+    );
   });
 
   it("12- Nominal case: The user can insert lists into the  categories", () => {
@@ -466,12 +476,18 @@ describe("Feature: create and manage categories", () => {
       - Programming
       - Lunch break
     */
+    cy.get("#mycategory_1 ul.categorycontainer")
+      .find("li")
+      .should("have.length", 2);
     cy.get("#container_1 li:eq(0)")
       .find("span.listname")
       .should("have.text", "Clean ");
     cy.get("#container_1 li:eq(1)")
       .find("span.listname")
       .should("have.text", "Cook ");
+    cy.get("#mycategory_2 ul.categorycontainer")
+      .find("li")
+      .should("have.length", 2);
     cy.get("#container_2 li:eq(0)")
       .find("span.listname")
       .should("have.text", "Programming ");
@@ -537,6 +553,28 @@ describe("Feature: create and manage categories", () => {
       .filter(':contains("Lunch break")')
       .parent("li")
       .drag("#mycategory_1 ul.categorycontainer");
+
+    // 13.11: Drag the list "Clean" to be the last list in the category "Home"
+    cy.get("#mylist_6").drag("#mylist_7", {
+      source: { x: 150, y: 0 }, // applies to the element being dragged
+      target: { position: "bottom" }, // applies to the drop target
+      force: true, // applied to both the source and target element
+    });
+
+    // Expected result: The list "Clean" is the last list in the category "Home"
+    cy.wait(1000);
+    cy.get("#mycategory_1 #container_1 li:eq(0)")
+      .find("span.listname")
+      .should("have.text", "Cook ");
+    cy.get("#mycategory_1 #container_1 li:eq(1)")
+      .find("span.listname")
+      .should("have.text", "Lunch break ");
+    cy.get("#mycategory_1 #container_1 li:eq(2)")
+      .find("span.listname")
+      .should("have.text", "Programming ");
+    cy.get("#mycategory_1 #container_1 li:eq(3)")
+      .find("span.listname")
+      .should("have.text", "Clean ");
   });
 
   it("14- Nominal case: The user can copy the lists inside the  categories", () => {
@@ -695,6 +733,14 @@ describe("Feature: create and manage categories", () => {
       .filter(':contains("Clean")')
       .parent("li")
       .drag("#mycategory_1 ul.categorycontainer");
+
+    // Expected result: The category "Home" has one list "Clean"
+    cy.get("#mycategory_1 ul.categorycontainer")
+      .find("li")
+      .should("have.length", 1);
+    cy.get("#container_1 li:eq(0)")
+      .find("span.listname")
+      .should("have.text", "Clean ");
 
     /*
     15.5: Hover over the list "Clean"
