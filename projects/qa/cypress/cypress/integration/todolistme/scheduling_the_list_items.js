@@ -233,7 +233,7 @@ describe("My Second Test Suite", () => {
       .find("span")
       .should("have.text", "Task2");
 
-    // 3.6: Drag the item "Task3" to the Scheduled-items (later category; Select 10 days after today)
+    // 3.6: Drag the item "Task3" to the Scheduled-items (later category; Select 5 days after today)
     cy.get("#todolistpanel #todo_2").drag("#latertitle", { force: true });
     cy.get("table.ui-datepicker-calendar")
       .find("td.ui-datepicker-current-day")
@@ -270,5 +270,141 @@ describe("My Second Test Suite", () => {
     cy.get("#tomorrowitemspanel ul li:eq(2)")
       .find("span")
       .should("have.text", "Task3");
+  });
+
+  it("4- Nominal case: The user can mix various date (both tomorrow and Later part) in the schedule-items", () => {
+    // 4.1: Create new item in the To-do-items: Task1
+    cy.get("#additempanel").find("#newtodo").type("Task1").type("{enter}");
+
+    // 4.2: Create new item in the To-do-items: Task2
+    cy.get("#additempanel").find("#newtodo").type("Task2").type("{enter}");
+
+    // 4.3: Create new item in the To-do-items: Task3
+    cy.get("#additempanel").find("#newtodo").type("Task3").type("{enter}");
+
+    // 4.4: Create new item in the To-do-items: Task4
+    cy.get("#additempanel").find("#newtodo").type("Task4").type("{enter}");
+
+    // 4.5: Drag the item "Task1" to the Scheduled-items (Tomorrow category)
+    cy.get("#todolistpanel #todo_0").drag("#tomorrowtitle", { force: true });
+
+    /*
+    Expected result:
+    Next to title "Tomorrow": (1)
+
+    Inside the Scheduled-items:
+      - item "Task1"  is under tomorrow's date
+    */
+    cy.get("#tomorrowpanel #tomorrowtitle ")
+      .find("span#tomorrow_number")
+      .should("have.text", "( 1 )");
+    cy.get("#tomorrowitemspanel").find("li").should("have.length", 1);
+    cy.get("#tomorrowitemspanel ul li:eq(0)")
+      .find("span")
+      .should("have.text", "Task1");
+
+    // 4.6: Drag the item "Task2" to the Scheduled-items (Later category) and choose the date to be tomorrow
+    cy.get("#todolistpanel #todo_1").drag("#latertitle", { force: true });
+    cy.get("table.ui-datepicker-calendar").find("a.ui-state-active").click();
+    /*
+    Expected result:
+    Next to title "Tomorrow": (2)
+
+    Inside the Scheduled-items:
+      - items "Task1" and "Task2"  are under tomorrow's date
+    */
+    cy.get("#tomorrowpanel #tomorrowtitle ")
+      .find("span#tomorrow_number")
+      .should("have.text", "( 2 )");
+    cy.get("#tomorrowitemspanel").find("li").should("have.length", 2);
+    cy.get("#tomorrowitemspanel ul li:eq(0)")
+      .find("span")
+      .should("have.text", "Task1");
+    cy.get("#tomorrowitemspanel ul li:eq(1)")
+      .find("span")
+      .should("have.text", "Task2");
+
+    // 4.7: Drag the item "Task3" to the Scheduled-items (later category; Select 2 days after today)
+    cy.get("#todolistpanel #todo_2").drag("#latertitle", { force: true });
+    cy.get("table.ui-datepicker-calendar")
+      .find("td.ui-datepicker-current-day")
+      .next("td")
+      .should("exist")
+      .then((nextTd) => {
+        cy.wrap(nextTd).find("a").click();
+      });
+    /*
+    
+    Next to title "Tomorrow": (2)
+    Next to title "Later": (1)
+
+    Inside the Scheduled-items, 
+      - items "Task1" and "Task2"  are under tomorrow's date
+      - Item "Task3" under 2 days after today's date
+
+    The dates are automatically sorted from newest on top to latest on bottom
+    */
+    cy.get("#tomorrowpanel #tomorrowtitle ")
+      .find("span#tomorrow_number")
+      .should("have.text", "( 2 )");
+    cy.get("#tomorrowpanel #latertitle")
+      .find("span#later_number")
+      .eq(0)
+      .should("have.text", "( 1 )");
+    cy.get("#tomorrowitemspanel").find("li").should("have.length", 3);
+    cy.get("#tomorrowitemspanel ul li:eq(0)")
+      .find("span")
+      .should("have.text", "Task1");
+    cy.get("#tomorrowitemspanel ul li:eq(1)")
+      .find("span")
+      .should("have.text", "Task2");
+    cy.get("#tomorrowitemspanel ul li:eq(2)")
+      .find("span")
+      .should("have.text", "Task3");
+
+    // 4.8: Drag the item "Task4" to the Scheduled-items (later category; Select 5 days after today)
+    cy.get("#todolistpanel #todo_3").drag("#latertitle", { force: true });
+    cy.get("table.ui-datepicker-calendar")
+      .find("td.ui-datepicker-current-day")
+      .nextAll("td")
+      .eq(1)
+      .should("exist")
+      .then((nextTd) => {
+        cy.wrap(nextTd).find("a").click();
+      });
+
+    /*
+    Expected result:
+    
+    Next to title "Tomorrow": (2)
+    Next to title "Later": (2)
+
+    Inside the Scheduled-items, 
+      - items "Task1" and "Task2"  are under tomorrow's date
+      - Item "Task3" under 2 days after today's date
+      - Item "Task4" under 5 days after today's date
+
+    The dates are automatically sorted from newest on top to latest on bottom
+    */
+    cy.get("#tomorrowpanel #tomorrowtitle ")
+      .find("span#tomorrow_number")
+      .should("have.text", "( 2 )");
+    cy.get("#tomorrowpanel #latertitle")
+      .find("span#later_number")
+      .eq(0)
+      .should("have.text", "( 2 )");
+    cy.get("#tomorrowitemspanel").find("li").should("have.length", 4);
+    cy.get("#tomorrowitemspanel ul li:eq(0)")
+      .find("span")
+      .should("have.text", "Task1");
+    cy.get("#tomorrowitemspanel ul li:eq(1)")
+      .find("span")
+      .should("have.text", "Task2");
+    cy.get("#tomorrowitemspanel ul li:eq(2)")
+      .find("span")
+      .should("have.text", "Task3");
+    cy.get("#tomorrowitemspanel ul li:eq(3)")
+      .find("span")
+      .should("have.text", "Task4");
   });
 });
