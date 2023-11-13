@@ -407,4 +407,46 @@ describe("My Second Test Suite", () => {
       .find("span")
       .should("have.text", "Task4");
   });
+
+  it("5- Nominal case: The user can hide the list items in the scheduled-items", () => {
+    // 5.1: Create new item in the To-do-items: Task1
+    cy.get("#additempanel").find("#newtodo").type("Task1").type("{enter}");
+
+    // 5.2: Create new item in the To-do-items: Task2
+    cy.get("#additempanel").find("#newtodo").type("Task2").type("{enter}");
+
+    // 5.3: Create new item in the To-do-items: Task3
+    cy.get("#additempanel").find("#newtodo").type("Task3").type("{enter}");
+
+    // 5.4: Create new item in the To-do-items: Task4
+    cy.get("#additempanel").find("#newtodo").type("Task4").type("{enter}");
+
+    // 5.5: Drag the item "Task1" to the Scheduled-items (Tomorrow category)
+    cy.get("#todolistpanel #todo_0").drag("#tomorrowtitle", { force: true });
+
+    // 5.6: Drag the item "Task2" to the Scheduled-items (Tomorrow category)
+    cy.get("#todolistpanel #todo_1").drag("#tomorrowtitle", { force: true });
+
+    // 5.7: Drag the item "Task3" to the Scheduled-items (Tomorrow category)
+    cy.get("#todolistpanel #todo_2").drag("#tomorrowtitle", { force: true });
+
+    // 5.8: Drag the item "Task4" to the Scheduled-items (Tomorrow category)
+    cy.get("#todolistpanel #todo_3").drag("#tomorrowtitle", { force: true });
+
+    // 5.9: Click on blue arrow
+    cy.get("#tomorrowpanel #tomorrowheader").find("img#tomorrowarrow").click();
+    cy.get("#tomorrowpanel #tomorrowheader")
+      .find("img#tomorrowarrow")
+      .should("have.attr", "src", "https://todolistme.net/images/arrow_up.png");
+
+    // 5.10: Click on blue arrow
+    cy.get("#tomorrowpanel #tomorrowheader").find("img#tomorrowarrow").click();
+    cy.get("#tomorrowpanel #tomorrowheader")
+      .find("img#tomorrowarrow")
+      .should(
+        "have.attr",
+        "src",
+        "https://todolistme.net/images/arrow_down.png"
+      );
+  });
 });
