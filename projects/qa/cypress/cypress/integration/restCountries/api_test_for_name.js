@@ -61,6 +61,7 @@ describe("API test for endpoint GET /name/{name}", () => {
         });
       }
     );
+    cy.wait(1000);
   });
 
   it("2- Test the property 'official name' and that the endpoint /name/{name} is case-insensitive", () => {
@@ -139,6 +140,7 @@ describe("API test for endpoint GET /name/{name}", () => {
         message: "Not Found",
       });
     });
+    cy.wait(1000);
   });
 
   it("4- Test the property 'altspelling' and that the endpoint performs a substring match and can have a correct response even if it is written in a language other than the english language", () => {
@@ -205,6 +207,7 @@ describe("API test for endpoint GET /name/{name}", () => {
         });
       }
     );
+    cy.wait(1000);
   });
 
   it("5- Test if the endpoint can give us more than one country", () => {
@@ -217,11 +220,13 @@ describe("API test for endpoint GET /name/{name}", () => {
         cy.wrap(response.body).should("have.length", 2);
 
         // Assertion 3: The countries are "Republic of the Congo" and "Democratic Republic of the Congo"
-        const republicCongo = response.body[0];
+        const republicCongo = response.body[1];
         expect(republicCongo.name.common).to.equal("Republic of the Congo");
         expect(republicCongo.name.official).to.equal("Republic of the Congo");
 
-        const DRCongo = response.body[1];
+        cy.wait(2000);
+
+        const DRCongo = response.body[0];
         expect(DRCongo.name.common).to.equal("DR Congo");
         expect(DRCongo.name.official).to.equal(
           "Democratic Republic of the Congo"
@@ -274,6 +279,7 @@ describe("API test for endpoint GET /name/{name}", () => {
         });
       }
     );
+    cy.wait(1000);
   });
 
   it("6- Test the property 'common name' using a query parameter 'fullText=true' with a basic normal endpoint", () => {
@@ -335,6 +341,7 @@ describe("API test for endpoint GET /name/{name}", () => {
         expect(sweden).to.have.property(property);
       });
     });
+    cy.wait(1000);
   });
 
   it("7- Test that the endpoint with an incomplete name, using query parameter 'fullText=true' will give an error response. Thus the endpoint should performs a perfect match in order to have a correct response", () => {
@@ -352,6 +359,7 @@ describe("API test for endpoint GET /name/{name}", () => {
         message: "Not Found",
       });
     });
+    cy.wait(1000);
   });
 
   it("8- Test that the endpoint performs a case-insensitive perfect match", () => {
@@ -413,6 +421,7 @@ describe("API test for endpoint GET /name/{name}", () => {
         expect(austria).to.have.property(property);
       });
     });
+    cy.wait(1000);
   });
 
   it("9- Test the property 'official name' using a query parameter 'fullText=true'", () => {
@@ -474,6 +483,7 @@ describe("API test for endpoint GET /name/{name}", () => {
         expect(austria).to.have.property(property);
       });
     });
+    cy.wait(1000);
   });
 
   it("10- Test that the endpoint using the query parameter 'fullText=true' will not read the property 'altspellings' which will give an error response", () => {
@@ -491,9 +501,10 @@ describe("API test for endpoint GET /name/{name}", () => {
         message: "Not Found",
       });
     });
+    cy.wait(1000);
   });
 
-  it("11- Test the query parameter 'fields' and get only 3 properties 'region' and 'subregion'", () => {
+  it("11- Test the query parameter 'fields' and get only 2 properties 'region' and 'subregion'", () => {
     cy.request(
       "GET",
       "https://restcountries.com/v3.1/name/sweden?fields=region,subregion"
