@@ -196,7 +196,6 @@ describe("API test for endpoint GET /region/{region}", () => {
               7- Greenland
           */
       response.body.forEach((country) => {
-        // Assert that the country has a "region" property equal to "Oceania"
         expect(country).to.have.property("subregion").to.equal("North America");
 
         // Access the different properties
