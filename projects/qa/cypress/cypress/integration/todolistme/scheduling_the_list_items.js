@@ -320,4 +320,98 @@ describe("Scheduling the list items", () => {
         "https://todolistme.net/images/arrow_down.png"
       );
   });
+
+  it("6bis- Nominal case: The item scheduled for after-tomorrow which were in Later part becomes in Tomorrow part after 1 day is passed  🛠️", () => {
+    // 6bis.1: Create new item in the To-do-items: TaskforTomorrow
+    cy.get("#additempanel")
+      .find("#newtodo")
+      .type("TaskforTomorrow")
+      .type("{enter}");
+
+    // 6bis.2: Drag the item "TaskforTomorrow" to the Scheduled-items (Tomorrow category)
+    cy.get("#todolistpanel #todo_0").drag("#tomorrowtitle", { force: true });
+    /*
+    Expected result:
+    Next to title "Tomorrow": (1)
+
+    Inside the Scheduled-items:
+      - There's a section with title : the title is tomorrow's date & Item  "TaskforTomorrow"  is just under the title
+  
+    */
+    cy.get("#tomorrowpanel #tomorrowtitle ")
+      .find("span#tomorrow_number")
+      .should("have.text", "( 1 )");
+    cy.get("#tomorrowitemspanel").find("li").should("have.length", 1);
+    cy.get("#tomorrowitemspanel ul li:eq(0)")
+      .find("span")
+      .should("have.text", "TaskforTomorrow");
+    cy.wait(1000);
+
+    // 6bis.3: Change the timestamp in the local storage so that "TaskforTomorrow" which is an item for tomorrow will become an item for to-do-items🛠️
+
+    /*
+    cy.window().then((win) => { ... });: This Cypress command gets the window object of the application. The window object represents the browser window and provides access to properties like localStorage.
+    */
+    cy.window().then((win) => {
+      cy.log("I am here");
+
+      /*
+      localStorageKey: Specifies the key used to store data in local storage. Replace it with the actual key used by the application.
+      localStorageData: Retrieves the data from local storage using the specified key.
+      ASK: I TRIED TO REPLACE "your-local-storage-key" BY "productivityunit", BUT IT DIDNT WORK.
+      */
+      const localStorageKey = "productivityunit"; // Replace with the actual key
+      const localStorageData = win.localStorage.getItem(localStorageKey);
+
+      // Checks if there is data in local storage. If data exists, proceed with the modifications.
+      if (localStorageData) {
+        // Parse JSON data
+        /*
+        Local Storage Stores Strings: Local storage in web browsers is designed to store key-value pairs as strings. When you save data to local storage, it gets converted to a string representation, even if it's originally an object or another data type.
+  
+        JSON.parse() Converts String to Object: In JavaScript, the JSON.parse() function is used to parse a JSON-formatted string and convert it into a JavaScript object. This is necessary because JavaScript objects allow you to interact with the data in a structured way, accessing properties and modifying values.
+  
+        Structured Data Manipulation: Once you have the data as a JavaScript object (in this case, jsonData), you can easily navigate its structure, access specific properties, and make modifications. This is crucial when you want to update values within the data structure, such as changing timestamps or modifying other properties.
+  
+        In the context of your Cypress test script:
+  
+        Retrieve Data: You retrieve the data from local storage, which gives you a string (localStorageData).
+  
+        Convert to Object: The JSON.parse() step then converts this string into a JavaScript object (jsonData), making it easy to work with and manipulate the data in a structured manner.
+  
+        Update and Save: After making any necessary changes to the object, you can convert it back to a JSON-formatted string using JSON.stringify() and save it back to local storage. This step is important for persisting the changes you've made during the test.
+  
+        In summary, JSON.parse() is a crucial step to convert the string representation of your stored JSON data into a usable JavaScript object within your Cypress test script.
+        */
+        const jsonData = JSON.parse(localStorageData);
+        cy.wait(1000);
+
+        // Locates the "Test todo list" and "TaskforTomorrow" items within the parsed JSON data
+        const testTodoList = jsonData.listmanager.lists.find(
+          (list) => list.name === "Test%20todo%20list"
+        );
+
+        cy.log(JSON.stringify(testTodoList));
+        cy.wait(1000);
+        const taskForTomorrow = testTodoList.todos.find(
+          (todo) => todo.name === "TaskforTomorrow"
+        );
+        cy.log(JSON.stringify(taskForTomorrow));
+
+        // If "TaskforTomorrow" is found, updates the "dateadded" and "tomorrow" timestamps.
+        if (taskForTomorrow) {
+          // Update the "dateadded" timestamp
+          taskForTomorrow.dateadded = taskForTomorrow.dateadded - 86400000;
+          taskForTomorrow.tomorrow = taskForTomorrow.tomorrow - ?????;
+
+          // Stringify and update local storage
+          // Converts the modified JavaScript object back to a JSON string (updatedData) and updates the data in local storage with the new string.
+          const updatedData = JSON.stringify(jsonData);
+          win.localStorage.setItem(localStorageKey, updatedData);
+        }
+      }
+    });
+    // Optionally, you can reload the page to reflect the changes
+    cy.reload();
+  });
 });
