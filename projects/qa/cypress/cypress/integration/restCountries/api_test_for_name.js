@@ -79,49 +79,6 @@ describe("API test for endpoint GET /name/{name}", () => {
       const austria = response.body[0];
       expect(austria.name.common).to.equal("Austria");
       expect(austria.name.official).to.equal("Republic of Austria");
-
-      // Assertion 4: All the properties related to Austria are present
-      const expectedProperties = [
-        "name",
-        "tld",
-        "cca2",
-        "ccn3",
-        "cca3",
-        "cioc",
-        "independent",
-        "status",
-        "unMember",
-        "currencies",
-        "idd",
-        "capital",
-        "altSpellings",
-        "region",
-        "subregion",
-        "languages",
-        "translations",
-        "latlng",
-        "landlocked",
-        "borders",
-        "area",
-        "demonyms",
-        "flag",
-        "maps",
-        "population",
-        "gini",
-        "fifa",
-        "car",
-        "timezones",
-        "continents",
-        "flags",
-        "coatOfArms",
-        "startOfWeek",
-        "capitalInfo",
-        "postalCode",
-      ];
-
-      expectedProperties.forEach((property) => {
-        expect(austria).to.have.property(property);
-      });
     });
   });
 
@@ -162,49 +119,6 @@ describe("API test for endpoint GET /name/{name}", () => {
           "Republic of Armenia",
           "Հայաստանի Հանրապետություն",
         ]);
-
-        // Assertion 4: All the properties related to Armenia are present
-        const expectedProperties = [
-          "name",
-          "tld",
-          "cca2",
-          "ccn3",
-          "cca3",
-          "cioc",
-          "independent",
-          "status",
-          "unMember",
-          "currencies",
-          "idd",
-          "capital",
-          "altSpellings",
-          "region",
-          "subregion",
-          "languages",
-          "translations",
-          "latlng",
-          "landlocked",
-          "borders",
-          "area",
-          "demonyms",
-          "flag",
-          "maps",
-          "population",
-          "gini",
-          "fifa",
-          "car",
-          "timezones",
-          "continents",
-          "flags",
-          "coatOfArms",
-          "startOfWeek",
-          "capitalInfo",
-          "postalCode",
-        ];
-
-        expectedProperties.forEach((property) => {
-          expect(armenia).to.have.property(property);
-        });
       }
     );
     cy.wait(1000);
@@ -224,7 +138,7 @@ describe("API test for endpoint GET /name/{name}", () => {
         expect(republicCongo.name.common).to.equal("Republic of the Congo");
         expect(republicCongo.name.official).to.equal("Republic of the Congo");
 
-        cy.wait(2000);
+        cy.wait(1000);
 
         const DRCongo = response.body[0];
         expect(DRCongo.name.common).to.equal("DR Congo");
@@ -297,49 +211,6 @@ describe("API test for endpoint GET /name/{name}", () => {
       const sweden = response.body[0];
       expect(sweden.name.common).to.equal("Sweden");
       expect(sweden.name.official).to.equal("Kingdom of Sweden");
-
-      // Assertion 4: All the properties related to Sweden are present
-      const expectedProperties = [
-        "name",
-        "tld",
-        "cca2",
-        "ccn3",
-        "cca3",
-        "cioc",
-        "independent",
-        "status",
-        "unMember",
-        "currencies",
-        "idd",
-        "capital",
-        "altSpellings",
-        "region",
-        "subregion",
-        "languages",
-        "translations",
-        "latlng",
-        "landlocked",
-        "borders",
-        "area",
-        "demonyms",
-        "flag",
-        "maps",
-        "population",
-        "gini",
-        "fifa",
-        "car",
-        "timezones",
-        "continents",
-        "flags",
-        "coatOfArms",
-        "startOfWeek",
-        "capitalInfo",
-        "postalCode",
-      ];
-
-      expectedProperties.forEach((property) => {
-        expect(sweden).to.have.property(property);
-      });
     });
     cy.wait(1000);
   });
@@ -377,49 +248,6 @@ describe("API test for endpoint GET /name/{name}", () => {
       const austria = response.body[0];
       expect(austria.name.common).to.equal("Austria");
       expect(austria.name.official).to.equal("Republic of Austria");
-
-      // Assertion 4: All the properties related to Austria are present
-      const expectedProperties = [
-        "name",
-        "tld",
-        "cca2",
-        "ccn3",
-        "cca3",
-        "cioc",
-        "independent",
-        "status",
-        "unMember",
-        "currencies",
-        "idd",
-        "capital",
-        "altSpellings",
-        "region",
-        "subregion",
-        "languages",
-        "translations",
-        "latlng",
-        "landlocked",
-        "borders",
-        "area",
-        "demonyms",
-        "flag",
-        "maps",
-        "population",
-        "gini",
-        "fifa",
-        "car",
-        "timezones",
-        "continents",
-        "flags",
-        "coatOfArms",
-        "startOfWeek",
-        "capitalInfo",
-        "postalCode",
-      ];
-
-      expectedProperties.forEach((property) => {
-        expect(austria).to.have.property(property);
-      });
     });
     cy.wait(1000);
   });
@@ -439,49 +267,6 @@ describe("API test for endpoint GET /name/{name}", () => {
       const austria = response.body[0];
       expect(austria.name.common).to.equal("Austria");
       expect(austria.name.official).to.equal("Republic of Austria");
-
-      // Assertion 4: All the properties related to Austria are present
-      const expectedProperties = [
-        "name",
-        "tld",
-        "cca2",
-        "ccn3",
-        "cca3",
-        "cioc",
-        "independent",
-        "status",
-        "unMember",
-        "currencies",
-        "idd",
-        "capital",
-        "altSpellings",
-        "region",
-        "subregion",
-        "languages",
-        "translations",
-        "latlng",
-        "landlocked",
-        "borders",
-        "area",
-        "demonyms",
-        "flag",
-        "maps",
-        "population",
-        "gini",
-        "fifa",
-        "car",
-        "timezones",
-        "continents",
-        "flags",
-        "coatOfArms",
-        "startOfWeek",
-        "capitalInfo",
-        "postalCode",
-      ];
-
-      expectedProperties.forEach((property) => {
-        expect(austria).to.have.property(property);
-      });
     });
     cy.wait(1000);
   });

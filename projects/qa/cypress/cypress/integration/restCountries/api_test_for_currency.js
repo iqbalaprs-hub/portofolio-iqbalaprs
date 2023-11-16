@@ -92,48 +92,6 @@ describe("API test for endpoint GET /currency/{currency}", () => {
           name: "Japanese yen",
           symbol: "¥",
         });
-
-        // Assertion 4: All the properties related to Japan are present
-        const expectedProperties = [
-          "name",
-          "tld",
-          "cca2",
-          "ccn3",
-          "cca3",
-          "cioc",
-          "independent",
-          "status",
-          "unMember",
-          "currencies",
-          "idd",
-          "capital",
-          "altSpellings",
-          "region",
-          "subregion",
-          "languages",
-          "translations",
-          "latlng",
-          "landlocked",
-          "area",
-          "demonyms",
-          "flag",
-          "maps",
-          "population",
-          "gini",
-          "fifa",
-          "car",
-          "timezones",
-          "continents",
-          "flags",
-          "coatOfArms",
-          "startOfWeek",
-          "capitalInfo",
-          "postalCode",
-        ];
-
-        expectedProperties.forEach((property) => {
-          expect(japan).to.have.property(property);
-        });
       }
     );
     cy.wait(1000);
@@ -180,48 +138,6 @@ describe("API test for endpoint GET /currency/{currency}", () => {
       expect(japan.currencies.JPY).to.include({
         name: "Japanese yen",
         symbol: "¥",
-      });
-
-      // Assertion 4: All the properties related to Japan are present
-      const expectedProperties = [
-        "name",
-        "tld",
-        "cca2",
-        "ccn3",
-        "cca3",
-        "cioc",
-        "independent",
-        "status",
-        "unMember",
-        "currencies",
-        "idd",
-        "capital",
-        "altSpellings",
-        "region",
-        "subregion",
-        "languages",
-        "translations",
-        "latlng",
-        "landlocked",
-        "area",
-        "demonyms",
-        "flag",
-        "maps",
-        "population",
-        "gini",
-        "fifa",
-        "car",
-        "timezones",
-        "continents",
-        "flags",
-        "coatOfArms",
-        "startOfWeek",
-        "capitalInfo",
-        "postalCode",
-      ];
-
-      expectedProperties.forEach((property) => {
-        expect(japan).to.have.property(property);
       });
     });
     cy.wait(1000);

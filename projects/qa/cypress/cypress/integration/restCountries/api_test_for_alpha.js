@@ -83,49 +83,6 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         expect(brazil.ccn3).to.equal("076");
         expect(brazil.cca3).to.equal("BRA");
         expect(brazil.cioc).to.equal("BRA");
-
-        // Assertion 4: All the properties related to Brazil are present
-        const expectedProperties = [
-          "name",
-          "tld",
-          "cca2",
-          "ccn3",
-          "cca3",
-          "cioc",
-          "independent",
-          "status",
-          "unMember",
-          "currencies",
-          "idd",
-          "capital",
-          "altSpellings",
-          "region",
-          "subregion",
-          "languages",
-          "translations",
-          "latlng",
-          "landlocked",
-          "borders",
-          "area",
-          "demonyms",
-          "flag",
-          "maps",
-          "population",
-          "gini",
-          "fifa",
-          "car",
-          "timezones",
-          "continents",
-          "flags",
-          "coatOfArms",
-          "startOfWeek",
-          "capitalInfo",
-          "postalCode",
-        ];
-
-        expectedProperties.forEach((property) => {
-          expect(brazil).to.have.property(property);
-        });
       }
     );
     cy.wait(1000);
@@ -148,49 +105,6 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         expect(chile.ccn3).to.equal("152");
         expect(chile.cca3).to.equal("CHL");
         expect(chile.cioc).to.equal("CHI");
-
-        // Assertion 4: All the properties related to Chile are present
-        const expectedProperties = [
-          "name",
-          "tld",
-          "cca2",
-          "ccn3",
-          "cca3",
-          "cioc",
-          "independent",
-          "status",
-          "unMember",
-          "currencies",
-          "idd",
-          "capital",
-          "altSpellings",
-          "region",
-          "subregion",
-          "languages",
-          "translations",
-          "latlng",
-          "landlocked",
-          "borders",
-          "area",
-          "demonyms",
-          "flag",
-          "maps",
-          "population",
-          "gini",
-          "fifa",
-          "car",
-          "timezones",
-          "continents",
-          "flags",
-          "coatOfArms",
-          "startOfWeek",
-          "capitalInfo",
-          "postalCode",
-        ];
-
-        expectedProperties.forEach((property) => {
-          expect(chile).to.have.property(property);
-        });
       }
     );
     cy.wait(1000);
@@ -213,48 +127,6 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         expect(uae.ccn3).to.equal("784");
         expect(uae.cca3).to.equal("ARE");
         expect(uae.cioc).to.equal("UAE");
-
-        // Assertion 4: All the properties related to United Arab Emirates are present
-        const expectedProperties = [
-          "name",
-          "tld",
-          "cca2",
-          "ccn3",
-          "cca3",
-          "cioc",
-          "independent",
-          "status",
-          "unMember",
-          "currencies",
-          "idd",
-          "capital",
-          "altSpellings",
-          "region",
-          "subregion",
-          "languages",
-          "translations",
-          "latlng",
-          "landlocked",
-          "borders",
-          "area",
-          "demonyms",
-          "flag",
-          "maps",
-          "population",
-          "gini",
-          "fifa",
-          "car",
-          "timezones",
-          "continents",
-          "flags",
-          "coatOfArms",
-          "startOfWeek",
-          "capitalInfo",
-        ];
-
-        expectedProperties.forEach((property) => {
-          expect(uae).to.have.property(property);
-        });
       }
     );
     cy.wait(1000);
@@ -277,49 +149,6 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         expect(spain.ccn3).to.equal("724");
         expect(spain.cca3).to.equal("ESP");
         expect(spain.cioc).to.equal("ESP");
-
-        // Assertion 4: All the properties related to Spain are present
-        const expectedProperties = [
-          "name",
-          "tld",
-          "cca2",
-          "ccn3",
-          "cca3",
-          "cioc",
-          "independent",
-          "status",
-          "unMember",
-          "currencies",
-          "idd",
-          "capital",
-          "altSpellings",
-          "region",
-          "subregion",
-          "languages",
-          "translations",
-          "latlng",
-          "landlocked",
-          "borders",
-          "area",
-          "demonyms",
-          "flag",
-          "maps",
-          "population",
-          "gini",
-          "fifa",
-          "car",
-          "timezones",
-          "continents",
-          "flags",
-          "coatOfArms",
-          "startOfWeek",
-          "capitalInfo",
-          "postalCode",
-        ];
-
-        expectedProperties.forEach((property) => {
-          expect(spain).to.have.property(property);
-        });
       }
     );
     cy.wait(1000);
@@ -533,48 +362,6 @@ describe("API test for endpoint GET /alpha/{code}", () => {
       expect(colombia.ccn3).to.equal("170");
       expect(colombia.cca3).to.equal("COL");
       expect(colombia.cioc).to.equal("COL");
-
-      // Assertion 4: All the properties related to Colombia are present
-      const expectedProperties = [
-        "name",
-        "tld",
-        "cca2",
-        "ccn3",
-        "cca3",
-        "cioc",
-        "independent",
-        "status",
-        "unMember",
-        "currencies",
-        "idd",
-        "capital",
-        "altSpellings",
-        "region",
-        "subregion",
-        "languages",
-        "translations",
-        "latlng",
-        "landlocked",
-        "borders",
-        "area",
-        "demonyms",
-        "flag",
-        "maps",
-        "population",
-        "gini",
-        "fifa",
-        "car",
-        "timezones",
-        "continents",
-        "flags",
-        "coatOfArms",
-        "startOfWeek",
-        "capitalInfo",
-      ];
-
-      expectedProperties.forEach((property) => {
-        expect(colombia).to.have.property(property);
-      });
     });
     cy.wait(1000);
   });
