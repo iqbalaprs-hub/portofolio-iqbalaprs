@@ -2,6 +2,9 @@
 
 describe("Scheduling the list items", () => {
   beforeEach(() => {
+    const now = new Date();
+    cy.clock(now);
+
     // Prereq.: Todolistme page is already opened
     cy.visit("https://todolistme.net/");
 
@@ -321,6 +324,53 @@ describe("Scheduling the list items", () => {
       );
   });
 
+  it("6- Nominal case: The item scheduled for tomorrow which is in 'Tomorrow' part, will be on the to-do-items part after 1 day has passed ⏰", () => {
+    // 6.1: Create new item in the To-do-items: TaskforTomorrow
+    cy.get("#additempanel")
+      .find("#newtodo")
+      .type("TaskforTomorrow")
+      .type("{enter}");
+
+    // 6.2: Drag the item "TaskforTomorrow" to the Scheduled-items (Tomorrow category)
+    cy.get("#todolistpanel #todo_0").drag("#tomorrowtitle", { force: true });
+
+    /*
+    Next to title "Tomorrow": (1)
+
+    Inside the Scheduled-items:
+      - There's a section with title : the title is tomorrow's date & Item  "TaskforTomorrow"  is just under the title
+    */
+    cy.get("#tomorrowpanel #tomorrowtitle ")
+      .find("span#tomorrow_number")
+      .should("have.text", "( 1 )");
+    cy.get("#tomorrowitemspanel").find("li").should("have.length", 1);
+    cy.get("#tomorrowitemspanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "TaskforTomorrow");
+
+    cy.wait(1000);
+
+    // 6.3: Wait for 1 day and 1 hour to pass
+    cy.tick(1 * 24 * 60 * 60 * 1000 + 1 * 60 * 60 * 1000, { log: true });
+    // We did this step because we need to do an action in order for the cy.tick() to run
+    cy.get("#sortselect").find("#sort0").click();
+
+    /*
+    Expected return: 
+
+    TaskforTomorrow is no longer in Scheduled-items
+    TaskforTomorrow is in the to-do-items
+    */
+    cy.get("#todolistpanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "TaskforTomorrow");
+
+    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 1);
+    cy.get("#tomorrowpanel #tomorrowtitle ")
+      .find("span#tomorrow_number")
+      .should("not.have.text");
+  });
+
   it("6bis- Nominal case: The item scheduled for after-tomorrow which were in Later part becomes in Tomorrow part after 1 day is passed  🛠️", () => {
     // 6bis.1: Create new item in the To-do-items: TaskforTomorrow
     cy.get("#additempanel")
@@ -402,7 +452,7 @@ describe("Scheduling the list items", () => {
         if (taskForTomorrow) {
           // Update the "dateadded" timestamp
           taskForTomorrow.dateadded = taskForTomorrow.dateadded - 86400000;
-          taskForTomorrow.tomorrow = taskForTomorrow.tomorrow - ?????;
+          taskForTomorrow.tomorrow = taskForTomorrow.tomorrow;
 
           // Stringify and update local storage
           // Converts the modified JavaScript object back to a JSON string (updatedData) and updates the data in local storage with the new string.
