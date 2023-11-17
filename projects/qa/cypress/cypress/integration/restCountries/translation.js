@@ -11,6 +11,7 @@ describe("API test for endpoint GET /translation/{translation}", () => {
 
       // Assertion 2: The array contains only one object (one country)
       cy.wrap(response.body).should("have.length", 1);
+      cy.log("There is only one country");
 
       /*
       Assertion 3:
@@ -79,6 +80,7 @@ describe("API test for endpoint GET /translation/{translation}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only one country");
 
         /*
       Assertion 3:
@@ -97,7 +99,7 @@ describe("API test for endpoint GET /translation/{translation}", () => {
     );
   });
 
-  it("3- Test the property 'translation' by showing that the endpoints can read languages other than the english language", () => {
+  it("3- Test the property 'translations' by showing that the endpoint can perform with languages other than the english language and give us a correct response", () => {
     cy.request(
       "GET",
       "https://restcountries.com/v3.1/translation/جمهورية ألمانيا الاتحادية"
@@ -107,6 +109,7 @@ describe("API test for endpoint GET /translation/{translation}", () => {
 
       // Assertion 2: The array contains only one object (one country)
       cy.wrap(response.body).should("have.length", 1);
+      cy.log("There is only one country");
 
       /*
         Assertion 3:
@@ -124,7 +127,7 @@ describe("API test for endpoint GET /translation/{translation}", () => {
     });
   });
 
-  it("4- Test the property 'translation' by showing that the endpoint does not read from nativeName of the 'name' section. The response will an error of 404", () => {
+  it("4- Test the property 'translations' by showing that the endpoint does not read from 'nativeName' located in the 'name' property. The response will be an error of 404", () => {
     cy.request({
       method: "GET",
       url: "https://restcountries.com/v3.1/translation/မြန်မာ",
@@ -139,10 +142,9 @@ describe("API test for endpoint GET /translation/{translation}", () => {
         message: "Not Found",
       });
     });
-    cy.wait(1000);
   });
 
-  it("5- Test the property 'translation' by showing that the endpoint does not read 'altspellings'. The response will an error of 404 ", () => {
+  it("5- Test the property 'translations' by showing that the endpoint does not read from the property 'altspellings'. The response will an error of 404 ", () => {
     cy.request({
       method: "GET",
       url: "https://restcountries.com/v3.1/translation/Pyidaunzu",
@@ -157,10 +159,9 @@ describe("API test for endpoint GET /translation/{translation}", () => {
         message: "Not Found",
       });
     });
-    cy.wait(1000);
   });
 
-  it("6- Test the property 'translation' by showing that the endpoint does not read the language abbreviation in the 'Translations' section", () => {
+  it("6- Test the property 'translations' by showing that the endpoint does not read the language abbreviation in the 'Translations' section", () => {
     cy.request({
       method: "GET",
       url: "https://restcountries.com/v3.1/translation/slk",
@@ -175,10 +176,9 @@ describe("API test for endpoint GET /translation/{translation}", () => {
         message: "Not Found",
       });
     });
-    cy.wait(1000);
   });
 
-  it("7- Test the property 'translation' by showing that the endpoint can give more than one country", () => {
+  it("7- Test the property 'translations' by showing that the endpoint can give more than one country", () => {
     cy.request("GET", "https://restcountries.com/v3.1/translation/rman").then(
       (response) => {
         // Assertion 1: Response is 200
@@ -186,6 +186,7 @@ describe("API test for endpoint GET /translation/{translation}", () => {
 
         // Assertion 2: The array contains 2 objects (Two countries)
         cy.wrap(response.body).should("have.length", 2);
+        cy.log("There are 2 countries");
 
         /*
         Assertion 3:
@@ -222,6 +223,7 @@ describe("API test for endpoint GET /translation/{translation}", () => {
 
       // Assertion 2: The array contains only one object (one country)
       cy.wrap(response.body).should("have.length", 1);
+      cy.log("There is only one country");
 
       /*
         This one country is Germany ("translations":"cym": {
