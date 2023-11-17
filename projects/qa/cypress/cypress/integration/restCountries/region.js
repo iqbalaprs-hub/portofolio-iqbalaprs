@@ -9,6 +9,7 @@ describe("API test for endpoint GET /region/{region}", () => {
 
         // Assertion 2: The array contains 27 objects (27 countries)
         cy.wrap(response.body).should("have.length", 27);
+        cy.log("There are 27 countries");
 
         /*
 
@@ -42,24 +43,22 @@ describe("API test for endpoint GET /region/{region}", () => {
             25 - New Zealand     
             26- Wallis and Futuna 27- Palau
         */
-        response.body.forEach((country) => {
+        response.body.forEach((country, index) => {
           // Assert that the country has a "region" property equal to "Oceania"
           expect(country).to.have.property("region").to.equal("Oceania");
 
           // Access the different properties
           const commonName = country.name.common;
-          const officialName = country.name.official;
           const region = country.region;
 
-          cy.log(`Common Name: ${commonName}`);
-          cy.log(`Official Name: ${officialName}`);
-          cy.log(`Region: ${region}`);
+          cy.log(`Common Name ${index + 1}: ${commonName}`);
+          cy.log(`Region ${index + 1}: ${region}`);
         });
       }
     );
   });
 
-  it("2- Test the property 'region' by showing that the endpoint performs a case-insensitive substring match against the region's name and it can give more than one country", () => {
+  it("2- Test the property 'region' by showing that the endpoint performs a case-insensitive substring match against the country's region and it can give more than one country", () => {
     cy.request("GET", "https://restcountries.com/v3.1/region/CeaniA").then(
       (response) => {
         // Assertion 1: Response is 200
@@ -67,6 +66,7 @@ describe("API test for endpoint GET /region/{region}", () => {
 
         // Assertion 2: The array contains 27 objects (27 countries)
         cy.wrap(response.body).should("have.length", 27);
+        cy.log("There are 27 countries");
 
         /*
 
@@ -100,18 +100,16 @@ describe("API test for endpoint GET /region/{region}", () => {
             25 - New Zealand     
             26- Wallis and Futuna 27- Palau
         */
-        response.body.forEach((country) => {
+        response.body.forEach((country, index) => {
           // Assert that the country has a "region" property equal to "Oceania"
           expect(country).to.have.property("region").to.equal("Oceania");
 
           // Access the different properties
           const commonName = country.name.common;
-          const officialName = country.name.official;
           const region = country.region;
 
-          cy.log(`Common Name: ${commonName}`);
-          cy.log(`Official Name: ${officialName}`);
-          cy.log(`Region: ${region}`);
+          cy.log(`Common Name ${index + 1}: ${commonName}`);
+          cy.log(`Region ${index + 1}: ${region}`);
         });
       }
     );
@@ -127,6 +125,7 @@ describe("API test for endpoint GET /region/{region}", () => {
 
       // Assertion 2: The array contains 7 objects (7 countries)
       cy.wrap(response.body).should("have.length", 7);
+      cy.log("There are 7 countries");
 
       /*
         Assertion 3:
@@ -139,7 +138,7 @@ describe("API test for endpoint GET /region/{region}", () => {
             6- Canada     
             7- Greenland
         */
-      response.body.forEach((country) => {
+      response.body.forEach((country, index) => {
         // Assert that the country has a "region" property equal to "Oceania"
         expect(country).to.have.property("subregion").to.equal("North America");
 
@@ -148,9 +147,9 @@ describe("API test for endpoint GET /region/{region}", () => {
         const region = country.region;
         const subregion = country.subregion;
 
-        cy.log(`Common Name: ${commonName}`);
-        cy.log(`Region: ${region}`);
-        cy.log(`Subregion: ${subregion}`);
+        cy.log(`Common Name ${index + 1}: ${commonName}`);
+        cy.log(`Region ${index + 1}: ${region}`);
+        cy.log(`Subregion ${index + 1}: ${subregion}`);
       });
     });
   });
@@ -170,7 +169,6 @@ describe("API test for endpoint GET /region/{region}", () => {
         message: "Not Found",
       });
     });
-    cy.wait(1000);
   });
 
   it("5- Test the property 'region' by showing that the endpoint performs a case-insensitive match against the country's subregion", () => {
@@ -183,6 +181,7 @@ describe("API test for endpoint GET /region/{region}", () => {
 
       // Assertion 2: The array contains 7 objects (7 countries)
       cy.wrap(response.body).should("have.length", 7);
+      cy.log("There are 7 countries");
 
       /*
           Assertion 3:
@@ -195,7 +194,7 @@ describe("API test for endpoint GET /region/{region}", () => {
               6- Canada     
               7- Greenland
           */
-      response.body.forEach((country) => {
+      response.body.forEach((country, index) => {
         expect(country).to.have.property("subregion").to.equal("North America");
 
         // Access the different properties
@@ -203,9 +202,77 @@ describe("API test for endpoint GET /region/{region}", () => {
         const region = country.region;
         const subregion = country.subregion;
 
-        cy.log(`Common Name: ${commonName}`);
-        cy.log(`Region: ${region}`);
-        cy.log(`Subregion: ${subregion}`);
+        cy.log(`Common Name ${index + 1}: ${commonName}`);
+        cy.log(`Region ${index + 1}: ${region}`);
+        cy.log(`Subregion ${index + 1}: ${subregion}`);
+      });
+    });
+  });
+
+  it("6- Test the query parameter 'fields' and get only 2 properties 'name', 'capital'", () => {
+    cy.request(
+      "GET",
+      "https://restcountries.com/v3.1/region/Oceania?fields=name,capital"
+    ).then((response) => {
+      // Assertion 1: Response is 200
+      expect(response.status).to.equal(200);
+
+      // Assertion 2: The array contains 27 objects (27 countries)
+      cy.wrap(response.body).should("have.length", 27);
+      cy.log("There are 27 countries");
+
+      /*
+      
+              Assertion 3:
+      
+              The countries are:
+                  1 - Northern Mariana Islands       
+                  2 - Tuvalu
+                  3 - Christmas Island      
+                  4 - French Polynesia
+                  5 - Cocos (Keeling) Islands    
+                  6 - Nauru
+                  7 - Papua New Guinea      
+                  8 - Norfolk Island
+                  9 - Tokelau      
+                  10 - Niue
+                  11 - Samoa     
+                  12 - Australia
+                  13 - Fiji     
+                  14 - New Caledonia
+                  15 - Guam    
+                  16 - Vanuatu
+                  17 - Pitcairn Islands     
+                  18 - Cook Islands
+                  19 - Tonga    
+                  20 - American Samoa
+                  21 - Marshall Islands    
+                  22 - Micronesia
+                  23 - Solomon Islands     
+                  24 - Kiribati
+                  25 - New Zealand     
+                  26- Wallis and Futuna 27- Palau
+              */
+      response.body.forEach((country, index) => {
+        // Access the different properties
+        const commonName = country.name.common;
+
+        cy.log(`Common Name ${index + 1}: ${commonName}`);
+      });
+
+      // Assertion 4: Only properties (name and capital) related to all the countries mentioned above are present
+      const expectedProperties = ["name", "capital"];
+
+      // This code is using the forEach method to iterate over each element in the response.body array. In this case, each element represents a country in the JSON response. The (country, index) parameters in the callback function represent the current country object and its index in the array
+      response.body.forEach((country, index) => {
+        // Check if each expected property exists for the current country
+        // Within the outer loop, there's another loop using forEach, this time iterating over the expectedProperties array. This array contains the names of properties that are expected to exist for each country (in this case, "name" and "capital")
+        expectedProperties.forEach((property) => {
+          // This line uses the Chai assertion library, which is commonly used with Cypress. It checks whether the country object has the specified property (property). If the property exists, the test continues; otherwise, it fails
+          expect(country).to.have.property(property);
+          // This line logs a message using cy.log(). It indicates that the specific property (property) exists for the current country (Country ${index + 1})
+          cy.log(`Country ${index + 1}: ${property} exists`);
+        });
       });
     });
   });
