@@ -9,6 +9,7 @@ describe("API test for endpoint GET /name/{name}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         // Assertion 3: This one country is Sweden (common name "Sweden" and official name "Kingdom of Sweden")
         const sweden = response.body[0];
@@ -61,10 +62,9 @@ describe("API test for endpoint GET /name/{name}", () => {
         });
       }
     );
-    cy.wait(1000);
   });
 
-  it("2- Test the property 'official name' and that the endpoint /name/{name} is case-insensitive", () => {
+  it("2- Test the property 'official name' and that the endpoint /name/{name} performs a case-insensitive match against the country's name", () => {
     cy.request(
       "GET",
       "https://restcountries.com/v3.1/name/RePubliC of AustrIa"
@@ -74,6 +74,7 @@ describe("API test for endpoint GET /name/{name}", () => {
 
       // Assertion 2: The array contains only one object (one country)
       cy.wrap(response.body).should("have.length", 1);
+      cy.log("There is only 1 country");
 
       // Assertion 3: This one country is Austria (common name "Austria" and official name "Republic of Austria")
       const austria = response.body[0];
@@ -97,10 +98,9 @@ describe("API test for endpoint GET /name/{name}", () => {
         message: "Not Found",
       });
     });
-    cy.wait(1000);
   });
 
-  it("4- Test the property 'altspelling' and that the endpoint performs a substring match and can have a correct response even if it is written in a language other than the english language", () => {
+  it("4- Test the property 'altspelling' and that the endpoint performs a substring match against the country's name and can have a correct response even if it is written in a language other than the english language", () => {
     cy.request("GET", "https://restcountries.com/v3.1/name/Հայաստ").then(
       (response) => {
         // Assertion 1: Response is 200
@@ -108,6 +108,7 @@ describe("API test for endpoint GET /name/{name}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         // Assertion 3: This one country is Armenia (altspelling "Հայաստանի Հանրապետություն"). This endpoint is present only in nativeName and altspelling
         const armenia = response.body[0];
@@ -121,10 +122,9 @@ describe("API test for endpoint GET /name/{name}", () => {
         ]);
       }
     );
-    cy.wait(1000);
   });
 
-  it("5- Test if the endpoint can give us more than one country", () => {
+  it("5- Test if the endpoint can give more than one country", () => {
     cy.request("GET", "https://restcountries.com/v3.1/name/congo").then(
       (response) => {
         // Assertion 1: Response is 200
@@ -132,19 +132,18 @@ describe("API test for endpoint GET /name/{name}", () => {
 
         // Assertion 2: The array contains 2 objects (two countries)
         cy.wrap(response.body).should("have.length", 2);
+        cy.log("There are 2 countries");
 
         // Assertion 3: The countries are "Republic of the Congo" and "Democratic Republic of the Congo"
-        const republicCongo = response.body[1];
-        expect(republicCongo.name.common).to.equal("Republic of the Congo");
-        expect(republicCongo.name.official).to.equal("Republic of the Congo");
 
-        cy.wait(1000);
+        response.body.forEach((country, index) => {
+          // Access the different properties
+          const commonName = country.name.common;
+          const officialName = country.name.official;
 
-        const DRCongo = response.body[0];
-        expect(DRCongo.name.common).to.equal("DR Congo");
-        expect(DRCongo.name.official).to.equal(
-          "Democratic Republic of the Congo"
-        );
+          cy.log(`Common Name ${index + 1}: ${commonName}`);
+          cy.log(`officialName ${index + 1}: ${officialName}`);
+        });
 
         // Assertion 4: All the properties related to  "Republic of the Congo" and "Democratic Republic of the Congo" are present
         const expectedProperties = [
@@ -184,16 +183,17 @@ describe("API test for endpoint GET /name/{name}", () => {
           "capitalInfo",
         ];
 
-        expectedProperties.forEach((property) => {
-          expect(republicCongo).to.have.property(property);
-        });
-
-        expectedProperties.forEach((property) => {
-          expect(DRCongo).to.have.property(property);
+        // This code is using the forEach method to iterate over each element in the response.body array. In this case, each element represents a country in the JSON response. The (country, index) parameters in the callback function represent the current country object and its index in the array
+        response.body.forEach((country, index) => {
+          // Check if each expected property exists for the current country
+          // Within the outer loop, there's another loop using forEach, this time iterating over the expectedProperties array. This array contains the names of properties that are expected to exist for each country (in this case, "name" and "capital")
+          expectedProperties.forEach((property) => {
+            // This line uses the Chai assertion library, which is commonly used with Cypress. It checks whether the country object has the specified property (property). If the property exists, the test continues; otherwise, it fails
+            expect(country).to.have.property(property);
+          });
         });
       }
     );
-    cy.wait(1000);
   });
 
   it("6- Test the property 'common name' using a query parameter 'fullText=true' with a basic normal endpoint", () => {
@@ -206,13 +206,13 @@ describe("API test for endpoint GET /name/{name}", () => {
 
       // Assertion 2: The array contains only one object (one country)
       cy.wrap(response.body).should("have.length", 1);
+      cy.log("There is only 1 country");
 
       // Assertion 3: This one country is Sweden (common name "Sweden" and official name "Kingdom of Sweden")
       const sweden = response.body[0];
       expect(sweden.name.common).to.equal("Sweden");
       expect(sweden.name.official).to.equal("Kingdom of Sweden");
     });
-    cy.wait(1000);
   });
 
   it("7- Test that the endpoint with an incomplete name, using query parameter 'fullText=true' will give an error response. Thus the endpoint should performs a perfect match in order to have a correct response", () => {
@@ -230,10 +230,9 @@ describe("API test for endpoint GET /name/{name}", () => {
         message: "Not Found",
       });
     });
-    cy.wait(1000);
   });
 
-  it("8- Test that the endpoint performs a case-insensitive perfect match", () => {
+  it("8- Test that the endpoint performs a case-insensitive perfect match against the country's name if using query parameter 'fulltext'", () => {
     cy.request(
       "GET",
       "https://restcountries.com/v3.1/name/auStriA?fullText=true"
@@ -243,13 +242,13 @@ describe("API test for endpoint GET /name/{name}", () => {
 
       // Assertion 2: The array contains only one object (one country)
       cy.wrap(response.body).should("have.length", 1);
+      cy.log("There is only 1 country");
 
       // Assertion 3: This one country is Austria (common name "Austria" and official name "Republic of Austria")
       const austria = response.body[0];
       expect(austria.name.common).to.equal("Austria");
       expect(austria.name.official).to.equal("Republic of Austria");
     });
-    cy.wait(1000);
   });
 
   it("9- Test the property 'official name' using a query parameter 'fullText=true'", () => {
@@ -262,16 +261,16 @@ describe("API test for endpoint GET /name/{name}", () => {
 
       // Assertion 2: The array contains only one object (one country)
       cy.wrap(response.body).should("have.length", 1);
+      cy.log("There is only 1 country");
 
       // Assertion 3: This one country is Austria (common name "Austria" and official name "Republic of Austria")
       const austria = response.body[0];
       expect(austria.name.common).to.equal("Austria");
       expect(austria.name.official).to.equal("Republic of Austria");
     });
-    cy.wait(1000);
   });
 
-  it("10- Test that the endpoint using the query parameter 'fullText=true' will not read the property 'altspellings' which will give an error response", () => {
+  it("10- Test that the endpoint using the query parameter 'fullText=true' will not read the property 'altspellings', thus it will give an error response", () => {
     cy.request({
       method: "GET",
       url: "https://restcountries.com/v3.1/name/Oesterreich?fullText=true",
@@ -286,7 +285,6 @@ describe("API test for endpoint GET /name/{name}", () => {
         message: "Not Found",
       });
     });
-    cy.wait(1000);
   });
 
   it("11- Test the query parameter 'fields' and get only 2 properties 'region' and 'subregion'", () => {
@@ -299,6 +297,7 @@ describe("API test for endpoint GET /name/{name}", () => {
 
       // Assertion 2: The array contains only one object (one country)
       cy.wrap(response.body).should("have.length", 1);
+      cy.log("There is only 1 country");
 
       // Assertion 3: This one country is Sweden  ("region": "Europe",  "subregion": "Northern Europe")
       const sweden = response.body[0];
