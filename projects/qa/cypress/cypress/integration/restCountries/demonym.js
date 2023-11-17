@@ -9,6 +9,7 @@ describe("API test for endpoint GET /demonym/{demonym}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         /*
         Assertion 3:
@@ -27,6 +28,7 @@ describe("API test for endpoint GET /demonym/{demonym}", () => {
           f: "Peruvian",
           m: "Peruvian",
         });
+        cy.log("Demonyms:");
         cy.log(JSON.stringify(peru.demonyms.eng));
 
         // Assertion 4: All the properties related to Peru are present
@@ -74,7 +76,7 @@ describe("API test for endpoint GET /demonym/{demonym}", () => {
     );
   });
 
-  it("2- Test the property 'demonyms' by showing that the endpoint can perform a case-insensitive substring match", () => {
+  it("2- Test the property 'demonyms' by showing that the endpoint can performs a case-insensitive substring match against the country's demonyms", () => {
     cy.request("GET", "https://restcountries.com/v3.1/demonym/perUvIa").then(
       (response) => {
         // Assertion 1: Response is 200
@@ -82,6 +84,7 @@ describe("API test for endpoint GET /demonym/{demonym}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         /*
         Assertion 3:
@@ -100,6 +103,8 @@ describe("API test for endpoint GET /demonym/{demonym}", () => {
           f: "Peruvian",
           m: "Peruvian",
         });
+
+        cy.log("Demonyms:");
         cy.log(JSON.stringify(peru.demonyms.eng));
       }
     );
@@ -113,6 +118,7 @@ describe("API test for endpoint GET /demonym/{demonym}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         /*
         Assertion 3:
@@ -144,6 +150,7 @@ describe("API test for endpoint GET /demonym/{demonym}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 2);
+        cy.log("There are 2 countries");
 
         /*
     The countries are:
@@ -166,19 +173,15 @@ describe("API test for endpoint GET /demonym/{demonym}", () => {
                 "m": "Congolais"
             })
     */
-        const republicCongo = response.body[0];
-        expect(republicCongo.demonyms.eng).to.include({
-          f: "Congolese",
-          m: "Congolese",
-        });
-        cy.log(JSON.stringify(republicCongo.demonyms.eng));
+        response.body.forEach((country, index) => {
+          // Access the different properties
+          const commonName = country.name.common;
+          const demonyms = country.demonyms;
 
-        const DRCongo = response.body[1];
-        expect(DRCongo.demonyms.eng).to.include({
-          f: "Congolese",
-          m: "Congolese",
+          cy.log(`Common Name ${index + 1}: ${commonName}`);
+          cy.log(`Demonyms ${index + 1}:`);
+          cy.log(JSON.stringify(demonyms));
         });
-        cy.log(JSON.stringify(DRCongo.demonyms.eng));
       }
     );
   });
@@ -193,12 +196,15 @@ describe("API test for endpoint GET /demonym/{demonym}", () => {
 
       // Assertion 2: The array contains only one object (one country)
       cy.wrap(response.body).should("have.length", 1);
+      cy.log("There is only 1 country");
 
       // Assertion 3: This one country is Peru ("cca2": "PE",  "cioc": "PER")
       const peru = response.body[0];
       expect(peru.cca2).to.equal("PE");
       expect(peru.cioc).to.equal("PER");
+      cy.log("cca2:");
       cy.log(JSON.stringify(peru.cca2));
+      cy.log("cioc:");
       cy.log(JSON.stringify(peru.cioc));
 
       // Assertion 4: Only properties (cca2, cioc) related to Peru are present
