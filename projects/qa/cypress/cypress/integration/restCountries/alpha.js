@@ -9,6 +9,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         // Assertion 3: This one country is United States ("cca2": "US", "ccn3": "840", "cca3": "USA", "cioc": "USA")
         const usa = response.body[0];
@@ -63,7 +64,6 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         });
       }
     );
-    cy.wait(1000);
   });
 
   it("2- Test the property 'ccn3' with basic normal endpoint", () => {
@@ -74,6 +74,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         // Assertion 3: This one country is Brazil ("cca2": "BR",  "ccn3": "076", "cca3": "BRA",  "cioc": "BRA")
         const brazil = response.body[0];
@@ -85,7 +86,6 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         expect(brazil.cioc).to.equal("BRA");
       }
     );
-    cy.wait(1000);
   });
 
   it("3- Test the property 'cca3' with basic normal endpoint", () => {
@@ -96,6 +96,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         // Assertion 3: This one country is Chile ("cca2": "CL",  "ccn3": "152", "cca3": "CHL", "cioc": "CHI")
         const chile = response.body[0];
@@ -107,7 +108,6 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         expect(chile.cioc).to.equal("CHI");
       }
     );
-    cy.wait(1000);
   });
 
   it("4- Test the property 'cioc' with basic normal endpoint", () => {
@@ -118,6 +118,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         // Assertion 3: This one country is United Arab Emirates ("cca2": "AE", "ccn3": "784", "cca3": "ARE",  "cioc": "UAE")
         const uae = response.body[0];
@@ -129,10 +130,9 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         expect(uae.cioc).to.equal("UAE");
       }
     );
-    cy.wait(1000);
   });
 
-  it("5- Test the properties 'cca2', 'ccn3', 'cca3' and 'cioc' with basic normal endpoint and show that endpoint is case-insensitive", () => {
+  it("5- Test the properties 'cca2', 'ccn3', 'cca3' and 'cioc' by showing that the endpoint performs a case-insensitive match against the country's cca2, ccn3, cca3, cioc", () => {
     cy.request("GET", "https://restcountries.com/v3.1/alpha/eS").then(
       (response) => {
         // Assertion 1: Response is 200
@@ -140,6 +140,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         // Assertion 3: This one country is Spain ("cca2": "ES", "ccn3": "724",  "cca3": "ESP",  "cioc": "ESP")
         const spain = response.body[0];
@@ -151,10 +152,9 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         expect(spain.cioc).to.equal("ESP");
       }
     );
-    cy.wait(1000);
   });
 
-  it("6- Test the properties 'cca2', 'ccn3', 'cca3' and 'cioc' by showing that the endpoint must be perfect match. An error message is expected", () => {
+  it("6- Test the properties 'cca2', 'ccn3', 'cca3' and 'cioc' by showing that the endpoint performs a perfect match against a country's cca2, ccn3, cca3, cioc. The endpoint is false, thus an error message is expected", () => {
     cy.request({
       method: "GET",
       url: "https://restcountries.com/v3.1/alpha/72",
@@ -187,7 +187,6 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         message: "Bad Request",
       });
     });
-    cy.wait(1000);
   });
 
   it("8- Test the properties 'cca2', 'ccn3', 'cca3' and 'cioc' by showing that the endpoint with more than 3 letters gives a response error of 400", () => {
@@ -205,7 +204,6 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         message: "Bad Request",
       });
     });
-    cy.wait(1000);
   });
 
   it("9- Test the query parameter '/alpha?codes={code},{code},{code}' using a basic normal endpoint and show also that it is case-insensitive", () => {
@@ -218,6 +216,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
 
       // Assertion 2: The array contains only 4 objects (four countries)
       cy.wrap(response.body).should("have.length", 4);
+      cy.log("There are 4 countries");
 
       /*
         Assertion 3:
@@ -340,7 +339,6 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         expect(norway).to.have.property(property);
       });
     });
-    cy.wait(1000);
   });
 
   it("10- Test the query parameter '/alpha?codes={code},{code},{code}' by showing that  At least one code must be correct in order to have a correct response of 200", () => {
@@ -353,6 +351,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
 
       // Assertion 2: The array contains only one object (one country)
       cy.wrap(response.body).should("have.length", 1);
+      cy.log("There is only 1 country");
 
       // Assertion 3: This one country is Colombia ("cca2": "CO", "ccn3": "170", "cca3": "COL", "cioc": "COL")
       const colombia = response.body[0];
@@ -363,7 +362,6 @@ describe("API test for endpoint GET /alpha/{code}", () => {
       expect(colombia.cca3).to.equal("COL");
       expect(colombia.cioc).to.equal("COL");
     });
-    cy.wait(1000);
   });
 
   it("11- Test the query parameter '/alpha?codes={code},{code},{code}' by showing that repetition of codes does not affect the search", () => {
@@ -376,6 +374,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
 
       // Assertion 2: The array contains 2 objects (Two countries)
       cy.wrap(response.body).should("have.length", 2);
+      cy.log("There are 2 countries");
 
       /*
         Assertion 3:
@@ -398,92 +397,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
       expect(norway.ccn3).to.equal("578");
       expect(norway.cca3).to.equal("NOR");
       expect(norway.cioc).to.equal("NOR");
-
-      //  Assertion 4: All the properties related to Colombia and Norway are present
-      const expectedProperties = [
-        "name",
-        "tld",
-        "cca2",
-        "ccn3",
-        "cca3",
-        "cioc",
-        "independent",
-        "status",
-        "unMember",
-        "currencies",
-        "idd",
-        "capital",
-        "altSpellings",
-        "region",
-        "subregion",
-        "languages",
-        "translations",
-        "latlng",
-        "landlocked",
-        "borders",
-        "area",
-        "demonyms",
-        "flag",
-        "maps",
-        "population",
-        "gini",
-        "fifa",
-        "car",
-        "timezones",
-        "continents",
-        "flags",
-        "coatOfArms",
-        "startOfWeek",
-        "capitalInfo",
-        "postalCode",
-      ];
-
-      const expectedProperties2 = [
-        "name",
-        "tld",
-        "cca2",
-        "ccn3",
-        "cca3",
-        "cioc",
-        "independent",
-        "status",
-        "unMember",
-        "currencies",
-        "idd",
-        "capital",
-        "altSpellings",
-        "region",
-        "subregion",
-        "languages",
-        "translations",
-        "latlng",
-        "landlocked",
-        "borders",
-        "area",
-        "demonyms",
-        "flag",
-        "maps",
-        "population",
-        "gini",
-        "fifa",
-        "car",
-        "timezones",
-        "continents",
-        "flags",
-        "coatOfArms",
-        "startOfWeek",
-        "capitalInfo",
-      ];
-
-      expectedProperties2.forEach((property) => {
-        expect(colombia).to.have.property(property);
-      });
-
-      expectedProperties.forEach((property) => {
-        expect(norway).to.have.property(property);
-      });
     });
-    cy.wait(1000);
   });
 
   it("12- Test the query parameter '/alpha?codes={code},{code},{code}' by showing if all codes are wrong, it will give an error response of 404", () => {
@@ -501,6 +415,5 @@ describe("API test for endpoint GET /alpha/{code}", () => {
         message: "Not Found",
       });
     });
-    cy.wait(1000);
   });
 });
