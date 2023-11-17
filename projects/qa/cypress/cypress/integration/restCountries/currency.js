@@ -9,6 +9,7 @@ describe("API test for endpoint GET /currency/{currency}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         /*
         Assertion 3:
@@ -67,10 +68,9 @@ describe("API test for endpoint GET /currency/{currency}", () => {
         });
       }
     );
-    cy.wait(1000);
   });
 
-  it("2- Test the property 'currency' by showing that the endpoint is case-insensitive", () => {
+  it("2- Test the property 'currency' by showing that the endpoint performs a case-insensitive match against country's currency", () => {
     cy.request("GET", "https://restcountries.com/v3.1/currency/jPy").then(
       (response) => {
         // Assertion 1: Response is 200
@@ -78,6 +78,7 @@ describe("API test for endpoint GET /currency/{currency}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         /*
         Assertion 3:
@@ -94,10 +95,9 @@ describe("API test for endpoint GET /currency/{currency}", () => {
         });
       }
     );
-    cy.wait(1000);
   });
 
-  it("3- Test the property 'currency' by showing that the endpoint have to be a perfect match. The endpoint is incomplete, thus we will get a response error of 404", () => {
+  it("3- Test the property 'currency' by showing that the endpoint performs a perfect match agisnt country's currency. The endpoint is incomplete, thus we will get a response error of 404", () => {
     cy.request({
       method: "GET",
       url: "https://restcountries.com/v3.1/currency/jP",
@@ -115,7 +115,7 @@ describe("API test for endpoint GET /currency/{currency}", () => {
     cy.wait(1000);
   });
 
-  it("4- Test the property 'currency' by showing that the endpoint performs a substring match ", () => {
+  it("4- Test the property 'currency' by showing that the endpoint performs a substring match agisnt country's currency", () => {
     cy.request(
       "GET",
       "https://restcountries.com/v3.1/currency/japanese yen"
@@ -125,6 +125,7 @@ describe("API test for endpoint GET /currency/{currency}", () => {
 
       // Assertion 2: The array contains only one object (one country)
       cy.wrap(response.body).should("have.length", 1);
+      cy.log("There is only 1 country");
 
       /*
         Assertion 3:
@@ -140,10 +141,9 @@ describe("API test for endpoint GET /currency/{currency}", () => {
         symbol: "¥",
       });
     });
-    cy.wait(1000);
   });
 
-  it("5- Test the property 'currency' by showing that the endpoint performs a substring match, but it have to be lowercase. If at least one of the letter is uppercase, we will get an response error of 404", () => {
+  it("5- Test the property 'currency' by showing that the endpoint performs a substring match against a country's currency, but it have to be lowercase. If at least one of the letter is uppercase, we will get an response error of 404", () => {
     cy.request({
       method: "GET",
       url: "https://restcountries.com/v3.1/currency/JapanEse yeN",
@@ -158,7 +158,6 @@ describe("API test for endpoint GET /currency/{currency}", () => {
         message: "Not Found",
       });
     });
-    cy.wait(1000);
   });
 
   it("6-  Test the property 'currency' by showing that the endpoint does not read symbol", () => {
@@ -176,7 +175,6 @@ describe("API test for endpoint GET /currency/{currency}", () => {
         message: "Not Found",
       });
     });
-    cy.wait(1000);
   });
 
   it("7- Test the query parameter 'fields' and get only 2 properties 'name' and 'capital'", () => {
@@ -189,6 +187,7 @@ describe("API test for endpoint GET /currency/{currency}", () => {
 
       // Assertion 2: The array contains only one object (one country)
       cy.wrap(response.body).should("have.length", 1);
+      cy.log("There is only 1 country");
 
       /*
         Assertion 3:
@@ -203,7 +202,14 @@ describe("API test for endpoint GET /currency/{currency}", () => {
       const japan = response.body[0];
       expect(japan.name.common).to.equal("Japan");
       expect(japan.name.official).to.equal("Japan");
-      expect(japan.capital).to.equal("Tokyo");
+      expect(japan.capital[0]).to.equal("Tokyo");
+
+      // Assertion 4: Only properties (name, capital) related to Japan are present
+      const expectedProperties = ["name", "capital"];
+
+      expectedProperties.forEach((property) => {
+        expect(japan).to.have.property(property);
+      });
     });
   });
 });
