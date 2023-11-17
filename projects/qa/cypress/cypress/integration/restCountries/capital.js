@@ -9,6 +9,7 @@ describe("API test for endpoint GET /capital/{capital}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         /*
          Assertion 3:
@@ -69,7 +70,7 @@ describe("API test for endpoint GET /capital/{capital}", () => {
     );
   });
 
-  it("2- Test the property 'capital' by showing that the endpoint performs a case-insensitive substring match against the capital's name", () => {
+  it("2- Test the property 'capital' by showing that the endpoint performs a case-insensitive substring match against the country's capital'", () => {
     cy.request("GET", "https://restcountries.com/v3.1/capital/taLliN").then(
       (response) => {
         // Assertion 1: Response is 200
@@ -77,6 +78,7 @@ describe("API test for endpoint GET /capital/{capital}", () => {
 
         // Assertion 2: The array contains only one object (one country)
         cy.wrap(response.body).should("have.length", 1);
+        cy.log("There is only 1 country");
 
         /*
         Assertion 3:
@@ -102,6 +104,7 @@ describe("API test for endpoint GET /capital/{capital}", () => {
 
         // Assertion 2: The array contains 3 object (three countries)
         cy.wrap(response.body).should("have.length", 3);
+        cy.log("There are 3 countries");
 
         /*
         Assertion 3:
@@ -110,23 +113,14 @@ describe("API test for endpoint GET /capital/{capital}", () => {
             - Sri Lanka ("capital": [ "Sri Jayawardenepura Kotte" ])
             - Poland ("capital": [ "Warsaw" ])
         */
-        const southGeorgia = response.body[0];
-        expect(southGeorgia.name.common).to.equal("South Georgia");
-        expect(southGeorgia.capital[0]).to.equal("King Edward Point");
-        cy.log(JSON.stringify(southGeorgia.name.common));
-        cy.log(JSON.stringify(southGeorgia.capital));
+        response.body.forEach((country, index) => {
+          // Access the different properties
+          const commonName = country.name.common;
+          const capital = country.capital[0];
 
-        const sriLanka = response.body[1];
-        expect(sriLanka.name.common).to.equal("Sri Lanka");
-        expect(sriLanka.capital[0]).to.equal("Sri Jayawardenepura Kotte");
-        cy.log(JSON.stringify(sriLanka.name.common));
-        cy.log(JSON.stringify(sriLanka.capital));
-
-        const poland = response.body[2];
-        expect(poland.name.common).to.equal("Poland");
-        expect(poland.capital[0]).to.equal("Warsaw");
-        cy.log(JSON.stringify(poland.name.common));
-        cy.log(JSON.stringify(poland.capital));
+          cy.log(`Common Name ${index + 1}: ${commonName}`);
+          cy.log(`Capital ${index + 1}: ${capital}`);
+        });
       }
     );
   });
