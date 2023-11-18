@@ -59,6 +59,75 @@ describe("Scheduling the list items", () => {
     cy.get("#tomorrowitemspanel #todo_0")
       .find("span#mytodo_0")
       .should("have.text", "TaskforTomorrow");
+
+    // Get the current date
+    const currentDate = new Date();
+
+    // Calculate the date of tomorrow
+    const tomorrowDate = new Date(currentDate);
+    tomorrowDate.setDate(currentDate.getDate() + 1);
+
+    // Define days and months arrays
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Get day, month, and year for tomorrow
+    const tomorrowDay = days[tomorrowDate.getDay()];
+    const tomorrowDayOfMonth = tomorrowDate.getDate();
+    const tomorrowMonth = months[tomorrowDate.getMonth()];
+    const tomorrowYear = tomorrowDate.getFullYear();
+
+    // Get day of the month with suffix (e.g., 1st, 2nd, 3rd, 4th)
+    const daySuffix = getDaySuffix(tomorrowDayOfMonth);
+
+    // Function to get the suffix for the day of the month
+    function getDaySuffix(day) {
+      if (day >= 11 && day <= 13) {
+        return "th";
+      }
+      switch (day % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    }
+
+    // Construct the formatted date string for tomorrow
+    const formattedTomorrowDate = `${tomorrowDay} ${tomorrowDayOfMonth}${daySuffix} ${tomorrowMonth} ${tomorrowYear}`;
+
+    cy.log(formattedTomorrowDate);
+
+    cy.get("#tomorrowitemspanel")
+      .find("ul") // Find all <ul> elements within the div
+      .first() // Select the first <ul>
+      .prev("h4") // Get the previous sibling, which should be the <h4>
+      .should("have.text", formattedTomorrowDate); // <h4> content must be equal to variable 'formattedTomorrowDate'
   });
 
   it("2- Edge case: The user can schedule the list items for tomorrow by dragging the item to Later part in scheduled-items ", () => {
@@ -85,6 +154,75 @@ describe("Scheduling the list items", () => {
     cy.get("#tomorrowitemspanel #todo_0")
       .find("span#mytodo_0")
       .should("have.text", "TaskforTomorrow");
+
+    // Get the current date
+    const currentDate = new Date();
+
+    // Calculate the date of tomorrow
+    const tomorrowDate = new Date(currentDate);
+    tomorrowDate.setDate(currentDate.getDate() + 1);
+
+    // Define days and months arrays
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Get day, month, and year for tomorrow
+    const tomorrowDay = days[tomorrowDate.getDay()];
+    const tomorrowDayOfMonth = tomorrowDate.getDate();
+    const tomorrowMonth = months[tomorrowDate.getMonth()];
+    const tomorrowYear = tomorrowDate.getFullYear();
+
+    // Get day of the month with suffix (e.g., 1st, 2nd, 3rd, 4th)
+    const daySuffix = getDaySuffix(tomorrowDayOfMonth);
+
+    // Function to get the suffix for the day of the month
+    function getDaySuffix(day) {
+      if (day >= 11 && day <= 13) {
+        return "th";
+      }
+      switch (day % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    }
+
+    // Construct the formatted date string for tomorrow
+    const formattedTomorrowDate = `${tomorrowDay} ${tomorrowDayOfMonth}${daySuffix} ${tomorrowMonth} ${tomorrowYear}`;
+
+    cy.log(formattedTomorrowDate);
+
+    cy.get("#tomorrowitemspanel")
+      .find("ul") // Find all <ul> elements within the div
+      .first() // Select the first <ul>
+      .prev("h4") // Get the previous sibling, which should be the <h4>
+      .should("have.text", formattedTomorrowDate); // <h4> content must be equal to variable 'formattedTomorrowDate'
   });
 
   it("3- Nominal case: The user can schedule the list items to be any other day, other than today or tomorrow", () => {
@@ -191,6 +329,75 @@ describe("Scheduling the list items", () => {
     cy.get("#tomorrowitemspanel ul li:eq(0)")
       .find("span")
       .should("have.text", "Taskafter2Days");
+
+    // Get the current date
+    const currentDate = new Date();
+
+    // Calculate the date for after 2 days
+    const after2Days = new Date(currentDate);
+    after2Days.setDate(currentDate.getDate() + 2);
+
+    // Define days and months arrays
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Get day, month, and year for after 2 days
+    const after2DaysDay = days[after2Days.getDay()];
+    const after2DaysOfMonth = after2Days.getDate();
+    const after2DaysMonth = months[after2Days.getMonth()];
+    const after2DaysYear = after2Days.getFullYear();
+
+    // Get day of the month with suffix (e.g., 1st, 2nd, 3rd, 4th)
+    const daySuffix = getDaySuffix(after2DaysOfMonth);
+
+    // Function to get the suffix for the day of the month
+    function getDaySuffix(day) {
+      if (day >= 11 && day <= 13) {
+        return "th";
+      }
+      switch (day % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    }
+
+    // Construct the formatted date string for after 2 days
+    const formattedAfter2Days = `${after2DaysDay} ${after2DaysOfMonth}${daySuffix} ${after2DaysMonth} ${after2DaysYear}`;
+
+    cy.log(formattedAfter2Days);
+
+    cy.get("#tomorrowitemspanel")
+      .find("ul") // Find all <ul> elements within the div
+      .first() // Select the first <ul>
+      .prev("h4") // Get the previous sibling, which should be the <h4>
+      .should("have.text", formattedAfter2Days); // <h4> content must be equal to variable 'formattedAfter2Days'
   });
 
   it("4- Nominal case: The user can mix various date (both tomorrow and Later part) in the schedule-items", () => {
@@ -224,6 +431,75 @@ describe("Scheduling the list items", () => {
     cy.get("#tomorrowitemspanel ul li:eq(0)")
       .find("span")
       .should("have.text", "TaskforTomorrow");
+
+    // Get the current date
+    const currentDate = new Date();
+
+    // Calculate the date of tomorrow
+    const tomorrowDate = new Date(currentDate);
+    tomorrowDate.setDate(currentDate.getDate() + 1);
+
+    // Define days and months arrays
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Get day, month, and year for tomorrow
+    const tomorrowDay = days[tomorrowDate.getDay()];
+    const tomorrowDayOfMonth = tomorrowDate.getDate();
+    const tomorrowMonth = months[tomorrowDate.getMonth()];
+    const tomorrowYear = tomorrowDate.getFullYear();
+
+    // Get day of the month with suffix (e.g., 1st, 2nd, 3rd, 4th)
+    const daySuffix = getDaySuffix(tomorrowDayOfMonth);
+
+    // Function to get the suffix for the day of the month
+    function getDaySuffix(day) {
+      if (day >= 11 && day <= 13) {
+        return "th";
+      }
+      switch (day % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    }
+
+    // Construct the formatted date string for tomorrow
+    const formattedTomorrowDate = `${tomorrowDay} ${tomorrowDayOfMonth}${daySuffix} ${tomorrowMonth} ${tomorrowYear}`;
+
+    cy.log(formattedTomorrowDate);
+
+    cy.get("#tomorrowitemspanel")
+      .find("ul") // Find all <ul> elements within the div
+      .first() // Select the first <ul>
+      .prev("h4") // Get the previous sibling, which should be the <h4>
+      .should("have.text", formattedTomorrowDate); // <h4> content must be equal to variable 'formattedTomorrowDate'
 
     // 4.4: Drag the item "Taskafter2Days" to the Scheduled-items (later category; Select 2 days after today)
     cy.get("#todolistpanel #todo_1").drag("#latertitle", { force: true });
@@ -330,6 +606,81 @@ describe("Scheduling the list items", () => {
     cy.get("#tomorrowitemspanel ul li:eq(1)")
       .find("span")
       .should("have.text", "Taskafter2Days");
+
+    // Get the current date
+    const currentDate2 = new Date();
+
+    // Calculate the date for after 2 days
+    const after2Days = new Date(currentDate2);
+    after2Days.setDate(currentDate2.getDate() + 2);
+
+    // Define days and months arrays
+    const days2 = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months2 = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Get day, month, and year for after 2 days
+    const after2DaysDay = days2[after2Days.getDay()];
+    const after2DaysOfMonth = after2Days.getDate();
+    const after2DaysMonth = months2[after2Days.getMonth()];
+    const after2DaysYear = after2Days.getFullYear();
+
+    // Get day of the month with suffix (e.g., 1st, 2nd, 3rd, 4th)
+    const daySuffix2 = getDaySuffix(after2DaysOfMonth);
+
+    // Function to get the suffix for the day of the month
+    function getDaySuffix(day) {
+      if (day >= 11 && day <= 13) {
+        return "th";
+      }
+      switch (day % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    }
+
+    // Construct the formatted date string for after 2 days
+    const formattedAfter2Days = `${after2DaysDay} ${after2DaysOfMonth}${daySuffix2} ${after2DaysMonth} ${after2DaysYear}`;
+
+    cy.log(formattedAfter2Days);
+
+    cy.get("#tomorrowitemspanel")
+      .find("ul") // Find all <ul> elements within the div
+      .eq(1) // Select the first <ul>
+      .prev("h4") // Get the previous sibling, which should be the <h4>
+      .should("have.text", formattedAfter2Days); // <h4> content must be equal to variable 'formattedAfter2Days'
+
+    cy.get("#tomorrowitemspanel")
+      .find("ul") // Find all <ul> elements within the div
+      .first() // Select the first <ul>
+      .prev("h4") // Get the previous sibling, which should be the <h4>
+      .should("have.text", formattedTomorrowDate); // <h4> content must be equal to variable 'formattedTomorrowDate'
   });
 
   it("5- Nominal case: The user can hide the list items in the scheduled-items", () => {
@@ -350,9 +701,6 @@ describe("Scheduling the list items", () => {
     /*
     Expected result:
     Next to title "Tomorrow": (1)
-
-    Inside the Scheduled-items:
-      - There's a section with title : the title is tomorrow's date & Item "TaskforTomorrow1" is just under the title
     */
     cy.get("#tomorrowpanel #tomorrowtitle ")
       .find("span#tomorrow_number")
@@ -367,9 +715,6 @@ describe("Scheduling the list items", () => {
     /*
     Expected result:
     Next to title "Tomorrow": (2)
-
-    Inside the Scheduled-items:
-      - There's a section with title : the title is tomorrow's date & Items  "TaskforTomorrow1" and   "TaskforTomorrow2"  are just under the title
     */
     cy.get("#tomorrowpanel #tomorrowtitle ")
       .find("span#tomorrow_number")
@@ -422,6 +767,75 @@ describe("Scheduling the list items", () => {
     cy.get("#tomorrowitemspanel #todo_0")
       .find("span#mytodo_0")
       .should("have.text", "TaskforTomorrow");
+
+    // Get the current date
+    const currentDate = new Date();
+
+    // Calculate the date of tomorrow
+    const tomorrowDate = new Date(currentDate);
+    tomorrowDate.setDate(currentDate.getDate() + 1);
+
+    // Define days and months arrays
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Get day, month, and year for tomorrow
+    const tomorrowDay = days[tomorrowDate.getDay()];
+    const tomorrowDayOfMonth = tomorrowDate.getDate();
+    const tomorrowMonth = months[tomorrowDate.getMonth()];
+    const tomorrowYear = tomorrowDate.getFullYear();
+
+    // Get day of the month with suffix (e.g., 1st, 2nd, 3rd, 4th)
+    const daySuffix = getDaySuffix(tomorrowDayOfMonth);
+
+    // Function to get the suffix for the day of the month
+    function getDaySuffix(day) {
+      if (day >= 11 && day <= 13) {
+        return "th";
+      }
+      switch (day % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    }
+
+    // Construct the formatted date string for tomorrow
+    const formattedTomorrowDate = `${tomorrowDay} ${tomorrowDayOfMonth}${daySuffix} ${tomorrowMonth} ${tomorrowYear}`;
+
+    cy.log(formattedTomorrowDate);
+
+    cy.get("#tomorrowitemspanel")
+      .find("ul") // Find all <ul> elements within the div
+      .first() // Select the first <ul>
+      .prev("h4") // Get the previous sibling, which should be the <h4>
+      .should("have.text", formattedTomorrowDate); // <h4> content must be equal to variable 'formattedTomorrowDate'
 
     cy.wait(1000);
 
@@ -551,6 +965,75 @@ describe("Scheduling the list items", () => {
       .find("span")
       .should("have.text", "Taskafter2Days");
 
+    // Get the current date
+    const currentDate = new Date();
+
+    // Calculate the date for after 2 days
+    const after2Days = new Date(currentDate);
+    after2Days.setDate(currentDate.getDate() + 2);
+
+    // Define days and months arrays
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Get day, month, and year for after 2 days
+    const after2DaysDay = days[after2Days.getDay()];
+    const after2DaysOfMonth = after2Days.getDate();
+    const after2DaysMonth = months[after2Days.getMonth()];
+    const after2DaysYear = after2Days.getFullYear();
+
+    // Get day of the month with suffix (e.g., 1st, 2nd, 3rd, 4th)
+    const daySuffix = getDaySuffix(after2DaysOfMonth);
+
+    // Function to get the suffix for the day of the month
+    function getDaySuffix(day) {
+      if (day >= 11 && day <= 13) {
+        return "th";
+      }
+      switch (day % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    }
+
+    // Construct the formatted date string for after 2 days
+    const formattedAfter2Days = `${after2DaysDay} ${after2DaysOfMonth}${daySuffix} ${after2DaysMonth} ${after2DaysYear}`;
+
+    cy.log(formattedAfter2Days);
+
+    cy.get("#tomorrowitemspanel")
+      .find("ul") // Find all <ul> elements within the div
+      .first() // Select the first <ul>
+      .prev("h4") // Get the previous sibling, which should be the <h4>
+      .should("have.text", formattedAfter2Days); // <h4> content must be equal to variable 'formattedAfter2Days'
+
     // 7.3: Wait for 2 day and 1 hour to pass ⏰
     cy.tick(2 * 24 * 60 * 60 * 1000 + 1 * 60 * 60 * 1000, { log: true });
     // We did this step because we need to do an action in order for the cy.tick() to run
@@ -677,6 +1160,75 @@ describe("Scheduling the list items", () => {
       .find("span")
       .should("have.text", "Taskafter2Days");
 
+    // Get the current date
+    const currentDate2 = new Date();
+
+    // Calculate the date for after 2 days
+    const after2Days = new Date(currentDate2);
+    after2Days.setDate(currentDate2.getDate() + 2);
+
+    // Define days and months arrays
+    const days2 = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months2 = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Get day, month, and year for after 2 days
+    const after2DaysDay = days2[after2Days.getDay()];
+    const after2DaysOfMonth = after2Days.getDate();
+    const after2DaysMonth = months2[after2Days.getMonth()];
+    const after2DaysYear = after2Days.getFullYear();
+
+    // Get day of the month with suffix (e.g., 1st, 2nd, 3rd, 4th)
+    const daySuffix2 = getDaySuffix(after2DaysOfMonth);
+
+    // Function to get the suffix for the day of the month
+    function getDaySuffix(day) {
+      if (day >= 11 && day <= 13) {
+        return "th";
+      }
+      switch (day % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    }
+
+    // Construct the formatted date string for after 2 days
+    const formattedAfter2Days = `${after2DaysDay} ${after2DaysOfMonth}${daySuffix2} ${after2DaysMonth} ${after2DaysYear}`;
+
+    cy.log(formattedAfter2Days);
+
+    cy.get("#tomorrowitemspanel")
+      .find("ul") // Find all <ul> elements within the div
+      .first() // Select the first <ul>
+      .prev("h4") // Get the previous sibling, which should be the <h4>
+      .should("have.text", formattedAfter2Days); // <h4> content must be equal to variable 'formattedAfter2Days'
+
     // 8.3: Wait for 2 day and 1 hour to pass ⏰
     cy.tick(1 * 24 * 60 * 60 * 1000 + 1 * 60 * 60 * 1000, { log: true });
     // We did this step because we need to do an action in order for the cy.tick() to run
@@ -686,7 +1238,7 @@ describe("Scheduling the list items", () => {
     Next to title "Tomorrow": (1)
 
     Inside the Scheduled-items:
-      - There's a section with title : the title is tomorrow's date & Item  "TaskforTomorrow"  is just under the title
+      -  There's a section with title : the title is tomorrow's date & Item  "Taskafter2Days"  is just under the title
     */
     cy.get("#tomorrowpanel #tomorrowtitle ")
       .find("span#tomorrow_number")
@@ -699,5 +1251,10 @@ describe("Scheduling the list items", () => {
     cy.get("#tomorrowitemspanel #todo_0")
       .find("span#mytodo_0")
       .should("have.text", "Taskafter2Days");
+    cy.get("#tomorrowitemspanel")
+      .find("ul") // Find all <ul> elements within the div
+      .first() // Select the first <ul>
+      .prev("h4") // Get the previous sibling, which should be the <h4>
+      .should("have.text", formattedAfter2Days); // <h4> content must be equal to variable 'formattedAfter2Days'
   });
 });
