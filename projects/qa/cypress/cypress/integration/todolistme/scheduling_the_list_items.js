@@ -121,6 +121,7 @@ describe("Scheduling the list items", () => {
           else if ($nextTd.length === 0) {
             cy.wrap($nextTr)
               .eq(0)
+              .find("td")
               .should("have.length.at.least", 2)
               .then(($tdElements) => {
                 // If the next <tr> has 2 or more <td>
@@ -140,31 +141,35 @@ describe("Scheduling the list items", () => {
                 }
               });
           }
-          // If there is no <tr> in the current calendar page
-          else {
-            // Go to the next calendar page
-            // Check if there is only one <td> after the current <td>
-            if ($nextTd.length === 1) {
-              cy.get("div.hasDatepicker a.ui-datepicker-next").click();
-              cy.get("table.ui-datepicker-calendar")
-                .find("tr")
-                .first()
-                .find("td")
-                .first()
-                .find("a")
-                .click();
-            }
-            // Check if there is no <td> after the current <td>
-            else if ($nextTd.length === 0) {
-              cy.get("div.hasDatepicker a.ui-datepicker-next").click();
-              cy.get("table.ui-datepicker-calendar")
-                .find("tr")
-                .first()
-                .find("td")
-                .eq(1)
-                .find("a")
-                .click();
-            }
+        }
+        // If there is no <tr> in the current calendar page
+        else {
+          // Check if there are 2 or more <td> after the current <td> in the current <tr>
+          if ($nextTd.length >= 2) {
+            cy.wrap($nextTd).eq(1).find("a").click();
+          }
+          // Go to the next calendar page
+          // Check if there is only one <td> after the current <td>
+          else if ($nextTd.length === 1) {
+            cy.get("div.hasDatepicker a.ui-datepicker-next").click();
+            cy.get("table.ui-datepicker-calendar")
+              .find("tr")
+              .first()
+              .find("td")
+              .first()
+              .find("a")
+              .click();
+          }
+          // Check if there is no <td> after the current <td>
+          else if ($nextTd.length === 0) {
+            cy.get("div.hasDatepicker a.ui-datepicker-next").click();
+            cy.get("table.ui-datepicker-calendar")
+              .find("tr")
+              .first()
+              .find("td")
+              .eq(1)
+              .find("a")
+              .click();
           }
         }
       }
