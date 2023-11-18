@@ -571,4 +571,133 @@ describe("Scheduling the list items", () => {
       .find("span#tomorrow_number")
       .should("not.have.text");
   });
+
+  it("8- Nominal case: The item scheduled for after 2 days which is in Later part, will be on scheduled-items as tomorrow part after 1 day has passed  ⏰", () => {
+    // 8.1: Create new item in the To-do-items: Taskafter2Days
+    cy.get("#additempanel")
+      .find("#newtodo")
+      .type("Taskafter2Days")
+      .type("{enter}");
+
+    // 8.2: Drag the item "Taskafter2Days" to the Scheduled-items (later category; Select 2 days after today)
+    cy.get("#todolistpanel #todo_0").drag("#latertitle", { force: true });
+
+    // This function works only if you select the date 2 days after today
+    cy.get("table.ui-datepicker-calendar td.ui-datepicker-today").then(
+      ($today) => {
+        // Select all the <td> after the current <td>
+        const $nextTd = $today.nextAll("td");
+        // Select the parent of the current <td> which is the <tr>
+        const $parentTd = $today.parent();
+        // Select all the <tr> after the current <tr>
+        const $nextTr = $parentTd.nextAll("tr");
+
+        // Check if there is another next <tr> in the current table page calendar
+        if ($nextTr.length >= 1) {
+          // Check if there are 2 or more <td> after the current <td> in the current <tr>
+          if ($nextTd.length >= 2) {
+            cy.wrap($nextTd).eq(1).find("a").click();
+          }
+          // Check if there is only one <td> after the current <td>, go to the next <tr> and select the first <td>
+          else if ($nextTd.length === 1) {
+            cy.wrap($nextTr).eq(0).find("td:first-child a").click();
+          }
+          // Check if there is no <td> after the current <td>, go to the next <tr> and select the second <td>
+          else if ($nextTd.length === 0) {
+            cy.wrap($nextTr)
+              .eq(0)
+              .find("td")
+              .should("have.length.at.least", 2)
+              .then(($tdElements) => {
+                // If the next <tr> has 2 or more <td>
+                if ($tdElements.length >= 2) {
+                  cy.wrap($nextTr).eq(0).find("td:nth-child(2) a").click();
+                }
+                // If the next <tr> has only one <td>
+                else {
+                  cy.get("div.hasDatepicker a.ui-datepicker-next").click();
+                  cy.get("table.ui-datepicker-calendar")
+                    .find("tr")
+                    .first()
+                    .find("td")
+                    .first()
+                    .find("a")
+                    .click();
+                }
+              });
+          }
+        }
+        // If there is no <tr> in the current calendar page
+        else {
+          // Check if there are 2 or more <td> after the current <td> in the current <tr>
+          if ($nextTd.length >= 2) {
+            cy.wrap($nextTd).eq(1).find("a").click();
+          }
+          // Go to the next calendar page
+          // Check if there is only one <td> after the current <td>
+          else if ($nextTd.length === 1) {
+            cy.get("div.hasDatepicker a.ui-datepicker-next").click();
+            cy.get("table.ui-datepicker-calendar")
+              .find("tr")
+              .first()
+              .find("td")
+              .first()
+              .find("a")
+              .click();
+          }
+          // Check if there is no <td> after the current <td>
+          else if ($nextTd.length === 0) {
+            cy.get("div.hasDatepicker a.ui-datepicker-next").click();
+            cy.get("table.ui-datepicker-calendar")
+              .find("tr")
+              .first()
+              .find("td")
+              .eq(1)
+              .find("a")
+              .click();
+          }
+        }
+      }
+    );
+
+    /*
+    Expected result: 
+   
+    Next to title "Later": (1)
+
+    Inside the Scheduled-items:
+      - There's a section with title : the title is after 2 days' date & Item  "Taskafter2Days"  is just under the title
+    */
+    cy.get("#tomorrowpanel #latertitle")
+      .find("span#later_number")
+      .eq(0)
+      .should("have.text", "( 1 )");
+    cy.get("#tomorrowitemspanel").find("li").should("have.length", 1);
+    cy.get("#tomorrowitemspanel ul li:eq(0)")
+      .find("span")
+      .should("have.text", "Taskafter2Days");
+
+    // 8.3: Wait for 2 day and 1 hour to pass ⏰
+    cy.tick(1 * 24 * 60 * 60 * 1000 + 1 * 60 * 60 * 1000, { log: true });
+    // We did this step because we need to do an action in order for the cy.tick() to run
+    cy.get("#sortselect").find("#sort0").click();
+
+    /*
+    Next to title "Tomorrow": (1)
+
+    Inside the Scheduled-items:
+      - There's a section with title : the title is tomorrow's date & Item  "TaskforTomorrow"  is just under the title
+    */
+    cy.get("#tomorrowpanel #tomorrowtitle ")
+      .find("span#tomorrow_number")
+      .should("have.text", "( 1 )");
+    cy.get("#tomorrowpanel #latertitle")
+      .find("span#later_number")
+      .eq(0)
+      .should("not.have.text");
+    cy.get("#tomorrowitemspanel").find("li").should("have.length", 1);
+    cy.get("#tomorrowitemspanel #todo_0")
+      .find("span#mytodo_0")
+      .should("have.text", "Taskafter2Days");
+  });
 });
