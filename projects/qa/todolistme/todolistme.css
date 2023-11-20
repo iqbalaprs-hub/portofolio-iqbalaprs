@@ -1,0 +1,128 @@
+/* todolistme-intro */
+.todolistme-intro img {
+  width: 200px;
+}
+
+.todolistme-intro p {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .todolistme-intro img {
+    width: 150px;
+  }
+}
+
+/* SECTION INTRO */
+.section-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* SPECIFIC TO TODOLISTME */
+img {
+  max-width: 500px;
+  margin: var(--small-margin-value);
+}
+
+/* SPECIFICATIONS */
+
+.specifications .parent-menu {
+  font-weight: 700;
+  margin-left: 20px;
+  color: var(--primary-text-color);
+}
+.specifications .submenu {
+  margin-left: 40px;
+  font-weight: 500;
+}
+
+.specifications .sub-submenu {
+  margin-left: 60px;
+  font-weight: 500;
+}
+
+.specifications .sub-sub-submenu {
+  margin-left: 80px;
+  font-weight: 500;
+}
+
+.specifications ul,
+li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Accordion-item */
+.accordion-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: 1px solid #000;
+  cursor: pointer;
+}
+
+.accordion-item:hover {
+  background-color: var(--secondary-link-hover-color);
+}
+
+.accordion-item h4 {
+  margin-right: 0;
+  width: 90%;
+}
+
+@media screen and (max-width: 500px) {
+  .accordion-item h4 {
+    width: 85%;
+  }
+}
+
+.accordion-item .case-title {
+  font-weight: 700;
+}
+
+.accordion-item i {
+  transform: rotate(0deg);
+  transition: transform 0.5s;
+}
+
+/* SPECIFIC TO THE TABLE */
+.accordion-item tr {
+  box-shadow: 0 1px 4px 0 var(--secondary-link-hover-color);
+}
+
+.accordion-item th,
+td {
+  padding: var(--small-padding-value);
+  line-height: 1.5;
+}
+
+/* The below is related to JavaScript */
+.accordion-item .hidden-content {
+  width: 100%;
+  overflow: hidden;
+  max-height: 0px;
+  border-collapse: collapse;
+  background-color: var(--body-bg-color);
+  white-space: nowrap;
+  transition: max-height 0.5s;
+}
+
+.accordion-item .hidden-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.accordion-item.open .hidden-content {
+  overflow: auto;
+  max-height: 450px;
+  transition: max-height 0.5s;
+  padding-bottom: var(--small-padding-value);
+}
+
+.accordion-item.open i {
+  transform: rotate(180deg);
+  transition: transform 0.5s;
+}
