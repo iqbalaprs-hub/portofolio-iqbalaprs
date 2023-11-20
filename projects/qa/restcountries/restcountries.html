@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rest Countries portfolio</title>
+    <script
+      src="https://kit.fontawesome.com/0d4f931e5e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="restcountries.css" />
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="restcountries.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="navigation-bar">
+        <a href="../../../index.html" class="logo">
+          <h3>Rony</h3>
+        </a>
+        <a href="https://github.com/ronyelhourani/portfolio" target="_blank"
+          ><i class="fa-brands fa-github fa-2x" title="My Git Repository"> </i>
+        </a>
+        <div class="menu">
+          <a href="../../../index.html#QA-portfolio">QA</a>
+          <a href="../../../index.html#webdev-portfolio">Web design</a>
+          <a href="../../../aboutMe.html">About me</a>
+        </div>
+
+        <input type="checkbox" class="checkbox-toggler" id="nav" />
+        <label for="nav" class="hamburger-menu">
+          <span class="nav-icon"></span>
+        </label>
+        <div class="nav-bg"></div>
+        <nav class="navigation">
+          <ul class="nav-list">
+            <li>
+              <a href="../../../index.html" class="nav-link">Homepage</a>
+            </li>
+
+            <li>
+              <a href="../../../aboutMe.html" class="nav-link">About me</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="restcountries-intro">
+        <div class="section-intro">
+          <a href="https://restcountries.com/" target="_blank"
+            ><img src="images/RESTCountries-logo.png"
+          /></a>
+
+          <p>
+            <a href="https://restcountries.com/" target="_blank"
+              >Rest Countries</a
+            >
+            is a web application that provides details about countries such as
+            name, alpha codes, currencies, capital, region, subregion, language,
+            translations... In order to access the information, this web
+            application is showing you how to do it by using the GET API request
+            (GET API request is a type of communication designed to request data
+            and retrieve information from the server).
+          </p>
+        </div>
+      </section>
+
+      <section class="specifications">
+        <div class="section-intro">
+          <h1>Specifications</h1>
+          <p>
+            I have examined the website application "Rest Countries" and wrote
+            specifications (or documentation) for the GET API request using
+            OpenAPI Swagger, which it will provide me a guide for writing test
+            cases. You can find the documentation in my
+            <i class="fa-brands fa-github"></i>
+            <a
+              href="https://github.com/ronyelhourani/portfolio/blob/main/projects/qa/restcountries/openapi.yaml"
+              target="_blank"
+              >Github repository</a
+            >
+            and you can see it tested on
+            <a href="swaggerRestCountries.html" target="_blank"
+              >openAPI swagger</a
+            >.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-intro">
+          <h1>Test cases</h1>
+          <p>
+            We created 66 test cases for 11 endpoints. Here are all the test
+            cases for RestCountries in my <i class="fa-brands fa-github"></i>
+            <a
+              href="https://github.com/ronyelhourani/portfolio/tree/main/projects/qa/cypress/cypress/integration/restCountries"
+              target="_blank"
+              >Github repository</a
+            >. Even thought we did manual tests on Postman, we had to do the
+            automated test on Cypress.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-intro">
+          <h1>Cypress tests</h1>
+          <p>
+            All test cases above where rewritten as automated tests using
+            Cypress. You can find them in my
+            <i class="fa-brands fa-github"></i>
+            <a
+              href="https://github.com/ronyelhourani/portfolio/tree/main/projects/qa/cypress/cypress/integration/restCountries"
+              target="_blank"
+              >Github repository</a
+            >. Here's a video capture of all test runs.
+          </p>
+
+          <video
+            width="100%"
+            max-width="650"
+            height="400"
+            src=""
+            title="API Testing of RestCountries App with Cypress"
+            frameborder="0"
+            allowfullscreen
+          ></video>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-intro">
+          <h1>Test reports</h1>
+          <p>
+            All tests were executed manually and run using Cypress.<br />Here's
+            below, the results of running "npx cypress run --spec".
+          </p>
+        </div>
+        <div class="accordion-item">
+          <h4>RestCountries test reports (Click to reveal)</h4>
+          <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
