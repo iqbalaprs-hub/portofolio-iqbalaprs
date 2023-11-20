@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>todolistme portfolio</title>
+    <script
+      src="https://kit.fontawesome.com/0d4f931e5e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="todolistme.css" />
+    <link rel="stylesheet" href="../../../common.css" />
+    <script src="todolistme.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="navigation-bar">
+        <a href="../../../index.html" class="logo">
+          <h3>Rony</h3>
+        </a>
+        <a href="https://github.com/ronyelhourani/portfolio" target="_blank"
+          ><i class="fa-brands fa-github fa-2x" title="My Git Repository"> </i>
+        </a>
+        <div class="menu">
+          <a href="../../../index.html#QA-portfolio">QA</a>
+          <a href="../../../index.html#webdev-portfolio">Web design</a>
+          <a href="../../../aboutMe.html">About me</a>
+        </div>
+
+        <input type="checkbox" class="checkbox-toggler" id="nav" />
+        <label for="nav" class="hamburger-menu">
+          <span class="nav-icon"></span>
+        </label>
+        <div class="nav-bg"></div>
+        <nav class="navigation">
+          <ul class="nav-list">
+            <li>
+              <a href="../../../index.html" class="nav-link">Homepage</a>
+            </li>
+
+            <li>
+              <a href="../../../aboutMe.html" class="nav-link">About me</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="todolistme-intro">
+        <div class="section-intro">
+          <a href="https://todolistme.net/" target="_blank"
+            ><img src="images/todolistme-logo.png"
+          /></a>
+
+          <p>
+            <a href="https://todolistme.net/" target="_blank">Todolistme</a> is
+            a web application helps you organize your everyday life. It helps
+            you sort your goals by organizing your to-do-list into sections: (1)
+            “today” for tasks you aim to accomplish today, (2) “tomorrow” for
+            tasks you want to do the next day, (3) “later” for tasks you want to
+            do during any other day, and (4) “Done” for completed achievements.
+          </p>
+        </div>
+      </section>
+
+      <section class="specifications">
+        <div class="section-intro">
+          <h1>Specifications</h1>
+          <p>
+            To begin with, I familiarized myself with Todolistme by exploring
+            its funtionalities. I then wrote down a specification of its
+            features, in order to provide me with a guide for writing test
+            cases. Here are the Todolistme specifications:
+          </p>
+        </div>
+        <div class="accordion-item">
+          <h4>Todolistme specifications (Click to reveal)</h4>
+          <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+          <ul class="hidden-content"></ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-intro">
+          <h1>Test cases</h1>
+          <p>
+            Here are the test cases for Todolistme, grouped by feature. They can
+            be executed manually, and will be automated below.
+          </p>
+        </div>
+
+        <ul>
+          <li class="accordion-item">
+            <h4>Feature: Create and manage lists</h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <table></table>
+            </div>
+          </li>
+          <li class="accordion-item">
+            <h4>Feature: Create and manage categories</h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <table></table>
+            </div>
+          </li>
+          <li class="accordion-item">
+            <h4>Feature: Create, rename, delete and drag list items</h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <table></table>
+            </div>
+          </li>
+          <li class="accordion-item">
+            <h4>Feature: Sorting list items</h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <table></table>
+            </div>
+          </li>
+          <li class="accordion-item">
+            <h4>Feature: Scheduling the list items</h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <table></table>
+            </div>
+          </li>
+          <li class="accordion-item">
+            <h4>
+              Feature: Watching the progress and percentage of task accomplished
+            </h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <table></table>
+            </div>
+          </li>
+          <li class="accordion-item">
+            <h4>Feature: Todolistme page saved automatically</h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <table></table>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="section-intro">
+          <h1>Cypress tests</h1>
+          <p>
+            All test cases above where rewritten as automated tests using
+            Cypress. You can find them in my
+            <i class="fa-brands fa-github"></i>
+            <a
+              href="https://github.com/ronyelhourani/portfolio/tree/main/projects/qa/cypress/cypress/integration/todolistme"
+              target="_blank"
+              >Github repository</a
+            >. Here's a video capture of all test runs.
+          </p>
+
+          <iframe
+            width="100%"
+            max-width="650"
+            height="400"
+            src=""
+            title="End-to-End Testing of Todolistme App with Cypress"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-intro">
+          <h1>Test reports</h1>
+          <p>
+            All tests were executed manually and run using Cypress. The
+            Todolistme application was tested on Chrome (if needed by the
+            client, they can also be tested in other browsers).<br />Here's
+            below, the results of running "npx cypress run --browser chrome".<br />Using
+            Cypress and manual tests, I detected a number of bugs in the
+            Todolistme application. The next section lists those bugs.
+          </p>
+        </div>
+        <div class="accordion-item">
+          <h4>Todolistme test reports (Click to reveal)</h4>
+          <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-intro">
+          <h1>🐞 Bug reports</h1>
+          <p>
+            My tests found (???) bugs in the Todolistme app. These bugs can be
+            transferred to the development team for fixing
+          </p>
+        </div>
+
+        <ul>
+          <li class="accordion-item">
+            <h4>Bug 1: -------</h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <h5>Summary</h5>
+              <p></p>
+
+              <h5>Steps to reproduce</h5>
+              <p></p>
+
+              <h5>Actual result 🐞</h5>
+              <p></p>
+              <img src="" alt="Bug 1:" />
+
+              <h5>Expected result</h5>
+              <p></p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
