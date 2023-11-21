@@ -2,6 +2,7 @@
 
 describe("Scheduling the list items", () => {
   beforeEach(() => {
+    // We are using cy.clock() in order to to use cy.tick() in some test cases. We are testing what will happen to the items in Scheduled-items when time is passing (See test cases 6, 7 and 8).
     const now = new Date();
     cy.clock(now);
 
