@@ -90,7 +90,37 @@ describe("Feature: Create and manage lists", () => {
     );
     cy.get("#mytitle").should("have.text", "Test todo list");
 
-    cy.wait(1000);
+    cy.get("#lists #container_0 #mylist_0").should(
+      "have.css",
+      "background-color",
+      "rgba(0, 0, 0, 0)"
+    );
+
+    cy.get("#lists #container_0 #mylist_1").should(
+      "have.css",
+      "background-color",
+      "rgba(0, 0, 0, 0)"
+    );
+
+    cy.get("#lists #container_0 #mylist_2").should(
+      "have.css",
+      "background-color",
+      "rgba(0, 0, 0, 0)"
+    );
+
+    cy.get("#lists #container_0 #mylist_3").should(
+      "have.css",
+      "background-color",
+      "rgba(0, 0, 0, 0)"
+    );
+
+    cy.get("#lists #container_0 #mylist_4").should(
+      "have.css",
+      "background-color",
+      "rgba(0, 0, 0, 0)"
+    );
+
+    cy.wait(2000);
 
     // 2.3: Click on the TAB button 1 time
     // Expected result: Since "Test todo list" was the last list, it returned to the beginning of the lists which is "Today's tasks"
@@ -112,7 +142,31 @@ describe("Feature: Create and manage lists", () => {
     cy.get("#lists #container_0 #mylist_1").should(
       "have.css",
       "background-color",
-      "rgb(0, 0, 0)"
+      "rgba(0, 0, 0, 0)"
+    );
+
+    cy.get("#lists #container_0 #mylist_2").should(
+      "have.css",
+      "background-color",
+      "rgba(0, 0, 0, 0)"
+    );
+
+    cy.get("#lists #container_0 #mylist_3").should(
+      "have.css",
+      "background-color",
+      "rgba(0, 0, 0, 0)"
+    );
+
+    cy.get("#lists #container_0 #mylist_4").should(
+      "have.css",
+      "background-color",
+      "rgba(0, 0, 0, 0)"
+    );
+
+    cy.get("#lists #container_0 #mylist_5").should(
+      "have.css",
+      "background-color",
+      "rgba(0, 0, 0, 0)"
     );
   });
 
