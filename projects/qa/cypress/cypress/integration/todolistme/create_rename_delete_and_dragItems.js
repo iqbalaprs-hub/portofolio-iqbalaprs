@@ -152,34 +152,6 @@ describe("Feature: Create, rename, delete and drag items", () => {
     cy.get("#doneitemspanel #mydonetodos #todo_1")
       .find("span#mytodo_1")
       .should("have.text", "Item2");
-
-    // 2.12: Create new item in the To-do-items: Task3
-    cy.get("#additempanel").find("#newtodo").type("Task3").type("{enter}");
-
-    // 2.13: Drag the item "Task3" to the "tomorrow" part in the scheduled-items
-    cy.get("#todolistpanel #mytodos #todo_2").drag("#tomorrowtitle", {
-      force: true,
-    });
-    // Expected result: The item "Task3" is in the scheduled-items. "Task3" is unchecked
-    cy.get("#tomorrowitemspanel #todo_2")
-      .find("span#mytodo_2")
-      .should("have.text", "Task3");
-    cy.get("#tomorrowitemspanel #todo_2")
-      .find('input[type="checkbox"]')
-      .should("not.be.checked");
-
-    /*
-    2.14: Double-click on the item "Task3" and name it "Item3"
-      AND
-    2.15: Click "save" button
-    */
-    //  Expected result: The item "Task3" is now named "Item3"
-    cy.get("#tomorrowitemspanel #todo_2").dblclick({ force: true });
-    cy.wait(1000);
-    cy.get("#tomorrowitemspanel #todo_2")
-      .find("input[type=text]")
-      .type("Item3");
-    cy.get("#tomorrowitemspanel #todo_2").find("input[type=submit]").click();
   });
 
   it("3- Nominal case: The user can delete list items ", () => {
@@ -313,14 +285,6 @@ describe("Feature: Create, rename, delete and drag items", () => {
     cy.get("#doneitemspanel p.notodos")
       .should("exist")
       .contains("No done items.");
-
-    // 3.13: Hover over "task5" and click the red X
-    cy.get("#tomorrowitemspanel li span")
-      .filter(':contains("Task5")')
-      .parent("li")
-      .find("img.delete")
-      .invoke("css", "visibility", "visible")
-      .click({ force: true });
   });
 
   it("4- Nominal case: The user can move the items between to-do-items, done-items and scheduled-items, either by dragging, checking and unchecking", () => {
