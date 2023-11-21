@@ -268,4 +268,48 @@ describe("Feature: Sorting list items", () => {
       .find("span")
       .should("have.css", "color", "rgb(221, 221, 221)");
   });
+
+  it("My SecondTest case", () => {
+    // 6.1: Create new item in the To-do-list: x
+    cy.get("#additempanel").find("#newtodo").type("x").type("{enter}");
+
+    // 6.2: Create new item in the To-do-list: f
+    cy.get("#additempanel").find("#newtodo").type("f").type("{enter}");
+
+    // 6.3: Create new item in the To-do-list: a
+    cy.get("#additempanel").find("#newtodo").type("a").type("{enter}");
+
+    // 6.4: Create new item in the To-do-list: X
+    cy.get("#additempanel").find("#newtodo").type("X").type("{enter}");
+
+    // 6.5: Create new item in the To-do-list: F
+    cy.get("#additempanel").find("#newtodo").type("F").type("{enter}");
+
+    // 6.6: Create new item in the To-do-list: A
+    cy.get("#additempanel").find("#newtodo").type("A").type("{enter}");
+
+    // 6.7: Create new item in the To-do-list: 3
+    cy.get("#additempanel").find("#newtodo").type("3").type("{enter}");
+
+    // 6.8: Create new item in the To-do-list: 2
+    cy.get("#additempanel").find("#newtodo").type("2").type("{enter}");
+
+    // 6.9: Create new item in the To-do-list: 1
+    cy.get("#additempanel").find("#newtodo").type("1").type("{enter}");
+
+    // 6.10: Choose the option "Alphabetical" to sort the items alphabetically
+    cy.get("#sortselect").find("#sort1").click();
+    cy.wait(1000);
+
+    // Expected result: The items are sorted as  (from top to bottom: 1, 2, 3, a, A, f, F, x, X)
+    cy.get("#todolistpanel #mytodos li").should(($lis) => {
+      // Convert the list items into an array of their text content
+      const textArray = $lis.map((index, el) => Cypress.$(el).text()).get();
+
+      // Define the expected order
+      const expectedOrder = ["1", "2", "3", "a", "A", "f", "F", "x", "X"];
+
+      expect(textArray).to.deep.equal(expectedOrder);
+    });
+  });
 });
