@@ -269,7 +269,7 @@ describe("Feature: Sorting list items", () => {
       .should("have.css", "color", "rgb(221, 221, 221)");
   });
 
-  it("My SecondTest case", () => {
+  it("6- Nominal case: Testing the order with numbers and letters (lowercase and uppercase)", () => {
     // 6.1: Create new item in the To-do-list: x
     cy.get("#additempanel").find("#newtodo").type("x").type("{enter}");
 
