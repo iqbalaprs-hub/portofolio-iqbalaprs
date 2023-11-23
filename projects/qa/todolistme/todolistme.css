@@ -36,16 +36,25 @@ img {
 .specifications .submenu {
   margin-left: 40px;
   font-weight: 500;
+  color: var(--primary-text-color);
 }
 
 .specifications .sub-submenu {
   margin-left: 60px;
   font-weight: 500;
+  color: var(--primary-text-color);
 }
 
 .specifications .sub-sub-submenu {
   margin-left: 80px;
   font-weight: 500;
+  color: var(--primary-text-color);
+}
+
+.specifications .sub-sub-sub-submenu {
+  margin-left: 100px;
+  font-weight: 500;
+  color: var(--primary-text-color);
 }
 
 .specifications ul,

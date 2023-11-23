@@ -76,7 +76,332 @@
         <div class="accordion-item">
           <h4>Todolistme specifications (Click to reveal)</h4>
           <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-          <ul class="hidden-content"></ul>
+          <ul class="hidden-content">
+            <li class="parent-menu">
+              1- A user can manage lists:
+              <li class="submenu">1-	At first connection, 5 lists are present by default: “Today’s tasks”, “Projects”, “Things to do later”, “Example template”, “Important info”</li>
+              <li class="submenu">2- The user can click “TAB” in order to go the next list</li>
+              <ul  class="submenu">
+                <li>
+                  3-	The user can create new list:
+                  <ul class="sub-submenu">
+                    <li>a.	By clicking the icon “add new list”. When creating it, you can either:
+                      <ul class="sub-sub-submenu">
+                        <li>i.	Save it </li>
+                        <li>ii.	Cancel it </li>
+                      </ul>
+                    </li>
+                    <li>
+                      b.	Copying an existing list. When copying it, you can either:
+                      <ul class="sub-sub-submenu">
+                        <li>i.	Save it </li>
+                        <li>ii.	Cancel it </li>
+                        <li>iii.	Name it:
+                          <ul class="sub-sub-sub-submenu">
+                            <li>1.	If the name is not given by the user, the copied list takes the original name and add “Copy of “at the beginning</li>
+                            <li>2.	Multiple copied lists can have the same name </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <li class="submenu">4-	The user can delete the list. </li>
+              <li class="submenu">5-	The user can name the list when creating it. When naming it, you can either:
+                <ul class="sub-submenu">
+                  <li>a.	Save it </li>
+                  <li>b.	Cancel it </li>
+                  <li>c.	Name it yourself:
+                    <ul class="sub-sub-submenu">
+                        <li>a.	You can name it in Arabic and Chinese </li>
+                        <li>b.	You can name it using special characters </li>
+                        <li>c.	You cannot leave it without a name </li>
+                        <li>d.	You cannot use spaces as a name </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="submenu">6-	The user can rename the list. When renaming it, you can either:
+                <ul class="sub-submenu">
+                  <li>a.	Save it </li>
+                  <li>b.	Cancel it </li>
+                  <li>c.	Multiple lists can have the same name </li>
+                </ul>
+              </li>
+              <li class="submenu">7-	The user can reorder the lists by dragging </li>
+              <li class="submenu">8-	Each list has:
+                <ul class="sub-submenu">
+                  <li>a.	 Name</li>
+                  <li>b.	(Number of To-Do-list items / Number of Done-list items)	</li>
+                </ul>
+              </li>
+            </li>
+            <li class="parent-menu">
+              2- A user can manage categories:
+              <li class="submenu">1- Categories can be created. When creating it, you either:
+                <ul class="sub-submenu">
+                  <li>a.	Save it </li>
+                  <li>b.	Cancel it </li>
+                  <li>c.	Name it:
+                    <ul class="sub-submenu">
+                      <li>a.	If the name is not given by the user, the default name will be “New Category” </li>
+                      <li>b.	Name it yourself:
+                        <ul class="sub-sub-submenu">
+                          <li>i.	You can also use Arabic and Chinese language </li>
+                          <li>ii.	You can use special characters </li>
+                          <li>iii.	You cannot leave the list without a name </li>
+                          <li>iv.	You cannot use spaces as a name </li>
+                        </ul>
+                      </li>
+                      <li>c.	Multiple categories can have the same name </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="submenu">2- Categories can be renamed. When renaming it, you either:
+                <ul class="sub-submenu">
+                  <li>a.	Save it </li>
+                  <li>b.	Cancel it </li>
+                </ul>
+              </li>
+              <li class="submenu">3- Categories can be deleted </li>
+              <li class="submenu">4- Categories can be dragged </li>
+              <li class="submenu">5- The user can manage lists in the categories:
+                <ul class="sub-submenu">
+                  <li>a. Insert lists into the categories </li>
+                  <li>b. Change the order of the lists </li>
+                  <li>c. Copy the lists </li>
+                  <li>d. Delete the lists </li>
+                </ul>
+              </li>
+              <li class="submenu">6- Categories can hide its lists </li>
+            </li>
+            <li class="parent-menu">
+              3- Each list’s content is composed of :
+              <li class="submenu">a-	To-do items:
+                <ul class="sub-submenu">
+                  <li>a.	Items that must be done today</li>
+                  <li>b.	If it is empty, there is a sentence “No items. Why not add one below.” </li>
+                  <li>c.	All items must be unchecked</li>
+                </ul>
+              </li>
+              <li class="submenu">b-	Done items:
+                <ul class="sub-submenu">
+                  <li>a.	Items that are already done</li>
+                  <li>b.	If it is empty, there is a sentence “No done items” </li>
+                  <li>c.	All items must be checked</li>
+                </ul>
+              </li>
+              <li class="submenu">c-	Scheduled items:
+                <ul class="sub-submenu">
+                  <li>a.	Is composed of 2 categories:
+                    <ul  class="sub-sub-submenu">
+                      <li>i.	Tomorrow
+                        <ul class="sub-sub-sub-submenu">
+                          <li>1-	Items that must be done tomorrow </li>
+                        </ul>
+                      </li>
+                      <li>ii.	Later
+                        <ul class="sub-sub-sub-submenu">
+                          <li>1-	Items that must be done any day after tomorrow</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>b. If both tomorrow and later are empty, there is a sentence “Drag todos onto the Tomorrow or later titles above to put them off till later.” </li>
+                  <li>c. All items must be unchecked</li>
+                </ul>
+              </li>
+            </li>
+            <li class="parent-menu">
+              4- What can we do in each of the 3 parts mentioned just above?
+              <ul class="submenu">
+                1-	To-do items:
+                <ul class="sub-submenu">
+                  a.	The user can add new item:
+                  <ul class="sub-sub-submenu">
+                    <li>i.	By clicking and typing any name in the input with placeholder “Type and hit Enter to add”. </li>
+                    <li>ii.	By dragging an item from done-items or the schedule-items</li>
+                    <li>iii.	By unchecking an item in the done-items </li>
+                  </ul>
+                </ul>
+                <ul class="sub-submenu">
+                  b.	The user can name the item:
+                  <ul class="sub-sub-submenu">
+                    <li>i.	You can also use Arabic and Chinese language</li>
+                    <li>ii.	You can use special characters</li>
+                    <li>iii. You cannot leave the list without a name</li>
+                    <li>iv.	You cannot use spaces as a name</li>
+                    <li>v.	You can have multiple items with same name</li>
+                  </ul>
+                </ul>
+                <ul class="sub-submenu">
+                  c.	The user can delete an item 
+                  <li class="sub-sub-submenu">i.	By clicking on the red X</li>
+                </ul>
+                <ul class="sub-submenu">
+                  d. The user can rename an item. When renaming it, you can either:
+                  <ul class="sub-sub-submenu">
+                    <li>i. Save it </li>
+                    <li>ii.	Cancel it</li>
+                  </ul>
+                </ul>
+                <ul class="sub-submenu">
+                  e.	The user can sort items
+                  <ul class="sub-sub-submenu">
+                    <li>i. The way he desires (normal) by dragging an item up and down to re-order the list</li>
+                    <li>ii.	Alphabetical order</li>
+                    <li>iii. Randomly</li>
+                    <li>iv.	Selecting only the top 3</li>
+                  </ul>
+                </ul>
+              </ul>    
+              <ul class="submenu">
+                2-	Done items:
+                <ul class="sub-submenu">
+                  a.	The user can add new item:
+                  <ul class="sub-sub-submenu">
+                    <li>i.	Checking an item in the to-do-list</li>
+                    <li>ii.	Dragging an item from the to-do-items or the schedule-items</li>
+                  </ul>
+                </ul>
+                <ul class="sub-submenu">
+                  b.	The user can name the item:
+                  <ul class="sub-sub-submenu">
+                    <li>i.	You can also use Arabic and Chinese language</li>
+                    <li>ii.	You can use special characters</li>
+                    <li>iii.	You cannot leave the list without a name</li>
+                    <li>iv.	You cannot use spaces as a name</li>
+                    <li>v.	You can have multiple items with same name</li>
+                  </ul>
+                </ul>
+                <ul class="sub-submenu">
+                  c.	The user can delete:
+                  <ul class="sub-sub-submenu">
+                    <li>i.	An item by clicking on the red X</li>
+                    <li>ii.	All items by clicking on the trash icon</li>
+                  </ul>
+                </ul>
+                <ul class="sub-submenu">
+                  d.	The user can rename an item. When renaming it, you can either:
+                  <ul class="sub-sub-submenu">
+                    <li>i. Save it </li>
+                    <li>ii.	Cancel it</li>
+                  </ul>
+                </ul>
+              </ul> 
+              <ul class="submenu">
+                3-	Scheduled items:
+                <ul class="sub-submenu">
+                  a.	The user can add new item:
+                  <ul class="sub-sub-submenu">
+                    <li>i.	Dragging an item from the to-do-items or done-items</li>
+                  </ul>
+                </ul>
+                <ul class="sub-submenu">
+                  b.	The user can name the item:
+                  <ul class="sub-sub-submenu">
+                    <li>i.	You can also use Arabic and Chinese language</li>
+                    <li>ii.	You can use special characters</li>
+                    <li>iii.	You cannot leave the list without a name</li>
+                    <li>iv.	You cannot use spaces as a name</li>
+                    <li>v.	You can have multiple items with same name</li>
+                  </ul>
+                </ul>
+                <ul class="sub-submenu">
+                  c.	The user can delete an item:
+                  <ul class="sub-sub-submenu">
+                    <li>i.	by clicking on the red X</li>
+                  </ul>
+                </ul>
+                <ul class="sub-submenu">
+                  d.	The user can rename an item. When renaming it, you can either:
+                  <ul class="sub-sub-submenu">
+                    <li>i.	Save it </li>
+                    <li>ii.	Cancel it</li>
+                  </ul>
+                </ul>
+                <ul class="sub-submenu">
+                  e.	The user can hide or expose the items by clicking on the blue arrow 
+                </ul>
+              </ul>       
+            </li> 
+            <li class="parent-menu">
+              5- In what way can you schedule your items:
+              <ul class="submenu">
+                1- Today (to-do items)
+                <ul class="sub-submenu">
+                  <li>a. It is for goals you want to accomplish today. There is no additional information about it</li>
+                </ul>
+              </ul>
+              <ul class="submenu">
+                2- tomorrow (Scheduled items)
+                <ul class="sub-submenu">
+                  <li>a. If you add an item in the “tomorrow” category, the item is added with tomorrow’s date above it (for example: if today is 28/09/2023; then the sentence above the item will be “Friday 29th September 2023)</li>
+                  <li>b. If you add other items, all items will be under ONE date (it is written one time), which is tomorrow’s date</li>
+                  <li>c. If it is empty, nothing is written next to the title “Tomorrow”</li>
+                  <li>d. If it is NOT empty, a number between parentheses appear next the title “Tomorrow” showing how many items are in the tomorrow’s date</li>
+                </ul>
+              </ul>
+              <ul class="submenu">
+                3- Later (Scheduled items)
+                <ul class="sub-submenu">
+                  <li>a. You can specify the date only if:
+                    <ul class="sub-sub-submenu">
+                      <li>i. Dates today and before it cannot be selected</li>
+                      <li>ii. Dates tomorrow and after can be selected</li>
+                    </ul>
+                  </li>
+                  <li>b.	Dates are automatically sorted (from newest (top) to latest (bottom))</li>
+                  <li>c.	Each date is written only one time. Even if many items have same day, they are all under one same day</li>
+                  <li>d.	If it is empty, nothing is written next to the title “Later”</li>
+                  <li>e.	If it is NOT empty, a number between parentheses appear next the title “Later” showing how many items are in the later’s date</li>
+                </ul>
+              </ul>
+            </li> 
+            <li class="parent-menu">
+              6- Progress line:
+              <ul class="submenu">
+                1- To-do-list:
+                <ul class="sub-submenu">
+                  a. There are two lines below the title “to do:”
+                  <li class="sub-sub-submenu">i. A line originally takes the full width. Isn’t affected by anything</li>
+                  <li class="sub-sub-submenu">ii. A line which is considered a progress line. The width of the line is proportional to the number of tasks done (The line starts from the right)
+                    <ul class="sub-sub-sub-submenu">
+                      <li>1- If there are no items in the done-items, the line is invisible</li>
+                      <li>2- If for example, there are a total of 10 items in the list (to-do-items plus the done-items) and we have only 1 item in the Done-items, this line will be 1/10 the width of the line just above it.</li>
+                      <li>3- If all items are in the Done-items, the width of the line will be equal to the width of the line above it.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </ul>
+              <ul class="submenu">
+                2- Done-list:
+                <ul class="sub-submenu">
+                  a. There are two lines below the title “Done:”
+                  <ul class="sub-sub-submenu">
+                    <li>i. A line originally takes the full width. Isn’t affected by anything</li>
+                    <li>ii. A line which is considered a progress line. The width of the line is proportional to the number of tasks done (The line starts from the left)
+                      <ul class="sub-sub-sub-submenu">
+                        <li>1- If there are no items in the done-items, the line is invisible</li>
+                        <li>2- If for example, there are a total of 10 items in the list (to-do-items plus the done-items) and we have only 1 item in the Done-items, this line will be 1/10 the width of the line just above it.</li>
+                        <li>3- If all items are in the Done-items, the width of the line will be equal to the width of the line above it.</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </ul>
+              </ul>
+            </li> 
+            <li class="parent-menu">
+              7- Save:
+              <ul class="submenu">
+                <li>1- Even if get out from the page, and then enter it later, all information remains the same. Nothing is lost </li>
+                <li>2- The list is being saved automatically and it is shown by the Save icon  (It is a green colored square icon middle at the top).</li>
+                <li>3- The next day, the items added for after-tomorrow becomes automatically an item for tomorrow</li>
+              </ul>
+            </li>        
+          </ul>
         </div>
       </section>
 
