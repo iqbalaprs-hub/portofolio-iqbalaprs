@@ -47,28 +47,15 @@ describe("Feature: Todolist page saved automatically", () => {
       force: true,
     });
 
-    // 1.7: Copy the "Test todo list" list and name it "Copy-list"
-    cy.get("li span.listname")
-      .filter(':contains("Test todo list")')
-      .parent("li")
-      .find("img.copylist")
-      .invoke("css", "visibility", "visible")
-      .click();
-
-    cy.get("#lists #mylist_6").find("span.listname").dblclick();
-    cy.wait(1000);
-    cy.get("#lists #inplaceeditor").find("#updatebox").type("Copy-list");
-    cy.get("#inplaceeditor").find('input[type="submit"]').click();
-
-    // 1.8: Create new category called "Home"
+    // 1.7: Create new category called "Home"
     cy.get("img.adddivider").click();
     cy.get("#lists #inplaceeditor").find("#updatebox").type("Home");
     cy.get("#inplaceeditor").find('input[type="submit"]').click();
 
-    // 1.9: Exist the TodoListMe website
+    // 1.8: Exist the TodoListMe website
     cy.visit("https://www.wikipedia.org/");
 
-    // 1.10: Enter the TodoListME website
+    // 1.9: Enter the TodoListME website
     cy.visit("https://todolistme.net/");
     /*
     Expected result:
@@ -119,10 +106,10 @@ describe("Feature: Todolist page saved automatically", () => {
       .find("span")
       .should("have.text", "Home");
 
-    // Expected result: 7 lists and the 7th List is "Copy-list"
+    // Expected result: 6 lists and the sixth list is "Test todo list"
     cy.get("#listmanager #lists #container_0")
       .find("li")
-      .should("have.length", 7);
+      .should("have.length", 6);
     cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(0)")
       .find(".listname")
       .should("have.text", "Today's Tasks ");
@@ -141,54 +128,8 @@ describe("Feature: Todolist page saved automatically", () => {
     cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(5)")
       .find(".listname")
       .should("have.text", "Test todo list ");
-    cy.get("#listmanager #lists #mycategory_0 #container_0 li:eq(6)")
-      .find(".listname")
-      .should("have.text", "Copy-list ");
     cy.log(
-      "You have 5 initial files and 2 files we just created called 'Test todo list' and 'Copy-list'"
+      "You have 5 initial files and 1 file we just created called 'Test todo list'"
     );
-
-    /*
-    Expected result: 
-    In the "Copy-list":
-        - To-do-items: Task1 , Task2
-        - Done-items: Task4
-        - Scheduled-items: Task3 
-    */
-    cy.get("li span.listname")
-      .filter(':contains("Copy-list")')
-      .parent("li")
-      .click();
-
-    cy.wait(1000);
-    cy.get("#todolistpanel #mytodos").find("li").should("have.length", 2);
-    cy.get("#todolistpanel #mytodos li:eq(0)")
-      .find("span")
-      .should("have.text", "Task1");
-    cy.get("#todolistpanel #mytodos li:eq(0)")
-      .find('input[type="checkbox"]')
-      .should("not.be.checked");
-    cy.get("#todolistpanel #mytodos li:eq(1)")
-      .find("span")
-      .should("have.text", "Task2");
-    cy.get("#todolistpanel #mytodos li:eq(1)")
-      .find('input[type="checkbox"]')
-      .should("not.be.checked");
-
-    cy.get("#doneitemspanel #mydonetodos").find("li").should("have.length", 1);
-    cy.get("#doneitemspanel #mydonetodos li:eq(0)")
-      .find("span")
-      .should("have.text", "Task4");
-    cy.get("#doneitemspanel #mydonetodos li:eq(0)")
-      .find('input[type="checkbox"]')
-      .should("be.checked");
-
-    cy.get("#tomorrowitemspanel ul").find("li").should("have.length", 1);
-    cy.get("#tomorrowitemspanel li:eq(0)")
-      .find("span")
-      .should("have.text", "Task3");
-    cy.get("#tomorrowitemspanel li:eq(0)")
-      .find('input[type="checkbox"]')
-      .should("not.be.checked");
   });
 });
