@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe("API test for endpoint GET /alpha/{code}", () => {
-  it("1- Test the property 'cca2' with basic normal endpoint", () => {
+  it("1- Request for a country by its cca2 (normal usage)", () => {
     cy.request("GET", "https://restcountries.com/v3.1/alpha/US").then(
       (response) => {
         // Assertion 1: Response is 200
@@ -66,7 +66,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
     );
   });
 
-  it("2- Test the property 'ccn3' with basic normal endpoint", () => {
+  it("2- Request for a country by its ccn3 (normal usage)", () => {
     cy.request("GET", "https://restcountries.com/v3.1/alpha/076").then(
       (response) => {
         // Assertion 1: Response is 200
@@ -88,7 +88,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
     );
   });
 
-  it("3- Test the property 'cca3' with basic normal endpoint", () => {
+  it("3- Request for a country by its cca3 (normal usage)", () => {
     cy.request("GET", "https://restcountries.com/v3.1/alpha/CHL").then(
       (response) => {
         // Assertion 1: Response is 200
@@ -110,7 +110,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
     );
   });
 
-  it("4- Test the property 'cioc' with basic normal endpoint", () => {
+  it("4- Request for a country by its cioc (normal usage)", () => {
     cy.request("GET", "https://restcountries.com/v3.1/alpha/UAE").then(
       (response) => {
         // Assertion 1: Response is 200

@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe("API test for endpoint GET all", function () {
-  it("1- Test the endpoint all", () => {
+  it("1- /all returns all countries with all properties", () => {
     cy.request("GET", "https://restcountries.com/v3.1/all").then((response) => {
       // Assertion 1: Response is 200
       expect(response.status).to.equal(200);

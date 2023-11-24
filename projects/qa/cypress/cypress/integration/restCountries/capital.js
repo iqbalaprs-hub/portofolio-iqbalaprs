@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe("API test for endpoint GET /capital/{capital}", () => {
-  it("1- Test the property 'capital' with basic normal endpoint", () => {
+  it("1- Request for a country by its capital (normal usage)", () => {
     cy.request("GET", "https://restcountries.com/v3.1/capital/Tallinn").then(
       (response) => {
         // Assertion 1: Response is 200
@@ -96,7 +96,7 @@ describe("API test for endpoint GET /capital/{capital}", () => {
     );
   });
 
-  it("3- My SecondTest case Test the property 'capital' by showing that the endpoint can give more than one country", () => {
+  it("3- Test the property 'capital' by showing that the endpoint can give more than one country", () => {
     cy.request("GET", "https://restcountries.com/v3.1/capital/war").then(
       (response) => {
         // Assertion 1: Response is 200

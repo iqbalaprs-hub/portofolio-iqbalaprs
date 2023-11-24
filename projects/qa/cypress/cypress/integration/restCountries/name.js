@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe("API test for endpoint GET /name/{name}", () => {
-  it("1- Test the property 'common name' with basic normal endpoint", () => {
+  it("1- Request for a country by its common name (normal usage)", () => {
     cy.request("GET", "https://restcountries.com/v3.1/name/sweden").then(
       (response) => {
         // Assertion 1: Response is 200

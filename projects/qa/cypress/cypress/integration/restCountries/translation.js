@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe("API test for endpoint GET /translation/{translation}", () => {
-  it("1- Test the property 'translation' with basic normal endpoint", () => {
+  it("1- Request for a country by its translation (normal usage)", () => {
     cy.request(
       "GET",
       "https://restcountries.com/v3.1/translation/Germany"

@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe("API test for endpoint GET /subregion/{subregion}", () => {
-  it("1- Test the property 'subregion' with basic normal endpoint", () => {
+  it("1- Request for a country by its subregion (normal usage)", () => {
     cy.request(
       "GET",
       "https://restcountries.com/v3.1/subregion/North America"
