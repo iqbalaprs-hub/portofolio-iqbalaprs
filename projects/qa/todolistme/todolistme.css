@@ -20,6 +20,10 @@
   align-items: center;
 }
 
+.section-intro p {
+  margin-top: var(--small-margin-value);
+}
+
 /* SPECIFIC TO TODOLISTME */
 img {
   max-width: 500px;
