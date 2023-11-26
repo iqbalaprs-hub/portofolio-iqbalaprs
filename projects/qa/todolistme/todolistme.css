@@ -7,6 +7,11 @@
   margin-top: 0;
 }
 
+.todolistme-intro h1 {
+  font-family: montserrat;
+  color: rgb(80, 80, 80);
+}
+
 @media screen and (max-width: 1200px) {
   .todolistme-intro img {
     width: 150px;

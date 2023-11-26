@@ -53,18 +53,13 @@
             href="https://todolistme.net/"
             target="_blank"
             ><h1>
-              Todolistme
-              <i class="fa-solid fa-house fa-sm" style="color: #006bff"></i>
+              TodoListMe
             </h1>
           </a>
           
           <p>
-            <a href="https://todolistme.net/" target="_blank">Todolistme</a> is
-            a web application helps you organize your everyday life. It helps
-            you sort your goals by organizing your to-do-list into sections: (1)
-            “today” for tasks you aim to accomplish today, (2) “tomorrow” for
-            tasks you want to do the next day, (3) “later” for tasks you want to
-            do during any other day, and (4) “Done” for completed achievements.
+            <a href="https://todolistme.net/" target="_blank">TodoListMe</a> is
+            a web application where you can organize your goals or tasks by categorizing them into four sections: (1) Today's goals, (2) Tomorrow's goals, (3) Any other day's goals, and (4) completed goals.
           </p>
         </div>
       </section>
@@ -2867,7 +2862,7 @@
            </div>
           </li>
           <li class="accordion-item">
-            <h4>Feature: Todolistme page saved automatically</h4>
+            <h4>Feature: Automatic save</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div class="hidden-content">
               <table>
@@ -2952,7 +2947,7 @@
 
       <section>
         <div class="section-intro">
-          <h1>Cypress tests</h1>
+          <h1>Text execution (Cypress)</h1>
           <p>
             All test cases above where rewritten as automated tests using
             Cypress. You can find them in my
@@ -3025,62 +3020,14 @@
 
               <h5>Expected result</h5>
               <p>No new list was created.</p>
+
+              <h5>Notes</h5>
+              <p>The same bug occurs when copying a list</p>
             </div>
           </li>
 
           <li class="accordion-item">
-            <h4>Bug 2: When copying a list, the "cancel" button is acting like the "save" button.</h4>
-            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-            <div class="hidden-content">
-              <h5>Summary</h5>
-              <p>When copying a list, the "cancel" button is acting like the "save" button.</p>
-
-              <h5>Steps to reproduce</h5>
-              <p>
-                (1) Prereq: Todolistme page is already opened.<br />
-                (2) Prereq: Local storage is erased and the web application is returned to its default state.<br/>
-                (3) Create new list called "Test todo list" (any name you want, it doesn't matter) by clicking the icon "add new list". <br/>
-                (4) Click "save" button. <br/>
-                (5) Hover over the list "Test todo list".<br/>
-                (6) Click on the double-paper icon "copy list" and name it "copy-list".<br/>
-                (7) Click the "cancel" button.<br/>
-              </p>
-
-              <h5>Actual result 🐞</h5>
-              <p>The new copied list was not deleted and it is named "Copy of Test todo list". </p>
-              
-
-              <h5>Expected result</h5>
-              <p>The copied list of "Test todo list" was not created.</p>
-            </div>
-          </li>
-
-          <li class="accordion-item">
-            <h4>Bug 3: When creating a list and naming it, the "cancel" button is acting like the "save" button.</h4>
-            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-            <div class="hidden-content">
-              <h5>Summary</h5>
-              <p>When creating a list  and naming it, the "cancel" button is acting like the "save" button.</p>
-
-              <h5>Steps to reproduce</h5>
-              <p>
-                (1) Prereq: Todolistme page is already opened.<br />
-                (2) Prereq: Local storage is erased and the web application is returned to its default state.<br/>
-                (3) Create new list called "Test todo list" (any name you want, it doesn't matter) by clicking the icon "add new list". <br/>
-                (4) Click "cancel" button.
-              </p>
-
-              <h5>Actual result 🐞</h5>
-              <p>The creation of the new list was not cancelled and it is also named "New List" (Which is the default name).</p>
-              
-
-              <h5>Expected result</h5>
-              <p>No new list was created.</p>
-            </div>
-          </li>
-
-          <li class="accordion-item">
-            <h4>Bug 4: When creating a category, the "cancel" button is acting like the "save" button.</h4>
+            <h4>Bug 2: When creating a category, the "cancel" button is acting like the "save" button.</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div class="hidden-content">
               <h5>Summary</h5>
@@ -3100,58 +3047,9 @@
 
               <h5>Expected result</h5>
               <p>No new category was created.</p>
-            </div>
-          </li>
 
-          <li class="accordion-item">
-            <h4>Bug 5: When creating a category and naming it, the "cancel" button is acting like the "save" button.</h4>
-            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-            <div class="hidden-content">
-              <h5>Summary</h5>
-              <p>When creating a category  and naming it, the "cancel" button is acting like the "save" button.</p>
-
-              <h5>Steps to reproduce.</h5>
-              <p>
-                (1) Prereq: Todolistme page is already opened.<br />
-                (2) Prereq: Local storage is erased and the web application is returned to its default state.<br/>
-                (3) Click on the icon "add new category" in order to create a new category and name it "Home" (any name you want, it doesn't matter).<br/>
-                (4) Click "cancel" button.
-              </p>
-
-              <h5>Actual result 🐞</h5>
-              <p>The creation of the new category was not cancelled and it is named "New Category" (which is the default name).</p>
-              
-
-              <h5>Expected result</h5>
-              <p>No new category was created.</p>
-            </div>
-          </li>
-
-          <li class="accordion-item">
-            <h4>Bug 6: When copying a list inside a category, the "cancel" button is acting like the "save" button.</h4>
-            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-            <div class="hidden-content">
-              <h5>Summary</h5>
-              <p>When copying a list inside a category, the "cancel" button is acting like the "save" button.</p>
-
-              <h5>Steps to reproduce.</h5>
-              <p>
-                (1) Prereq: Todolistme page is already opened.<br />
-                (2) Prereq: Local storage is erased and the web application is returned to its default state.<br/>
-                (3) Click on the icon "add new category" in order to create a new category and name it "Home" (any name you want, it doesn't matter).<br/>
-                (4) Create new list called "Test todo list" (any name you want, it doesn't matter) by clicking the icon "add new list".<br/>
-                (5) Drag the list "Test todo list" to the category "Home". <br/>
-                (6) Hover over the list "Test todo list".<br/>
-                (7) Click on the double-paper icon "copy list" and name it "copy-list".<br/>
-                (8) Click the "cancel" button.<br/> 
-              </p>
-
-              <h5>Actual result 🐞</h5>
-              <p>The new copied list was not cancelled and it is also named "Copy of Test todo list".</p>
-              
-
-              <h5>Expected result</h5>
-              <p>The new copied list was not created.</p>
+              <h5>Notes</h5>
+              <p>The same bug occurs when copying a category</p>
             </div>
           </li>
 
