@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Feature: Todolist page saved automatically", () => {
+describe("Feature: Automatic save", () => {
   beforeEach(() => {
     // Prereq.: Todolistme page is already opened
     cy.visit("https://todolistme.net/");
