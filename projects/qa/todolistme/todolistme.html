@@ -3052,6 +3052,34 @@
             </div>
           </li>
 
+          <li class="accordion-item">
+            <h4>Improvement: the ID should not change when dragging the item.</h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <h5>Summary</h5>
+              <p>The ID should not change when dragging the item.</p>
+
+              <h5>Steps to reproduce</h5>
+              <p>
+                (1) Prereq: Todolistme page is already opened.<br />
+                (2) Prereq: Local storage is erased and the web application is returned to its default state.<br/>
+                (3) Create several items in todo-items. <br/>
+                (4) Drag the items (preferably randomly) to the scheduled-items
+              </p>
+
+              <h5>Actual result 🐞</h5>
+              <p>When an item is dragged to another section (for example from to-do-items to scheduled-items), its ID can be changed</p>
+              
+
+              <h5>Expected result</h5>
+              <p>The item keep its original ID regarless if it is in to-do-items, done-items or scheduled-items section.</p>
+
+              <h5>Notes</h5>
+              <p>When created, the item must keep its original ID, even if it is dragged.</p>
+            </div>
+          </li>
+
+
         </ul>
       </section>
     </main>
