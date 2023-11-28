@@ -3102,11 +3102,11 @@
           </li>
 
           <li class="accordion-item">
-            <h4>Improvement: the ID should not change when dragging the item.</h4>
+            <h4>Improvement: the ID should not change when dragging an item.</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div class="hidden-content">
               <h5>Summary</h5>
-              <p>The ID should not change when dragging the item.</p>
+              <p>To simplify automated tests on Cypress, the ID should not change when dragging an item.</p>
 
               <h5>Steps to reproduce</h5>
               <p>
@@ -3117,14 +3117,12 @@
               </p>
 
               <h5>Actual result 🐞</h5>
-              <p>When an item is dragged to another section (for example from to-do-items to scheduled-items), its ID can be changed</p>
+              <p>When an item is dragged to another section (for example from to-do-items to scheduled-items), its ID changes</p>
               
 
               <h5>Expected result</h5>
-              <p>The item keep its original ID regarless if it is in to-do-items, done-items or scheduled-items section.</p>
+              <p>The item keeps its original ID regardless if it is in to-do-items, done-items or scheduled-items section.</p>
 
-              <h5>Notes</h5>
-              <p>When created, the item must keep its original ID, even if it is dragged.</p>
             </div>
           </li>
 
