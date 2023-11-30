@@ -23,6 +23,28 @@ describe("API test for endpoint GET /lang/{language}", () => {
                 - Belarus
         */
 
+        // An array countriesNamesToCheck is defined, containing the common names of the countries you want to assert the presence of in the API response
+        const countriesNamesToCheck = [
+          "Tajikistan",
+          "Russia",
+          "Kyrgyzstan",
+          "Uzbekistan",
+          "Turkmenistan",
+          "Kazakhstan",
+          "Belarus",
+        ];
+
+        // Check if each country is present in the response
+        countriesNamesToCheck.forEach((country) => {
+          // The find method looks for an item in the array where the common name (item.name.common) matches the current country in the loop
+          const foundCountry = response.body.find(
+            (item) => item.name.common === country
+          );
+          // The expect(foundCountry).to.exist statement asserts that the country is found in the response. If the country is not found, the test will fail
+          expect(foundCountry).to.exist; // Assert that the country is found
+        });
+
+        // Display the countries using cy.log()
         response.body.forEach((country, index) => {
           // Access the different properties
           const commonName = country.name.common;
@@ -57,6 +79,29 @@ describe("API test for endpoint GET /lang/{language}", () => {
                  - Kyrgyzstan
                  - Belarus
          */
+
+        // An array countriesNamesToCheck is defined, containing the common names of the countries you want to assert the presence of in the API response
+        const countriesNamesToCheck = [
+          "Tajikistan",
+          "Russia",
+          "Kyrgyzstan",
+          "Uzbekistan",
+          "Turkmenistan",
+          "Kazakhstan",
+          "Belarus",
+        ];
+
+        // Check if each country is present in the response
+        countriesNamesToCheck.forEach((country) => {
+          // The find method looks for an item in the array where the common name (item.name.common) matches the current country in the loop
+          const foundCountry = response.body.find(
+            (item) => item.name.common === country
+          );
+          // The expect(foundCountry).to.exist statement asserts that the country is found in the response. If the country is not found, the test will fail
+          expect(foundCountry).to.exist; // Assert that the country is found
+        });
+
+        // Display the countries using cy.log()
         response.body.forEach((country, index) => {
           // Access the different properties
           const commonName = country.name.common;
@@ -153,6 +198,29 @@ describe("API test for endpoint GET /lang/{language}", () => {
                    - Kyrgyzstan
                    - Belarus
            */
+
+        // An array countriesNamesToCheck is defined, containing the common names of the countries you want to assert the presence of in the API response
+        const countriesNamesToCheck = [
+          "Tajikistan",
+          "Russia",
+          "Kyrgyzstan",
+          "Uzbekistan",
+          "Turkmenistan",
+          "Kazakhstan",
+          "Belarus",
+        ];
+
+        // Check if each country is present in the response
+        countriesNamesToCheck.forEach((country) => {
+          // The find method looks for an item in the array where the common name (item.name.common) matches the current country in the loop
+          const foundCountry = response.body.find(
+            (item) => item.name.common === country
+          );
+          // The expect(foundCountry).to.exist statement asserts that the country is found in the response. If the country is not found, the test will fail
+          expect(foundCountry).to.exist; // Assert that the country is found
+        });
+
+        // Display the countries using cy.log()
         response.body.forEach((country, index) => {
           // Access the different properties
           const commonName = country.name.common;
@@ -179,6 +247,7 @@ describe("API test for endpoint GET /lang/{language}", () => {
       cy.log("There are 7 countries");
 
       /*
+      Assertion 3:
         The countries are:
             - Kazakhstan
             - Uzbekistan
@@ -188,6 +257,29 @@ describe("API test for endpoint GET /lang/{language}", () => {
             - Kyrgyzstan
             - Belarus
         */
+
+      // An array countriesNamesToCheck is defined, containing the common names of the countries you want to assert the presence of in the API response
+      const countriesNamesToCheck = [
+        "Tajikistan",
+        "Russia",
+        "Kyrgyzstan",
+        "Uzbekistan",
+        "Turkmenistan",
+        "Kazakhstan",
+        "Belarus",
+      ];
+
+      // Check if each country is present in the response
+      countriesNamesToCheck.forEach((country) => {
+        // The find method looks for an item in the array where the common name (item.name.common) matches the current country in the loop
+        const foundCountry = response.body.find(
+          (item) => item.name.common === country
+        );
+        // The expect(foundCountry).to.exist statement asserts that the country is found in the response. If the country is not found, the test will fail
+        expect(foundCountry).to.exist; // Assert that the country is found
+      });
+
+      // Display the countries using cy.log()
       response.body.forEach((country, index) => {
         // Access the different properties
         const commonName = country.name.common;
@@ -195,7 +287,7 @@ describe("API test for endpoint GET /lang/{language}", () => {
         cy.log(`Common Name ${index + 1}: ${commonName}`);
       });
 
-      //   Only 2 properties name and cca2 related to the 7 countries is present
+      // Assertion 4: Only 2 properties name and cca2 related to the 7 countries is present
       const expectedProperties = ["name", "cca2"];
 
       // This code is using the forEach method to iterate over each element in the response.body array. In this case, each element represents a country in the JSON response. The (country, index) parameters in the callback function represent the current country object and its index in the array

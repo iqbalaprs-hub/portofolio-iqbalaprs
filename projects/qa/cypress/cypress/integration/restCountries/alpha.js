@@ -225,7 +225,32 @@ describe("API test for endpoint GET /alpha/{code}", () => {
             - Colombia has the country code ccn3: "170"
             - Estonia has the country code cca3 and cioc: "EST"
             - Norway has the country code  cca3 and cioc: "NO"
-        */
+      */
+      // Assert that Peru has the country code cca2: "PE"
+      // We use the find method on the response.body array to find the country object that has the cca2 property equal to "PE" (which corresponds to Peru)
+      // The expect statement checks if the found country object has a property named cca2 with the value "PE". This asserts that Peru has the country code "PE"
+      // We are also asserting that the name is correct and that the code is not giving us another country
+      const peru = response.body.find((country) => country.cca2 === "PE");
+      expect(peru).to.have.property("cca2", "PE");
+      expect(peru.name.common).to.equal("Peru");
+
+      // Assert that Colombia has the country code ccn3: "170"
+      const colombia = response.body.find((country) => country.ccn3 === "170");
+      expect(colombia).to.have.property("ccn3", "170");
+      expect(colombia.name.common).to.equal("Colombia");
+
+      // Assert that Estonia has the country code cca3: "EST"
+      const estonia = response.body.find((country) => country.cca3 === "EST");
+      expect(estonia).to.have.property("cca3", "EST");
+      expect(estonia.name.common).to.equal("Estonia");
+
+      // Assert that Norway has the country code cioc: "NO"
+      const norway = response.body.find((country) => country.cioc === "NOR");
+      // expect(norway).to.have.property("cca3", "NOR");
+      expect(norway).to.have.property("cioc", "NOR");
+      expect(norway.name.common).to.equal("Norway");
+
+      // Display the 4 countries using cy.log()
       response.body.forEach((country, index) => {
         // Access the different properties
         const commonName = country.name.common;

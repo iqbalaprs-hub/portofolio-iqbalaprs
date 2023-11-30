@@ -43,6 +43,47 @@ describe("API test for endpoint GET /region/{region}", () => {
             25 - New Zealand     
             26- Wallis and Futuna 27- Palau
         */
+        // An array countriesNamesToCheck is defined, containing the common names of the countries you want to assert the presence of in the API response
+        const countriesNamesToCheck = [
+          "Papua New Guinea",
+          "Christmas Island",
+          "Samoa",
+          "Kiribati",
+          "Guam",
+          "Tonga",
+          "Australia",
+          "New Caledonia",
+          "New Zealand",
+          "Marshall Islands",
+          "French Polynesia",
+          "Vanuatu",
+          "Palau",
+          "Northern Mariana Islands",
+          "Solomon Islands",
+          "Cocos (Keeling) Islands",
+          "American Samoa",
+          "Nauru",
+          "Niue",
+          "Micronesia",
+          "Pitcairn Islands",
+          "Cook Islands",
+          "Tokelau",
+          "Wallis and Futuna",
+          "Fiji",
+          "Tuvalu",
+          "Norfolk Island",
+        ];
+        // Check if each country is present in the response
+        countriesNamesToCheck.forEach((country) => {
+          // The find method looks for an item in the array where the common name (item.name.common) matches the current country in the loop
+          const foundCountry = response.body.find(
+            (item) => item.name.common === country
+          );
+          // The expect(foundCountry).to.exist statement asserts that the country is found in the response. If the country is not found, the test will fail
+          expect(foundCountry).to.exist; // Assert that the country is found
+        });
+
+        // Display all countries with cy.log()
         response.body.forEach((country, index) => {
           // Assert that the country has a "region" property equal to "Oceania"
           expect(country).to.have.property("region").to.equal("Oceania");
@@ -100,6 +141,47 @@ describe("API test for endpoint GET /region/{region}", () => {
             25 - New Zealand     
             26- Wallis and Futuna 27- Palau
         */
+        // An array countriesNamesToCheck is defined, containing the common names of the countries you want to assert the presence of in the API response
+        const countriesNamesToCheck = [
+          "Papua New Guinea",
+          "Christmas Island",
+          "Samoa",
+          "Kiribati",
+          "Guam",
+          "Tonga",
+          "Australia",
+          "New Caledonia",
+          "New Zealand",
+          "Marshall Islands",
+          "French Polynesia",
+          "Vanuatu",
+          "Palau",
+          "Northern Mariana Islands",
+          "Solomon Islands",
+          "Cocos (Keeling) Islands",
+          "American Samoa",
+          "Nauru",
+          "Niue",
+          "Micronesia",
+          "Pitcairn Islands",
+          "Cook Islands",
+          "Tokelau",
+          "Wallis and Futuna",
+          "Fiji",
+          "Tuvalu",
+          "Norfolk Island",
+        ];
+        // Check if each country is present in the response
+        countriesNamesToCheck.forEach((country) => {
+          // The find method looks for an item in the array where the common name (item.name.common) matches the current country in the loop
+          const foundCountry = response.body.find(
+            (item) => item.name.common === country
+          );
+          // The expect(foundCountry).to.exist statement asserts that the country is found in the response. If the country is not found, the test will fail
+          expect(foundCountry).to.exist; // Assert that the country is found
+        });
+
+        // Display all countries with cy.log()
         response.body.forEach((country, index) => {
           // Assert that the country has a "region" property equal to "Oceania"
           expect(country).to.have.property("region").to.equal("Oceania");
@@ -138,6 +220,28 @@ describe("API test for endpoint GET /region/{region}", () => {
             6- Canada     
             7- Greenland
         */
+
+      // An array countriesNamesToCheck is defined, containing the common names of the countries you want to assert the presence of in the API response
+      const countriesNamesToCheck = [
+        "United States Minor Outlying Islands",
+        "Saint Pierre and Miquelon",
+        "Greenland",
+        "United States",
+        "Canada",
+        "Mexico",
+        "Bermuda",
+      ];
+      // Check if each country is present in the response
+      countriesNamesToCheck.forEach((country) => {
+        // The find method looks for an item in the array where the common name (item.name.common) matches the current country in the loop
+        const foundCountry = response.body.find(
+          (item) => item.name.common === country
+        );
+        // The expect(foundCountry).to.exist statement asserts that the country is found in the response. If the country is not found, the test will fail
+        expect(foundCountry).to.exist; // Assert that the country is found
+      });
+
+      // Display all countries with cy.log()
       response.body.forEach((country, index) => {
         // Assert that the country has a "region" property equal to "Oceania"
         expect(country).to.have.property("subregion").to.equal("North America");
@@ -194,6 +298,28 @@ describe("API test for endpoint GET /region/{region}", () => {
               6- Canada     
               7- Greenland
           */
+
+      // An array countriesNamesToCheck is defined, containing the common names of the countries you want to assert the presence of in the API response
+      const countriesNamesToCheck = [
+        "United States Minor Outlying Islands",
+        "Saint Pierre and Miquelon",
+        "Greenland",
+        "United States",
+        "Canada",
+        "Mexico",
+        "Bermuda",
+      ];
+      // Check if each country is present in the response
+      countriesNamesToCheck.forEach((country) => {
+        // The find method looks for an item in the array where the common name (item.name.common) matches the current country in the loop
+        const foundCountry = response.body.find(
+          (item) => item.name.common === country
+        );
+        // The expect(foundCountry).to.exist statement asserts that the country is found in the response. If the country is not found, the test will fail
+        expect(foundCountry).to.exist; // Assert that the country is found
+      });
+
+      // Display all countries with cy.log()
       response.body.forEach((country, index) => {
         expect(country).to.have.property("subregion").to.equal("North America");
 
@@ -253,6 +379,48 @@ describe("API test for endpoint GET /region/{region}", () => {
                   25 - New Zealand     
                   26- Wallis and Futuna 27- Palau
               */
+
+      // An array countriesNamesToCheck is defined, containing the common names of the countries you want to assert the presence of in the API response
+      const countriesNamesToCheck = [
+        "Papua New Guinea",
+        "Christmas Island",
+        "Samoa",
+        "Kiribati",
+        "Guam",
+        "Tonga",
+        "Australia",
+        "New Caledonia",
+        "New Zealand",
+        "Marshall Islands",
+        "French Polynesia",
+        "Vanuatu",
+        "Palau",
+        "Northern Mariana Islands",
+        "Solomon Islands",
+        "Cocos (Keeling) Islands",
+        "American Samoa",
+        "Nauru",
+        "Niue",
+        "Micronesia",
+        "Pitcairn Islands",
+        "Cook Islands",
+        "Tokelau",
+        "Wallis and Futuna",
+        "Fiji",
+        "Tuvalu",
+        "Norfolk Island",
+      ];
+      // Check if each country is present in the response
+      countriesNamesToCheck.forEach((country) => {
+        // The find method looks for an item in the array where the common name (item.name.common) matches the current country in the loop
+        const foundCountry = response.body.find(
+          (item) => item.name.common === country
+        );
+        // The expect(foundCountry).to.exist statement asserts that the country is found in the response. If the country is not found, the test will fail
+        expect(foundCountry).to.exist; // Assert that the country is found
+      });
+
+      // Display all countries with cy.log()
       response.body.forEach((country, index) => {
         // Access the different properties
         const commonName = country.name.common;

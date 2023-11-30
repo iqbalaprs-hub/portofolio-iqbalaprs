@@ -136,6 +136,22 @@ describe("API test for endpoint GET /name/{name}", () => {
 
         // Assertion 3: The countries are "Republic of the Congo" and "Democratic Republic of the Congo"
 
+        // Define the countries you want to check (ASSERTION)
+        // this code checks that the API response contains both "DR Congo" and "Republic of the Congo" without relying on the specific order of these countries in the response array. It ensures that the response is successful and that each expected country is present
+        // An array countriesNamesToCheck is defined, containing the common names of the countries you want to assert the presence of in the API response
+        const countriesNamesToCheck = ["DR Congo", "Republic of the Congo"];
+
+        // Check if each country is present in the response
+        countriesNamesToCheck.forEach((country) => {
+          // The find method looks for an item in the array where the common name (item.name.common) matches the current country in the loop
+          const foundCountry = response.body.find(
+            (item) => item.name.common === country
+          );
+          // The expect(foundCountry).to.exist statement asserts that the country is found in the response. If the country is not found, the test will fail
+          expect(foundCountry).to.exist; // Assert that the country is found
+        });
+
+        // Display both countries with cy.log()
         response.body.forEach((country, index) => {
           // Access the different properties
           const commonName = country.name.common;

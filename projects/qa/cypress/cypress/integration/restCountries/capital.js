@@ -113,6 +113,20 @@ describe("API test for endpoint GET /capital/{capital}", () => {
             - Sri Lanka ("capital": [ "Sri Jayawardenepura Kotte" ])
             - Poland ("capital": [ "Warsaw" ])
         */
+
+        // An array countriesNamesToCheck is defined, containing the common names of the countries you want to assert the presence of in the API response
+        const countriesNamesToCheck = ["Poland", "South Georgia", "Sri Lanka"];
+        // Check if each country is present in the response
+        countriesNamesToCheck.forEach((country) => {
+          // The find method looks for an item in the array where the common name (item.name.common) matches the current country in the loop
+          const foundCountry = response.body.find(
+            (item) => item.name.common === country
+          );
+          // The expect(foundCountry).to.exist statement asserts that the country is found in the response. If the country is not found, the test will fail
+          expect(foundCountry).to.exist; // Assert that the country is found
+        });
+
+        // Display the countries using cy.log()
         response.body.forEach((country, index) => {
           // Access the different properties
           const commonName = country.name.common;

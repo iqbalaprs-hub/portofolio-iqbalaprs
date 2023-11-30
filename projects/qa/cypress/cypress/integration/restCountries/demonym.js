@@ -148,7 +148,7 @@ describe("API test for endpoint GET /demonym/{demonym}", () => {
         // Assertion 1: Response is 200
         expect(response.status).to.equal(200);
 
-        // Assertion 2: The array contains only one object (one country)
+        // Assertion 2: The array contains 2 objects (two countries)
         cy.wrap(response.body).should("have.length", 2);
         cy.log("There are 2 countries");
 
@@ -172,7 +172,36 @@ describe("API test for endpoint GET /demonym/{demonym}", () => {
                 "f": "Congolaise",
                 "m": "Congolais"
             })
-    */
+      */
+        // Define the expected demonyms for each country
+        // This defines the expected demonyms for each country. The structure matches the expected demonyms in my assertion
+        const expectedDemonyms = {
+          "Republic of the Congo": {
+            eng: { f: "Congolese", m: "Congolese" },
+            fra: { f: "Congolaise", m: "Congolais" },
+          },
+          "DR Congo": {
+            eng: { f: "Congolese", m: "Congolese" },
+            fra: { f: "Congolaise", m: "Congolais" },
+          },
+        };
+
+        // Iterate over each country and assert the demonyms
+        /*
+        This iterates over each country in the response.
+        commonName is extracted for better readability in logs.
+        The cy.wrap(demonyms).should('deep.equal', expectedDemonyms[commonName]) asserts that the demonyms for the current country match the expected demonyms.
+        */
+        response.body.forEach((country) => {
+          const commonName = country.name.common;
+          const demonyms = country.demonyms;
+
+          // Use Cypress expect to assert the conditions
+          cy.log(`Checking demonyms for ${commonName}`);
+          cy.wrap(demonyms).should("deep.equal", expectedDemonyms[commonName]);
+        });
+
+        //  Display the countries using cy.log()
         response.body.forEach((country, index) => {
           // Access the different properties
           const commonName = country.name.common;
