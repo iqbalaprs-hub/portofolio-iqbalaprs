@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "6571a618d7949c2ec478530a"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Hello everyone",
+  "author": {
+    "$oid": "6571a609d7949c2ec4785301"
+  },
+  "createdAt": {
+    "$date": "2023-12-07T11:01:44.519Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-07T11:01:44.519Z"
+  },
+  "__v": 0
+}]

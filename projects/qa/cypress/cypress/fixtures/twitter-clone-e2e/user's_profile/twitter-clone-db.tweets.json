@@ -1,0 +1,100 @@
+[{
+  "_id": {
+    "$oid": "6572e442ea4916111c70fb8c"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Good morning everyone\n",
+  "author": {
+    "$oid": "6572e438ea4916111c70fb83"
+  },
+  "createdAt": {
+    "$date": "2023-12-08T09:39:14.215Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-08T09:39:14.215Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6572e451ea4916111c70fb92"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "I hope you are all doing well\n",
+  "author": {
+    "$oid": "6572e438ea4916111c70fb83"
+  },
+  "createdAt": {
+    "$date": "2023-12-08T09:39:29.059Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-08T09:39:29.059Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6572e462ea4916111c70fb98"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "I am going to work now\n",
+  "author": {
+    "$oid": "6572e438ea4916111c70fb83"
+  },
+  "createdAt": {
+    "$date": "2023-12-08T09:39:46.832Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-08T09:39:46.832Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6572e46dea4916111c70fb9e"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Meet me all at the office",
+  "author": {
+    "$oid": "6572e438ea4916111c70fb83"
+  },
+  "createdAt": {
+    "$date": "2023-12-08T09:39:57.256Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-08T09:39:57.256Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6572e487ea4916111c70fba4"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "We finish work early today at noon",
+  "author": {
+    "$oid": "6572e438ea4916111c70fb83"
+  },
+  "createdAt": {
+    "$date": "2023-12-08T09:40:23.010Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-08T09:40:23.010Z"
+  },
+  "__v": 0
+}]
