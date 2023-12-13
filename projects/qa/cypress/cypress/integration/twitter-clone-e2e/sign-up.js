@@ -525,4 +525,87 @@ describe("Feature: Sign Up", () => {
       .should("have.text", "confirmation password is required")
       .should("have.css", "color", "rgb(226, 61, 104)");
   });
+
+  it("10- Nominal case: Username is a string which can only accept 3 special characters: period, dash  and underscore (Any other special characters are not allowed)", () => {
+    // 10.1: The user clicks on the "Sign Up" button
+    cy.get('a[data-cy="nav-signup-link"]').click();
+
+    /*
+    10.2:
+    The user fills the "Sign Up" form:
+      - Name: Jhonny
+      - Username: johnny.-_#
+      - email: jhonny@gmail.com
+      - Password: Clonejhonny23
+      - Confirm password: Clonejhonny23
+    */
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-name-input"]')
+      .type("Jhonny");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-username-input"]')
+      .type("johnny.-_#");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-email-input"]')
+      .type("jhonny@gmail.com");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password-input"]')
+      .type("Clonejhonny23");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password2-input"]')
+      .type("Clonejhonny23");
+
+    // 10.3: The user clicks on the "Sign Up" button
+    cy.get('form[data-cy="signup-form"]')
+      .find('button[data-cy="signup-submit"]')
+      .click();
+
+    // Expected result: A red sentence appears: User validation failed: username: username must only contain numbers, letters, ".", "-", "_"
+    cy.get('h1[data-cy="signup-title"]')
+      .next("p")
+      .should(
+        "have.text",
+        'User validation failed: username: username must only contain numbers, letters, ".", "-", "_"'
+      )
+      .should("have.css", "color", "rgb(226, 61, 104)");
+
+    // 10.4: The user write username as: johnny.-_
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-username-input"]')
+      .clear();
+
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-username-input"]')
+      .type("johnny.-_");
+
+    // 10.5: The user clicks on the "Sign Up" button
+    cy.get('form[data-cy="signup-form"]')
+      .find('button[data-cy="signup-submit"]')
+      .click();
+
+    // Expected result: The user's account is created
+    cy.get("reach-portal")
+      .children("div")
+      .first()
+      .children("div")
+      .first()
+      .children("p")
+      .first()
+      .should("have.text", "Jhonny");
+
+    cy.get("reach-portal")
+      .children("div")
+      .first()
+      .children("div")
+      .first()
+      .children("p")
+      .eq(1)
+      .should("have.text", "@johnny.-_");
+
+    // Expected result: The user is automatically signed in
+    cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
+
+    // Expected result: The user is taken to "Home" page
+    cy.get("ul").contains("a", "Home").should("have.class", "active");
+  });
 });
