@@ -608,4 +608,15 @@ describe("Feature: Sign Up", () => {
     // Expected result: The user is taken to "Home" page
     cy.get("ul").contains("a", "Home").should("have.class", "active");
   });
+
+  it("11- Nominal case: The user can go to the Sign In form from the Sign Up page", () => {
+    // 11.1: The user clicks on the "Sign Up" button
+    cy.get('a[data-cy="nav-signup-link"]').click();
+
+    // 11.2: The user clicks on the "Sign in now" link
+    cy.contains("a", "Sign In now").click();
+
+    // Expected result: The user is sent automatically to the Sign In page
+    cy.get("ul").contains("a", "Sign In").should("have.class", "active");
+  });
 });
