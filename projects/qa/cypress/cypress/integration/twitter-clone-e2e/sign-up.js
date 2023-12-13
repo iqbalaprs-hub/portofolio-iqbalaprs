@@ -231,4 +231,65 @@ describe("Feature: Sign Up", () => {
     // Expected result: The user is taken to "Home" page
     cy.get("ul").contains("a", "Home").should("have.class", "active");
   });
+
+  it("5- Nominal case: The user writes the email wrong (The email must be a string in the form name@example.com)", () => {
+    // 5.1: The user clicks on the "Sign Up" button
+    cy.get('a[data-cy="nav-signup-link"]').click();
+
+    /*
+    5.2:
+    The user fills the "Sign Up" form:
+      - Name: Jhon
+      - Username: johnny
+      - email: jhonny#1gmail.com
+      - Password: Clonejhonny23
+      - Confirm password: Clonejhonny23
+    */
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-name-input"]')
+      .type("Jhon");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-username-input"]')
+      .type("johnny");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-email-input"]')
+      .type("jhonny#1gmail.com");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password-input"]')
+      .type("Clonejhonny23");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password2-input"]')
+      .type("Clonejhonny23");
+
+    // 5.3: The user clicks the "Sign Up" submit button
+    cy.get('form[data-cy="signup-form"]')
+      .find('button[data-cy="signup-submit"]')
+      .click();
+
+    // Expected result: An alert appears saying: "Please include an '@' in the email address. 'jhonny#1gmail.com' is missing an '@'
+    cy.on("window:alert", (Text) => {
+      expect(Text).to.contains(
+        "Please include an '@' in the email address. 'jhonny#1gmail.com' is missing an '@'"
+      );
+    });
+
+    // 5.4: The user writes the email wrong again: "jhonny#1@gmail" and clicks the "Sign Up" submit button
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-email-input"]')
+      .clear();
+
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-email-input"]')
+      .type("jhonny#1@gmail");
+
+    cy.get('form[data-cy="signup-form"]')
+      .find('button[data-cy="signup-submit"]')
+      .click();
+
+    // Expected result: A red sentence appears: "email" must be a vaid email
+    cy.get('h1[data-cy="signup-title"]')
+      .next("p")
+      .should("have.text", '"email" must be a valid email')
+      .should("have.css", "color", "rgb(226, 61, 104)");
+  });
 });
