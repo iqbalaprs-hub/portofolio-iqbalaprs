@@ -118,4 +118,30 @@ describe("Feature: Sign In", () => {
     // Expected result: The “Sign In” button in the navigation bar disappears (Only anonymous user can see the “Sign In” button in the navigation bar
     cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
   });
+
+  it("3- Nominal case: The user signs in by typing the username or email wrong ", () => {
+    /*
+    The user enters the "Sign In" page and fills the "Sign in" form:
+        - Username or email: joh
+        - Password: Clonejohn23
+    */
+    cy.get('a[data-cy="nav-signin-link"]').click();
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-username-input"]')
+      .type("joh");
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-password-input"]')
+      .type("Clonejohn23");
+
+    // 3.2: The user click the "Log In" submit button
+    cy.get('form[data-cy="signin-form"]')
+      .find('button[data-cy="signin-button"]')
+      .click();
+
+    // Expected result: A red sentence appears: "Invalid login credentials"
+    cy.contains("h1", "Sign In")
+      .next("p")
+      .should("have.text", "Invalid login credentials")
+      .should("have.css", "color", "rgb(226, 61, 104)");
+  });
 });
