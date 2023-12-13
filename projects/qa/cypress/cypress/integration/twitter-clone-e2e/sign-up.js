@@ -61,7 +61,7 @@ describe("Feature: Sign Up", () => {
 
     cy.wait(1000);
 
-    //  Expectes result: The user's account is created
+    //  Expected result: The user's account is created
     cy.get("reach-portal")
       .children("div")
       .first()
@@ -170,5 +170,65 @@ describe("Feature: Sign Up", () => {
       .next("p")
       .should("have.text", "Email already taken")
       .should("have.css", "color", "rgb(226, 61, 104)");
+  });
+
+  it("4- Nominal case: Multiple users can have the same name", () => {
+    // 4.1: The user clicks on the "Sign Up" button
+    cy.get('a[data-cy="nav-signup-link"]').click();
+
+    /*
+    4.2:
+    The user fills the "Sign Up" form:
+      - Name: Jhon
+      - Username: johnny
+      - email: jhonny@gmail.com
+      - Password: Clonejhonny23
+      - Confirm password: Clonejhonny23
+    */
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-name-input"]')
+      .type("Jhon");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-username-input"]')
+      .type("johnny");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-email-input"]')
+      .type("jhonny@gmail.com");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password-input"]')
+      .type("Clonejhonny23");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password2-input"]')
+      .type("Clonejhonny23");
+
+    // 4.3: The user clicks the "Sign Up" submit button
+    cy.get('form[data-cy="signup-form"]')
+      .find('button[data-cy="signup-submit"]')
+      .click();
+
+    // Expected result: The user's account is created
+    cy.get("reach-portal")
+      .children("div")
+      .first()
+      .children("div")
+      .first()
+      .children("p")
+      .first()
+      .should("have.text", "Jhon");
+
+    cy.get("reach-portal")
+      .children("div")
+      .first()
+      .children("div")
+      .first()
+      .children("p")
+      .eq(1)
+      .should("have.text", "@johnny");
+
+    // Expected result: The user is automatically signed in
+    cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
+
+    // Expected result: The user is taken to "Home" page
+    cy.get("ul").contains("a", "Home").should("have.class", "active");
   });
 });
