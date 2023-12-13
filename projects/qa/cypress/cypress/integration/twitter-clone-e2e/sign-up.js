@@ -130,4 +130,45 @@ describe("Feature: Sign Up", () => {
       .should("have.text", "Username already taken")
       .should("have.css", "color", "rgb(226, 61, 104)");
   });
+
+  it("3- Nominal case: The user must create an account with a unique email", () => {
+    // 3.1: The user clicks on the "Sign Up" button
+    cy.get('a[data-cy="nav-signup-link"]').click();
+
+    /*
+    3.2:
+    The user fills the "Sign Up" form:
+      - Name: Jhonny
+      - Username: johnny
+      - email: jhon@gmail.com
+      - Password: Clonejhonny23
+      - Confirm password: Clonejhonny23
+    */
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-name-input"]')
+      .type("Jhonny");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-username-input"]')
+      .type("johnny");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-email-input"]')
+      .type("john@gmail.com");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password-input"]')
+      .type("Clonejhonny23");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password2-input"]')
+      .type("Clonejhonny23");
+
+    // 3.3: The user clicks the "Sign Up" submit button
+    cy.get('form[data-cy="signup-form"]')
+      .find('button[data-cy="signup-submit"]')
+      .click();
+
+    // Expected result: A red sentence appears: "Email already taken"
+    cy.get('h1[data-cy="signup-title"]')
+      .next("p")
+      .should("have.text", "Email already taken")
+      .should("have.css", "color", "rgb(226, 61, 104)");
+  });
 });
