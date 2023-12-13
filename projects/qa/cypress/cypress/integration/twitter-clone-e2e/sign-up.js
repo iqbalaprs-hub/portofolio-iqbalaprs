@@ -478,4 +478,51 @@ describe("Feature: Sign Up", () => {
       .should("have.text", "password must match")
       .should("have.css", "color", "rgb(226, 61, 104)");
   });
+
+  it("9- Edge case: The user submits the Sign Up form with both  password and confirmation password being empty", () => {
+    // 9.1: The user clicks on the "Sign Up" button
+    cy.get('a[data-cy="nav-signup-link"]').click();
+
+    /*
+    9.2:
+    The user fills the "Sign Up" form:
+      - Name: Jhonny
+      - Username: johnny
+      - email: jhonny@gmail.com
+      - Password: 
+      - Confirm password:
+    */
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-name-input"]')
+      .type("Jhonny");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-username-input"]')
+      .type("johnny");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-email-input"]')
+      .type("jhonny@gmail.com");
+
+    // 9.3: The user clicks the "Sign Up" submit button
+    cy.get('form[data-cy="signup-form"]')
+      .find('button[data-cy="signup-submit"]')
+      .click();
+
+    /*
+    Expected result:
+    2 red sentences appears: 
+      (1) password is required
+      (2) confirmation password is required
+    */
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password-input"]')
+      .next("div")
+      .should("have.text", "password is required")
+      .should("have.css", "color", "rgb(226, 61, 104)");
+
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password2-input"]')
+      .next("div")
+      .should("have.text", "confirmation password is required")
+      .should("have.css", "color", "rgb(226, 61, 104)");
+  });
 });
