@@ -430,4 +430,52 @@ describe("Feature: Sign Up", () => {
     // Expected result: The user is taken to "Home" page
     cy.get("ul").contains("a", "Home").should("have.class", "active");
   });
+
+  it("8- Nominal case: The user does not confirm his password right", () => {
+    // 8.1: The user clicks on the "Sign Up" button
+    cy.get('a[data-cy="nav-signup-link"]').click();
+
+    /*
+    8.2:
+    The user fills the "Sign Up" form:
+      - Name: Jhonny
+      - Username: johnny
+      - email: jhonny@gmail.com
+      - Password: Clonejhonny23
+      - Confirm password: Clonejhonny2
+    */
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-name-input"]')
+      .type("Jhonny");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-username-input"]')
+      .type("johnny");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-email-input"]')
+      .type("jhonny@gmail.com");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password-input"]')
+      .type("Clonejhonny23");
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password2-input"]')
+      .type("Clonejhonny2");
+
+    // 8.3: The user clicks the "Sign Up" submit button
+    cy.get('form[data-cy="signup-form"]')
+      .find('button[data-cy="signup-submit"]')
+      .click();
+
+    // Expected result: A red sentence appears: password must match
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password-input"]')
+      .next("div")
+      .should("have.text", "password must match")
+      .should("have.css", "color", "rgb(226, 61, 104)");
+
+    cy.get('form[data-cy="signup-form"]')
+      .find('input[data-cy="signup-password2-input"]')
+      .next("div")
+      .should("have.text", "password must match")
+      .should("have.css", "color", "rgb(226, 61, 104)");
+  });
 });
