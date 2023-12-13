@@ -144,4 +144,31 @@ describe("Feature: Sign In", () => {
       .should("have.text", "Invalid login credentials")
       .should("have.css", "color", "rgb(226, 61, 104)");
   });
+
+  it("4- Nominal case: The user signs in by typing the password wrong ", () => {
+    /*
+    4.1:
+    The user enters the "Sign In" page and fills the "Sign in" form:
+        - Username: john
+        - Password: Clonejohn2
+    */
+    cy.get('a[data-cy="nav-signin-link"]').click();
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-username-input"]')
+      .type("john");
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-password-input"]')
+      .type("Clonejohn2");
+
+    // 4.2: The user click the "Log In" submit button
+    cy.get('form[data-cy="signin-form"]')
+      .find('button[data-cy="signin-button"]')
+      .click();
+
+    // Expected result: A red sentence appears: "Invalid login credentials"
+    cy.contains("h1", "Sign In")
+      .next("p")
+      .should("have.text", "Invalid login credentials")
+      .should("have.css", "color", "rgb(226, 61, 104)");
+  });
 });
