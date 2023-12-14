@@ -171,4 +171,28 @@ describe("Feature: Sign In", () => {
       .should("have.text", "Invalid login credentials")
       .should("have.css", "color", "rgb(226, 61, 104)");
   });
+
+  it("5- Edge case: The user signs in by keeping the username or email empty", () => {
+    /*
+    5.1: 
+    The user enters the "Sign In" page and fills the "Sign in" form:
+      - Username or email: (empty)
+      - Password: Clonejohn23
+    */
+    cy.get('a[data-cy="nav-signin-link"]').click();
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-password-input"]')
+      .type("Clonejohn23");
+
+    // 5.2: The user click the "Log In" submit button
+    cy.get('form[data-cy="signin-form"]')
+      .find('button[data-cy="signin-button"]')
+      .click();
+
+    // Expected result: A red sentence appears: "Username is required"
+    cy.get('input[data-cy="signin-username-input"]')
+      .next("div")
+      .should("have.text", "username is required")
+      .should("have.css", "color", "rgb(226, 61, 104)");
+  });
 });
