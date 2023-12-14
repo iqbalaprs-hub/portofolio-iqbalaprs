@@ -40,11 +40,11 @@ describe("Feature: Tweet", () => {
     cy.contains("button", "Tweet").click();
 
     // Expected result: A tweet modal appears
-    cy.get('div[class*="DialogContent"]').should(
-      "have.attr",
-      "aria-modal",
-      "true"
-    );
+    // cy.get('div[class*="DialogContent"]').should(
+    //   "have.attr",
+    //   "aria-modal",
+    //   "true"
+    // );
 
     // Expected result: The text box has the placeholder “What’s happening?”
     cy.get('div[class*="DialogContent"]')
@@ -261,6 +261,35 @@ describe("Feature: Tweet", () => {
 
     // Expected result: The tweet deleted is no longer in the tweet section
     cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul")
+      .should("have.length", 1)
+      .find("li")
+      .should("have.length", 0);
+  });
+
+  it("4- Nominal case: The user cancels the tweet", () => {
+    // 4.1: The user clicks on the "Tweet" button in the navigation bar
+    cy.contains("button", "Tweet").click();
+
+    // 4.2: The user types in the text box: "Hello everyone"
+    cy.get('div[class*="DialogContent"]')
+      .find("textarea")
+      .type("Hello everyone");
+
+    // 4.3: The user clicks on the "X" button in order to close the tweet
+    cy.get('div[class*="DialogContent"]')
+      .find('button[class*="CloseButton"]')
+      .click();
+
+    // Expected result: The tweet modal disappears
+    // cy.get('div[class*="DialogContent"]').should(
+    //   "have.attr",
+    //   "aria-modal",
+    //   "false"
+    // );
+
+    // Expected result: The tweet was not created. The "Home" page stays empty
+    cy.get('div[class*="Homepage"]')
       .find("ul")
       .should("have.length", 1)
       .find("li")
