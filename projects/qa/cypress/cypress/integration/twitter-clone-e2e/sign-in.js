@@ -240,4 +240,15 @@ describe("Feature: Sign In", () => {
       .should("have.text", "password is required")
       .should("have.css", "color", "rgb(226, 61, 104)");
   });
+
+  it("8- Nominal case: The user can go to the Sign Up page from the Sign In page", () => {
+    // 8.1: The user enters the "Sign In" page
+    cy.get('a[data-cy="nav-signin-link"]').click();
+
+    // 8.2: The user clicks on the "Sign up now" link
+    cy.contains("a", "Sign up now").click();
+
+    // Expected result: The user is sent to the "Sign Up" page
+    cy.get("ul").contains("a", "Sign Up").should("have.class", "active");
+  });
 });
