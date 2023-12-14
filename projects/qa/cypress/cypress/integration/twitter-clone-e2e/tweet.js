@@ -161,4 +161,67 @@ describe("Feature: Tweet", () => {
     //   .should("exist")
     //   .should("have.text", "0");
   });
+
+  it("2- Nominal case: The user cannot write a tweet with more than 280 characters", () => {
+    // 2.1: The user John tweet with 283 characters: "Hello everyone. Today is a very beautiful morning. My breakfeast consisted of eggs and bacons and pancakes with syrup and a big glass of lemonade. I looked outside the window, the nature was green and clean, the sky was blue, there was no annoying car noises anywhere. I want to stay"
+    cy.contains("button", "Tweet").click();
+    cy.get('div[class*="DialogContent"]')
+      .find("textarea")
+      .type(
+        "Hello everyone. Today is a very beautiful morning. My breakfeast consisted of eggs and bacons and pancakes with syrup and a big glass of lemonade. I looked outside the window, the nature was green and clean, the sky was blue, there was no annoying car noises anywhere. I want to stay"
+      );
+
+    // Expected result: The tweet button is disabled
+    cy.get('div[class*="DialogContent"]')
+      .find('button:contains("Tweet")')
+      .should("be.disabled");
+
+    // 2.2: The user John removes the last 2 letters in the tweet "a" and "y" and the tweet have 281 characters
+    cy.get('div[class*="DialogContent"]').find("textarea").clear();
+    cy.get('div[class*="DialogContent"]')
+      .find("textarea")
+      .type(
+        "Hello everyone. Today is a very beautiful morning. My breakfeast consisted of eggs and bacons and pancakes with syrup and a big glass of lemonade. I looked outside the window, the nature was green and clean, the sky was blue, there was no annoying car noises anywhere. I want to st"
+      );
+
+    // Expected result: The tweet button is still disabled
+    cy.get('div[class*="DialogContent"]')
+      .find('button:contains("Tweet")')
+      .should("be.disabled");
+
+    // 2.3: The user John removes the last letter "t" in the tweet and the tweet will have 280 characters
+    cy.get('div[class*="DialogContent"]').find("textarea").clear();
+    cy.get('div[class*="DialogContent"]')
+      .find("textarea")
+      .type(
+        "Hello everyone. Today is a very beautiful morning. My breakfeast consisted of eggs and bacons and pancakes with syrup and a big glass of lemonade. I looked outside the window, the nature was green and clean, the sky was blue, there was no annoying car noises anywhere. I want to s"
+      );
+
+    // Expected result: The tweet button is active
+    cy.get('div[class*="DialogContent"]')
+      .find('button:contains("Tweet")')
+      .should("not.be.disabled");
+
+    // 2.4: The user John clicks the tweet submit button
+    cy.get('div[class*="DialogContent"]')
+      .find('button:contains("Tweet")')
+      .click();
+
+    /*
+    Expected result:
+    The tweet "Hello everyone. Today is a very beautiful morning. My breakfeast consisted of eggs and bacons and pancakes with syrup and a big glass of lemonade. I looked outside the window, the nature was green and clean, the sky was blue, there was no annoying car noises anywhere. I want to s"
+
+    Thus the tweet can have a maximum of 280 characters
+    */
+    cy.get('div[class*="Homepage"]')
+      .find("ul")
+      .should("have.length", 1)
+      .find("li")
+      .should("have.length", 1)
+      .find("p")
+      .should(
+        "have.text",
+        "Hello everyone. Today is a very beautiful morning. My breakfeast consisted of eggs and bacons and pancakes with syrup and a big glass of lemonade. I looked outside the window, the nature was green and clean, the sky was blue, there was no annoying car noises anywhere. I want to s"
+      );
+  });
 });
