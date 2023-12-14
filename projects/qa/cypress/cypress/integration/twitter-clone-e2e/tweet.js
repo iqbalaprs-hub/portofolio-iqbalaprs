@@ -224,4 +224,46 @@ describe("Feature: Tweet", () => {
         "Hello everyone. Today is a very beautiful morning. My breakfeast consisted of eggs and bacons and pancakes with syrup and a big glass of lemonade. I looked outside the window, the nature was green and clean, the sky was blue, there was no annoying car noises anywhere. I want to s"
       );
   });
+
+  it("3- Nominal case: The user deletes his own tweet", () => {
+    // 3.1: The user clicks on the "Tweet" button in the navigation bar
+    cy.contains("button", "Tweet").click();
+
+    // 3.2: The user types in the text box: "Hello everyone"
+    cy.get('div[class*="DialogContent"]')
+      .find("textarea")
+      .type("Hello everyone");
+
+    // 3.3: The user clicks on the tweet submit button
+    cy.get('div[class*="DialogContent"]')
+      .find('button:contains("Tweet")')
+      .click();
+
+    // 3.4: The user deletes his own tweet by clicking on the "X" button
+    cy.get('div[class*="Homepage"]')
+      .find("ul")
+      .should("have.length", 1)
+      .find("li")
+      .should("have.length", 1)
+      .find('button[class*="DeleteButton"]')
+      .click();
+
+    // Expected result: The tweet disappears from the "Home" page
+    cy.get('div[class*="Homepage"]')
+      .find("ul")
+      .should("have.length", 1)
+      .find("li")
+      .should("have.length", 0);
+
+    // 3.5: The user clicks on his personal menu and opens "profile"
+    cy.get("button#menu-button--menu").click();
+    cy.get("a#option-0--menu--1").click();
+
+    // Expected result: The tweet deleted is no longer in the tweet section
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul")
+      .should("have.length", 1)
+      .find("li")
+      .should("have.length", 0);
+  });
 });
