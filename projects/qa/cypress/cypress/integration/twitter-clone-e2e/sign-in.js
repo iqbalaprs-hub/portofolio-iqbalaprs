@@ -219,4 +219,25 @@ describe("Feature: Sign In", () => {
       .should("have.text", "password is required")
       .should("have.css", "color", "rgb(226, 61, 104)");
   });
+
+  it("7- Edge case: The user signs in by keeping both the username or email and password empty", () => {
+    // 7.1: The user enters the "Sign In" page and does not fill the "Sign in" form
+    cy.get('a[data-cy="nav-signin-link"]').click();
+
+    // 7.2: The user clicks the "Log In" submit button
+    cy.get('form[data-cy="signin-form"]')
+      .find('button[data-cy="signin-button"]')
+      .click();
+
+    // Expected result: 2 red sentences appears: "Username is required" and "Password is required"
+    cy.get('input[data-cy="signin-username-input"]')
+      .next("div")
+      .should("have.text", "username is required")
+      .should("have.css", "color", "rgb(226, 61, 104)");
+
+    cy.get('input[data-cy="signin-password-input"]')
+      .next("div")
+      .should("have.text", "password is required")
+      .should("have.css", "color", "rgb(226, 61, 104)");
+  });
 });
