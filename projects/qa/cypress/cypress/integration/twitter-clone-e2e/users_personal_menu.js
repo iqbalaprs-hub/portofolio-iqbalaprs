@@ -81,4 +81,44 @@ describe("Feature: User's personal menu", () => {
     // Expected result: The user is sent to the "Edit profile page"
     cy.url().should("include", "/edit-profile");
   });
+
+  it("4- Nominal case: The user can delete his account ", () => {
+    // 4.1: The user clicks on the personal menu in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 4.2: The user clicks on "Settings"
+    cy.get("div#menu--1").find("a#option-1--menu--1").click();
+
+    // 4.3: The user clicks on "Delete account" button
+    cy.get('div[class*="ActionsContainer"]')
+      .find('button[class*="DeleteAccountButton"]')
+      .click();
+
+    // 4.4: The user clicks "Yes, delete" button
+    cy.get("reach-portal")
+      .find('div[class*="Settings___StyledDiv"] button:nth-child(1)')
+      .click();
+
+    // Expected result: The user is automatically signed out.The "Sign In" page  opens
+    cy.get('a[data-cy="nav-signup-link"]').should("exist");
+    cy.get('a[data-cy="nav-signin-link"]').should("exist");
+    cy.get("ul").contains("a", "Sign In").should("have.class", "active");
+
+    // 4.5: The user signs in as John
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-username-input"]')
+      .type("john");
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-password-input"]')
+      .type("Clonejohn23");
+    cy.get('form[data-cy="signin-form"]')
+      .find('button[data-cy="signin-button"]')
+      .click();
+
+    // Expected result: A red sentence appears: "Invalid login credentials"
+    cy.contains("h1", "Sign In")
+      .next("p")
+      .should("have.text", "Invalid login credentials")
+      .should("have.css", "color", "rgb(226, 61, 104)");
+  });
 });
