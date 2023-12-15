@@ -139,4 +139,24 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
     // Expected result: The anonymous user is automatically sent to the "Sign In" page
     cy.get("ul").contains("a", "Sign In").should("have.class", "active");
   });
+
+  it("7- Nominal case: The anonymous user cannot tweet", () => {
+    // 7.1: Expected result: The tweet button is not present in the navigation bar
+    cy.contains("button", "Tweet").should("not.exist");
+
+    // 7.2: The user John signs in
+    cy.get('a[data-cy="nav-signin-link"]').click();
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-username-input"]')
+      .type("john");
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-password-input"]')
+      .type("Clonejohn23");
+    cy.get('form[data-cy="signin-form"]')
+      .find('button[data-cy="signin-button"]')
+      .click();
+
+    // Expected result: The tweet button is visible in the navigation bar
+    cy.contains("button", "Tweet").should("exist");
+  });
 });
