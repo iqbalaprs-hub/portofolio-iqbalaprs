@@ -107,4 +107,26 @@ describe("Feature: Visit all profiles", () => {
       .find("p:nth-child(2)")
       .should("have.text", "@julia");
   });
+
+  it("2- Nominal case: The anonymous user can access a user's profile through All profiles page", () => {
+    // 2.1: The anonymous user clicks on "All profiles" button in the navigation bar
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    // 2.2: The anonymous user clicks on the link related to the profile of Paul
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(2)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@paul")
+      .click();
+
+    // Expected result: The anonymous user is in the profile of Paul
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find("img")
+      .next()
+      .should("have.text", "Paul");
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@paul");
+  });
 });
