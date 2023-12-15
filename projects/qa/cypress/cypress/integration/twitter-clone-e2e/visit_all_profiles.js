@@ -224,4 +224,38 @@ describe("Feature: Visit all profiles", () => {
       .find("p:nth-child(2)")
       .should("have.text", "@julia");
   });
+
+  it("4- Nominal case: The logged-in user can access a user's profile", () => {
+    // 4.1: The user signs in as John
+    cy.get('a[data-cy="nav-signin-link"]').click();
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-username-input"]')
+      .type("john");
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-password-input"]')
+      .type("Clonejohn23");
+    cy.get('form[data-cy="signin-form"]')
+      .find('button[data-cy="signin-button"]')
+      .click();
+
+    // 4.2: The user clicks on "All profiles" button in the navigation bar
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    // 4.3: The user clicks on the link related to the profile of Paul
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(2)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@paul")
+      .click();
+
+    // Expected result: The  user is in the profile of Paul
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find("img")
+      .next()
+      .should("have.text", "Paul");
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@paul");
+  });
 });
