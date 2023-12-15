@@ -129,4 +129,99 @@ describe("Feature: Visit all profiles", () => {
       .find('span[class*="Profile___StyledSpan2"]')
       .should("have.text", "@paul");
   });
+
+  it("3- Nominal case: The logged-in user can see the profiles in the All profiles", () => {
+    // 3.1: The user signs in as John
+    cy.get('a[data-cy="nav-signin-link"]').click();
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-username-input"]')
+      .type("john");
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-password-input"]')
+      .type("Clonejohn23");
+    cy.get('form[data-cy="signin-form"]')
+      .find('button[data-cy="signin-button"]')
+      .click();
+
+    // 3.2: The user clicks on "All profiles" button in the navigation bar
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    /*
+    There are 5 users displayed with their name and username, and they are sorted from oldest member to newest member (left to right; top to bottom)
+
+        John  @john
+
+        Paul  @paul
+
+        Rony  @rony
+
+        Kevin  @kevin
+
+        Julia     @julia
+    */
+    cy.get('ul[class*="ProfilesList"]')
+      .should("have.length", 1)
+      .find("li")
+      .should("have.length", 5);
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(1)")
+      .should("have.text", "John");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@john");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(2)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(1)")
+      .should("have.text", "Paul");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(2)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@paul");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(3)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(1)")
+      .should("have.text", "Rony");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(3)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@rony");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(4)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(1)")
+      .should("have.text", "Kevin");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(4)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@kevin");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(5)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(1)")
+      .should("have.text", "Julia");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(5)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@julia");
+  });
 });
