@@ -50,4 +50,22 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
       .find('button[class*="DeleteButton"]')
       .should("not.exist");
   });
+
+  it("3- Nominal case: The anonymous user cannot reply to a tweet in the Home page", () => {
+    // 3.1: The anonymous user clicks on the tweet
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(1)")
+      .click();
+
+    // 3.2: The anonymous user clicks on the text box, type "Hello" and click Enter
+    cy.get('form[class*="CommentForm"]')
+      .find('input[class*="CommentInput"]')
+      .type("Hello")
+      .type("{enter}");
+
+    // Expected result: The anonymous user is automatically sent to the "Sign In" page
+    cy.get("ul").contains("a", "Sign In").should("have.class", "active");
+  });
 });
