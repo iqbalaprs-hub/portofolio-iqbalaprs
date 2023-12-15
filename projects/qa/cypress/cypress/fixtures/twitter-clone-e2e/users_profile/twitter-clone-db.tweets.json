@@ -6,7 +6,7 @@
   "edited": false,
   "likes": [],
   "retweets": [],
-  "text": "Good morning everyone\n",
+  "text": "Good morning everyone",
   "author": {
     "$oid": "6572e438ea4916111c70fb83"
   },
@@ -26,7 +26,7 @@
   "edited": false,
   "likes": [],
   "retweets": [],
-  "text": "I hope you are all doing well\n",
+  "text": "I hope you are all doing well",
   "author": {
     "$oid": "6572e438ea4916111c70fb83"
   },
@@ -46,7 +46,7 @@
   "edited": false,
   "likes": [],
   "retweets": [],
-  "text": "I am going to work now\n",
+  "text": "I am going to work now",
   "author": {
     "$oid": "6572e438ea4916111c70fb83"
   },

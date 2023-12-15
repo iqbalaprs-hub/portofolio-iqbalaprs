@@ -139,4 +139,78 @@ describe("Feature: User's profile", () => {
       .should("have.text", "Follow")
       .should("exist");
   });
+
+  it.only("3- Nominal case: The user can see the tweets in the tweet section of the user's profile", () => {
+    // 3.1: The user  clicks on "All profiles" button in the navigation bar
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    // 3.2: The user  clicks on John's profile (John @john)
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@john")
+      .click();
+
+    /*
+        The user sees 5 tweets in the tweet section
+
+        The tweets are sorted from newest (Top) to oldest (Bottom)
+    */
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul")
+      .should("have.length", 1)
+      .find("li")
+      .should("have.length", 5);
+
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul li:nth-child(1)")
+      .find("p")
+      .should("have.text", "We finish work early today at noon");
+
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul li:nth-child(2)")
+      .find("p")
+      .should("have.text", "Meet me all at the office");
+
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul li:nth-child(3)")
+      .find("p")
+      .should("have.text", "I am going to work now");
+
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul li:nth-child(4)")
+      .find("p")
+      .should("have.text", "I hope you are all doing well");
+
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul li:nth-child(5)")
+      .find("p")
+      .should("have.text", "Good morning everyone");
+
+    // 3.3: The user  clicks on "All profiles" button in the navigation bar
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    // 3.4: The user  clicks on Rony's profile (Rony @rony)
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(2)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@rony")
+      .click();
+
+    /*
+    Expected result:
+        The tweet section is empty since Rony didn't tweet
+        There is a sentence: There are no tweets to display
+    */
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul")
+      .find("li")
+      .should("not.exist");
+
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul p")
+      .should("have.text", "There are no tweets to display");
+  });
 });
