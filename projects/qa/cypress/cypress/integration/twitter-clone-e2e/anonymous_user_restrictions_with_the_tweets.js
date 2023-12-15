@@ -24,5 +24,11 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
     cy.visit(Cypress.env("twitterCloneBaseUrl"));
   });
 
-  it("My SecondTest case", function () {});
+  it("1- Nominal case: The anonymous user cannot delete the tweet in the Home page", () => {
+    // 1.1: Expected result: In the "Home" page, The "X" button which deletes the tweet "Hello everyone", is not present on the tweet
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('button[class*="DeleteButton"]')
+      .should("not.exist");
+  });
 });
