@@ -122,7 +122,7 @@ describe("Feature: User's personal menu", () => {
       .should("have.css", "color", "rgb(226, 61, 104)");
   });
 
-  it("Edge case: The user can cancel the deletion of his account", () => {
+  it("5- Edge case: The user can cancel the deletion of his account", () => {
     // 5.1: The user clicks on the personal menu in the navigation bar
     cy.get("button#menu-button--menu").click();
 
@@ -156,5 +156,28 @@ describe("Feature: User's personal menu", () => {
       .find("div:nth-child(1) p:nth-child(2)")
       .should("have.text", "@john");
     cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
+  });
+
+  it("6- Nominal case: The user can sign out", () => {
+    // 6.1: The user clicks on the personal menu in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 6.2: The user clicks on 'Sign Out" button
+    cy.get("div#menu--1").find('div[data-cy="auth-nav-logout-button"]').click();
+
+    /*
+    Expected result:
+    The user is now anonymous
+
+    Both the "Sign In" and "Sign Up" buttons appears in the navigation bar
+
+    The user's personal menu disappears in the navigation bar
+
+    The tweet button disappears in the navigation bar
+    */
+    cy.get('a[data-cy="nav-signup-link"]').should("exist");
+    cy.get('a[data-cy="nav-signin-link"]').should("exist");
+    cy.get("button#menu-button--menu").should("not.exist");
+    cy.contains("button", "Tweet").should("not.exist");
   });
 });
