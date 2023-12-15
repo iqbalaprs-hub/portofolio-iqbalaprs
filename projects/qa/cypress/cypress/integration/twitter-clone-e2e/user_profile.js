@@ -40,5 +40,61 @@ describe("Feature: User's profile", () => {
       .type("Clonejohn23");
   });
 
-  it("My SecondTest case", function () {});
+  it("1- Nominal case: The user enters a profile", () => {
+    // 1.1: The user  clicks on "All profiles" button in the navigation bar
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    // 1.2: The user  clicks on John's profile (John @john)
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@john")
+      .click();
+
+    /*
+    Expected result:
+    John's profile is displayed
+
+    We see in John's profile:
+    Name: John
+    @+ Username: @john
+    Joined December 2023
+    */
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find("img")
+      .next()
+      .should("have.text", "John");
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@john");
+
+    // 1.3: The user  clicks on "All profiles" button in the navigation bar
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    // 1.4: The user  clicks on Rony's profile (Rony @rony)
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(2)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@rony")
+      .click();
+
+    /*
+    Expected result: 
+    Rony's profile is displayed
+
+    We see in Rony's profile:
+    Name: Rony
+    @+ Username: @rony
+    Joined December 2023
+    */
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find("img")
+      .next()
+      .should("have.text", "Rony");
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@rony");
+  });
 });
