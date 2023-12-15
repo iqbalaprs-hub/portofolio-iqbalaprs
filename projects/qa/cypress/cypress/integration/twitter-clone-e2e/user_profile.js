@@ -38,6 +38,9 @@ describe("Feature: User's profile", () => {
     cy.get('form[data-cy="signin-form"]')
       .find('input[data-cy="signin-password-input"]')
       .type("Clonejohn23");
+    cy.get('form[data-cy="signin-form"]')
+      .find('button[data-cy="signin-button"]')
+      .click();
   });
 
   it("1- Nominal case: The user enters a profile", () => {
@@ -96,5 +99,44 @@ describe("Feature: User's profile", () => {
     cy.get('div[class*="Profile___StyledDiv4"]')
       .find('span[class*="Profile___StyledSpan2"]')
       .should("have.text", "@rony");
+  });
+
+  it("2- Nominal case: The user can enter the Edit profile form, only from his own profile (Only a user can modify his own profile)", () => {
+    // 2.1: The user  clicks on "All profiles" button in the navigation bar
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    // 2.2: The user  clicks on John's profile (John @john)
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@john")
+      .click();
+
+    // 2.3: The user clicks on the "Edit profile" button
+    cy.get('a[class*="EditProfileButton"]')
+      .should("have.text", "Edit Profile")
+      .click();
+
+    // Expected result: The user in the "Edit profile" form
+    cy.url().should("include", "/edit-profile");
+
+    // 2.4: The user  clicks on "All profiles" button in the navigation bar
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    // 2.5: The user  clicks on Rony's profile (Rony @rony)
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(2)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@rony")
+      .click();
+
+    // Expected result: The user enters Rony's profile but "Edit profile" button is not present
+    cy.get('a[class*="EditProfileButton"]').should("not.exist");
+
+    cy.get('button[class*="FollowProfileButton"]')
+      .should("have.text", "Follow")
+      .should("exist");
   });
 });
