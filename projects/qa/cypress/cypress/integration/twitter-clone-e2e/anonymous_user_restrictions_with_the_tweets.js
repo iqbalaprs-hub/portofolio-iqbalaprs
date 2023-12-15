@@ -68,4 +68,26 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
     // Expected result: The anonymous user is automatically sent to the "Sign In" page
     cy.get("ul").contains("a", "Sign In").should("have.class", "active");
   });
+
+  it("4- Nominal case: The anonymous user cannot like a tweet in the Home page", () => {
+    // 4.1: The anonymous user clicks on the like button of the tweet
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .click();
+
+    // Expected result: The anonymous user is automatically sent to the "Sign In" page
+    cy.get("ul").contains("a", "Sign In").should("have.class", "active");
+
+    // 4.2: The anonymous user returns to "Home" page
+    cy.get("ul").contains("a", "Home").click();
+
+    /*
+    Expected result:
+    The tweet "Hello everyone" has not been liked
+    The number next to the like button is zero
+    The heart is transparent
+    */
+  });
 });
