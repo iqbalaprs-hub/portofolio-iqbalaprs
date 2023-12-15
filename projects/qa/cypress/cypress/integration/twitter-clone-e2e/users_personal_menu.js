@@ -44,4 +44,21 @@ describe("Feature: User's personal menu", () => {
       .find("div:nth-child(1) p:nth-child(2)")
       .should("have.text", "@john");
   });
+
+  it("2- Nominal case: The user can go to his profile through his personal menu", () => {
+    // 2.1: The user clicks on the personal menu in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 2.2: The user clicks on "Profile"
+    cy.get("a#option-0--menu--1").click();
+
+    // Expected result: The user enter his profile
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find("img")
+      .next()
+      .should("have.text", "John");
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@john");
+  });
 });
