@@ -31,4 +31,23 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
       .find('button[class*="DeleteButton"]')
       .should("not.exist");
   });
+
+  it("2- Nominal case: The anonymous user cannot delete the tweet in the tweet section of the user's profile", () => {
+    // 2.1: The anonymous user clicks on the "All profiles" button
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    // 2.2: The anonymous user clicks on the profile link related to John
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@john")
+      .click();
+
+    // Expected result: In the John's profile, The "X" button which deletes the tweet "Hello everyone", is not present on the tweet
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul li:nth-child(1)")
+      .find('button[class*="DeleteButton"]')
+      .should("not.exist");
+  });
 });
