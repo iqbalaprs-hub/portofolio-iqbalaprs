@@ -61,4 +61,24 @@ describe("Feature: User's personal menu", () => {
       .find('span[class*="Profile___StyledSpan2"]')
       .should("have.text", "@john");
   });
+
+  it("3- Nominal case: The user can go to the Edit profile page through the personal menu", () => {
+    // 3.1: The user clicks on the personal menu in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 3.2: The user clicks on "Settings"
+    cy.get("div#menu--1").find("a#option-1--menu--1").click();
+
+    // Expected result: The user is sent to the Setting page
+    cy.get('h1[class*="PrimaryHeading"]').should("have.text", "Settings");
+    cy.url().should("include", "/settings");
+
+    // 3.3: The user clicks on the "Edit profile" button
+    cy.get('div[class*="ActionsContainer"]')
+      .find('a[class*="EditProfileButton"]')
+      .click();
+
+    // Expected result: The user is sent to the "Edit profile page"
+    cy.url().should("include", "/edit-profile");
+  });
 });
