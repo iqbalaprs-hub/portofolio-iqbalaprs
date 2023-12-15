@@ -121,4 +121,40 @@ describe("Feature: User's personal menu", () => {
       .should("have.text", "Invalid login credentials")
       .should("have.css", "color", "rgb(226, 61, 104)");
   });
+
+  it("Edge case: The user can cancel the deletion of his account", () => {
+    // 5.1: The user clicks on the personal menu in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 5.2: The user clicks on "Settings"
+    cy.get("div#menu--1").find("a#option-1--menu--1").click();
+
+    // 5.3: The user clicks on "Delete account" button
+    cy.get('div[class*="ActionsContainer"]')
+      .find('button[class*="DeleteAccountButton"]')
+      .click();
+
+    // 5.4: The user clicks "Nethermind, don't delete." button
+    cy.get("reach-portal")
+      .find('div[class*="Settings___StyledDiv"] button:nth-child(2)')
+      .click();
+
+    /*
+    Expected result:
+     The user is returned to settings page
+
+     The account is not deleted
+
+     The user is still signed in
+    */
+    cy.get('h1[class*="PrimaryHeading"]').should("have.text", "Settings");
+    cy.url().should("include", "/settings");
+    cy.get('div[class*="MenuPopover"]')
+      .find("div:nth-child(1) p:nth-child(1)")
+      .should("have.text", "John");
+    cy.get('div[class*="MenuPopover"]')
+      .find("div:nth-child(1) p:nth-child(2)")
+      .should("have.text", "@john");
+    cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
+  });
 });
