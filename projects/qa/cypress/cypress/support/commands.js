@@ -33,6 +33,7 @@ require("cypress-plugin-tab");
 require("@4tw/cypress-drag-drop");
 
 /*                    Todolistme project             */
+
 // This function works only if you select the date 2 days after today
 // NOTE: "td.ui-datepicker-current-day" is the tomorrow day
 // This is related to todolistme project
@@ -105,6 +106,7 @@ Cypress.Commands.add("pickDate2dayslaterInTodolistme", () => {
 });
 
 /*                    Twitter-Clone project             */
+
 // This function shows the expected result of a sign Up in twitter-clone
 Cypress.Commands.add("SignUpExpectedResultInTwitterClone", () => {
   // Expected result: The user is automatically signed in
@@ -115,4 +117,31 @@ Cypress.Commands.add("SignUpExpectedResultInTwitterClone", () => {
 
   // Expected result: The Sign Up button in the navigation bar disappears
   cy.get('a[data-cy="nav-signup-link"]').should("not.exist");
+});
+
+Cypress.Commands.add("SignInAsJohnExpectedResultInTwitterClone", () => {
+  // Expected result: The user enters his account (the user is signed-in)
+  cy.get("reach-portal")
+    .children("div")
+    .first()
+    .children("div")
+    .first()
+    .children("p")
+    .first()
+    .should("have.text", "John");
+
+  cy.get("reach-portal")
+    .children("div")
+    .first()
+    .children("div")
+    .first()
+    .children("p")
+    .eq(1)
+    .should("have.text", "@john");
+
+  // Expected result: The user is taken to the “Home” page
+  cy.get("ul").contains("a", "Home").should("have.class", "active");
+
+  // Expected result: The “Sign In” button in the navigation bar disappears (Only anonymous user can see the “Sign In” button in the navigation bar
+  cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
 });

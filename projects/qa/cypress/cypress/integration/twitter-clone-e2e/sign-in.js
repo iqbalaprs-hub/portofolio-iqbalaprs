@@ -47,30 +47,13 @@ describe("Feature: Sign In", () => {
       .find('button[data-cy="signin-button"]')
       .click();
 
-    // Expected result: The user enters his account (the user is signed-in)
-    cy.get("reach-portal")
-      .children("div")
-      .first()
-      .children("div")
-      .first()
-      .children("p")
-      .first()
-      .should("have.text", "John");
-
-    cy.get("reach-portal")
-      .children("div")
-      .first()
-      .children("div")
-      .first()
-      .children("p")
-      .eq(1)
-      .should("have.text", "@john");
-
-    // Expected result: The user is taken to the “Home” page
-    cy.get("ul").contains("a", "Home").should("have.class", "active");
-
-    // Expected result: The “Sign In” button in the navigation bar disappears (Only anonymous user can see the “Sign In” button in the navigation bar
-    cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
+    /*
+    Expected result:
+    The user enters his account (the user is signed-in)
+    The user is taken to the “Home” page
+    The “Sign In” button in the navigation bar disappears (Only anonymous user can see the “Sign In” button in the navigation bar
+    */
+    cy.SignInAsJohnExpectedResultInTwitterClone();
   });
 
   it("2- Nominal case: The user signs in by typing the email ", () => {
@@ -93,30 +76,13 @@ describe("Feature: Sign In", () => {
       .find('button[data-cy="signin-button"]')
       .click();
 
-    // Expected result: The user enters his account (the user is signed-in)
-    cy.get("reach-portal")
-      .children("div")
-      .first()
-      .children("div")
-      .first()
-      .children("p")
-      .first()
-      .should("have.text", "John");
-
-    cy.get("reach-portal")
-      .children("div")
-      .first()
-      .children("div")
-      .first()
-      .children("p")
-      .eq(1)
-      .should("have.text", "@john");
-
-    // Expected result: The user is taken to the “Home” page
-    cy.get("ul").contains("a", "Home").should("have.class", "active");
-
-    // Expected result: The “Sign In” button in the navigation bar disappears (Only anonymous user can see the “Sign In” button in the navigation bar
-    cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
+    /*
+    Expected result:
+    The user enters his account (the user is signed-in)
+    The user is taken to the “Home” page
+    The “Sign In” button in the navigation bar disappears (Only anonymous user can see the “Sign In” button in the navigation bar
+    */
+    cy.SignInAsJohnExpectedResultInTwitterClone();
   });
 
   it("3- Nominal case: The user signs in by typing the username or email wrong ", () => {
