@@ -444,4 +444,60 @@ describe("Feature: Edit profile", () => {
       " john.com"
     );
   });
+
+  it("8- Edge case: The user cannot leave the website textbox empty after it had contained a URL ", () => {
+    // 8.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 8.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    // 8.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 8.4: The user writes in the website textbox: john.com
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Website:")
+      .next("input")
+      .type("john.com");
+
+    // 8.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    // Expected result: A green sentence appears "Profile successfully updated!"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", "Profile successfully updated!")
+      .should("have.css", "color", "rgb(62, 142, 65)");
+
+    // 8.6:The user empty the website textbox
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Website:")
+      .next("input")
+      .clear();
+
+    // 8.7: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    // Expected result: A red sentence appears: "Profile validation failed: website: Website must be a valid URL"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should(
+        "have.text",
+        "Profile validation failed: website: Website must be a valid URL"
+      )
+      .should("have.css", "color", "rgb(226, 61, 104)");
+
+    // 8.8: The user clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+
+    // Expected result: The website "john.com" appears in his profile
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@john");
+    cy.get('div[class*="Profile___StyledDiv6"] > div:first').should(
+      "have.text",
+      " john.com"
+    );
+  });
 });
