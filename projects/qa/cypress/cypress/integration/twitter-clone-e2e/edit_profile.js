@@ -181,4 +181,61 @@ describe("Feature: Edit profile", () => {
       .find('span[class*="Profile___StyledSpan2"]')
       .should("have.text", "@john");
   });
+
+  it("3- Edge case: The user cannot leave the name empty", () => {
+    // 3.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 3.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    // 3.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 3.4: The user leaves the name textbox empty
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Name:")
+      .next("input")
+      .clear();
+
+    // Expected result: The name textbox is empty
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Name:")
+      .next("input")
+      .should("have.value", "");
+
+    // 3.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    // Expected result: A red sentence appears: ""name" is not allowed to be empty"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", '"name" is not allowed to be empty')
+      .should("have.css", "color", "rgb(226, 61, 104)");
+
+    // 3.6: The user clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+
+    /*
+    Expected result:
+    The user is in his profile
+    The name of the profile is still "John"
+    */
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find("img")
+      .next()
+      .should("have.text", "John");
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@john");
+
+    // 3.7: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // Expected result: The name textbox contains "John" which is the original name
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Name:")
+      .next("input")
+      .should("have.value", "John");
+  });
 });
