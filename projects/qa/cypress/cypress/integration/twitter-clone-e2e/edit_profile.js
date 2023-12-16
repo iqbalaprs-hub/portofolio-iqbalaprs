@@ -333,9 +333,54 @@ describe("Feature: Edit profile", () => {
         The user is in his profile
         The location "Boulevard street 10+" appears on the profile
     */
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@john");
     cy.get('div[class*="Profile___StyledDiv6"] > div:first').should(
       "have.text",
       " Boulevard street 10+"
+    );
+  });
+
+  it("6- Nominal case: The user can change his website", () => {
+    // 6.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 6.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    // 6.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 6.4: The user writes in the website textbox: john.com
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Website:")
+      .next("input")
+      .type("john.com");
+
+    // 6.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    // Expected result: A green sentence appears "Profile successfully updated!"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", "Profile successfully updated!")
+      .should("have.css", "color", "rgb(62, 142, 65)");
+
+    // 6.6: The user clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+
+    /*
+    Expected result:
+    The user is in his profile
+    The website "john.com" appears on the profile
+    */
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@john");
+    cy.get('div[class*="Profile___StyledDiv6"] > div:first').should(
+      "have.text",
+      " john.com"
     );
   });
 });
