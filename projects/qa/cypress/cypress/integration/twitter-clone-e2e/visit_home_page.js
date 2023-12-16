@@ -20,16 +20,7 @@ describe("Feature: Visit home page", () => {
     cy.visit(Cypress.env("twitterCloneBaseUrl"));
 
     // Prereq.: The user sign in as John
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("john");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonejohn23");
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    cy.SignInAsJohnInTwitterClone();
   });
 
   it("1- Nominal case: Tweets are sorted from newest (top) to oldest (bottom) ", () => {
