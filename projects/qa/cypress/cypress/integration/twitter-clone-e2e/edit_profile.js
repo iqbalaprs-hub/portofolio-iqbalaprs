@@ -238,4 +238,65 @@ describe("Feature: Edit profile", () => {
       .next("input")
       .should("have.value", "John");
   });
+
+  it("4- Nominal case: The user can change his bio", () => {
+    // 4.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 4.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    // 4.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 4.4: The user writes in bio textbox: "Blood type A+   Age 23"
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Bio:")
+      .next("input")
+      .type("Blood type A+   Age 23");
+
+    // 4.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    // Expected result: A green sentence appears "Profile successfully updated!"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", "Profile successfully updated!")
+      .should("have.css", "color", "rgb(62, 142, 65)");
+
+    // 4.6: The user clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+
+    /*
+    Expected result:
+    The user is in his profile
+    The bio "Blood type A+   Age 23" appears on the profile
+    */
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find("img")
+      .next()
+      .should("have.text", "John");
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@john");
+    cy.get('div[class*="Profile___StyledDiv5"] > div:first').should(
+      "have.text",
+      "Blood type A+   Age 23"
+    );
+
+    // 4.7: The user clicks on "All profiles" in the navigation bar
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    // Expected result: The profile with username "@john" has the bio  "Blood type A+   Age 23"
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@john");
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(3)")
+      .should("have.text", "Blood type A+   Age 23");
+  });
 });
