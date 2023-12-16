@@ -757,7 +757,7 @@ describe("Feature: Tweet", () => {
       .find('button[data-cy="signin-button"]')
       .click();
 
-    // 9.7: The user Paul selects john's tweet and replies to it: "Good morning John"
+    // 9.7: The user Paul replies to John's tweet "Good morning John"
     cy.get('div[class*="Homepage"]')
       .find("ul li:nth-child(1)")
       .find('div[class*="TweetBottomGroup"]')
@@ -797,5 +797,125 @@ describe("Feature: Tweet", () => {
       .should("exist")
       .find("span")
       .should("have.text", "2");
+  });
+
+  it("10- Nominal case: The user can delete only his own tweets and replies", () => {
+    // 10.1: The user John tweet: "Hello everyone"
+    cy.JohnTweetingHelloEveryoneInTwitterClone();
+
+    // 10.2: The user John signs out
+    cy.get("button#menu-button--menu").click();
+    cy.get("div#option-2--menu--1").click();
+
+    // 10.3: The user Rony signs in
+    cy.SignInAsRonyInTwitterClone();
+
+    // 10.4: The user Rony replies to John's tweet: "Hello John" and then exit the reply modal
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(1)")
+      .click();
+
+    cy.get('form[class*="CommentForm"]')
+      .find('input[class*="CommentInput"]')
+      .type("Hello John")
+      .type("{enter}");
+
+    cy.get('div[class*="StyledDialogContent"]').type("{esc}");
+
+    /*
+      Expected result:
+      The number next to the bubble (reply button) increases by one.
+      The number is now 1 
+      */
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(1)")
+      .should("exist")
+      .find("span")
+      .should("have.text", "1");
+
+    // 10.5: The user Rony signs out
+    cy.get('button[data-cy="auth-nav-dropdown-button"]').click();
+    cy.get('div[data-cy="auth-nav-logout-button"]').click();
+
+    // 10.6: The user Paul signs in
+    cy.get('a[data-cy="nav-signin-link"]').click();
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-username-input"]')
+      .type("paul");
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-password-input"]')
+      .type("Clonepaul23");
+    cy.get('form[data-cy="signin-form"]')
+      .find('button[data-cy="signin-button"]')
+      .click();
+
+    // 10.7: The user Paul replies to John'tweet "Good morning John" and exit the reply modal
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(1)")
+      .click();
+
+    cy.get('form[class*="CommentForm"]')
+      .find('input[class*="CommentInput"]')
+      .type("Good morning John")
+      .type("{enter}");
+    cy.get('div[class*="StyledDialogContent"]').type("{esc}");
+
+    /*
+    Expected result:
+    The number next to the bubble increases by one.
+    The number is now 2
+    */
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(1)")
+      .should("exist")
+      .find("span")
+      .should("have.text", "2");
+
+    // 10.8: Expected result: Since there is no "X" button on John's tweet, John's tweet cannot be deleted by Paul
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('button[class*="DeleteButton"]')
+      .should("not.exist");
+
+    // 10.9: The user Paul clicks on the tweet "Hello everyone" and tries to delete Rony's reply "Hello John"
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(1)")
+      .click();
+
+    // Expected result: Since there is no "X" button on Rony's reply, Rony's reply cannot be deleted
+    cy.get('div[class*="StyledTweet"]')
+      .find("ul")
+      .find("li:nth-child(2)")
+      .find('button[class*="DeleteButton"]')
+      .should("not.exist");
+
+    // 10.10: The user Paul deletes his reply "Good morning John"
+    cy.get('div[class*="StyledTweet"]')
+      .find("ul")
+      .find("li:nth-child(1)")
+      .find('button[class*="DeleteButton"]')
+      .click();
+
+    // 10.11: The user Paul exit the reply modal
+    cy.get('div[class*="StyledDialogContent"]').type("{esc}");
+
+    // Expected result: The number next to the reply button is now 1
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(1)")
+      .should("exist")
+      .find("span")
+      .should("have.text", "1");
   });
 });
