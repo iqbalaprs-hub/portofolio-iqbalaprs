@@ -637,4 +637,69 @@ describe("Feature: Tweet", () => {
       .find('span[class*="LikeIcon"]')
       .should("have.css", "color", "rgb(122, 122, 122)");
   });
+
+  it("8- Nominal case: Multiple users can like the same tweet", () => {
+    // 8.1: The user John tweet: "Hello everyone"
+    cy.JohnTweetingHelloEveryoneInTwitterClone();
+
+    // 8.2: The user John signs out
+    cy.get("button#menu-button--menu").click();
+    cy.get("div#option-2--menu--1").click();
+
+    // 8.3: The user Rony signs in
+    cy.SignInAsRonyInTwitterClone();
+
+    // 8.4: The user Rony selects john's tweet and likes it
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .click();
+
+    /*
+    Expected result:
+    The number next to the like button is  1
+    The heart is red
+    */
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .should("have.text", " 1");
+
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .should("have.css", "color", "rgb(226, 61, 104)");
+
+    // 8.5: The user Rony signs out
+    cy.get('button[data-cy="auth-nav-dropdown-button"]').click();
+    cy.get('div[data-cy="auth-nav-logout-button"]').click();
+
+    // 8.6: The user Paul signs in
+    cy.get('a[data-cy="nav-signin-link"]').click();
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-username-input"]')
+      .type("paul");
+    cy.get('form[data-cy="signin-form"]')
+      .find('input[data-cy="signin-password-input"]')
+      .type("Clonepaul23");
+    cy.get('form[data-cy="signin-form"]')
+      .find('button[data-cy="signin-button"]')
+      .click();
+
+    // 8.7: The user Paul selects john's tweet and likes it
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .click();
+
+    /*
+    Expected result:
+    The number next to the like button is  2
+    This number shows the number of users liking the tweet  
+    */
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .should("have.text", " 2");
+  });
 });
