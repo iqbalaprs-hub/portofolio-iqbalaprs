@@ -918,4 +918,50 @@ describe("Feature: Tweet", () => {
       .find("span")
       .should("have.text", "1");
   });
+
+  it("11- Edge case: The user reply to the same tweet more than once", () => {
+    // 11.1: The user John tweet: "Hello everyone"
+    cy.JohnTweetingHelloEveryoneInTwitterClone();
+
+    // 11.2: The user John signs out
+    cy.get("button#menu-button--menu").click();
+    cy.get("div#option-2--menu--1").click();
+
+    // 11.3: The user Rony signs in
+    cy.SignInAsRonyInTwitterClone();
+
+    // 11.4: The user Rony replies to John's tweet: "Hello John" and then exit the reply modal
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(1)")
+      .click();
+
+    cy.get('form[class*="CommentForm"]')
+      .find('input[class*="CommentInput"]')
+      .type("Hello John")
+      .type("{enter}");
+
+    // 11.5: The user Rony replies again to the tweet: "I will see you tomorrow"
+    cy.get('form[class*="CommentForm"]')
+      .find('input[class*="CommentInput"]')
+      .type("I will see you tomorrow")
+      .type("{enter}");
+
+    // 11.6: The user Rony exit the reply modal
+    cy.get('div[class*="StyledDialogContent"]').type("{esc}");
+
+    /*
+      Expected result:
+      The number next to the bubble increases by one.
+      The number is now 2
+      */
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(1)")
+      .should("exist")
+      .find("span")
+      .should("have.text", "2");
+  });
 });
