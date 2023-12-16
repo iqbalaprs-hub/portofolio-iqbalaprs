@@ -161,6 +161,20 @@ Cypress.Commands.add("SignInAsJohnInTwitterClone", () => {
     .click();
 });
 
+// This is all the steps to sign in as Rony (username: rony; email: rony@gmail.com; password: Clonerony23) in twitter-clone
+Cypress.Commands.add("SignInAsRonyInTwitterClone", () => {
+  cy.get('a[data-cy="nav-signin-link"]').click();
+  cy.get('form[data-cy="signin-form"]')
+    .find('input[data-cy="signin-username-input"]')
+    .type("rony");
+  cy.get('form[data-cy="signin-form"]')
+    .find('input[data-cy="signin-password-input"]')
+    .type("Clonerony23");
+  cy.get('form[data-cy="signin-form"]')
+    .find('button[data-cy="signin-button"]')
+    .click();
+});
+
 // This function shows the user John tweeting "Hello everyone" in twitter-clone
 Cypress.Commands.add("JohnTweetingHelloEveryoneInTwitterClone", () => {
   // The user clicks on the "Tweet" button in the navigation bar

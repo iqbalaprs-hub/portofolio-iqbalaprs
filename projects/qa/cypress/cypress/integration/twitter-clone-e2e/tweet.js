@@ -258,16 +258,7 @@ describe("Feature: Tweet", () => {
     cy.get("div#option-2--menu--1").click();
 
     // 5.3: The user Rony signs in
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("rony");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonerony23");
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    cy.SignInAsRonyInTwitterClone();
 
     // Expected result: John's tweet appears on the "Home" page.
     // The text
@@ -460,5 +451,121 @@ describe("Feature: Tweet", () => {
       .find('span[class*="TweetAction"]')
       .find("span:nth-child(2)")
       .should("have.text", "1");
+  });
+
+  it("6- Nominal case: The user likes a tweet", () => {
+    // 6.1: The user John tweet: "Hello everyone"
+    cy.JohnTweetingHelloEveryoneInTwitterClone();
+
+    // 6.2: The user John signs out
+    cy.get("button#menu-button--menu").click();
+    cy.get("div#option-2--menu--1").click();
+
+    // 6.3: The user Rony signs in
+    cy.SignInAsRonyInTwitterClone();
+
+    /*
+    Expected result:
+
+    The number next to the heart (like button) is zero
+    The heart is transparent
+    */
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .should("have.text", " 0");
+
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .should("have.css", "color", "rgb(122, 122, 122)");
+
+    // 6.4: The user Rony clicks on the like button
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .click();
+
+    /*
+    Expected result:
+    The number next to the like button increases by one
+    The number is now 1
+    The heart is red
+    */
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .should("have.text", " 1");
+
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .should("have.css", "color", "rgb(226, 61, 104)");
+
+    // 6.5: The user Rony clicks on the tweet "Hello everyone"
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(1)")
+      .click();
+
+    // Expected result: The user Rony can see on the reply modal that the number next to the like button is 1 and that the heart is red
+    // Like button
+    cy.get('div[class*="TweetActionGroup"]')
+      .find('button[class*="TweetAction"]')
+      .find("span:nth-child(2)")
+      .should("have.text", "1");
+
+    cy.get('div[class*="TweetActionGroup"]')
+      .find('button[class*="TweetAction"]')
+      .find('span[class*="LikeIcon"]')
+      .should("have.css", "color", "rgb(226, 61, 104)");
+
+    // 6.6: The user Rony exit the reply modal, go to his profile and click on the likes section
+    cy.get('div[class*="StyledDialogContent"]').type("{esc}");
+    cy.wait(1000);
+    cy.get('button[class*="MenuButton"]').click();
+    cy.get("a#option-0--menu--11").click();
+    cy.get('div[class*="ProfileHeaderMenu"]')
+      .find('ul[class*="HeaderMenuList"] a:nth-child(2)')
+      .click();
+
+    /*
+    Expected result:
+    The user Rony can see the tweet he liked
+    The user Rony can see that the number next to the like button is 1 and that the heart is red
+    */
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .should("have.text", " 1");
+
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('button:nth-child(2) span[class*="LikeIcon"]')
+      .should("have.css", "color", "rgb(226, 61, 104)");
+
+    // 6.7: The user Rony signs out
+    cy.get('button[data-cy="auth-nav-dropdown-button"]').click();
+    cy.get('div[data-cy="auth-nav-logout-button"]').click();
+
+    // 6.8: The user John signs in
+    cy.SignInAsJohnInTwitterClone();
+
+    /*
+    Expected result: 
+    The user John can see his tweet liked
+    The number next to the like button is 1
+    The heart is transparent (the color red is for the user who made the like action)
+    */
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .should("have.text", " 1");
+
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .should("have.css", "color", "rgb(122, 122, 122)");
   });
 });
