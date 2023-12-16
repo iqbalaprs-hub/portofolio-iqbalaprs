@@ -133,4 +133,52 @@ describe("Feature: Edit profile", () => {
       .find("div:nth-child(1) p:nth-child(2)")
       .should("have.text", "@john");
   });
+
+  it("2- Edge case: The user can change his name and have the same name as another user", () => {
+    // 2.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 2.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    cy.wait(1000);
+    // 2.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 2.4: The user changes his name from "John" to "Johnny"
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Name:")
+      .next("input")
+      .clear();
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Name:")
+      .next("input")
+      .type("Johnny");
+
+    // 2.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    // Expected result: A green sentence appears "Profile successfully updated!"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", "Profile successfully updated!")
+      .should("have.css", "color", "rgb(62, 142, 65)");
+
+    // 2.6: The user Clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+
+    /*
+    Expected result:
+    The user is in his profile
+
+    The name of his profile changed to "Johnny"
+    */
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find("img")
+      .next()
+      .should("have.text", "Johnny");
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@john");
+  });
 });
