@@ -299,4 +299,43 @@ describe("Feature: Edit profile", () => {
       .find("p:nth-child(3)")
       .should("have.text", "Blood type A+   Age 23");
   });
+
+  it("5- Nominal case: The user can change his location", () => {
+    // 5.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 5.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    // 5.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 5.4: The user writes in the location textbox: "Boulevard street 10+"
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Location:")
+      .next("input")
+      .type("Boulevard street 10+");
+
+    // 5.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    // Expected result: A green sentence appears "Profile successfully updated!"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", "Profile successfully updated!")
+      .should("have.css", "color", "rgb(62, 142, 65)");
+
+    // 5.6: The user clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+
+    /*
+    Expected result:
+        The user is in his profile
+        The location "Boulevard street 10+" appears on the profile
+    */
+    cy.get('div[class*="Profile___StyledDiv6"] > div:first').should(
+      "have.text",
+      " Boulevard street 10+"
+    );
+  });
 });
