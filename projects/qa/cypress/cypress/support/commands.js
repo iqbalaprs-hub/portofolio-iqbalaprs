@@ -119,6 +119,7 @@ Cypress.Commands.add("SignUpExpectedResultInTwitterClone", () => {
   cy.get('a[data-cy="nav-signup-link"]').should("not.exist");
 });
 
+// This function shows the expected result of signing in as John in twitter-clone
 Cypress.Commands.add("SignInAsJohnExpectedResultInTwitterClone", () => {
   // Expected result: The user enters his account (the user is signed-in)
   cy.get("reach-portal")
@@ -144,4 +145,30 @@ Cypress.Commands.add("SignInAsJohnExpectedResultInTwitterClone", () => {
 
   // Expected result: The “Sign In” button in the navigation bar disappears (Only anonymous user can see the “Sign In” button in the navigation bar
   cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
+});
+
+// This is all the steps to sign in as john (username: john; email: john@gmail.com; password: Clonejohn23) in twitter-clone
+Cypress.Commands.add("SignInAsJohnInTwitterClone", () => {
+  cy.get('a[data-cy="nav-signin-link"]').click();
+  cy.get('form[data-cy="signin-form"]')
+    .find('input[data-cy="signin-username-input"]')
+    .type("john");
+  cy.get('form[data-cy="signin-form"]')
+    .find('input[data-cy="signin-password-input"]')
+    .type("Clonejohn23");
+  cy.get('form[data-cy="signin-form"]')
+    .find('button[data-cy="signin-button"]')
+    .click();
+});
+
+// This function shows the user John tweeting "Hello everyone" in twitter-clone
+Cypress.Commands.add("JohnTweetingHelloEveryoneInTwitterClone", () => {
+  // The user clicks on the "Tweet" button in the navigation bar
+  cy.contains("button", "Tweet").click();
+  // The user types in the text box: "Hello everyone"
+  cy.get('div[class*="DialogContent"]').find("textarea").type("Hello everyone");
+  // The user clicks on the tweet submit button
+  cy.get('div[class*="DialogContent"]')
+    .find('button:contains("Tweet")')
+    .click();
 });

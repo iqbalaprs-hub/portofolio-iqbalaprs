@@ -23,28 +23,12 @@ describe("Feature: Tweet", () => {
     cy.visit(Cypress.env("twitterCloneBaseUrl"));
 
     // Prereq.: The user sign in as John
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("john");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonejohn23");
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    cy.SignInAsJohnInTwitterClone();
   });
 
   it("1- Nominal case: The user creates a tweet", () => {
     // 1.1: The user clicks on the "Tweet" button in the navigation bar
     cy.contains("button", "Tweet").click();
-
-    // Expected result: A tweet modal appears
-    // cy.get('div[class*="DialogContent"]').should(
-    //   "have.attr",
-    //   "aria-modal",
-    //   "true"
-    // );
 
     // Expected result: The text box has the placeholder “What’s happening?”
     cy.get('div[class*="DialogContent"]')
@@ -93,26 +77,18 @@ describe("Feature: Tweet", () => {
       .find("span:nth-child(2)")
       .should("have.text", "@john");
 
-    // The tweet date publication
-    // cy.get('div[class*="Homepage"]')
-    //   .find('div[class*="TweetUserGroup"]')
-    //   .find("span:nth-child(3)")
-    //   .should("have.text", "14 December 2023");
-
     // Reply button
     cy.get('div[class*="Homepage"]')
       .find('div[class*="TweetBottomGroup"]')
       .find("button:nth-child(1)")
-      .should("exist")
       .find("span")
       .should("have.text", "0");
 
     // Like button
-    // cy.get('div[class*="Homepage"]')
-    //   .find('div[class*="TweetBottomGroup"]')
-    //   .find("button:nth-child(2)")
-    //   .should("exist")
-    //   .should("have.text", "0");
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .should("have.text", " 0");
 
     // 1.4: The user clicks on his personal menu and opens "profile"
     cy.get("button#menu-button--menu").click();
@@ -140,26 +116,18 @@ describe("Feature: Tweet", () => {
       .find("span:nth-child(2)")
       .should("have.text", "@john");
 
-    // The tweet date publication
-    // cy.get('div[class*="ProfileTweetsBoard"]')
-    //   .find('div[class*="TweetUserGroup"]')
-    //   .find("span:nth-child(3)")
-    //   .should("have.text", "14 December 2023");
-
     // Reply button
     cy.get('div[class*="ProfileTweetsBoard"]')
       .find('div[class*="TweetBottomGroup"]')
       .find("button:nth-child(1)")
-      .should("exist")
       .find("span")
       .should("have.text", "0");
 
     // Like button
-    // cy.get('div[class*="ProfileTweetsBoard"]')
-    //   .find('div[class*="TweetBottomGroup"]')
-    //   .find("button:nth-child(2)")
-    //   .should("exist")
-    //   .should("have.text", "0");
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .should("have.text", " 0");
   });
 
   it("2- Nominal case: The user cannot write a tweet with more than 280 characters", () => {
@@ -227,17 +195,9 @@ describe("Feature: Tweet", () => {
 
   it("3- Nominal case: The user deletes his own tweet", () => {
     // 3.1: The user clicks on the "Tweet" button in the navigation bar
-    cy.contains("button", "Tweet").click();
-
     // 3.2: The user types in the text box: "Hello everyone"
-    cy.get('div[class*="DialogContent"]')
-      .find("textarea")
-      .type("Hello everyone");
-
     // 3.3: The user clicks on the tweet submit button
-    cy.get('div[class*="DialogContent"]')
-      .find('button:contains("Tweet")')
-      .click();
+    cy.JohnTweetingHelloEveryoneInTwitterClone();
 
     // 3.4: The user deletes his own tweet by clicking on the "X" button
     cy.get('div[class*="Homepage"]')
@@ -281,13 +241,6 @@ describe("Feature: Tweet", () => {
       .find('button[class*="CloseButton"]')
       .click();
 
-    // Expected result: The tweet modal disappears
-    // cy.get('div[class*="DialogContent"]').should(
-    //   "have.attr",
-    //   "aria-modal",
-    //   "false"
-    // );
-
     // Expected result: The tweet was not created. The "Home" page stays empty
     cy.get('div[class*="Homepage"]')
       .find("ul")
@@ -298,13 +251,7 @@ describe("Feature: Tweet", () => {
 
   it("5- Nominal case: The user replies to a tweet", () => {
     // 5.1: The user John tweet: "Hello everyone"
-    cy.contains("button", "Tweet").click();
-    cy.get('div[class*="DialogContent"]')
-      .find("textarea")
-      .type("Hello everyone");
-    cy.get('div[class*="DialogContent"]')
-      .find('button:contains("Tweet")')
-      .click();
+    cy.JohnTweetingHelloEveryoneInTwitterClone();
 
     // 5.2: The user John signs out
     cy.get("button#menu-button--menu").click();
@@ -345,12 +292,6 @@ describe("Feature: Tweet", () => {
       .find('div[class*="TweetUserGroup"]')
       .find("span:nth-child(2)")
       .should("have.text", "@john");
-
-    // The tweet date publication
-    // cy.get('div[class*="Homepage"]')
-    //   .find('div[class*="TweetUserGroup"]')
-    //   .find("span:nth-child(3)")
-    //   .should("have.text", "14 December 2023");
 
     // Reply button
     // Expected result: The number next to the bubble (reply button) is zero
@@ -398,13 +339,6 @@ describe("Feature: Tweet", () => {
       .find("span:nth-child(2)")
       .should("have.text", "@rony");
 
-    // The day it was published
-    // cy.get('div[class*="StyledTweet"]')
-    //   .find("ul li:nth-child(1)")
-    //   .find('div[class*="TweetUserGroup"]')
-    //   .find("span:nth-child(3)")
-    //   .should("have.text", "14 December 2023");
-
     // Reply button (The number next to the reply button related to the tweet is 1)
     cy.get('div[class*="TweetActionGroup"]')
       .find('span[class*="TweetAction"]')
@@ -429,36 +363,12 @@ describe("Feature: Tweet", () => {
       .find("span")
       .should("have.text", "1");
 
-    // 5.7: The user clicks on the tweet "Hello everyone"
-    cy.get('div[class*="Homepage"]')
-      .find("ul li:nth-child(1)")
-      .find('div[class*="TweetBottomGroup"]')
-      .find("button:nth-child(1)")
-      .click();
-
-    // Expected result: In the reply modal, the number next to the bubble (reply button) related to the tweet is now 1
-    cy.get('div[class*="TweetActionGroup"]')
-      .find('span[class*="TweetAction"]')
-      .find("span:nth-child(2)")
-      .should("have.text", "1");
-
-    // 5.8: The user Rony exit the reply modal and sign out
-    cy.get('div[class*="StyledDialogContent"]').type("{esc}");
-    cy.wait(1000);
+    // 5.7: The user Rony signs out
     cy.get('button[data-cy="auth-nav-dropdown-button"]').click();
     cy.get('div[data-cy="auth-nav-logout-button"]').click();
 
-    // 5.9: The user John signs in
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("john");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonejohn23");
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    // 5.8: The user John signs in
+    cy.SignInAsJohnInTwitterClone();
 
     // Expected result: The user John can see that his tweet "Hello everyone" in the "Home" page, has a number 1 next to the reply button
     cy.get('div[class*="Homepage"]')
@@ -477,7 +387,7 @@ describe("Feature: Tweet", () => {
       .find("span")
       .should("have.text", "1");
 
-    // 5.10: The user John clicks on the tweet "Hello everyone"
+    // 5.9: The user John clicks on the tweet "Hello everyone"
     cy.get('div[class*="Homepage"]')
       .find("ul li:nth-child(1)")
       .find('div[class*="TweetBottomGroup"]')
@@ -498,10 +408,57 @@ describe("Feature: Tweet", () => {
       .find("span:nth-child(2)")
       .should("have.text", "1");
 
-    // 5.11: the user John exit the reply modal and go to his profile
+    // 5.10: the user John exit the reply modal and go to his profile
     cy.get('div[class*="StyledDialogContent"]').type("{esc}");
-    cy.get('button[data-cy="auth-nav-dropdown-button"]').click();
     cy.wait(1000);
-    // cy.get("a#option-0--menu--1").click();
+    cy.get('button[class*="MenuButton"]').click();
+    cy.get("#option-0--menu--20").click();
+
+    // Expected result: The user John can see that his tweet "Hello everyone" in the tweet section of his profile, has a number 1 next to the reply button
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul")
+      .should("have.length", 1)
+      .find("li")
+      .should("have.length", 1)
+      .find("p")
+      .should("have.text", "Hello everyone");
+
+    // Name of the author
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find('div[class*="TweetUserGroup"]')
+      .find('span[class*="TweetUserName"]')
+      .should("have.text", "John");
+
+    // Username of the author
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find('div[class*="TweetUserGroup"]')
+      .find("span:nth-child(2)")
+      .should("have.text", "@john");
+
+    // Reply button
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(1)")
+      .find("span")
+      .should("have.text", "1");
+
+    // 5.11: The user John clicks on the tweet "Hello everyone"
+    cy.get('div[class*="ProfileTweetsBoard"]')
+      .find("ul li:nth-child(1)")
+      .click();
+
+    // Expected result: The user John can see Rony's reply to his tweet in the reply modal, with the number 1 next to the reply button
+    cy.get('div[class*="StyledTweet"]')
+      .find("ul")
+      .should("have.length", 1)
+      .find("li")
+      .should("have.length", 1)
+      .find("p")
+      .should("have.text", "Hello John");
+
+    cy.get('div[class*="TweetActionGroup"]')
+      .find('span[class*="TweetAction"]')
+      .find("span:nth-child(2)")
+      .should("have.text", "1");
   });
 });
