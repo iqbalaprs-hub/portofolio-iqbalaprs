@@ -383,4 +383,65 @@ describe("Feature: Edit profile", () => {
       " john.com"
     );
   });
+
+  it("7- Edge case: The user must write a valid URL as his website", () => {
+    // 7.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 7.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    // 7.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 7.4: The user writes in the website textbox: john.com
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Website:")
+      .next("input")
+      .type("john.com");
+
+    // 7.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    // Expected result: A green sentence appears "Profile successfully updated!"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", "Profile successfully updated!")
+      .should("have.css", "color", "rgb(62, 142, 65)");
+
+    // 7.6: The user writes in the website textbox: john
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Website:")
+      .next("input")
+      .clear();
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Website:")
+      .next("input")
+      .type("john");
+
+    // 7.7: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    // Expected result: A red sentence appears: ""website" must be a valid url"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", '"website" must be a valid url')
+      .should("have.css", "color", "rgb(226, 61, 104)");
+
+    // 7.8: The user clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+
+    /*
+    Expected result:
+    The user is in his profile
+    The website "john.com" appears instead of "john"on the profile
+    */
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@john");
+    cy.get('div[class*="Profile___StyledDiv6"] > div:first').should(
+      "have.text",
+      " john.com"
+    );
+  });
 });
