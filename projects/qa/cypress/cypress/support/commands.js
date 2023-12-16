@@ -32,6 +32,7 @@ require("cypress-plugin-tab");
 //https://reflect.run/articles/testing-drag-and-drop-workflows-using-cypress/#:~:text=You%20can%20add%20drag%2Dand,cypress%2Ddrag%2Ddrop%20plugin.&text=Then%2C%20add%20the%20following%20line,cypress%2Ddrag%2Ddrop%22)%3B
 require("@4tw/cypress-drag-drop");
 
+/*                    Todolistme project             */
 // This function works only if you select the date 2 days after today
 // NOTE: "td.ui-datepicker-current-day" is the tomorrow day
 // This is related to todolistme project
@@ -101,4 +102,17 @@ Cypress.Commands.add("pickDate2dayslaterInTodolistme", () => {
       }
     }
   );
+});
+
+/*                    Twitter-Clone project             */
+// This function shows the expected result of a sign Up in twitter-clone
+Cypress.Commands.add("SignUpExpectedResultInTwitterClone", () => {
+  // Expected result: The user is automatically signed in
+  cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
+
+  // Expected result: The user is taken to "Home" page
+  cy.get("ul").contains("a", "Home").should("have.class", "active");
+
+  // Expected result: The Sign Up button in the navigation bar disappears
+  cy.get('a[data-cy="nav-signup-link"]').should("not.exist");
 });

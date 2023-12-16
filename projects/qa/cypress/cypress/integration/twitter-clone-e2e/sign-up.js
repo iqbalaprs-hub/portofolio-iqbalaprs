@@ -80,14 +80,12 @@ describe("Feature: Sign Up", () => {
       .eq(1)
       .should("have.text", "@rony");
 
-    // Expected result: The user is automatically signed in
-    cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
-
-    // Expected result: The user is taken to "Home" page
-    cy.get("ul").contains("a", "Home").should("have.class", "active");
-
-    // Expected result: The Sign Up button in the navigation bar disappears
-    cy.get('a[data-cy="nav-signup-link"]').should("not.exist");
+    /*
+    Expected result: The user is automatically signed in
+    Expected result: The user is taken to "Home" page
+    Expected result: The Sign Up button in the navigation bar disappears
+    */
+    cy.SignUpExpectedResultInTwitterClone();
   });
 
   it("2- Nominal case: The user must create an account with a unique username", () => {
@@ -225,11 +223,12 @@ describe("Feature: Sign Up", () => {
       .eq(1)
       .should("have.text", "@johnny");
 
-    // Expected result: The user is automatically signed in
-    cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
-
-    // Expected result: The user is taken to "Home" page
-    cy.get("ul").contains("a", "Home").should("have.class", "active");
+    /*
+    Expected result: The user is automatically signed in
+    Expected result: The user is taken to "Home" page
+    Expected result: The Sign Up button in the navigation bar disappears
+    */
+    cy.SignUpExpectedResultInTwitterClone();
   });
 
   it("5- Nominal case: The user writes the email wrong (The email must be a string in the form name@example.com)", () => {
@@ -286,7 +285,7 @@ describe("Feature: Sign Up", () => {
       .find('button[data-cy="signup-submit"]')
       .click();
 
-    // Expected result: A red sentence appears: "email" must be a vaid email
+    // Expected result: A red sentence appears: "email" must be a valid email
     cy.get('h1[data-cy="signup-title"]')
       .next("p")
       .should("have.text", '"email" must be a valid email')
@@ -424,11 +423,12 @@ describe("Feature: Sign Up", () => {
       .eq(1)
       .should("have.text", "@johnny");
 
-    // Expected result: The user is automatically signed in
-    cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
-
-    // Expected result: The user is taken to "Home" page
-    cy.get("ul").contains("a", "Home").should("have.class", "active");
+    /*
+    Expected result: The user is automatically signed in
+    Expected result: The user is taken to "Home" page
+    Expected result: The Sign Up button in the navigation bar disappears
+    */
+    cy.SignUpExpectedResultInTwitterClone();
   });
 
   it("8- Nominal case: The user does not confirm his password right", () => {
@@ -465,7 +465,7 @@ describe("Feature: Sign Up", () => {
       .find('button[data-cy="signup-submit"]')
       .click();
 
-    // Expected result: A red sentence appears: password must match
+    // Expected result: 2 same red sentences appears: password must match
     cy.get('form[data-cy="signup-form"]')
       .find('input[data-cy="signup-password-input"]')
       .next("div")
@@ -602,11 +602,12 @@ describe("Feature: Sign Up", () => {
       .eq(1)
       .should("have.text", "@johnny.-_");
 
-    // Expected result: The user is automatically signed in
-    cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
-
-    // Expected result: The user is taken to "Home" page
-    cy.get("ul").contains("a", "Home").should("have.class", "active");
+    /*
+    Expected result: The user is automatically signed in
+    Expected result: The user is taken to "Home" page
+    Expected result: The Sign Up button in the navigation bar disappears
+    */
+    cy.SignUpExpectedResultInTwitterClone();
   });
 
   it("11- Nominal case: The user can go to the Sign In form from the Sign Up page", () => {
