@@ -568,4 +568,73 @@ describe("Feature: Tweet", () => {
       .find('span[class*="LikeIcon"]')
       .should("have.css", "color", "rgb(122, 122, 122)");
   });
+
+  it("7- Nominal case: The user can remove his like", () => {
+    // 7.1: The user John tweet: "Hello everyone"
+    cy.JohnTweetingHelloEveryoneInTwitterClone();
+
+    // 7.2: The user John signs out
+    cy.get("button#menu-button--menu").click();
+    cy.get("div#option-2--menu--1").click();
+
+    // 7.3: The user Rony signs in
+    cy.SignInAsRonyInTwitterClone();
+
+    /*
+    Expected result:
+    The number next to the like button is  zero
+    The heart is transparent    
+    */
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .should("have.text", " 0");
+
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .should("have.css", "color", "rgb(122, 122, 122)");
+
+    // 7.4: The user Rony likes John's tweet
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .click();
+
+    /*
+    Expected result:
+    The number next to the like button is  1
+    The heart is red
+    */
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .should("have.text", " 1");
+
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .should("have.css", "color", "rgb(226, 61, 104)");
+
+    // 7.5: The user Rony likes the same tweet again
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .click();
+
+    /*
+    Expected result:
+    the number next to the like button is  zero
+    The heart is transparent
+    */
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .should("have.text", " 0");
+
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .should("have.css", "color", "rgb(122, 122, 122)");
+  });
 });
