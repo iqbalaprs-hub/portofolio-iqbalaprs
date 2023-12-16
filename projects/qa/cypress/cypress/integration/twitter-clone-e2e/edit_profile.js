@@ -500,4 +500,71 @@ describe("Feature: Edit profile", () => {
       " john.com"
     );
   });
+
+  it("9- Nominal case: The user can change his avatar", () => {
+    // 9.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 9.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    // 9.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 9.4: The user writes in the avatar textbox: "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"   (This URL gives a photo of a black dog)
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Avatar (URL):")
+      .next("input")
+      .type(
+        "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+      );
+
+    // 9.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    // Expected result: A green sentence appears "Profile successfully updated!"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", "Profile successfully updated!")
+      .should("have.css", "color", "rgb(62, 142, 65)");
+
+    // 9.6: The user clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+
+    /*
+    Expected result:
+    The user is in his profile
+    The avatar has a photo of a black dog
+    */
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@john");
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find("img")
+      .should(
+        "have.attr",
+        "src",
+        "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+      );
+
+    // 9.7: The user clicks on "All profiles" in the navigation bar
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    // Expected result: The profile with the username "@john" have a photo of a black dog in the avatar
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@john");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("img")
+      .should(
+        "have.attr",
+        "src",
+        "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+      );
+  });
 });
