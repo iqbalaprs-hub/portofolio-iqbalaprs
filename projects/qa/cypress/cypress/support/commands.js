@@ -32,7 +32,7 @@ require("cypress-plugin-tab");
 //https://reflect.run/articles/testing-drag-and-drop-workflows-using-cypress/#:~:text=You%20can%20add%20drag%2Dand,cypress%2Ddrag%2Ddrop%20plugin.&text=Then%2C%20add%20the%20following%20line,cypress%2Ddrag%2Ddrop%22)%3B
 require("@4tw/cypress-drag-drop");
 
-/*                    Todolistme project             */
+/*                                   TODOLISTME PROJECT                          */
 
 // This function works only if you select the date 2 days after today
 // NOTE: "td.ui-datepicker-current-day" is the tomorrow day
@@ -105,7 +105,7 @@ Cypress.Commands.add("pickDate2dayslaterInTodolistme", () => {
   );
 });
 
-/*                    Twitter-Clone project             */
+/*                                  TWITTER-CLONE PROJECT                           */
 
 // This function shows the expected result of a sign Up in twitter-clone
 Cypress.Commands.add("SignUpExpectedResultInTwitterClone", () => {
@@ -186,3 +186,81 @@ Cypress.Commands.add("JohnTweetingHelloEveryoneInTwitterClone", () => {
     .find('button:contains("Tweet")')
     .click();
 });
+
+Cypress.Commands.add(
+  "CheckIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottom",
+  () => {
+    /*
+    There are 5 users displayed with their name and username, and they are sorted from oldest member to newest member (left to right; top to bottom)
+        John  @john
+        Paul  @paul
+        Rony  @rony
+        Kevin  @kevin
+        Julia     @julia
+    */
+    cy.get('ul[class*="ProfilesList"]')
+      .should("have.length", 1)
+      .find("li")
+      .should("have.length", 5);
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(1)")
+      .should("have.text", "John");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@john");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(2)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(1)")
+      .should("have.text", "Paul");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(2)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@paul");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(3)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(1)")
+      .should("have.text", "Rony");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(3)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@rony");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(4)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(1)")
+      .should("have.text", "Kevin");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(4)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@kevin");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(5)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(1)")
+      .should("have.text", "Julia");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(5)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@julia");
+  }
+);
