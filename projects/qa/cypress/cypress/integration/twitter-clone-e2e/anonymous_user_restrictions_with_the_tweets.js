@@ -89,6 +89,15 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
     The number next to the like button is zero
     The heart is transparent
     */
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find("button:nth-child(2)")
+      .should("have.text", " 0");
+
+    cy.get('div[class*="Homepage"]')
+      .find('div[class*="TweetBottomGroup"]')
+      .find('span[class*="LikeIcon"]')
+      .should("have.css", "color", "rgb(122, 122, 122)");
   });
 
   it("5- Nominal case: The anonymous user cannot reply to a tweet in the tweet section of the user's profile", () => {
@@ -145,16 +154,7 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
     cy.contains("button", "Tweet").should("not.exist");
 
     // 7.2: The user John signs in
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("john");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonejohn23");
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    cy.SignInAsJohnInTwitterClone();
 
     // Expected result: The tweet button is visible in the navigation bar
     cy.contains("button", "Tweet").should("exist");
