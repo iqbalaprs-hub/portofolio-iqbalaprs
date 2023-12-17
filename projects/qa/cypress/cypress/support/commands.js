@@ -188,7 +188,7 @@ Cypress.Commands.add("JohnTweetingHelloEveryoneInTwitterClone", () => {
 });
 
 Cypress.Commands.add(
-  "CheckIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottom",
+  "CheckIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottomInTwitterClone",
   () => {
     /*
     There are 5 users displayed with their name and username, and they are sorted from oldest member to newest member (left to right; top to bottom)

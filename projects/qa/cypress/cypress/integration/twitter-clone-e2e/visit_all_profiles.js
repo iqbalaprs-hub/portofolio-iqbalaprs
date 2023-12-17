@@ -37,7 +37,7 @@ describe("Feature: Visit all profiles", () => {
         Kevin  @kevin
         Julia     @julia
     */
-    cy.CheckIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottom();
+    cy.CheckIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottomInTwitterClone();
   });
 
   it("2- Nominal case: The anonymous user can access a user's profile through All profiles page", () => {
@@ -78,7 +78,7 @@ describe("Feature: Visit all profiles", () => {
         Kevin  @kevin
         Julia     @julia
     */
-    cy.CheckIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottom();
+    cy.CheckIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottomInTwitterClone();
   });
 
   it("4- Nominal case: The logged-in user can access a user's profile", () => {
