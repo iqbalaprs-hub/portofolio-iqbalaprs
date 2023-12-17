@@ -20,16 +20,7 @@ describe("Feature: User's personal menu", () => {
     cy.visit(Cypress.env("twitterCloneBaseUrl"));
 
     // Prereq.: The user sign in as John
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("john");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonejohn23");
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    cy.SignInAsJohnInTwitterClone();
   });
 
   it("1- Nominal case: The personal menu asserts in which account the user is", () => {
@@ -105,15 +96,7 @@ describe("Feature: User's personal menu", () => {
     cy.get("ul").contains("a", "Sign In").should("have.class", "active");
 
     // 4.5: The user signs in as John
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("john");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonejohn23");
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    cy.SignInAsJohnInTwitterClone();
 
     // Expected result: A red sentence appears: "Invalid login credentials"
     cy.contains("h1", "Sign In")
