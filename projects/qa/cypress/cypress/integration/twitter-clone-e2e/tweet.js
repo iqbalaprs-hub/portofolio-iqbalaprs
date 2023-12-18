@@ -30,6 +30,9 @@ describe("Feature: Tweet", () => {
     // 1.1: The user clicks on the "Tweet" button in the navigation bar
     cy.contains("button", "Tweet").click();
 
+    // Expected result: A tweet modal appears
+    cy.get('div[class*="DialogContent"]').should("have.attr", "role", "dialog");
+
     // Expected result: The text box has the placeholder “What’s happening?”
     cy.get('div[class*="DialogContent"]')
       .find("textarea")
@@ -300,6 +303,9 @@ describe("Feature: Tweet", () => {
       .find('div[class*="TweetBottomGroup"]')
       .find("button:nth-child(1)")
       .click();
+
+    // Expected result: A reply modal appears
+    cy.get('div[class*="DialogContent"]').should("have.attr", "role", "dialog");
 
     // 5.5: The user Rony writes a reply: "Hello John" and press Enter
     cy.get('form[class*="CommentForm"]')
