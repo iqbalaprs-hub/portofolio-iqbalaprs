@@ -800,4 +800,124 @@ describe("Feature: Edit profile", () => {
       .should("have.text", '"backgroundImage" must be a valid url')
       .should("have.css", "color", "rgb(226, 61, 104)");
   });
+
+  it("15- Edge case: The user can remove the avatar", () => {
+    // 15.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 15.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    cy.wait(1000);
+    // 15.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 15.4: The user writes in the avatar textbox: "https://fastly.picsum.photos/id/237/200/300" (This URL gives a photo of a black dog)
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Avatar (URL):")
+      .next("input")
+      .type("https://picsum.photos/id/237/200/300", { delay: 50 });
+
+    // 15.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    cy.wait(1000);
+
+    // 15.6: The user clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+    cy.wait(3000);
+
+    /*
+    Expected result:
+    The user is in his profile
+    The avatar has a photo of a black dog
+    */
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@john");
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find("img")
+      .then(($img) => {
+        expect($img[0].naturalWidth).to.equal(200);
+      });
+
+    // 15.7: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 15.8:  The user leaves the avatar textbox empty
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Avatar (URL):")
+      .next("input")
+      .clear();
+
+    // 15.9: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    cy.wait(1000);
+
+    // Expected result: A green sentence appears "Profile successfully updated!"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", "Profile successfully updated!")
+      .should("have.css", "color", "rgb(62, 142, 65)");
+  });
+
+  it("16- Edge case: The user cannot leave the background image textbox empty after it has contained a URL", function () {
+    // 16.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 16.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    cy.wait(1000);
+    // 16.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 16.4: The user writes in the background image textbox: https://picsum.photos/id/866/600/400  (This URL gives the photo of moutain with snow)
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Background image (URL):")
+      .next("input")
+      .type("https://picsum.photos/id/866/600/400", { delay: 50 });
+
+    // 16.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    cy.wait(1000);
+
+    // 16.6: The user clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+
+    cy.wait(3000);
+
+    /*
+    Expected result:
+    The user is in his profile
+    The background image is now a moutain with snow
+    */
+    cy.get('div[class*="BackgroundContainer"]')
+      .find("img")
+      .then(($img) => {
+        expect($img[0].naturalWidth).to.equal(600);
+      });
+
+    // 16.7: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 16.8: The user leaves the background image textbox empty
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Background image (URL):")
+      .next("input")
+      .clear();
+
+    // 16.9: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    cy.wait(1000);
+
+    // Expected result: A green sentence appears "Profile successfully updated!"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", "Profile successfully updated!")
+      .should("have.css", "color", "rgb(62, 142, 65)");
+  });
 });
