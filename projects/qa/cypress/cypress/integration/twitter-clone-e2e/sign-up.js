@@ -85,7 +85,7 @@ describe("Feature: Sign Up", () => {
     Expected result: The user is taken to "Home" page
     Expected result: The Sign Up button in the navigation bar disappears
     */
-    cy.SignUpExpectedResultInTwitterClone();
+    cy.AssertSuccesfullSignUp();
   });
 
   it("2- Nominal case: The user must create an account with a unique username", () => {
@@ -228,7 +228,7 @@ describe("Feature: Sign Up", () => {
     Expected result: The user is taken to "Home" page
     Expected result: The Sign Up button in the navigation bar disappears
     */
-    cy.SignUpExpectedResultInTwitterClone();
+    cy.AssertSuccesfullSignUp();
   });
 
   it("5- Nominal case: The user writes the email wrong (The email must be a string in the form name@example.com)", () => {
@@ -428,7 +428,7 @@ describe("Feature: Sign Up", () => {
     Expected result: The user is taken to "Home" page
     Expected result: The Sign Up button in the navigation bar disappears
     */
-    cy.SignUpExpectedResultInTwitterClone();
+    cy.AssertSuccesfullSignUp();
   });
 
   it("8- Nominal case: The user does not confirm his password right", () => {
@@ -607,7 +607,7 @@ describe("Feature: Sign Up", () => {
     Expected result: The user is taken to "Home" page
     Expected result: The Sign Up button in the navigation bar disappears
     */
-    cy.SignUpExpectedResultInTwitterClone();
+    cy.AssertSuccesfullSignUp();
   });
 
   it("11- Nominal case: The user can go to the Sign In form from the Sign Up page", () => {

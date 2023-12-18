@@ -108,7 +108,7 @@ Cypress.Commands.add("pickDate2dayslaterInTodolistme", () => {
 /*                                  TWITTER-CLONE PROJECT                           */
 
 // This function shows the expected result of a sign Up in twitter-clone
-Cypress.Commands.add("SignUpExpectedResultInTwitterClone", () => {
+Cypress.Commands.add("AssertSuccesfullSignUp", () => {
   // Expected result: The user is automatically signed in
   cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
 
@@ -120,7 +120,7 @@ Cypress.Commands.add("SignUpExpectedResultInTwitterClone", () => {
 });
 
 // This function shows the expected result of signing in as John in twitter-clone
-Cypress.Commands.add("SignInAsJohnExpectedResultInTwitterClone", () => {
+Cypress.Commands.add("AssertSuccesfullSignIn", () => {
   // Expected result: The user enters his account (the user is signed-in)
   cy.get("reach-portal")
     .children("div")

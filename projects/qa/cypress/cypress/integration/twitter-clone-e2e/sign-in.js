@@ -53,7 +53,7 @@ describe("Feature: Sign In", () => {
     The user is taken to the “Home” page
     The “Sign In” button in the navigation bar disappears (Only anonymous user can see the “Sign In” button in the navigation bar
     */
-    cy.SignInAsJohnExpectedResultInTwitterClone();
+    cy.AssertSuccesfullSignIn();
   });
 
   it("2- Nominal case: The user signs in by typing the email ", () => {
@@ -73,7 +73,7 @@ describe("Feature: Sign In", () => {
     The user is taken to the “Home” page
     The “Sign In” button in the navigation bar disappears (Only anonymous user can see the “Sign In” button in the navigation bar
     */
-    cy.SignInAsJohnExpectedResultInTwitterClone();
+    cy.AssertSuccesfullSignIn();
   });
 
   it("3- Nominal case: The user signs in by typing the username or email wrong ", () => {
