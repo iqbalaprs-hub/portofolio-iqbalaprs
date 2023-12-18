@@ -685,4 +685,119 @@ describe("Feature: Edit profile", () => {
       .should("have.text", '"avatar" must be a valid url')
       .should("have.css", "color", "rgb(226, 61, 104)");
   });
+
+  it("12- Nominal case: The user can change the background image", () => {
+    // 12.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 12.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    cy.wait(1000);
+    // 12.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 12.4: The user writes in the background image textbox: https://picsum.photos/id/866/600/400  (This URL gives the photo of moutain with snow)
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Background image (URL):")
+      .next("input")
+      .type("https://picsum.photos/id/866/600/400", { delay: 50 });
+
+    cy.get('button[class*="SaveButton"]').click();
+
+    cy.wait(1000);
+    // Expected result: A green sentence appears "Profile successfully updated!"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", "Profile successfully updated!")
+      .should("have.css", "color", "rgb(62, 142, 65)");
+
+    // 12.5: The user clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+
+    cy.wait(3000);
+
+    /*
+    Expected result:
+    The user is in his profile
+    The background image is now a moutain with snow
+    */
+    cy.get('div[class*="BackgroundContainer"]')
+      .find("img")
+      .then(($img) => {
+        expect($img[0].naturalWidth).to.equal(600);
+      });
+  });
+
+  it("13- Edge case: The user can add a valid URL , which doesn't give anything, as the background image", () => {
+    // 13.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 13.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    cy.wait(1000);
+    // 13.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 13.4: The user writes in the background image textbox: john.com (This URL does not give anything)
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Background image (URL):")
+      .next("input")
+      .type("john.com", { delay: 50 });
+
+    // 13.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+    cy.wait(1000);
+
+    // Expected result: A green sentence appears "Profile successfully updated!"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", "Profile successfully updated!")
+      .should("have.css", "color", "rgb(62, 142, 65)");
+
+    // 13.6: The user clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+
+    cy.wait(3000);
+
+    /*
+    Expected result:
+    The user is in his profile
+    The background image is now a moutain with snow
+    */
+    cy.get('div[class*="BackgroundContainer"]')
+      .find("img")
+      .then(($img) => {
+        expect($img[0].naturalWidth).to.equal(0);
+      });
+  });
+
+  it("14- Edge case: The user cannot add an invalid URL as the background image", () => {
+    // 14.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 14.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    cy.wait(1000);
+    // 14.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 14.4: The user writes in the background image textbox: john.com (This URL does not give anything)
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Background image (URL):")
+      .next("input")
+      .type("john", { delay: 50 });
+
+    // 14.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+    cy.wait(1000);
+
+    // Expected result: A red sentence appears ""backgroundImage" must be a valid url"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", '"backgroundImage" must be a valid url')
+      .should("have.css", "color", "rgb(226, 61, 104)");
+  });
 });
