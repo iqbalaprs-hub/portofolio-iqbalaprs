@@ -508,6 +508,7 @@ describe("Feature: Edit profile", () => {
     // 9.2: The user enters his profile
     cy.get("a#option-0--menu--1").click();
 
+    cy.wait(1000);
     // 9.3: The user clicks on "edit profile" button
     cy.get('a[class*="EditProfileButton"]').click();
 
@@ -516,11 +517,14 @@ describe("Feature: Edit profile", () => {
       .contains("label", "Avatar (URL):")
       .next("input")
       .type(
-        "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+        "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U",
+        { delay: 50 }
       );
 
     // 9.5: The user clicks on "Update profile" button
     cy.get('button[class*="SaveButton"]').click();
+
+    cy.wait(1000);
 
     // Expected result: A green sentence appears "Profile successfully updated!"
     cy.get('div[class*="EditProfile"]')
@@ -559,12 +563,30 @@ describe("Feature: Edit profile", () => {
 
     cy.get('ul[class*="ProfilesList"]')
       .find("li:nth-child(1)")
-      .find('div[class*="TextContainer"]')
+      .find('div[class*="FlexContainer"]')
       .find("img")
       .should(
         "have.attr",
         "src",
         "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
       );
+
+    // 9.8: The user clicks on "Home" in the navigation bar
+    cy.get("ul").contains("a", "Home").click();
+
+    // Expected result: The tweet has a photo of a black dog in his avatar
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find("img")
+      .should(
+        "have.attr",
+        "src",
+        "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+      );
+
+    // 9.9: Expected result: The user's personal menu has a photo of a black dog
+    cy.get('button[data-cy="auth-nav-dropdown-button"]')
+      .find("img")
+      .should("exist");
   });
 });
