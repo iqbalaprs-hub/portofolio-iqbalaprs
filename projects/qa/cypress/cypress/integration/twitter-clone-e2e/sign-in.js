@@ -63,18 +63,9 @@ describe("Feature: Sign In", () => {
         - Email: john@gmail.com
         - Password: Clonejohn23
     */
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("john@gmail.com");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonejohn23");
-
     // 2.2: The user clicks the "Log In" submit button
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+
+    cy.SignInTwitterClone("john@gmail.com", "Clonejohn23");
 
     /*
     Expected result:
@@ -87,22 +78,13 @@ describe("Feature: Sign In", () => {
 
   it("3- Nominal case: The user signs in by typing the username or email wrong ", () => {
     /*
+    3.1:
     The user enters the "Sign In" page and fills the "Sign in" form:
         - Username or email: joh
         - Password: Clonejohn23
     */
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("joh");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonejohn23");
-
     // 3.2: The user click the "Log In" submit button
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    cy.SignInTwitterClone("joh", "Clonejohn23");
 
     // Expected result: A red sentence appears: "Invalid login credentials"
     cy.contains("h1", "Sign In")
@@ -118,18 +100,8 @@ describe("Feature: Sign In", () => {
         - Username: john
         - Password: Clonejohn2
     */
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("john");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonejohn2");
-
     // 4.2: The user click the "Log In" submit button
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    cy.SignInTwitterClone("john", "Clonejohn2");
 
     // Expected result: A red sentence appears: "Invalid login credentials"
     cy.contains("h1", "Sign In")

@@ -23,7 +23,7 @@ describe("Feature: Tweet", () => {
     cy.visit(Cypress.env("twitterCloneBaseUrl"));
 
     // Prereq.: The user sign in as John
-    cy.SignInAsJohnInTwitterClone();
+    cy.SignInTwitterClone("john", "Clonejohn23");
   });
 
   it("1- Nominal case: The user creates a tweet", () => {
@@ -258,7 +258,7 @@ describe("Feature: Tweet", () => {
     cy.get("div#option-2--menu--1").click();
 
     // 5.3: The user Rony signs in
-    cy.SignInAsRonyInTwitterClone();
+    cy.SignInTwitterClone("rony", "Clonerony23");
 
     // Expected result: John's tweet appears on the "Home" page.
     // The text
@@ -359,7 +359,7 @@ describe("Feature: Tweet", () => {
     cy.get('div[data-cy="auth-nav-logout-button"]').click();
 
     // 5.8: The user John signs in
-    cy.SignInAsJohnInTwitterClone();
+    cy.SignInTwitterClone("john", "Clonejohn23");
 
     // Expected result: The user John can see that his tweet "Hello everyone" in the "Home" page, has a number 1 next to the reply button
     cy.get('div[class*="Homepage"]')
@@ -462,7 +462,7 @@ describe("Feature: Tweet", () => {
     cy.get("div#option-2--menu--1").click();
 
     // 6.3: The user Rony signs in
-    cy.SignInAsRonyInTwitterClone();
+    cy.SignInTwitterClone("rony", "Clonerony23");
 
     /*
     Expected result:
@@ -550,7 +550,7 @@ describe("Feature: Tweet", () => {
     cy.get('div[data-cy="auth-nav-logout-button"]').click();
 
     // 6.8: The user John signs in
-    cy.SignInAsJohnInTwitterClone();
+    cy.SignInTwitterClone("john", "Clonejohn23");
 
     /*
     Expected result: 
@@ -578,7 +578,7 @@ describe("Feature: Tweet", () => {
     cy.get("div#option-2--menu--1").click();
 
     // 7.3: The user Rony signs in
-    cy.SignInAsRonyInTwitterClone();
+    cy.SignInTwitterClone("rony", "Clonerony23");
 
     /*
     Expected result:
@@ -647,7 +647,7 @@ describe("Feature: Tweet", () => {
     cy.get("div#option-2--menu--1").click();
 
     // 8.3: The user Rony signs in
-    cy.SignInAsRonyInTwitterClone();
+    cy.SignInTwitterClone("rony", "Clonerony23");
 
     // 8.4: The user Rony selects john's tweet and likes it
     cy.get('div[class*="Homepage"]')
@@ -675,16 +675,7 @@ describe("Feature: Tweet", () => {
     cy.get('div[data-cy="auth-nav-logout-button"]').click();
 
     // 8.6: The user Paul signs in
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("paul");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonepaul23");
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    cy.SignInTwitterClone("paul", "Clonepaul23");
 
     // 8.7: The user Paul selects john's tweet and likes it
     cy.get('div[class*="Homepage"]')
@@ -712,7 +703,7 @@ describe("Feature: Tweet", () => {
     cy.get("div#option-2--menu--1").click();
 
     // 9.3: The user Rony signs in
-    cy.SignInAsRonyInTwitterClone();
+    cy.SignInTwitterClone("rony", "Clonerony23");
 
     // 9.4: The user Rony replies to John's tweet: "Hello John" and then exit the reply modal
     cy.get('div[class*="Homepage"]')
@@ -746,16 +737,7 @@ describe("Feature: Tweet", () => {
     cy.get('div[data-cy="auth-nav-logout-button"]').click();
 
     // 9.6: The user Paul signs in
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("paul");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonepaul23");
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    cy.SignInTwitterClone("paul", "Clonepaul23");
 
     // 9.7: The user Paul replies to John's tweet "Good morning John"
     cy.get('div[class*="Homepage"]')
@@ -808,7 +790,7 @@ describe("Feature: Tweet", () => {
     cy.get("div#option-2--menu--1").click();
 
     // 10.3: The user Rony signs in
-    cy.SignInAsRonyInTwitterClone();
+    cy.SignInTwitterClone("rony", "Clonerony23");
 
     // 10.4: The user Rony replies to John's tweet: "Hello John" and then exit the reply modal
     cy.get('div[class*="Homepage"]')
@@ -842,16 +824,7 @@ describe("Feature: Tweet", () => {
     cy.get('div[data-cy="auth-nav-logout-button"]').click();
 
     // 10.6: The user Paul signs in
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("paul");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonepaul23");
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    cy.SignInTwitterClone("paul", "Clonepaul23");
 
     // 10.7: The user Paul replies to John'tweet "Good morning John" and exit the reply modal
     cy.get('div[class*="Homepage"]')
@@ -928,7 +901,7 @@ describe("Feature: Tweet", () => {
     cy.get("div#option-2--menu--1").click();
 
     // 11.3: The user Rony signs in
-    cy.SignInAsRonyInTwitterClone();
+    cy.SignInTwitterClone("rony", "Clonerony23");
 
     // 11.4: The user Rony replies to John's tweet: "Hello John" and then exit the reply modal
     cy.get('div[class*="Homepage"]')

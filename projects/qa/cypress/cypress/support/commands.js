@@ -147,29 +147,19 @@ Cypress.Commands.add("SignInAsJohnExpectedResultInTwitterClone", () => {
   cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
 });
 
-// This is all the steps to sign in as john (username: john; email: john@gmail.com; password: Clonejohn23) in twitter-clone
-Cypress.Commands.add("SignInAsJohnInTwitterClone", () => {
+// This is all the steps to sign In in twitter-clone
+Cypress.Commands.add("SignInTwitterClone", (EmailOrUsername, Password) => {
+  // Click on Sign In button
   cy.get('a[data-cy="nav-signin-link"]').click();
+  // Write Email or username
   cy.get('form[data-cy="signin-form"]')
     .find('input[data-cy="signin-username-input"]')
-    .type("john");
+    .type(EmailOrUsername);
+  // Write Password
   cy.get('form[data-cy="signin-form"]')
     .find('input[data-cy="signin-password-input"]')
-    .type("Clonejohn23");
-  cy.get('form[data-cy="signin-form"]')
-    .find('button[data-cy="signin-button"]')
-    .click();
-});
-
-// This is all the steps to sign in as Rony (username: rony; email: rony@gmail.com; password: Clonerony23) in twitter-clone
-Cypress.Commands.add("SignInAsRonyInTwitterClone", () => {
-  cy.get('a[data-cy="nav-signin-link"]').click();
-  cy.get('form[data-cy="signin-form"]')
-    .find('input[data-cy="signin-username-input"]')
-    .type("rony");
-  cy.get('form[data-cy="signin-form"]')
-    .find('input[data-cy="signin-password-input"]')
-    .type("Clonerony23");
+    .type(Password);
+  // Click on Sign submit button
   cy.get('form[data-cy="signin-form"]')
     .find('button[data-cy="signin-button"]')
     .click();

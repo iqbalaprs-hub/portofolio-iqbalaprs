@@ -23,16 +23,7 @@ describe("Feature: Edit profile", () => {
 
     // Prereq.: Open Twitter-Clone and sign in as John
     cy.visit(Cypress.env("twitterCloneBaseUrl"));
-    cy.get('a[data-cy="nav-signin-link"]').click();
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-username-input"]')
-      .type("john");
-    cy.get('form[data-cy="signin-form"]')
-      .find('input[data-cy="signin-password-input"]')
-      .type("Clonejohn23");
-    cy.get('form[data-cy="signin-form"]')
-      .find('button[data-cy="signin-button"]')
-      .click();
+    cy.SignInTwitterClone("john", "Clonejohn23");
   });
 
   it("1- Nominal case: The user can change his name ", () => {

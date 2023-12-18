@@ -20,7 +20,7 @@ describe("Feature: Visit home page", () => {
     cy.visit(Cypress.env("twitterCloneBaseUrl"));
 
     // Prereq.: The user sign in as John
-    cy.SignInAsJohnInTwitterClone();
+    cy.SignInTwitterClone("john", "Clonejohn23");
   });
 
   it("1- Nominal case: Tweets are sorted from newest (top) to oldest (bottom) ", () => {

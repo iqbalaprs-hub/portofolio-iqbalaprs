@@ -64,7 +64,7 @@ describe("Feature: Visit all profiles", () => {
 
   it("3- Nominal case: The logged-in user can see the profiles in the All profiles", () => {
     // 3.1: The user signs in as John
-    cy.SignInAsJohnInTwitterClone();
+    cy.SignInTwitterClone("john", "Clonejohn23");
 
     // 3.2: The user clicks on "All profiles" button in the navigation bar
     cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
@@ -83,7 +83,7 @@ describe("Feature: Visit all profiles", () => {
 
   it("4- Nominal case: The logged-in user can access a user's profile", () => {
     // 4.1: The user signs in as John
-    cy.SignInAsJohnInTwitterClone();
+    cy.SignInTwitterClone("john", "Clonejohn23");
 
     // 4.2: The user clicks on "All profiles" button in the navigation bar
     cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
