@@ -512,14 +512,11 @@ describe("Feature: Edit profile", () => {
     // 9.3: The user clicks on "edit profile" button
     cy.get('a[class*="EditProfileButton"]').click();
 
-    // 9.4: The user writes in the avatar textbox: "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"   (This URL gives a photo of a black dog)
+    // 9.4: The user writes in the avatar textbox: "https://fastly.picsum.photos/id/237/200/300" (This URL gives a photo of a black dog)
     cy.get('form[class*="StyledForm"]')
       .contains("label", "Avatar (URL):")
       .next("input")
-      .type(
-        "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U",
-        { delay: 50 }
-      );
+      .type("https://picsum.photos/id/237/200/300", { delay: 50 });
 
     // 9.5: The user clicks on "Update profile" button
     cy.get('button[class*="SaveButton"]').click();
@@ -534,6 +531,7 @@ describe("Feature: Edit profile", () => {
 
     // 9.6: The user clicks on "Go back" button
     cy.get('button[class*="CancelButton"]').click();
+    cy.wait(3000);
 
     /*
     Expected result:
@@ -543,16 +541,17 @@ describe("Feature: Edit profile", () => {
     cy.get('div[class*="Profile___StyledDiv4"]')
       .find('span[class*="Profile___StyledSpan2"]')
       .should("have.text", "@john");
+    // This is a simple method to assert if the image is present or not. "Natural width" is the original width of the image (without being affected by ratio and other factors). The image of the black dog has a natural width of 200px. In the assertion below, we are assertingif the image present has 200px
     cy.get('div[class*="Profile___StyledDiv4"]')
       .find("img")
-      .should(
-        "have.attr",
-        "src",
-        "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
-      );
+      .then(($img) => {
+        expect($img[0].naturalWidth).to.equal(200);
+      });
 
     // 9.7: The user clicks on "All profiles" in the navigation bar
     cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    cy.wait(2000);
 
     // Expected result: The profile with the username "@john" have a photo of a black dog in the avatar
     cy.get('ul[class*="ProfilesList"]')
@@ -565,28 +564,134 @@ describe("Feature: Edit profile", () => {
       .find("li:nth-child(1)")
       .find('div[class*="FlexContainer"]')
       .find("img")
-      .should(
-        "have.attr",
-        "src",
-        "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
-      );
+      .then(($img) => {
+        expect($img[0].naturalWidth).to.equal(200);
+      });
 
     // 9.8: The user clicks on "Home" in the navigation bar
     cy.get("ul").contains("a", "Home").click();
+
+    cy.wait(2000);
 
     // Expected result: The tweet has a photo of a black dog in his avatar
     cy.get('div[class*="Homepage"]')
       .find("ul li:nth-child(1)")
       .find("img")
-      .should(
-        "have.attr",
-        "src",
-        "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
-      );
+      .then(($img) => {
+        expect($img[0].naturalWidth).to.equal(200);
+      });
 
     // 9.9: Expected result: The user's personal menu has a photo of a black dog
     cy.get('button[data-cy="auth-nav-dropdown-button"]')
       .find("img")
       .should("exist");
+  });
+
+  it("10- Edge case: The user can add a valid URL , which doesn't give anything, as the avatar", () => {
+    // 10.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 10.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    cy.wait(1000);
+    // 10.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 10.4: The user writes in the avatar textbox: john.com (This URL does not give anything)
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Avatar (URL):")
+      .next("input")
+      .type("john.com", { delay: 50 });
+
+    // 10.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    cy.wait(1000);
+    // Expected result: A green sentence appears "Profile successfully updated!"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", "Profile successfully updated!")
+      .should("have.css", "color", "rgb(62, 142, 65)");
+
+    // 10.6: The user clicks on "Go back" button
+    cy.get('button[class*="CancelButton"]').click();
+
+    cy.wait(3000);
+
+    /*
+    Expected result:
+    The user is in his profile
+    There is no new photo for the avatar. It has instead the sentence "John's avatar"
+    */
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find('span[class*="Profile___StyledSpan2"]')
+      .should("have.text", "@john");
+    // This is a simple method to assert if the image is present or not. "Natural width" is the original width of the image (without being affected by ratio and other factors). SInce no image should be present, the natural width should be zero
+    cy.get('div[class*="Profile___StyledDiv4"]')
+      .find("img")
+      .then(($img) => {
+        expect($img[0].naturalWidth).to.equal(0);
+      });
+
+    // 10.7: The user clicks on "All profiles" in the navigation bar
+    cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
+
+    /*
+    The profile with the username "@john" do not have a photo in his avatar. It has instead the sentence "John's avatar"
+    */
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="TextContainer"]')
+      .find("p:nth-child(2)")
+      .should("have.text", "@john");
+
+    cy.get('ul[class*="ProfilesList"]')
+      .find("li:nth-child(1)")
+      .find('div[class*="FlexContainer"]')
+      .find("img")
+      .then(($img) => {
+        expect($img[0].naturalWidth).to.equal(0);
+      });
+
+    // 10.8: The user clicks on "Home" in the navigation bar
+    cy.get("ul").contains("a", "Home").click();
+
+    cy.wait(2000);
+
+    // Expected result: The tweet has no photo in his avatar. It has instead the sentence "User Avatar"
+    cy.get('div[class*="Homepage"]')
+      .find("ul li:nth-child(1)")
+      .find("img")
+      .then(($img) => {
+        expect($img[0].naturalWidth).to.equal(0);
+      });
+  });
+
+  it("11- Edge case: The user cannot add an invalid URL as the avatar", () => {
+    // 11.1: The user clicks on his personal menu located in the navigation bar
+    cy.get("button#menu-button--menu").click();
+
+    // 11.2: The user enters his profile
+    cy.get("a#option-0--menu--1").click();
+
+    cy.wait(1000);
+    // 11.3: The user clicks on "edit profile" button
+    cy.get('a[class*="EditProfileButton"]').click();
+
+    // 11.4: The user writes in the avatar textbox: john
+    cy.get('form[class*="StyledForm"]')
+      .contains("label", "Avatar (URL):")
+      .next("input")
+      .type("john", { delay: 50 });
+
+    // 11.5: The user clicks on "Update profile" button
+    cy.get('button[class*="SaveButton"]').click();
+
+    // Expected result: A red sentence appears: ""avatar" must be a valid url"
+    cy.get('div[class*="EditProfile"]')
+      .find('div[class*="FeedbackMessage"]')
+      .should("have.text", '"avatar" must be a valid url')
+      .should("have.css", "color", "rgb(226, 61, 104)");
   });
 });
