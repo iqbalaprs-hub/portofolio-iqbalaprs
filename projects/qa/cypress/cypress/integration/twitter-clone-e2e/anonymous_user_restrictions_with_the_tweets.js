@@ -154,7 +154,7 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
     cy.contains("button", "Tweet").should("not.exist");
 
     // 7.2: The user John signs in
-    cy.SignInTwitterClone("john", "Clonejohn23");
+    cy.signInTwitterClone("john", "Clonejohn23");
 
     // Expected result: The tweet button is visible in the navigation bar
     cy.contains("button", "Tweet").should("exist");

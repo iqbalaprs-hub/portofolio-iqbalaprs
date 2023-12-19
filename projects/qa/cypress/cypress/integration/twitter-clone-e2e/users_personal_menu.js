@@ -20,7 +20,7 @@ describe("Feature: User's personal menu", () => {
     cy.visit(Cypress.env("twitterCloneBaseUrl"));
 
     // Prereq.: The user sign in as John
-    cy.SignInTwitterClone("john", "Clonejohn23");
+    cy.signInTwitterClone("john", "Clonejohn23");
   });
 
   it("1- Nominal case: The personal menu asserts in which account the user is", () => {
@@ -96,7 +96,7 @@ describe("Feature: User's personal menu", () => {
     cy.get("ul").contains("a", "Sign In").should("have.class", "active");
 
     // 4.5: The user signs in as John
-    cy.SignInTwitterClone("john", "Clonejohn23");
+    cy.signInTwitterClone("john", "Clonejohn23");
 
     // Expected result: A red sentence appears: "Invalid login credentials"
     cy.contains("h1", "Sign In")

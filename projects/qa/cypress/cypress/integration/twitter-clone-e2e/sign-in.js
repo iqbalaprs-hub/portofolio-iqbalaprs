@@ -53,7 +53,7 @@ describe("Feature: Sign In", () => {
     The user is taken to the “Home” page
     The “Sign In” button in the navigation bar disappears (Only anonymous user can see the “Sign In” button in the navigation bar
     */
-    cy.AssertSuccesfullSignIn();
+    cy.assertSuccesfullSignIn();
   });
 
   it("2- Nominal case: The user signs in by typing the email ", () => {
@@ -65,7 +65,7 @@ describe("Feature: Sign In", () => {
     */
     // 2.2: The user clicks the "Log In" submit button
 
-    cy.SignInTwitterClone("john@gmail.com", "Clonejohn23");
+    cy.signInTwitterClone("john@gmail.com", "Clonejohn23");
 
     /*
     Expected result:
@@ -73,7 +73,7 @@ describe("Feature: Sign In", () => {
     The user is taken to the “Home” page
     The “Sign In” button in the navigation bar disappears (Only anonymous user can see the “Sign In” button in the navigation bar
     */
-    cy.AssertSuccesfullSignIn();
+    cy.assertSuccesfullSignIn();
   });
 
   it("3- Nominal case: The user signs in by typing the username or email wrong ", () => {
@@ -84,7 +84,7 @@ describe("Feature: Sign In", () => {
         - Password: Clonejohn23
     */
     // 3.2: The user click the "Log In" submit button
-    cy.SignInTwitterClone("joh", "Clonejohn23");
+    cy.signInTwitterClone("joh", "Clonejohn23");
 
     // Expected result: A red sentence appears: "Invalid login credentials"
     cy.contains("h1", "Sign In")
@@ -101,7 +101,7 @@ describe("Feature: Sign In", () => {
         - Password: Clonejohn2
     */
     // 4.2: The user click the "Log In" submit button
-    cy.SignInTwitterClone("john", "Clonejohn2");
+    cy.signInTwitterClone("john", "Clonejohn2");
 
     // Expected result: A red sentence appears: "Invalid login credentials"
     cy.contains("h1", "Sign In")

@@ -31,7 +31,7 @@ describe("Feature: User's profile", () => {
 
     // Prereq.: Open Twitter-Clone and sign in as John
     cy.visit(Cypress.env("twitterCloneBaseUrl"));
-    cy.SignInTwitterClone("john", "Clonejohn23");
+    cy.signInTwitterClone("john", "Clonejohn23");
   });
 
   it("1- Nominal case: The user enters a profile", () => {
@@ -251,7 +251,7 @@ describe("Feature: User's profile", () => {
     cy.get('div[data-cy="auth-nav-logout-button"]').click();
 
     // 4.5: The user Rony Signs In
-    cy.SignInTwitterClone("rony", "Clonerony23");
+    cy.signInTwitterClone("rony", "Clonerony23");
 
     /*
     4.6:

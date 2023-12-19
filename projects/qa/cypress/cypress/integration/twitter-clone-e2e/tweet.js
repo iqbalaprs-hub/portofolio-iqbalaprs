@@ -23,7 +23,7 @@ describe("Feature: Tweet", () => {
     cy.visit(Cypress.env("twitterCloneBaseUrl"));
 
     // Prereq.: The user sign in as John
-    cy.SignInTwitterClone("john", "Clonejohn23");
+    cy.signInTwitterClone("john", "Clonejohn23");
   });
 
   it("1- Nominal case: The user creates a tweet", () => {
@@ -226,7 +226,7 @@ describe("Feature: Tweet", () => {
     // 3.1: The user clicks on the "Tweet" button in the navigation bar
     // 3.2: The user types in the text box: "Hello everyone"
     // 3.3: The user clicks on the tweet submit button
-    cy.JohnTweetingHelloEveryoneInTwitterClone();
+    cy.johnTweetingHelloEveryoneInTwitterClone();
 
     // 3.4: The user deletes his own tweet by clicking on the "X" button
     cy.get('div[class*="Homepage"]')
@@ -280,14 +280,14 @@ describe("Feature: Tweet", () => {
 
   it("5- Nominal case: The user replies to a tweet", () => {
     // 5.1: The user John tweet: "Hello everyone"
-    cy.JohnTweetingHelloEveryoneInTwitterClone();
+    cy.johnTweetingHelloEveryoneInTwitterClone();
 
     // 5.2: The user John signs out
     cy.get("button#menu-button--menu").click();
     cy.get("div#option-2--menu--1").click();
 
     // 5.3: The user Rony signs in
-    cy.SignInTwitterClone("rony", "Clonerony23");
+    cy.signInTwitterClone("rony", "Clonerony23");
 
     // Expected result: John's tweet appears on the "Home" page.
     // The text
@@ -404,7 +404,7 @@ describe("Feature: Tweet", () => {
     cy.get('div[data-cy="auth-nav-logout-button"]').click();
 
     // 5.8: The user John signs in
-    cy.SignInTwitterClone("john", "Clonejohn23");
+    cy.signInTwitterClone("john", "Clonejohn23");
 
     // Expected result: The user John can see that his tweet "Hello everyone" in the "Home" page, has a number 1 next to the reply button
     cy.get('div[class*="Homepage"]')
@@ -500,14 +500,14 @@ describe("Feature: Tweet", () => {
 
   it("6- Nominal case: The user likes a tweet", () => {
     // 6.1: The user John tweet: "Hello everyone"
-    cy.JohnTweetingHelloEveryoneInTwitterClone();
+    cy.johnTweetingHelloEveryoneInTwitterClone();
 
     // 6.2: The user John signs out
     cy.get("button#menu-button--menu").click();
     cy.get("div#option-2--menu--1").click();
 
     // 6.3: The user Rony signs in
-    cy.SignInTwitterClone("rony", "Clonerony23");
+    cy.signInTwitterClone("rony", "Clonerony23");
 
     /*
     Expected result:
@@ -595,7 +595,7 @@ describe("Feature: Tweet", () => {
     cy.get('div[data-cy="auth-nav-logout-button"]').click();
 
     // 6.8: The user John signs in
-    cy.SignInTwitterClone("john", "Clonejohn23");
+    cy.signInTwitterClone("john", "Clonejohn23");
 
     /*
     Expected result: 
@@ -616,14 +616,14 @@ describe("Feature: Tweet", () => {
 
   it("7- Nominal case: The user can remove his like", () => {
     // 7.1: The user John tweet: "Hello everyone"
-    cy.JohnTweetingHelloEveryoneInTwitterClone();
+    cy.johnTweetingHelloEveryoneInTwitterClone();
 
     // 7.2: The user John signs out
     cy.get("button#menu-button--menu").click();
     cy.get("div#option-2--menu--1").click();
 
     // 7.3: The user Rony signs in
-    cy.SignInTwitterClone("rony", "Clonerony23");
+    cy.signInTwitterClone("rony", "Clonerony23");
 
     /*
     Expected result:
@@ -685,14 +685,14 @@ describe("Feature: Tweet", () => {
 
   it("8- Nominal case: Multiple users can like the same tweet", () => {
     // 8.1: The user John tweet: "Hello everyone"
-    cy.JohnTweetingHelloEveryoneInTwitterClone();
+    cy.johnTweetingHelloEveryoneInTwitterClone();
 
     // 8.2: The user John signs out
     cy.get("button#menu-button--menu").click();
     cy.get("div#option-2--menu--1").click();
 
     // 8.3: The user Rony signs in
-    cy.SignInTwitterClone("rony", "Clonerony23");
+    cy.signInTwitterClone("rony", "Clonerony23");
 
     // 8.4: The user Rony selects john's tweet and likes it
     cy.get('div[class*="Homepage"]')
@@ -720,7 +720,7 @@ describe("Feature: Tweet", () => {
     cy.get('div[data-cy="auth-nav-logout-button"]').click();
 
     // 8.6: The user Paul signs in
-    cy.SignInTwitterClone("paul", "Clonepaul23");
+    cy.signInTwitterClone("paul", "Clonepaul23");
 
     // 8.7: The user Paul selects john's tweet and likes it
     cy.get('div[class*="Homepage"]')
@@ -741,14 +741,14 @@ describe("Feature: Tweet", () => {
 
   it("9- Nominal case: Multiple users can reply to the same tweet", () => {
     // 9.1: The user John tweet: "Hello everyone"
-    cy.JohnTweetingHelloEveryoneInTwitterClone();
+    cy.johnTweetingHelloEveryoneInTwitterClone();
 
     // 9.2: The user John signs out
     cy.get("button#menu-button--menu").click();
     cy.get("div#option-2--menu--1").click();
 
     // 9.3: The user Rony signs in
-    cy.SignInTwitterClone("rony", "Clonerony23");
+    cy.signInTwitterClone("rony", "Clonerony23");
 
     // 9.4: The user Rony replies to John's tweet: "Hello John" and then exit the reply modal
     cy.get('div[class*="Homepage"]')
@@ -782,7 +782,7 @@ describe("Feature: Tweet", () => {
     cy.get('div[data-cy="auth-nav-logout-button"]').click();
 
     // 9.6: The user Paul signs in
-    cy.SignInTwitterClone("paul", "Clonepaul23");
+    cy.signInTwitterClone("paul", "Clonepaul23");
 
     // 9.7: The user Paul replies to John's tweet "Good morning John"
     cy.get('div[class*="Homepage"]')
@@ -828,14 +828,14 @@ describe("Feature: Tweet", () => {
 
   it("10- Nominal case: The user can delete only his own tweets and replies", () => {
     // 10.1: The user John tweet: "Hello everyone"
-    cy.JohnTweetingHelloEveryoneInTwitterClone();
+    cy.johnTweetingHelloEveryoneInTwitterClone();
 
     // 10.2: The user John signs out
     cy.get("button#menu-button--menu").click();
     cy.get("div#option-2--menu--1").click();
 
     // 10.3: The user Rony signs in
-    cy.SignInTwitterClone("rony", "Clonerony23");
+    cy.signInTwitterClone("rony", "Clonerony23");
 
     // 10.4: The user Rony replies to John's tweet: "Hello John" and then exit the reply modal
     cy.get('div[class*="Homepage"]')
@@ -869,7 +869,7 @@ describe("Feature: Tweet", () => {
     cy.get('div[data-cy="auth-nav-logout-button"]').click();
 
     // 10.6: The user Paul signs in
-    cy.SignInTwitterClone("paul", "Clonepaul23");
+    cy.signInTwitterClone("paul", "Clonepaul23");
 
     // 10.7: The user Paul replies to John'tweet "Good morning John" and exit the reply modal
     cy.get('div[class*="Homepage"]')
@@ -939,14 +939,14 @@ describe("Feature: Tweet", () => {
 
   it("11- Edge case: The user reply to the same tweet more than once", () => {
     // 11.1: The user John tweet: "Hello everyone"
-    cy.JohnTweetingHelloEveryoneInTwitterClone();
+    cy.johnTweetingHelloEveryoneInTwitterClone();
 
     // 11.2: The user John signs out
     cy.get("button#menu-button--menu").click();
     cy.get("div#option-2--menu--1").click();
 
     // 11.3: The user Rony signs in
-    cy.SignInTwitterClone("rony", "Clonerony23");
+    cy.signInTwitterClone("rony", "Clonerony23");
 
     // 11.4: The user Rony replies to John's tweet: "Hello John" and then exit the reply modal
     cy.get('div[class*="Homepage"]')

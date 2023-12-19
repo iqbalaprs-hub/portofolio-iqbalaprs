@@ -37,7 +37,7 @@ describe("Feature: Visit all profiles", () => {
         Kevin  @kevin
         Julia     @julia
     */
-    cy.CheckIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottomInTwitterClone();
+    cy.checkIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottomInTwitterClone();
   });
 
   it("2- Nominal case: The anonymous user can access a user's profile through All profiles page", () => {
@@ -64,7 +64,7 @@ describe("Feature: Visit all profiles", () => {
 
   it("3- Nominal case: The logged-in user can see the profiles in the All profiles", () => {
     // 3.1: The user signs in as John
-    cy.SignInTwitterClone("john", "Clonejohn23");
+    cy.signInTwitterClone("john", "Clonejohn23");
 
     // 3.2: The user clicks on "All profiles" button in the navigation bar
     cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
@@ -78,12 +78,12 @@ describe("Feature: Visit all profiles", () => {
         Kevin  @kevin
         Julia     @julia
     */
-    cy.CheckIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottomInTwitterClone();
+    cy.checkIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottomInTwitterClone();
   });
 
   it("4- Nominal case: The logged-in user can access a user's profile", () => {
     // 4.1: The user signs in as John
-    cy.SignInTwitterClone("john", "Clonejohn23");
+    cy.signInTwitterClone("john", "Clonejohn23");
 
     // 4.2: The user clicks on "All profiles" button in the navigation bar
     cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();

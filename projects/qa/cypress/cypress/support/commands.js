@@ -108,7 +108,7 @@ Cypress.Commands.add("pickDate2dayslaterInTodolistme", () => {
 /*                                  TWITTER-CLONE PROJECT                           */
 
 // This function shows the expected result of a sign Up in twitter-clone
-Cypress.Commands.add("AssertSuccesfullSignUp", () => {
+Cypress.Commands.add("assertSuccesfullSignUp", () => {
   // Expected result: The user is automatically signed in
   cy.get('a[data-cy="nav-signin-link"]').should("not.exist");
 
@@ -120,7 +120,7 @@ Cypress.Commands.add("AssertSuccesfullSignUp", () => {
 });
 
 // This function shows the expected result of signing in as John in twitter-clone
-Cypress.Commands.add("AssertSuccesfullSignIn", () => {
+Cypress.Commands.add("assertSuccesfullSignIn", () => {
   // Expected result: The user enters his account (the user is signed-in)
   cy.get("reach-portal")
     .children("div")
@@ -148,17 +148,17 @@ Cypress.Commands.add("AssertSuccesfullSignIn", () => {
 });
 
 // This is all the steps to sign In in twitter-clone
-Cypress.Commands.add("SignInTwitterClone", (EmailOrUsername, Password) => {
+Cypress.Commands.add("signInTwitterClone", (emailOrUsername, password) => {
   // Click on Sign In button
   cy.get('a[data-cy="nav-signin-link"]').click();
   // Write Email or username
   cy.get('form[data-cy="signin-form"]')
     .find('input[data-cy="signin-username-input"]')
-    .type(EmailOrUsername);
+    .type(emailOrUsername);
   // Write Password
   cy.get('form[data-cy="signin-form"]')
     .find('input[data-cy="signin-password-input"]')
-    .type(Password);
+    .type(password);
   // Click on Sign submit button
   cy.get('form[data-cy="signin-form"]')
     .find('button[data-cy="signin-button"]')
@@ -180,7 +180,7 @@ Cypress.Commands.add("getCurrentDate", () => {
 });
 
 // This function shows the user John tweeting "Hello everyone" in twitter-clone
-Cypress.Commands.add("JohnTweetingHelloEveryoneInTwitterClone", () => {
+Cypress.Commands.add("johnTweetingHelloEveryoneInTwitterClone", () => {
   // The user clicks on the "Tweet" button in the navigation bar
   cy.contains("button", "Tweet").click();
   // The user types in the text box: "Hello everyone"
@@ -192,7 +192,7 @@ Cypress.Commands.add("JohnTweetingHelloEveryoneInTwitterClone", () => {
 });
 
 Cypress.Commands.add(
-  "CheckIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottomInTwitterClone",
+  "checkIfAllFiveUsersJohnPaulRonyKevinJuliaAreInThePageAllProfilesAndSortedFromOldestTopToNewestBottomInTwitterClone",
   () => {
     /*
     There are 5 users displayed with their name and username, and they are sorted from oldest member to newest member (left to right; top to bottom)
