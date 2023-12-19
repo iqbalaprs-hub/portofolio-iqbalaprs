@@ -185,7 +185,7 @@ describe("Feature: Sign Up", () => {
     */
     cy.get('form[data-cy="signup-form"]')
       .find('input[data-cy="signup-name-input"]')
-      .type("Jhon");
+      .type("John");
     cy.get('form[data-cy="signup-form"]')
       .find('input[data-cy="signup-username-input"]')
       .type("johnny");
@@ -212,7 +212,7 @@ describe("Feature: Sign Up", () => {
       .first()
       .children("p")
       .first()
-      .should("have.text", "Jhon");
+      .should("have.text", "John");
 
     cy.get("reach-portal")
       .children("div")
