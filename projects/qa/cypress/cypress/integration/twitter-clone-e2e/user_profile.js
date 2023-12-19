@@ -62,6 +62,9 @@ describe("Feature: User's profile", () => {
     cy.get('div[class*="Profile___StyledDiv4"]')
       .find('span[class*="Profile___StyledSpan2"]')
       .should("have.text", "@john");
+    cy.get('div[class*="Profile___StyledDiv6"]')
+      .find("div")
+      .should("have.text", " Joined December 2023");
 
     // 1.3: The user  clicks on "All profiles" button in the navigation bar
     cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
@@ -90,6 +93,9 @@ describe("Feature: User's profile", () => {
     cy.get('div[class*="Profile___StyledDiv4"]')
       .find('span[class*="Profile___StyledSpan2"]')
       .should("have.text", "@rony");
+    cy.get('div[class*="Profile___StyledDiv6"]')
+      .find("div")
+      .should("have.text", " Joined December 2023");
   });
 
   it("2- Nominal case: The user can enter the Edit profile form, only from his own profile (Only a user can modify his own profile)", () => {

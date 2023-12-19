@@ -165,6 +165,20 @@ Cypress.Commands.add("SignInTwitterClone", (EmailOrUsername, Password) => {
     .click();
 });
 
+// It will get the current date in this particular formmat (day month year; for example: 15 December 2023)
+Cypress.Commands.add("getCurrentDate", () => {
+  const currentDate = new Date();
+  const day = currentDate.getDate();
+  const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
+    currentDate
+  );
+  const year = currentDate.getFullYear();
+
+  const formattedDate = `${day} ${month} ${year}`;
+
+  return formattedDate;
+});
+
 // This function shows the user John tweeting "Hello everyone" in twitter-clone
 Cypress.Commands.add("JohnTweetingHelloEveryoneInTwitterClone", () => {
   // The user clicks on the "Tweet" button in the navigation bar

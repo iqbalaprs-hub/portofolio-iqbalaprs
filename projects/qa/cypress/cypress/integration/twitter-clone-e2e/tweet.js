@@ -80,6 +80,19 @@ describe("Feature: Tweet", () => {
       .find("span:nth-child(2)")
       .should("have.text", "@john");
 
+    // The tweet date publication
+    cy.getCurrentDate().then((currentDate) => {
+      // Get the date from the <div> element
+      cy.get('div[class*="Homepage"]')
+        .find('div[class*="TweetUserGroup"]')
+        .find("span:nth-child(3) span")
+        .invoke("text")
+        .then((divDate) => {
+          // Assert that the dates are the same
+          expect(divDate.trim()).to.equal(currentDate);
+        });
+    });
+
     // Reply button
     cy.get('div[class*="Homepage"]')
       .find('div[class*="TweetBottomGroup"]')
@@ -118,6 +131,19 @@ describe("Feature: Tweet", () => {
       .find('div[class*="TweetUserGroup"]')
       .find("span:nth-child(2)")
       .should("have.text", "@john");
+
+    // The tweet date publication
+    cy.getCurrentDate().then((currentDate) => {
+      // Get the date from the <div> element
+      cy.get('div[class*="ProfileTweetsBoard"]')
+        .find('div[class*="TweetUserGroup"]')
+        .find("span:nth-child(3) span")
+        .invoke("text")
+        .then((divDate) => {
+          // Assert that the dates are the same
+          expect(divDate.trim()).to.equal(currentDate);
+        });
+    });
 
     // Reply button
     cy.get('div[class*="ProfileTweetsBoard"]')
@@ -286,6 +312,19 @@ describe("Feature: Tweet", () => {
       .find('div[class*="TweetUserGroup"]')
       .find("span:nth-child(2)")
       .should("have.text", "@john");
+
+    // The tweet date publication
+    cy.getCurrentDate().then((currentDate) => {
+      // Get the date from the <div> element
+      cy.get('div[class*="Homepage"]')
+        .find('div[class*="TweetUserGroup"]')
+        .find("span:nth-child(3) span")
+        .invoke("text")
+        .then((divDate) => {
+          // Assert that the dates are the same
+          expect(divDate.trim()).to.equal(currentDate);
+        });
+    });
 
     // Reply button
     // Expected result: The number next to the bubble (reply button) is zero
