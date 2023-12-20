@@ -1,0 +1,600 @@
+[{
+  "_id": {
+    "$oid": "6582fb7774e23d17a0a45759"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task1 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:34:31.324Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:34:31.324Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fb8174e23d17a0a45769"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task2 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:34:41.589Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:34:41.589Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fb8574e23d17a0a4576f"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task3 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:34:45.685Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:34:45.685Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fb8a74e23d17a0a45775"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task4 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:34:50.367Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:34:50.367Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fb8e74e23d17a0a4577b"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task5 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:34:54.922Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:34:54.922Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fb9474e23d17a0a45781"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task6 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:35:00.416Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:35:00.416Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fb9a74e23d17a0a45787"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task7 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:35:06.155Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:35:06.155Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fba074e23d17a0a4578d"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task8 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:35:12.911Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:35:12.911Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fba574e23d17a0a45793"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task9 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:35:17.663Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:35:17.663Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fbaf74e23d17a0a45799"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task10 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:35:27.691Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:35:27.691Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fbb574e23d17a0a4579f"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task11 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:35:33.076Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:35:33.076Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fbb974e23d17a0a457a5"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task12 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:35:37.263Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:35:37.263Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fbbe74e23d17a0a457ab"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task13 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:35:42.627Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:35:42.627Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fbc374e23d17a0a457b1"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task14 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:35:47.753Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:35:47.753Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fbca74e23d17a0a457b7"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task15 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:35:54.190Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:35:54.190Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fbd074e23d17a0a457bd"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task16 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:36:00.002Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:36:00.002Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fbd574e23d17a0a457c3"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task17 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:36:05.069Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:36:05.069Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fbda74e23d17a0a457c9"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task18 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:36:10.505Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:36:10.505Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fbdf74e23d17a0a457cf"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task19 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:36:15.404Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:36:15.404Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fbe474e23d17a0a457d5"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task20 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:36:20.467Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:36:20.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fbeb74e23d17a0a457db"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task21 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:36:27.791Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:36:27.791Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fc0574e23d17a0a457f0"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task22 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:36:53.325Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:36:53.325Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fc0a74e23d17a0a457f6"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task23 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:36:58.280Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:36:58.280Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fc0f74e23d17a0a457fc"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task24 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:37:03.425Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:37:03.425Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fc1474e23d17a0a45802"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task25 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:37:08.278Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:37:08.278Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fc1974e23d17a0a45808"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task26 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:37:13.393Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:37:13.393Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fc2074e23d17a0a4580e"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task27 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:37:20.517Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:37:20.517Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fc2774e23d17a0a45814"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task28 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:37:27.476Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:37:27.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fc2d74e23d17a0a4581a"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task29 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:37:33.091Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:37:33.091Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6582fc3174e23d17a0a45820"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Task30 was accomplished",
+  "author": {
+    "$oid": "65716d69d7949c2ec47851a2"
+  },
+  "createdAt": {
+    "$date": "2023-12-20T14:37:37.365Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-20T14:37:37.365Z"
+  },
+  "__v": 0
+}]
