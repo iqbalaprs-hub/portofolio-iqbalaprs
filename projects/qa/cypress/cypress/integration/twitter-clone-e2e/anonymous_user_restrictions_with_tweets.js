@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Feature: Anonymous user restrictions with the tweets", () => {
+describe("Feature: Anonymous user restrictions with tweets", () => {
   beforeEach(() => {
     // Prereq.: The database is empty. There are no users in the database
     cy.exec(".\\cypress\\scripts\\twitter-clone-e2e\\clear_mongo.bat");
@@ -24,7 +24,7 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
     cy.visit(Cypress.env("twitterCloneBaseUrl"));
   });
 
-  it("1- Nominal case: The anonymous user cannot delete the tweet in the Home page", () => {
+  it("1- Nominal case: An anonymous user cannot delete a tweet in the Home page", () => {
     // 1.1: Expected result: In the "Home" page, The "X" button which deletes the tweet "Hello everyone", is not present on the tweet
     cy.get('div[class*="Homepage"]')
       .find("ul li:nth-child(1)")
@@ -32,11 +32,11 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
       .should("not.exist");
   });
 
-  it("2- Nominal case: The anonymous user cannot delete the tweet in the tweet section of the user's profile", () => {
-    // 2.1: The anonymous user clicks on the "All profiles" button
+  it("2- Nominal case: An anonymous user cannot delete a tweet in the tweet section of the user's profile", () => {
+    // 2.1: An anonymous user clicks on the "All profiles" button
     cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
 
-    // 2.2: The anonymous user clicks on the profile link related to John
+    // 2.2: An anonymous user clicks on the profile link related to John
     cy.get('ul[class*="ProfilesList"]')
       .find("li:nth-child(1)")
       .find('div[class*="TextContainer"]')
@@ -51,36 +51,36 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
       .should("not.exist");
   });
 
-  it("3- Nominal case: The anonymous user cannot reply to a tweet in the Home page", () => {
-    // 3.1: The anonymous user clicks on the tweet
+  it("3- Nominal case: An anonymous user cannot reply to a tweet in the Home page", () => {
+    // 3.1: An anonymous user clicks on the tweet
     cy.get('div[class*="Homepage"]')
       .find("ul li:nth-child(1)")
       .find('div[class*="TweetBottomGroup"]')
       .find("button:nth-child(1)")
       .click();
 
-    // 3.2: The anonymous user clicks on the text box, type "Hello" and click Enter
+    // 3.2: An anonymous user clicks on the text box, type "Hello" and click Enter
     cy.get('form[class*="CommentForm"]')
       .find('input[class*="CommentInput"]')
       .type("Hello")
       .type("{enter}");
 
-    // Expected result: The anonymous user is automatically sent to the "Sign In" page
+    // Expected result: An anonymous user is automatically sent to the "Sign In" page
     cy.get("ul").contains("a", "Sign In").should("have.class", "active");
   });
 
-  it("4- Nominal case: The anonymous user cannot like a tweet in the Home page", () => {
-    // 4.1: The anonymous user clicks on the like button of the tweet
+  it("4- Nominal case: An anonymous user cannot like a tweet in the Home page", () => {
+    // 4.1: An anonymous user clicks on the like button of the tweet
     cy.get('div[class*="Homepage"]')
       .find("ul li:nth-child(1)")
       .find('div[class*="TweetBottomGroup"]')
       .find("button:nth-child(2)")
       .click();
 
-    // Expected result: The anonymous user is automatically sent to the "Sign In" page
+    // Expected result: An anonymous user is automatically sent to the "Sign In" page
     cy.get("ul").contains("a", "Sign In").should("have.class", "active");
 
-    // 4.2: The anonymous user returns to "Home" page
+    // 4.2: An anonymous user returns to "Home" page
     cy.get("ul").contains("a", "Home").click();
 
     /*
@@ -100,11 +100,11 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
       .should("have.css", "color", "rgb(122, 122, 122)");
   });
 
-  it("5- Nominal case: The anonymous user cannot reply to a tweet in the tweet section of the user's profile", () => {
-    // 5.1: The anonymous user clicks on the "All profiles" button
+  it("5- Nominal case: An anonymous user cannot reply to a tweet in the tweet section of the user's profile", () => {
+    // 5.1: An anonymous user clicks on the "All profiles" button
     cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
 
-    // 5.2: The anonymous user clicks on the profile link related to John
+    // 5.2: An anonymous user clicks on the profile link related to John
     cy.get('ul[class*="ProfilesList"]')
       .find("li:nth-child(1)")
       .find('div[class*="TextContainer"]')
@@ -112,26 +112,26 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
       .should("have.text", "@john")
       .click();
 
-    // 5.3: The anonymous user clicks on the tweet
+    // 5.3: An anonymous user clicks on the tweet
     cy.get('div[class*="ProfileTweetsBoard"]')
       .find("ul li:nth-child(1)")
       .click();
 
-    // 5.4: The anonymous user clicks on the text box, type "Hello" and click Enter
+    // 5.4: An anonymous user clicks on the text box, type "Hello" and click Enter
     cy.get('div[class*="CommentContainer"]')
       .find('input[class*="CommentInput"]')
       .type("Hello")
       .type("{enter}");
 
-    // Expected result: The anonymous user is automatically sent to the "Sign In" page
+    // Expected result: An anonymous user is automatically sent to the "Sign In" page
     cy.get("ul").contains("a", "Sign In").should("have.class", "active");
   });
 
-  it("6- Nominal case: The anonymous user cannot like a tweet in the tweet section of the user's profile", () => {
-    // 6.1: The anonymous user clicks on the "All profiles" button
+  it("6- Nominal case: An anonymous user cannot like a tweet in the tweet section of the user's profile", () => {
+    // 6.1: An anonymous user clicks on the "All profiles" button
     cy.get('nav[class*="MainNav"]').contains("a", "All profiles").click();
 
-    // 6.2: The anonymous user clicks on the profile link related to John
+    // 6.2: An anonymous user clicks on the profile link related to John
     cy.get('ul[class*="ProfilesList"]')
       .find("li:nth-child(1)")
       .find('div[class*="TextContainer"]')
@@ -139,17 +139,17 @@ describe("Feature: Anonymous user restrictions with the tweets", () => {
       .should("have.text", "@john")
       .click();
 
-    // 6.3: The anonymous user clicks on the like button of the tweet
+    // 6.3: An anonymous user clicks on the like button of the tweet
     cy.get('div[class*="ProfileTweetsBoard"]')
       .find("ul li:nth-child(1)")
       .find("button:nth-child(2)")
       .click();
 
-    // Expected result: The anonymous user is automatically sent to the "Sign In" page
+    // Expected result: An anonymous user is automatically sent to the "Sign In" page
     cy.get("ul").contains("a", "Sign In").should("have.class", "active");
   });
 
-  it("7- Nominal case: The anonymous user cannot tweet", () => {
+  it("7- Nominal case: An anonymous user cannot tweet", () => {
     // 7.1: Expected result: The tweet button is not present in the navigation bar
     cy.contains("button", "Tweet").should("not.exist");
 
