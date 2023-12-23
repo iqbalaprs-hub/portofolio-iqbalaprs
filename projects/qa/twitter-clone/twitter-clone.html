@@ -60,6 +60,336 @@
           </p>
         </div>
       </section>
+
+      <section class="specifications">
+        <div class="section-intro">
+          <h1>Specifications</h1>
+          <p>
+            To begin with, I familiarized myself with Twitter-Clone by exploring
+            its funtionalities. I then wrote down a specification of its
+            features, in order to provide me with a guide for writing test
+            cases. Here are the Twitter-Clone specifications:
+          </p>
+        </div>
+        <div class="accordion-item">
+          <h4>Twitter-Clone specifications (Click to reveal)</h4>
+          <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+          <ul class="hidden-content">
+            <li class="parent-menu">
+              1- Sign Up:
+              <li class="submenu">1- Only anonymous user can see the “Sign Up” button in the navigation bar</li>
+              <ul class="submenu">2- When the user clicks on “Sign Up” button, the “Sign Up” form appears: 
+                <li class="submenu">
+                        - The “Sign Up” form contains the following inputs:
+                    <ul class="sub-submenu">
+                      <li>a. Name:
+                        <ul class="sub-sub-submenu">
+                          <li>i. String </li>
+                          <li>ii. Multiple users can have the same name  </li>
+                        </ul>
+                      </li>
+                      <li>
+                        b. Username:
+                        <ul class="sub-sub-submenu">
+                          <li>i. String 
+                            <ul>
+                                <li class="sub-sub-sub-submenu">- Only Period “.”, Dash “- “and Underscore “_” are allowed as special characters</li>
+                            </ul>
+                          </li>
+                          <li>ii. Username is unique. Two users cannot have the same username </li>
+                        </ul>
+                        c. Email:
+                        <ul class="sub-sub-submenu">
+                            <li>i. String in the form name@example.com </li>
+                            <li>ii. Email is unique. Two users cannot have the same email  </li>
+                        </ul>
+                        d. Password
+                        <ul class="sub-sub-submenu">
+                            <li>i. Must be at least 8 characters with at least 1 letter and 1 number </li>
+                        </ul>
+                        e. Confirm password
+                        <ul class="sub-sub-submenu">
+                            <li>i. Must be exactly equal to the password </li>
+                        </ul>
+                      </li>
+                    </ul>
+                        - The link “Sign in now” send you to the Sign in page 
+                  </li>
+              </ul>
+              <ul class="submenu">3- When the user submits the “Sign Up” form, by clicking on the “Sign Up” button:
+                <li class="submenu">    - The user’s account is created </li>
+                <li class="submenu">    - The user is automatically signed in </li>
+                <li class="submenu">    - The user is taken to the “Home” page </li>
+              </ul>
+            </li>
+            <li class="parent-menu">
+                2- Sign In:
+                <ul class="submenu">1- When the user clicks on “Sign In” button, the “Sign In” form appears: 
+                    <li class="submenu">
+                        - The “Sign In” form contains the following inputs:
+                        <ul class="sub-submenu">
+                            <li>a. Email or username</li>
+                            <li>b. Password</li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        - The link “Sign up now” send you to the Sign-Up page 
+                    </li>
+                </ul>
+                <ul class="submenu">2- When the user submits the “Sign In” form, by clicking on the “Sign In” button: 
+                    <li class="submenu">
+                        - If the username or email, and password are correct:
+                        <ul class="sub-submenu">
+                            <li>a. The user enters his account (the user is signed-in)</li>
+                            <li>b. The user is taken to the “Home” page</li>
+                            <li>c. The “Sign In” button in the navigation bar disappear (Only anonymous user can see the “Sign In” button in the navigation bar)</li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        - else an error message “Invalid login credentials” will appear if username, email or password is written wrong 
+                        <ul class="sub-submenu">
+                            <li>a. An error message “Username is required” if username or email is empty </li>
+                            <li>b. An error message “Password is required” if password is empty </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="parent-menu">
+                3- Current user's personal menu
+                <li class="submenu">1- This menu is no visible if the user is anonymous. It is only visible for signed in users</li>
+                <ul class="submenu">2- When the user clicks on “Sign Up” button, the “Sign Up” form appears:
+                    <li class="submenu">
+                        - Name and username (Both assert the identity of the account)   
+                    </li>
+                    <li class="submenu">
+                        - Profile  
+                        <ul class="sub-submenu">
+                            <li>a. The user can access his profile </li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        - Settings  
+                        <ul class="sub-submenu">
+                            <li>a. The user can edit his profile  </li>
+                            <li>b. The user can delete his account   
+                                <ul class="sub-sub-submenu">
+                                    <li>i. The user can cancel the deletion of his account </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        - Sign Out
+                        <ul class="sub-submenu">
+                            <li>a. The user can sign out </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="parent-menu">
+                4- Tweet
+                <li class="submenu">1- The tweet button is not visible if the user is anonymous. It is only visible for signed in users</li>
+                <ul class="submenu">2- When the user clicks on the tweet button, a modal appears:
+                    <ul class="sub-submenu">
+                        <li>- A text box
+                            <ul class="sub-sub-submenu">
+                                <li>i. The text box has the placeholder “What’s happening?” </li>
+                            </ul>
+                        </li>
+                        <li>- Tweet submit button 
+                            <ul class="sub-sub-submenu">
+                                <li>i. Disabled 
+                                    <ul class="sub-sub-sub-submenu">
+                                        <li>- if the text box is completely empty </li>
+                                        <li>- If the text box has more than 280 characters </li>
+                                    </ul>
+                                </li>
+                                <li>ii. Active, if the text box has at least one character (space included) </li>
+                            </ul>
+                        </li>
+                        <li>- The “X” button
+                            <ul class="sub-sub-submenu">
+                                <li>i. The user can exit the tweet by clicking on “X” </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+                <li class="submenu">3- When the user writes on the text box, he clicked the tweet submit button, the tweet is created </li>
+                <li class="submenu">4- Tweets appear in the “Home” page and in the user’s profile </li>
+                <ul class="submenu">5- A tweet is displayed with:
+                    <li class="sub-submenu">
+                        - Name and username of the author 
+                    </li>
+                    <li class="sub-submenu">
+                        - The tweet date publication  
+                    </li>
+                    <li class="sub-submenu">
+                        - The text  
+                    </li>
+                    <ul class="sub-submenu">
+                        - Reply button  
+                        <li class="sub-sub-submenu">
+                            i. Anonymous user cannot reply 
+                        </li> 
+                        <ul class="sub-sub-submenu">
+                            ii. The user can reply to any tweet more than once
+                            <li class="sub-sub-sub-submenu">
+                                - Each time a user reply to the tweet, the number next to the bubble increases by one
+                            </li> 
+                            <li class="sub-sub-sub-submenu">
+                                - The number shows how many replies for a specific tweet 
+                            </li> 
+                            <li class="sub-sub-sub-submenu">
+                                - The replies are sorted from newest (top) to oldest (bottom)  
+                            </li> 
+                        </ul>
+                        <ul class="sub-sub-submenu">
+                            iii. The user can delete only his reply 
+                            <li class="sub-sub-sub-submenu">
+                                - Each time a user deletes the tweet, the number next to the bubble decreases by one 
+                            </li> 
+                            <li class="sub-sub-sub-submenu">
+                                - The number shows how many replies for a specific tweet  
+                            </li> 
+                        </ul>
+                    </ul>
+                    <ul class="sub-submenu">
+                        - Like option 
+                        <li class="sub-sub-submenu">
+                            i. Anonymous user cannot like 
+                        </li>
+                        <ul class="sub-sub-submenu">
+                            ii. The user cannot like a tweet more than once 
+                            <ul class="sub-sub-sub-submenu">
+                                <li>- Each user liking the tweet, the number next to the like increases by one</li>
+                                <li>- This number shows the number of users liking the tweet </li>
+                            </ul>
+                        </ul>
+                        <ul class="sub-sub-submenu">
+                            iii. The user can remove the like  
+                            <ul class="sub-sub-sub-submenu">
+                                <li>- Each user removing the like, the number next to the like decreases by one</li>
+                                <li>- This number shows the number of users liking the tweet  </li>
+                            </ul>
+                        </ul>
+                    </ul>
+                </ul>
+                <li class="submenu">6- The user can delete his own tweet. The user cannot delete other users’ tweets  </li>
+            </li>
+            <li class="parent-menu">
+                5- Home
+                <li class="submenu">1- Anonymous and signed in users can see “Home” page </li>
+                <ul class="submenu">
+                    2- The user clicks on “Home” button in the navigation bar:
+                    <ul class="sub-sub-submenu">
+                        <li>i. The tweets are organized from newest (top) to oldest (bottom) </li>
+                        <li>ii.	When the user opens the “Home” page, The last 10 tweets are displayed</li>
+                        <li>iii. When the user scrolls down, the next 10 tweets appear</li>
+                    </ul>
+                </ul>
+            </li>
+            <li class="parent-menu">
+                6- All profiles
+                <li class="submenu">1- Anonymous and signed in users can see “All profiles”  </li>
+                <ul class="submenu">
+                    2- The user clicks on the “All profiles” button in the navigation bar :
+                    <ul class="sub-sub-submenu">
+                        <li>i. You can see all twitter’s users (The number of users present is equal to the number of users having an account)</li>
+                        <li>ii.	You can recognize each user by the name, username and avatar picture</li>
+                        <li>iii. You can access the profile of each user </li>
+                        <li>IV. The names are sorted from oldest member to newest member (left to right; top to bottom)</li>
+                    </ul>
+                </ul>
+            </li>
+            <li class="parent-menu">
+                7- Profile
+                <li class="submenu">1- Anonymous user and signed in users can see any user’s profile </li>
+                <li class="submenu">2- Only a user can modify his own profile </li>
+                <ul class="submenu">
+                    3- You can see the personal information of the user:
+                    <li class="sub-submenu">- Name </li>
+                    <li class="sub-submenu">- Username </li>
+                    <li class="sub-submenu">- The day the user joined Twitter </li>
+                    <ul class="sub-submenu">    
+                        - Follow option (the feature “follow” is not completely implemented):
+                        <ul class="sub-sub-submenu">
+                            <li>i. Follow </li>
+                            <li>ii. Unfollow</li>
+                        </ul>
+                    </ul>
+                    <ul class="sub-submenu"> 
+                        - Following
+                        <ul class="sub-sub-submenu">
+                            <li>i. The number shows how many accounts is the user following </li>
+                        </ul>
+                    </ul>
+                    <ul class="sub-submenu"> 
+                        - Followers
+                        <ul class="sub-sub-submenu">
+                            <li>i. The number shows how many accounts is following the user </li>
+                        </ul>
+                    </ul>
+                    <li class="sub-submenu">- All the user’s tweets  </li>
+                    <li class="sub-submenu">- All the user’s tweet liked   </li>
+                    <li class="sub-submenu">- Avatar picture  </li>
+                    <li class="sub-submenu">- Background image </li>
+                    <li class="sub-submenu">- “Edit profile” that enable you to change the personal information  </li>
+                </ul>
+            </li>
+            <li class="parent-menu">
+                8- Edit profile
+                <li class="submenu">1- When the user enters the “Edit profile” page, he can fill the “Edit profile” form which contains: 
+                    <ul class="sub-submenu"> 
+                        - Name 
+                        <ul class="sub-sub-submenu">
+                            <li>i. String </li>
+                            <li>ii. Multiple users can have the same name </li>
+                            <li>iii. The new name replaces the old name </li>
+                            <li>IV. It is not allowed to be empty </li>
+                        </ul>
+                    </ul>
+                    <ul class="sub-submenu"> 
+                        - Bio 
+                        <ul class="sub-sub-submenu">
+                            <li>i. String </li>
+                        </ul>
+                    </ul>
+                    <ul class="sub-submenu"> 
+                        - Location 
+                        <ul class="sub-sub-submenu">
+                            <li>i. String </li>
+                        </ul>
+                    </ul>
+                    <ul class="sub-submenu"> 
+                        - Website 
+                        <ul class="sub-sub-submenu">
+                            <li>i. It has to be a valid URL </li>
+                        </ul>
+                    </ul>
+                    <ul class="sub-submenu"> 
+                        - Avatar (URL) 
+                        <ul class="sub-sub-submenu">
+                            <li>i. It has to be a valid URL </li>
+                        </ul>
+                    </ul>
+                    <ul class="sub-submenu"> 
+                        - Background image (URL)
+                        <ul class="sub-sub-submenu">
+                            <li>i. It has to be a valid URL </li>
+                        </ul>
+                    </ul>
+                </li>
+                <ul class="submenu">
+                    2-  If the user has no more things to change in the form, he can either:
+                    <ul class="sub-submenu">
+                        <li>- Update his profile by clicking on the “Update profile” button</li>
+                        <li>- Go back to the profile without updating the changes by clicking on the “Go back” button</li>
+                    </ul>
+                </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
     </main>
   </body>
 </html>
