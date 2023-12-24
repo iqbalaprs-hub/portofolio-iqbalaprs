@@ -295,7 +295,7 @@
                     2- The user clicks on the “All profiles” button in the navigation bar :
                     <ul class="sub-sub-submenu">
                         <li>i. You can see all twitter’s users (The number of users present is equal to the number of users having an account)</li>
-                        <li>ii.	You can recognize each user by the name, username and avatar picture</li>
+                        <li>ii.	You can recognize each user by the name, username and avatar image</li>
                         <li>iii. You can access the profile of each user </li>
                         <li>IV. The names are sorted from oldest member to newest member (left to right; top to bottom)</li>
                     </ul>
@@ -2219,7 +2219,7 @@
                         </tr>
                         <tr>
                             <td>9.4</td>
-                            <td>The user writes in the avatar textbox: &quot;https://fastly.picsum.photos/id/237/200/300&quot;<br>   (This URL gives a photo of a black dog)</td>
+                            <td>The user writes in the avatar textbox: &quot;https://picsum.photos/id/237/200/300&quot;<br>   (This URL gives a photo of a black dog)</td>
                             <td></td>
                         </tr>
                         <tr>
@@ -2615,6 +2615,144 @@
             </p>
         </div>
         </div>
+      </section>
+
+      <section>
+        <div class="section-intro">
+          <h1>🐞 Bug reports</h1>
+          <p>
+            My tests found 6 bugs in the Twitter-Clone app. These bugs can be
+            transferred to the development team for fixing
+          </p>
+        </div>
+
+        <ul>
+          <li class="accordion-item">
+            <h4>Bug 1: The name in the personal menu does not change automatically after being updated</h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <h5>Summary</h5>
+              <p>When updating the name, the name in the personal menu does not change automaticaly. We need to refresh the page in order for the name to be updated</p>
+
+              <h5>Steps to reproduce</h5>
+              <p>
+                (1)Prereq: The database is empty. There are no users in the database<br />
+                (2)Prereq: Import the data in "twitter clone test data/9- EDIT PROFILE" in mongoDb<br />
+                The data contains:User John (username: john; email: john@gmail.com; password: Clonejohn23) AND User Johnny (username: johnny; email: johnny@gmail.com; password: Clonejohnny23)<br />
+                (3) The user opens Twitter-Clone and signs in as "John" (username: johnny; email: johnny@gmail.com; password: Clonejohnny23)<br />
+                (4) The user John enters his profile and clicks on "Edit profile" button<br />
+                (5) The user John changes his name from "John" to "Rony"<br />
+                (6) The user clicks on personal menu located in the navigation bar<br />
+                (7) The name is still "John" <br />           
+              </p>
+
+              <h5>Actual result 🐞</h5>
+              <p>In the personal menu, the name was not automatically changed to "Rony"</p>
+              
+
+              <h5>Expected result</h5>
+              <p>The name changed from "John" to "Rony"</p>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <h4>Bug 2: The user's personal menu does not have a picture</h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <h5>Summary</h5>
+              <p>When adding an avatar picture, the personal menu's picture is expected to change to the avatar picture the user just added</p>
+
+              <h5>Steps to reproduce</h5>
+              <p>
+                (1)Prereq: The database is empty. There are no users in the database<br />
+                (2)Prereq: Import the data in "twitter clone test data/9- EDIT PROFILE" in mongoDb<br />
+                The data contains:User John (username: john; email: john@gmail.com; password: Clonejohn23) AND User Johnny (username: johnny; email: johnny@gmail.com; password: Clonejohnny23)<br />
+                (3) The user opens Twitter-Clone and signs in as "John" (username: johnny; email: johnny@gmail.com; password: Clonejohnny23)<br />
+                (4) The user John enters his profile and clicks on "Edit profile" button<br />
+                (5) The user John add a link for his avatar's picture (for example: "https://picsum.photos/id/237/200/300"   (This URL gives a picture of a black dog))<br /> 
+                (6) The user clicks on personal menu located in the navigation bar<br />
+                (7) The personal menu's picture has not changed       
+              </p>
+
+              <h5>Actual result 🐞</h5>
+              <p>There is no picture in the personal menu</p>
+              
+
+              <h5>Expected result</h5>
+              <p>The personal menu's picture expected to change to the avatar picture the user just added</p>
+
+              <h5>Notes</h5>
+              <p>An HTML code for the image related to the avatar picture update must be added to the personal menu</p>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <h4>Bug 3: The user cannot remove his avatar picture</h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <h5>Summary</h5>
+              <p>When the user adds a image for his avatar, he cannot remove the avatar's image anymore</p>
+
+              <h5>Steps to reproduce</h5>
+              <p>
+                (1)Prereq: The database is empty. There are no users in the database<br />
+                (2)Prereq: Import the data in "twitter clone test data/9- EDIT PROFILE" in mongoDb<br />
+                The data contains:User John (username: john; email: john@gmail.com; password: Clonejohn23) AND User Johnny (username: johnny; email: johnny@gmail.com; password: Clonejohnny23)<br />
+                (3) The user opens Twitter-Clone and signs in as "John" (username: johnny; email: johnny@gmail.com; password: Clonejohnny23)<br />
+                (4) The user John enters his profile and clicks on "Edit profile" button<br />
+                (5) The user John add a link for his avatar's image (for example: "https://picsum.photos/id/237/200/300"   (This URL gives a image of a black dog))<br /> 
+                (6) The user clicks on "Update profile" button<br /> 
+                (7) The user clicks on "Go back" button and sees that his avatar has a image of a black dog
+                (8) The user clicks on "Edit profile" button
+                (9) The user leaves the avatar textbox empty
+                (10) The user clicks on "Update profile" button and automaticaly gets the red sentence: User validation failed: avatar: Avatar must be a valid URL 
+
+              </p>
+
+              <h5>Actual result 🐞</h5>
+              <p>The user cannot empty the avatar textbox without getting the error red sentence (User validation failed: avatar: Avatar must be a valid URL)</p>
+              
+
+              <h5>Expected result</h5>
+              <p>The user removed his avatar image</p>
+
+            </div>
+          </li>
+
+
+          <li class="accordion-item">
+            <h4>Bug 4: The user cannot remove his background image</h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <h5>Summary</h5>
+              <p>When the user adds an image for his background in his profile, he cannot remove the background's image anymore</p>
+
+              <h5>Steps to reproduce</h5>
+              <p>
+                (1)Prereq: The database is empty. There are no users in the database<br />
+                (2)Prereq: Import the data in "twitter clone test data/9- EDIT PROFILE" in mongoDb<br />
+                The data contains:User John (username: john; email: john@gmail.com; password: Clonejohn23) AND User Johnny (username: johnny; email: johnny@gmail.com; password: Clonejohnny23)<br />
+                (3) The user opens Twitter-Clone and signs in as "John" (username: johnny; email: johnny@gmail.com; password: Clonejohnny23)<br />
+                (4) The user John enters his profile and clicks on "Edit profile" button<br />
+                (5) The user John add a link for his avatar's image (for example: "https://picsum.photos/id/866/600/400"   (This URL gives the photo of moutain with snow))<br /> 
+                (6) The user clicks on "Update profile" button<br /> 
+                (7) The user clicks on "Go back" button and sees that his background has a image of a moutain with snow
+                (8) The user clicks on "Edit profile" button
+                (9) The user leaves the background image textbox empty
+                (10) The user clicks on "Update profile" button and automaticaly gets the red sentence: Profile validation failed: backgroundImage: Background image must be a valid URL 
+
+              </p>
+
+              <h5>Actual result 🐞</h5>
+              <p>The user cannot empty the background image textbox without getting the error red sentence (Profile validation failed: backgroundImage: Background image must be a valid URL )</p>
+              
+
+              <h5>Expected result</h5>
+              <p>The user removed his background image</p>
+
+            </div>
+          </li>
+        </ul>
       </section>
     </main>
   </body>
