@@ -2516,6 +2516,78 @@
           </li>
         </ul>
       </section>
+
+      <section>
+        <div class="section-intro">
+          <h1>Test reports</h1>
+          <p>
+            All tests were executed manually and run using Cypress. The
+            Twitter-Clone application was tested on Chrome (if needed by the
+            client, they can also be tested in other browsers).<br />Here's
+            below, the results of running "npx cypress run --browser chrome".<br />Using
+            Cypress and manual tests, I detected a number of bugs in the
+            Twitter-Clone application. The next section lists those bugs.
+          </p>
+        </div>
+        <div class="accordion-item">
+          <h4>Twitter-Clone test reports (Click to reveal)</h4>
+          <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+
+          <div style="background-color: #000000" class="hidden-content">
+            <p style="font-family: monospace; color: #ffffff"> 
+                ====================================================================================================<br/>
+<br/>
+&nbsp&nbsp(Run&nbspFinished)<br/>
+<br/>
+<br/>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSpec&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTests&nbsp&nbspPassing&nbsp&nbspFailing&nbsp&nbspPending&nbsp&nbspSkipped&nbsp&nbsp<br/>
+&nbsp&nbsp┌────────────────────────────────────────────────────────────────────────────────────────────────┐<br/>
+&nbsp&nbsp│&nbsp<span style="color: green">√</span
+    >&nbsp&nbspAll_profiles.js&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp00:16&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp4&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="color: green">4</span
+    >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp│<br/>
+&nbsp&nbsp├────────────────────────────────────────────────────────────────────────────────────────────────┤<br/>
+&nbsp&nbsp│&nbsp<span style="color: green">√</span
+    >&nbsp&nbspanonymous_user_restrictions_with_tw&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp00:18&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp7&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="color: green">7</span
+        >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp│<br/>
+&nbsp&nbsp│&nbsp&nbsp&nbsp&nbspeets.js&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp│<br/>
+&nbsp&nbsp├────────────────────────────────────────────────────────────────────────────────────────────────┤<br/>
+&nbsp&nbsp│&nbsp<span style="color: red">×</span
+    >&nbsp&nbspedit_profile.js&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp02:16&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp16&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="color: green">12</span
+        >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="color: red">4</span
+            >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp│<br/>
+&nbsp&nbsp├────────────────────────────────────────────────────────────────────────────────────────────────┤<br/>
+&nbsp&nbsp│&nbsp<span style="color: green">√</span
+    >&nbsp&nbspHome_page.js&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp00:21&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp1&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="color: green">1</span
+        >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp│<br/>
+&nbsp&nbsp├────────────────────────────────────────────────────────────────────────────────────────────────┤<br/>
+&nbsp&nbsp│&nbsp<span style="color: green">√</span
+    >&nbsp&nbspsign-in.js&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp00:15&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp8&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="color: green">8</span
+        >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp│<br/>
+&nbsp&nbsp├────────────────────────────────────────────────────────────────────────────────────────────────┤<br/>
+&nbsp&nbsp│&nbsp<span style="color: green">√</span
+    >&nbsp&nbspsign-up.js&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp00:33&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp11&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="color: green">11</span
+        >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp│<br/>
+&nbsp&nbsp├────────────────────────────────────────────────────────────────────────────────────────────────┤<br/>
+&nbsp&nbsp│&nbsp<span style="color: green">√</span
+    >&nbsp&nbsptweet.js&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp01:00&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp11&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="color: green">11</span
+        >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp│<br/>
+&nbsp&nbsp├────────────────────────────────────────────────────────────────────────────────────────────────┤<br/>
+&nbsp&nbsp│&nbsp<span style="color: green">√</span
+    >&nbsp&nbspusers_personal_menu.js&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp00:15&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp6&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="color: green">6</span
+        >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp│<br/>
+&nbsp&nbsp├────────────────────────────────────────────────────────────────────────────────────────────────┤<br/>
+&nbsp&nbsp│&nbsp<span style="color: green">√</span
+    >&nbsp&nbspuser_profile.js&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp00:15&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp5&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="color: green">5</span
+        >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp│<br/>
+&nbsp&nbsp└────────────────────────────────────────────────────────────────────────────────────────────────┘<br/>
+&nbsp&nbsp&nbsp&nbsp<span style="color: red">×&nbsp&nbsp1&nbspof&nbsp9&nbspfailed&nbsp(11%)</span
+    >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp05:34&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp69&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="color: green">65</span
+        >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="color: red">4</span
+            >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp
+            </p>
+        </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
