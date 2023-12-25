@@ -19,6 +19,27 @@
   margin-top: var(--small-margin-value);
 }
 
+/* SPECIFIC TO TWITTER-CLONE */
+img.bug1 {
+  max-width: 150px;
+  margin: var(--small-margin-value);
+}
+
+img.bug2 {
+  max-width: 70px;
+  margin: var(--small-margin-value);
+}
+
+img.bug3 {
+  max-width: 350px;
+  margin: var(--small-margin-value);
+}
+
+img.bug4 {
+  max-width: 450px;
+  margin: var(--small-margin-value);
+}
+
 /* SPECIFICATIONS */
 
 .specifications .parent-menu {

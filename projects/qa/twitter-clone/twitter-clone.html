@@ -1021,12 +1021,12 @@
                         <tr>
                             <td>6.3</td>
                             <td>The user Rony signs in</td>
-                            <td>&quot;The user Rony can see that in John&#39;s tweet:<br>The number next to the heart (like button) is zero<br>The heart is transparent</td>
+                            <td>The user Rony can see that in John&#39;s tweet:<br>The number next to the heart (like button) is zero<br>The heart is transparent</td>
                         </tr>
                         <tr>
                             <td>6.4</td>
                             <td>The user Rony clicks on the like button </td>
-                            <td>&quot;The number next to the like button increases by one<br>The number is now 1<br>The heart is red</td>
+                            <td>The number next to the like button increases by one<br>The number is now 1<br>The heart is red</td>
                         </tr>
                         <tr>
                             <td>6.5</td>
@@ -1036,7 +1036,7 @@
                         <tr>
                             <td>6.6</td>
                             <td>The user Rony exit the reply modal, go to his profile and click on the likes section</td>
-                            <td>&quot;The user Rony can see the tweet he liked<br>The user Rony can see that the number next to the like button is 1 and that the heart is red</td>
+                            <td>The user Rony can see the tweet he liked<br>The user Rony can see that the number next to the like button is 1 and that the heart is red</td>
                         </tr>
                         <tr>
                             <td>6.7</td>
@@ -2035,7 +2035,7 @@
                         <tr>
                             <td>4.6</td>
                             <td>The user clicks on &quot;Go back&quot; button</td>
-                            <td>The user is in his profile<br>The bio &quot;&quot;Blood type A+   Age 23&quot;&quot; appears on the profile</td>
+                            <td>The user is in his profile<br>The bio &quot;Blood type A+   Age 23&quot; appears on the profile</td>
                         </tr>
                         <tr>
                             <td>4.7</td>
@@ -2318,7 +2318,7 @@
                         <tr>
                             <td>11.5</td>
                             <td>The user clicks on &quot;Update profile&quot; button</td>
-                            <td>A red sentence appears: &quot;avatar&quot; must be a valid url&quot;</td>
+                            <td>A red sentence appears: &quot;avatar&quot; must be a valid url</td>
                         </tr>
                         <tr class="case-title">
                             <td>12</td>
@@ -2410,7 +2410,7 @@
                         <tr>
                             <td>14.5</td>
                             <td>The user clicks on &quot;Update profile&quot; button</td>
-                            <td>A red sentence appears &quot;backgroundImage&quot; must be a valid url&quot;</td>
+                            <td>A red sentence appears &quot;backgroundImage&quot; must be a valid url</td>
                         </tr>
                         <tr class="case-title">
                             <td>15</td>
@@ -2621,7 +2621,7 @@
         <div class="section-intro">
           <h1>🐞 Bug reports</h1>
           <p>
-            My tests found 6 bugs in the Twitter-Clone app. These bugs can be
+            My tests found 4 bugs in the Twitter-Clone app. These bugs can be
             transferred to the development team for fixing
           </p>
         </div>
@@ -2648,7 +2648,10 @@
 
               <h5>Actual result 🐞</h5>
               <p>In the personal menu, the name was not automatically changed to "Rony"</p>
-              
+              <img class="bug1"
+                src="images/bug1-image.png"
+                alt="Bug 1: The name is still John in the personal menu"
+              />
 
               <h5>Expected result</h5>
               <p>The name changed from "John" to "Rony"</p>
@@ -2656,11 +2659,11 @@
           </li>
 
           <li class="accordion-item">
-            <h4>Bug 2: The user's personal menu does not have a picture</h4>
+            <h4>Bug 2: The user's personal menu does not have an image</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div class="hidden-content">
               <h5>Summary</h5>
-              <p>When adding an avatar picture, the personal menu's picture is expected to change to the avatar picture the user just added</p>
+              <p>When adding an avatar picture, the personal menu's image is expected to change to the avatar image the user just added</p>
 
               <h5>Steps to reproduce</h5>
               <p>
@@ -2669,29 +2672,32 @@
                 The data contains:User John (username: john; email: john@gmail.com; password: Clonejohn23) AND User Johnny (username: johnny; email: johnny@gmail.com; password: Clonejohnny23)<br />
                 (3) The user opens Twitter-Clone and signs in as "John" (username: johnny; email: johnny@gmail.com; password: Clonejohnny23)<br />
                 (4) The user John enters his profile and clicks on "Edit profile" button<br />
-                (5) The user John add a link for his avatar's picture (for example: "https://picsum.photos/id/237/200/300"   (This URL gives a picture of a black dog))<br /> 
+                (5) The user John add a link for his avatar's image (for example: "https://picsum.photos/id/237/200/300"   (This URL gives an image of a black dog))<br /> 
                 (6) The user clicks on personal menu located in the navigation bar<br />
-                (7) The personal menu's picture has not changed       
+                (7) The personal menu's image has not changed       
               </p>
 
               <h5>Actual result 🐞</h5>
-              <p>There is no picture in the personal menu</p>
-              
+              <p>There is no image in the personal menu</p>
+              <img class="bug2"
+                src="images/bug2-image.png"
+                alt="Bug 2: There is no image in the personal menu"
+              />
 
               <h5>Expected result</h5>
-              <p>The personal menu's picture expected to change to the avatar picture the user just added</p>
+              <p>The personal menu's image expected to change to the avatar image the user just added</p>
 
               <h5>Notes</h5>
-              <p>An HTML code for the image related to the avatar picture update must be added to the personal menu</p>
+              <p>An HTML code for the image related to the avatar image update must be added to the personal menu</p>
             </div>
           </li>
 
           <li class="accordion-item">
-            <h4>Bug 3: The user cannot remove his avatar picture</h4>
+            <h4>Bug 3: The user cannot remove his avatar image</h4>
             <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
             <div class="hidden-content">
               <h5>Summary</h5>
-              <p>When the user adds a image for his avatar, he cannot remove the avatar's image anymore</p>
+              <p>When the user adds an image for his avatar, he cannot remove the avatar's image anymore</p>
 
               <h5>Steps to reproduce</h5>
               <p>
@@ -2702,7 +2708,7 @@
                 (4) The user John enters his profile and clicks on "Edit profile" button<br />
                 (5) The user John add a link for his avatar's image (for example: "https://picsum.photos/id/237/200/300"   (This URL gives a image of a black dog))<br /> 
                 (6) The user clicks on "Update profile" button<br /> 
-                (7) The user clicks on "Go back" button and sees that his avatar has a image of a black dog
+                (7) The user clicks on "Go back" button and sees that his avatar has an image of a black dog
                 (8) The user clicks on "Edit profile" button
                 (9) The user leaves the avatar textbox empty
                 (10) The user clicks on "Update profile" button and automaticaly gets the red sentence: User validation failed: avatar: Avatar must be a valid URL 
@@ -2711,7 +2717,15 @@
 
               <h5>Actual result 🐞</h5>
               <p>The user cannot empty the avatar textbox without getting the error red sentence (User validation failed: avatar: Avatar must be a valid URL)</p>
-              
+              <img class="bug3"
+                src="images/bug3-image1.png"
+                alt="Bug 3: The avatar textbox is empty"
+              />
+              <br />
+              <img class="bug3"
+                src="images/bug3-image2.png"
+                alt="Bug 3: The error: User validation failed: avatar: Avatar must be a valid URL"
+              />
 
               <h5>Expected result</h5>
               <p>The user removed his avatar image</p>
@@ -2734,9 +2748,9 @@
                 The data contains:User John (username: john; email: john@gmail.com; password: Clonejohn23) AND User Johnny (username: johnny; email: johnny@gmail.com; password: Clonejohnny23)<br />
                 (3) The user opens Twitter-Clone and signs in as "John" (username: johnny; email: johnny@gmail.com; password: Clonejohnny23)<br />
                 (4) The user John enters his profile and clicks on "Edit profile" button<br />
-                (5) The user John add a link for his avatar's image (for example: "https://picsum.photos/id/866/600/400"   (This URL gives the photo of moutain with snow))<br /> 
+                (5) The user John adds a link for his avatar's image (for example: "https://picsum.photos/id/866/600/400"   (This URL gives the photo of moutain with snow))<br /> 
                 (6) The user clicks on "Update profile" button<br /> 
-                (7) The user clicks on "Go back" button and sees that his background has a image of a moutain with snow
+                (7) The user clicks on "Go back" button and sees that his background has an image of a moutain with snow
                 (8) The user clicks on "Edit profile" button
                 (9) The user leaves the background image textbox empty
                 (10) The user clicks on "Update profile" button and automaticaly gets the red sentence: Profile validation failed: backgroundImage: Background image must be a valid URL 
@@ -2745,7 +2759,15 @@
 
               <h5>Actual result 🐞</h5>
               <p>The user cannot empty the background image textbox without getting the error red sentence (Profile validation failed: backgroundImage: Background image must be a valid URL )</p>
-              
+              <img class="bug4"
+                src="images/bug4-image1.png"
+                alt="Bug 4: The background-image textbox is empty"
+              />
+              <br />
+              <img class="bug4"
+                src="images/bug4-image2.png"
+                alt="Bug 4: The error: Profile validation failed: backgroundImage: Background image must be a valid URL"
+              />
 
               <h5>Expected result</h5>
               <p>The user removed his background image</p>
