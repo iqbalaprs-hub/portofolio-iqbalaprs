@@ -1,0 +1,230 @@
+openapi: 3.0.1
+info:
+  title: Twitter-clone API
+  description: API to control twitter-clone
+  version: 3.1.0
+servers:
+  - url: http://localhost:3001
+paths:
+  /api/auth/register:
+    post:
+      summary: Register as new user (Sign Up)
+      description: Endpoint to register a new user with the provided information
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: john
+                email:
+                  type: string
+                  format: email
+                  description: the email must be a valid email and must be unique to each user (two or more users cannot have the same email)
+                  example: john@gmail.com
+                username:
+                  type: string
+                  description: the username must be unique to each user (two or more users cannot have the same email). Only the special characters (period, dash and underscore) are not allowed
+                  example: john
+                password:
+                  type: string
+                  description: (1) minimum length of eight characters, (2) at least one letter, (3)at least one number
+                  minLength: 8
+                  example: Clonejohn23
+              required:
+                - name
+                - email
+                - username
+                - password
+      responses:
+        "201":
+          description: User registration (Sign Up) successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: "#/components/schemas/User"
+                  token:
+                    $ref: "#/components/schemas/Token"
+        "400":
+          description: |
+            Registration not successfull (user was not created). This can occur for one of the following reasons:
+            - Email already taken, 
+            - Username already taken, 
+            - Email already taken, 
+            - \"email\" must be a valid email,
+            - \"email\" is required, 
+            - password must be at least 8 characters, 
+            - password must contain at least 1 letter and 1 number
+  /api/auth/login:
+    post:
+      summary: User login
+      description: Endpoint to make a user member login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username or email:
+                  type: string
+                  description: The user can either write his username or email.
+                  example: john or john@gmail.com
+                password:
+                  type: string
+                  description: The user's password.
+                  example: Clonejohn23
+              required:
+                - username or email
+                - password
+      responses:
+        "200":
+          description: User authentication successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: "#/components/schemas/User"
+                  token:
+                    $ref: "#/components/schemas/Token"
+        "400":
+          description: |
+            Sign In not successfull (user was not created). This can occur for one of the following reasons:
+            - Invalid login credentials
+            - \"username\" is not allowed to be empty
+            - \"password\" is not allowed to be empty
+  /api/tweets:
+    post:
+      summary: Create a New Tweet
+      description: Endpoint to create a new tweet.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The text content of the tweet.
+                  example: "Hello\n"
+              required:
+                - text
+      security:
+        - jwtAuth: []
+      responses:
+        "201":
+          description: Tweet created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tweet:
+                    type: object
+                    properties:
+                      repliesCount:
+                        type: number
+                        example: 0
+                        description: The number of replies to this tweet. In this example, there are zero replies.
+                      edited:
+                        type: boolean
+                        example: false
+                        description: ?????????????????????????????????????????
+                      likes:
+                        type: array
+                        items:
+                          type: string
+                        example: []
+                        description: An array of users that liked this tweet. In this example, there are zero likes.
+                      retweets:
+                        type: array
+                        items:
+                          type: string
+                        example: []
+                        description: The number of times this tweet has been shared or reposted by other users. In this example, there are zero retweets.
+                      _id:
+                        type: string
+                        example: "65868b85331b1611dc953fbb"
+                        description: The unique identifier of the tweet.
+                      text:
+                        type: string
+                        example: "Hello\n"
+                        description: The text content of the tweet.
+                      author:
+                        type: string
+                        example: "65867ca2331b1611dc953ee8"
+                        description: The unique identifier of the user who authored the tweet.
+                      createdAt:
+                        type: string
+                        example: "2023-12-23T07:25:57.198Z"
+                        description: The timestamp indicating when the tweet was created.
+                      updatedAt:
+                        type: string
+                        example: "2023-12-23T07:25:57.198Z"
+                        description: The timestamp indicating when the tweet was last updated.
+                      __v:
+                        type: number
+                        example: 0
+                        description: ??????????????????????????????????????????????
+        "400":
+          description: |
+            tweet was not created. This can occur if:
+            - \"text\" length must be less than or equal to 280 characters long
+components:
+  securitySchemes:
+    jwtAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+  schemas:
+    User:
+      type: object
+      properties:
+        role:
+          type: string
+          description: The user's role, which is set to "user" for a regular user
+          example: user
+        _id:
+          type: string
+          description: The unique identifier for the user (the user's ID)
+          example: "658af666af1de21810969ad9"
+        name:
+          type: string
+          description: The user's name
+          example: John
+        email:
+          type: string
+          description: The user's email address
+          example: john@gmail.com
+        username:
+          type: string
+          description: The user's username
+          example: john
+        createdAt:
+          type: string
+          description: The timestamp indicating when the user account was created
+          example: "2023-12-26T15:51:02.592Z"
+        updatedAt:
+          type: string
+          description: The timestamp indicating when the user account was last updated
+          example: "2023-12-26T15:51:02.592Z"
+        __v:
+          type: integer
+          description: ????????????????????????????????
+          example: 0
+    Token:
+      type: object
+      properties:
+        token:
+          type: string
+          description: It represents the identtiy of the user and it is used for authentication
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThhZjY2NmFmMWRlMjE4MTA5NjlhZDkiLCJpYXQiOjE3MDM2MDU4NjIsImV4cCI6MTcwMzYwOTQ2Mn0.FUvm5RJiUR6igTq9RY0mZlgRpo_Ctp4z8-8D9M70hjQ"
