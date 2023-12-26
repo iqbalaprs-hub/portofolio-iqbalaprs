@@ -116,6 +116,10 @@ paths:
                   type: string
                   description: The text content of the tweet.
                   example: "Hello\n"
+                replyTo:
+                  type: string
+                  description: The ID of the tweet to which the user is replying to it. The 'replyTo' is only used for replying to a tweet.
+                  example: "658b0196af1de21810969b89"
               required:
                 - text
       security:
