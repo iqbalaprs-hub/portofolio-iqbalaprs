@@ -138,6 +138,37 @@ paths:
           description: |
             tweet was not created. This can occur if:
             - \"text\" length must be less than or equal to 280 characters long
+  /api/tweets/{tweetId}:
+    delete:
+      summary: Delete a tweet
+      description: Endpoint to delete a specific tweet.
+      parameters:
+        - in: path
+          name: tweetId
+          required: true
+          description: The ID of the tweet to delete.
+          schema:
+            type: string
+      security:
+        - jwtAuth: []
+      responses:
+        "200":
+          description: Tweet deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tweet:
+                    $ref: "#/components/schemas/Tweet"
+        "403":
+          description: |
+            Tweet was not deleted. This can occur if:
+            - You cannot delete someone's tweet
+        "404":
+          description: |
+            Tweet was not deleted. This can occur if:
+            - Tweet not found
   /api/tweets/like/{tweetId}:
     post:
       summary: Like a tweet
@@ -163,7 +194,7 @@ paths:
                     $ref: "#/components/schemas/Tweet"
         "400":
           description: |
-            Tweet was not liked. This can occur if::
+            Tweet was not liked. This can occur if:
             - User already likes a tweet
 components:
   securitySchemes:
