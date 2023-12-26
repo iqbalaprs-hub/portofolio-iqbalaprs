@@ -133,56 +133,38 @@ paths:
                 type: object
                 properties:
                   tweet:
-                    type: object
-                    properties:
-                      repliesCount:
-                        type: number
-                        example: 0
-                        description: The number of replies to this tweet. In this example, there are zero replies.
-                      edited:
-                        type: boolean
-                        example: false
-                        description: ?????????????????????????????????????????
-                      likes:
-                        type: array
-                        items:
-                          type: string
-                        example: []
-                        description: An array of users that liked this tweet. In this example, there are zero likes.
-                      retweets:
-                        type: array
-                        items:
-                          type: string
-                        example: []
-                        description: The number of times this tweet has been shared or reposted by other users. In this example, there are zero retweets.
-                      _id:
-                        type: string
-                        example: "65868b85331b1611dc953fbb"
-                        description: The unique identifier of the tweet.
-                      text:
-                        type: string
-                        example: "Hello\n"
-                        description: The text content of the tweet.
-                      author:
-                        type: string
-                        example: "65867ca2331b1611dc953ee8"
-                        description: The unique identifier of the user who authored the tweet.
-                      createdAt:
-                        type: string
-                        example: "2023-12-23T07:25:57.198Z"
-                        description: The timestamp indicating when the tweet was created.
-                      updatedAt:
-                        type: string
-                        example: "2023-12-23T07:25:57.198Z"
-                        description: The timestamp indicating when the tweet was last updated.
-                      __v:
-                        type: number
-                        example: 0
-                        description: ??????????????????????????????????????????????
+                    $ref: "#/components/schemas/Tweet"
         "400":
           description: |
             tweet was not created. This can occur if:
             - \"text\" length must be less than or equal to 280 characters long
+  /api/tweets/like/{tweetId}:
+    post:
+      summary: Like a tweet
+      description: Endpoint to like a specific tweet.
+      parameters:
+        - in: path
+          name: tweetId
+          required: true
+          description: The ID of the tweet to like.
+          schema:
+            type: string
+      security:
+        - jwtAuth: []
+      responses:
+        "200":
+          description: Tweet liked successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tweet:
+                    $ref: "#/components/schemas/Tweet"
+        "400":
+          description: |
+            Tweet was not liked. This can occur if::
+            - User already likes a tweet
 components:
   securitySchemes:
     jwtAuth:
@@ -232,3 +214,50 @@ components:
           type: string
           description: It represents the identtiy of the user and it is used for authentication
           example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThhZjY2NmFmMWRlMjE4MTA5NjlhZDkiLCJpYXQiOjE3MDM2MDU4NjIsImV4cCI6MTcwMzYwOTQ2Mn0.FUvm5RJiUR6igTq9RY0mZlgRpo_Ctp4z8-8D9M70hjQ"
+    Tweet:
+      type: object
+      properties:
+        repliesCount:
+          type: number
+          example: 0
+          description: The number of replies to this tweet. In this example, there are zero replies.
+        edited:
+          type: boolean
+          example: false
+          description: ?????????????????????????????????????????
+        likes:
+          type: array
+          items:
+            type: string
+          example: []
+          description: An array of users that liked this tweet. In this example, there are zero likes.
+        retweets:
+          type: array
+          items:
+            type: string
+          example: []
+          description: The number of times this tweet has been shared or reposted by other users. In this example, there are zero retweets.
+        _id:
+          type: string
+          example: "65868b85331b1611dc953fbb"
+          description: The unique identifier of the tweet.
+        text:
+          type: string
+          example: "Hello\n"
+          description: The text content of the tweet.
+        author:
+          type: string
+          example: "65867ca2331b1611dc953ee8"
+          description: The unique identifier of the user who authored the tweet.
+        createdAt:
+          type: string
+          example: "2023-12-23T07:25:57.198Z"
+          description: The timestamp indicating when the tweet was created.
+        updatedAt:
+          type: string
+          example: "2023-12-23T07:25:57.198Z"
+          description: The timestamp indicating when the tweet was last updated.
+        __v:
+          type: number
+          example: 0
+          description: ??????????????????????????????????????????????
