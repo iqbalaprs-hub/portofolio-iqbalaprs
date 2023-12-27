@@ -4,9 +4,9 @@ info:
   description: API to control twitter-clone
   version: 3.1.0
 servers:
-  - url: http://localhost:3001
+  - url: http://localhost:3001/api
 paths:
-  /api/auth/register:
+  /auth/register:
     post:
       summary: Register as new user (Sign Up)
       description: Endpoint to register a new user with the provided information
@@ -61,7 +61,7 @@ paths:
             - \"email\" is required, 
             - password must be at least 8 characters, 
             - password must contain at least 1 letter and 1 number
-  /api/auth/login:
+  /auth/login:
     post:
       summary: User login
       description: Endpoint to make a user member login
@@ -72,16 +72,16 @@ paths:
             schema:
               type: object
               properties:
-                username or email:
+                username:
                   type: string
-                  description: The user can either write his username or email.
-                  example: john or john@gmail.com
+                  description: The username or email of the user.
+                  example: john
                 password:
                   type: string
                   description: The user's password.
                   example: Clonejohn23
               required:
-                - username or email
+                - username
                 - password
       responses:
         "200":
@@ -101,10 +101,10 @@ paths:
             - Invalid login credentials
             - \"username\" is not allowed to be empty
             - \"password\" is not allowed to be empty
-  /api/tweets:
+  /tweets:
     post:
       summary: Create a New Tweet
-      description: Endpoint to create a new tweet.
+      description: Endpoint to create a new tweet or reply to a tweet.
       requestBody:
         required: true
         content:
@@ -136,9 +136,15 @@ paths:
                     $ref: "#/components/schemas/Tweet"
         "400":
           description: |
-            tweet was not created. This can occur if:
+            Tweet was not created. This can occur if the text has more than 280 characters:
             - \"text\" length must be less than or equal to 280 characters long
-  /api/tweets/{tweetId}:
+            It can occur also if the tweet's ID given is invalid:
+            - \"replyTo\" must be a valid mongo id
+        "401":
+          description: |
+            Tweet was not created. This can occur if the user's token given is invalid:
+            - You are not authenticated
+  /tweets/{tweetId}:
     delete:
       summary: Delete a tweet
       description: Endpoint to delete a specific tweet.
@@ -153,7 +159,7 @@ paths:
         - jwtAuth: []
       responses:
         "200":
-          description: Tweet deleted successfully
+          description: Tweet deleted successfully. It returns the data of the deleted tweet.
           content:
             application/json:
               schema:
@@ -161,15 +167,23 @@ paths:
                 properties:
                   tweet:
                     $ref: "#/components/schemas/Tweet"
+        "400":
+          description: |
+            This can also occur also if the tweet's ID given is invalid:
+            - \"tweetId\" must be a valid mongo id
+        "401":
+          description: |
+            Tweet was not created. This can occur if the user's token given is invalid:
+            - You are not authenticated
         "403":
           description: |
-            Tweet was not deleted. This can occur if:
+            Tweet was not deleted. This can occur if the user is trying to delete another user's tweet:
             - You cannot delete someone's tweet
         "404":
           description: |
-            Tweet was not deleted. This can occur if:
+            Tweet was not deleted. This can occur if the tweet was already deleted:
             - Tweet not found
-  /api/tweets/like/{tweetId}:
+  /tweets/like/{tweetId}:
     post:
       summary: Like a tweet
       description: Endpoint to like a specific tweet.
@@ -196,6 +210,42 @@ paths:
           description: |
             Tweet was not liked. This can occur if:
             - User already likes a tweet
+            This can also occur also if the tweet's ID given is invalid:
+            - \"tweetId\" must be a valid mongo id
+        "401":
+          description: |
+            Tweet was not created. This can occur if the user's token given is invalid:
+            - You are not authenticated
+    delete:
+      summary: Remove Like from Tweet
+      description: Removes the like from a specific tweet.
+      parameters:
+        - in: path
+          name: tweetId
+          required: true
+          description: The ID of the tweet to remove the like from.
+          schema:
+            type: string
+      security:
+        - jwtAuth: []
+      responses:
+        "200":
+          description: Tweet liked successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tweet:
+                    $ref: "#/components/schemas/Tweet"
+        "400":
+          description: |
+            Tweet was not created. This can occur also if the tweet's ID given is invalid:
+            - \"tweetId\" must be a valid mongo id
+        "401":
+          description: |
+            Tweet was not created. This can occur if the user's token given is invalid:
+            - You are not authenticated
 components:
   securitySchemes:
     jwtAuth:
@@ -239,12 +289,9 @@ components:
           description: ????????????????????????????????
           example: 0
     Token:
-      type: object
-      properties:
-        token:
-          type: string
-          description: It represents the identtiy of the user and it is used for authentication
-          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThhZjY2NmFmMWRlMjE4MTA5NjlhZDkiLCJpYXQiOjE3MDM2MDU4NjIsImV4cCI6MTcwMzYwOTQ2Mn0.FUvm5RJiUR6igTq9RY0mZlgRpo_Ctp4z8-8D9M70hjQ"
+      type: string
+      description: It represents the identity of the user and it is used for authentication
+      example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThhZjY2NmFmMWRlMjE4MTA5NjlhZDkiLCJpYXQiOjE3MDM2MDU4NjIsImV4cCI6MTcwMzYwOTQ2Mn0.FUvm5RJiUR6igTq9RY0mZlgRpo_Ctp4z8-8D9M70hjQ"
     Tweet:
       type: object
       properties:
@@ -276,6 +323,10 @@ components:
           type: string
           example: "Hello\n"
           description: The text content of the tweet.
+        replyTo:
+          type: string
+          example: 658bdc923bd5b22b342461d4
+          description: The ID of the tweet this tweet is replying to. This property is present only for replies.
         author:
           type: string
           example: "65867ca2331b1611dc953ee8"
