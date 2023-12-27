@@ -20,6 +20,10 @@
 }
 
 /* SPECIFIC TO TWITTER-CLONE */
+
+ol {
+  margin-left: 40px;
+}
 img.bug1 {
   max-width: 150px;
   margin: var(--small-margin-value);
