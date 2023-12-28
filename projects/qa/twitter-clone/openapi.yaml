@@ -246,6 +246,35 @@ paths:
           description: |
             Tweet was not created. This can occur if the user's token given is invalid:
             - You are not authenticated
+  /users/{userId}:
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ID of the user
+    get:
+      summary: Get user by ID
+      description: Get user's details using the given user's ID.
+      security:
+        - jwtAuth: []
+      responses:
+        "200":
+          description: We get the specific user
+          content:
+            application/json:
+              example:
+                user:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: |
+            We didn't get the user. This can occur if the user's token given is invalid:
+            - You are not authenticated
+        "403":
+          description: |
+            We do not get the user. This can occur if the user's ID given is invalid:
+            - You are not authorized
 components:
   securitySchemes:
     jwtAuth:
