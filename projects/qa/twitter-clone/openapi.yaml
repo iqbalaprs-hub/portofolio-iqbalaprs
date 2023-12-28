@@ -256,7 +256,7 @@ paths:
         description: The ID of the user
     get:
       summary: Get user by ID
-      description: Get user's details using the given user's ID.
+      description: Get user's details based on the given user's ID.
       security:
         - jwtAuth: []
       responses:
@@ -269,12 +269,138 @@ paths:
                   $ref: "#/components/schemas/User"
         "401":
           description: |
-            We didn't get the user. This can occur if the user's token given is invalid:
+            We do not get the user. This can occur if the user's token given is invalid:
             - You are not authenticated
         "403":
           description: |
             We do not get the user. This can occur if the user's ID given is invalid:
             - You are not authorized
+    patch:
+      summary: Update user profile information
+      description: Update specific user details (name, avatar) based on the given user's ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                avatar:
+                  type: string
+                  format: uri
+            example:
+              name: "Johnny"
+              avatar: "https://picsum.photos/70/70"
+      security:
+        - jwtAuth: []
+      responses:
+        "200":
+          description: Successful update
+          content:
+            application/json:
+              example:
+                user:
+                  $ref: "#/components/schemas/User"
+        "400":
+          description: |
+            The user do not give a valid URL for the avatar:
+            - \"avatar\" must be a valid url
+        "401":
+          description: |
+            This can occur if the user's token given is invalid:
+            - You are not authenticated
+        "403":
+          description: |
+            This can occur if the user's ID given is invalid:
+            - You are not authorized
+        "500":
+          description: |
+            The user cannot leave the avatar textbox empty after it was filled :
+            - User validation failed: avatar: Avatar must be a valid URL
+  /profiles/{profileId}:
+    parameters:
+      - name: profileId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ID of the user's profile
+    patch:
+      summary: Update user profile information
+      description: Update specific user profile details (bio, location, website, backgroundImage) based on the given user's ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bio:
+                  type: string
+                location:
+                  type: string
+                website:
+                  type: string
+                backgroundImage:
+                  type: string
+                  format: uri
+              example:
+                bio: "Blood type A+   Age 23"
+                location: "Boulevard street 10+"
+                website: "john.com"
+                backgroundImage: "https://picsum.photos/id/866/600/400"
+      security:
+        - jwtAuth: []
+      responses:
+        "200":
+          description: Successful update
+          content:
+            application/json:
+              example:
+                profile:
+                  following: []
+                  followers: []
+                  likes: []
+                  retweets: []
+                  _id: "658d191aad796c0d54d1696a"
+                  user: "658d191aad796c0d54d16968"
+                  createdAt: "2023-12-28T06:43:38.705Z"
+                  updatedAt: "2023-12-28T06:50:36.846Z"
+                  __v: 0
+                  bio: "Blood type A+   Age 23"
+                  backgroundImage: "https://picsum.photos/id/866/600/400"
+                  location: "Boulevard street 10+"
+                  website: "john.com"
+        "400":
+          description: |
+            The user do not give any info to change. The payload is empty:
+              - \"body\" must have at least 1 key.
+              
+            The user cannot change the name using this endpoint:
+              - \"name\" is not allowed 
+              
+            The user cannot change the avatar using this endpoint:
+              - \"avatar\" is not allowed 
+              
+            The user gives an invalid URL for the background image:
+              - \"backgroundImage\" must be a valid url
+        "401":
+          description: |
+            This can occur if the user's token given is invalid:
+              - You are not authenticated
+        "403":
+          description: |
+            This can occur if the user's ID given is invalid:
+              - You are not authorized
+        "500":
+          description: |
+            The user cannot leave the website textbox empty after it was filled :
+              - Profile validation failed: website: Website must be a valid URL
+              
+            The user cannot leave the background image textbox empty after it was filled :
+              - Profile validation failed: backgroundImage: Background image must be a valid URL
 components:
   securitySchemes:
     jwtAuth:
@@ -317,6 +443,10 @@ components:
           type: integer
           description: ????????????????????????????????
           example: 0
+        avatar:
+          type: string
+          description: URL of an image that is used for the avatar (If the avatar textbox is empty, it do not appear in the response)
+          example: "https://picsum.photos/70/70"
     Token:
       type: string
       description: It represents the identity of the user and it is used for authentication
