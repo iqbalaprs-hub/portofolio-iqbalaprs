@@ -56,11 +56,17 @@ paths:
             Registration not successfull (user was not created). This can occur for one of the following reasons:
             - Email already taken, 
             - Username already taken, 
-            - Email already taken, 
             - \"email\" must be a valid email,
+            - \"email\" is not allowed to be empty,
             - \"email\" is required, 
             - password must be at least 8 characters, 
             - password must contain at least 1 letter and 1 number
+            - \"password\" is not allowed to be empty
+            - "\"password\" is required
+        "500":
+          description: |
+            Registration not succesfull (user was not created). This can occur:
+            - "User validation failed: username: username must only contain numbers, letters, \".\", \"-\", \"_\""
   /auth/login:
     post:
       summary: User login
@@ -101,6 +107,8 @@ paths:
             - Invalid login credentials
             - \"username\" is not allowed to be empty
             - \"password\" is not allowed to be empty
+            - \"password\" is required
+            - \"username\" is required
   /tweets:
     post:
       summary: Create a New Tweet
