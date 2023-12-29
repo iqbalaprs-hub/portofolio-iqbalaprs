@@ -409,6 +409,72 @@ paths:
               
             The user cannot leave the background image textbox empty after it was filled :
               - Profile validation failed: backgroundImage: Background image must be a valid URL
+  /profiles/follow/{profileId}:
+    post:
+      summary: Follow a user's profile
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          description: ID of the profile to follow
+          schema:
+            type: string
+      security:
+        - jwtAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  profile:
+                    $ref: "#/components/schemas/profile"
+        "400":
+          description: |
+            This can occur if the profile's ID is wrong:
+              - \"userId\" must be a valid mongo id
+              
+            This can occur if the user is trying to follow his own profile:
+              - You cannot follow your own profile
+        "401":
+          description: |
+            This can occur if the user's token given is invalid:
+              - You are not authenticated
+
+    delete:
+      summary: Unfollow a profile
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          description: ID of the profile to unfollow
+          schema:
+            type: string
+      security:
+        - jwtAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  profile:
+                    $ref: "#/components/schemas/profile"
+        "400":
+          description: |
+            This can occur if the profile's ID is wrong:
+              - \"userId\" must be a valid mongo id
+              
+            This can occur if the user is trying to unfollow his own profile:
+              - You cannot unfollow your own profile
+        "401":
+          description: |
+            This can occur if the user's token given is invalid:
+              - You are not authenticated
 components:
   securitySchemes:
     jwtAuth:
@@ -510,3 +576,51 @@ components:
           type: number
           example: 0
           description: ??????????????????????????????????????????????
+    profile:
+      type: object
+      properties:
+        following:
+          type: array
+          items:
+            type: string
+          description: An array of all the users' profile ID that the current user is following. In this array, the current user is following one user's profile
+          example: 658e6b8f1922c72fc0c60106
+        followers:
+          type: array
+          items:
+            type: string
+          description: An array of all the users' profile ID that are following the currrent user. In this example, the array is empty, thus there are no followers.
+          example: []
+        likes:
+          type: array
+          items:
+            type: string
+          description: An array of tweets' ID liked. In this example, the array is empty, thus the user didn't like any tweet.
+          example: []
+        retweets:
+          type: array
+          items:
+            type: string
+          description: An array of tweets' ID that have been retweeted. In this example, the array is empty, thus no retweets.
+          example: []
+        _id:
+          type: string
+          description: The user's profile ID
+          example: 658e6b711922c72fc0c600fe
+        user:
+          type: string
+          description: The user's ID
+          example: 658e6b711922c72fc0c600fc
+        createdAt:
+          type: string
+          format: date-time
+          description: The timestamp indicating when the profile was created.
+          example: "2023-12-29T06:47:13.846Z"
+        updatedAt:
+          type: string
+          format: date-time
+          description: The timestamp indicating when the profile was last updated.
+          example: "2023-12-29T06:53:20.208Z"
+        __v:
+          type: integer
+          description: ??????????????????????
