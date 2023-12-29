@@ -327,6 +327,44 @@ paths:
           description: |
             The user cannot leave the avatar textbox empty after it was filled :
             - User validation failed: avatar: Avatar must be a valid URL
+  /profiles/:
+    get:
+      summary: Get a list of user profiles
+      parameters:
+        - name: page
+          in: query
+          required: false
+          description: Page number for pagination (optional, default is 1). ASK HABIB, I THINK THEY MEAN THE FIRST PAGE OF ALL PROFILES (The user can be anonymous, thus authorization is not needed )
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        "200":
+          description: User profile information is given
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/profile"
+                  page:
+                    type: integer
+                    example: 1
+                  limit:
+                    type: integer
+                    description: maximum number of profiles per page
+                    example: 10
+                  totalPages:
+                    type: integer
+                    description: total number of pages available
+                    example: 1
+                  totalResults:
+                    type: integer
+                    description: total number of user profiles
+                    example: 1
   /profiles/{profileId}:
     get:
       summary: Get user profile by using profile's ID
@@ -346,55 +384,7 @@ paths:
                 type: object
                 properties:
                   profile:
-                    type: object
-                    description: This response is almost the same as the component "profile". It differs only in the "user" part. In this case the "user" is an object with 3 info (ID, name, username)
-                    properties:
-                      following:
-                        type: array
-                        items:
-                          type: string
-                        example: []
-                      followers:
-                        type: array
-                        items:
-                          type: string
-                        example: []
-                      likes:
-                        type: array
-                        items:
-                          type: string
-                        example: []
-                      retweets:
-                        type: array
-                        items:
-                          type: string
-                        example: []
-                      _id:
-                        type: string
-                        example: "658e6b711922c72fc0c600fe"
-                      user:
-                        type: object
-                        properties:
-                          _id:
-                            type: string
-                            example: "658e6b711922c72fc0c600fc"
-                          name:
-                            type: string
-                            example: "John"
-                          username:
-                            type: string
-                            example: "john"
-                      createdAt:
-                        type: string
-                        format: date-time
-                        example: "2023-12-29T06:47:13.846Z"
-                      updatedAt:
-                        type: string
-                        format: date-time
-                        example: "2023-12-29T08:17:15.079Z"
-                      __v:
-                        type: integer
-                        example: 28
+                    $ref: "#/components/schemas/profile"
         "400":
           description: |
             This can occur if the profile's ID is wrong:
@@ -501,7 +491,7 @@ paths:
                 type: object
                 properties:
                   profile:
-                    $ref: "#/components/schemas/profile"
+                    $ref: "#/components/schemas/follow"
         "400":
           description: |
             This can occur if the profile's ID is wrong:
@@ -534,7 +524,7 @@ paths:
                 type: object
                 properties:
                   profile:
-                    $ref: "#/components/schemas/profile"
+                    $ref: "#/components/schemas/follow"
         "400":
           description: |
             This can occur if the profile's ID is wrong:
@@ -647,7 +637,7 @@ components:
           type: number
           example: 0
           description: ??????????????????????????????????????????????
-    profile:
+    follow:
       type: object
       properties:
         following:
@@ -695,3 +685,53 @@ components:
         __v:
           type: integer
           description: ??????????????????????
+    profile:
+      type: object
+      description: This response is almost the same as the component "follow". It differs only in the "user" part. In this case the "user" is an object with 3 info (ID, name, username)
+      properties:
+        following:
+          type: array
+          items:
+            type: string
+          example: []
+        followers:
+          type: array
+          items:
+            type: string
+          example: []
+        likes:
+          type: array
+          items:
+            type: string
+          example: []
+        retweets:
+          type: array
+          items:
+            type: string
+          example: []
+        _id:
+          type: string
+          example: "658e6b711922c72fc0c600fe"
+        user:
+          type: object
+          properties:
+            _id:
+              type: string
+              example: "658e6b711922c72fc0c600fc"
+            name:
+              type: string
+              example: "John"
+            username:
+              type: string
+              example: "john"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2023-12-29T06:47:13.846Z"
+        updatedAt:
+          type: string
+          format: date-time
+          example: "2023-12-29T08:17:15.079Z"
+        __v:
+          type: integer
+          example: 28
