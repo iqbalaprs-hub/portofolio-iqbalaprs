@@ -310,9 +310,11 @@ paths:
           description: We get the specific user
           content:
             application/json:
-              example:
-                user:
-                  $ref: "#/components/schemas/User"
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: "#/components/schemas/User"
         "401":
           description: |
             We do not get the user. This can occur if the user's token given is invalid:
@@ -346,9 +348,11 @@ paths:
           description: Successful update
           content:
             application/json:
-              example:
-                user:
-                  $ref: "#/components/schemas/User"
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: "#/components/schemas/User"
         "400":
           description: |
             The user do not give a valid URL for the avatar:
@@ -365,6 +369,29 @@ paths:
           description: |
             The user cannot leave the avatar textbox empty after it was filled :
             - User validation failed: avatar: Avatar must be a valid URL
+    delete:
+      summary: Delete user's account
+      description: Delete user's acccount
+      security:
+        - jwtAuth: []
+      responses:
+        "200":
+          description: The user's account is deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: "#/components/schemas/User"
+        "401":
+          description: |
+            This can occur if the user's token given is invalid:
+            - You are not authenticated
+        "403":
+          description: |
+            This can occur if the user's ID given is invalid or a user is trying to cancel another user's account:
+            - You are not authorized
   /profiles/:
     get:
       summary: Get a list of user profiles
@@ -738,7 +765,7 @@ components:
           items:
             type: string
           description: An array of all the users' profile ID that the current user is following. In this array, the current user is following one user's profile
-          example: 658e6b8f1922c72fc0c60106
+          example: ["658e6b8f1922c72fc0c60106"]
         followers:
           type: array
           items:
