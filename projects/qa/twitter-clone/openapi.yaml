@@ -328,16 +328,87 @@ paths:
             The user cannot leave the avatar textbox empty after it was filled :
             - User validation failed: avatar: Avatar must be a valid URL
   /profiles/{profileId}:
-    parameters:
-      - name: profileId
-        in: path
-        required: true
-        schema:
-          type: string
-        description: The ID of the user's profile
+    get:
+      summary: Get user profile by using profile's ID
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          description: user's profile ID used in order to retrieve profile information (The user can be anonymous, thus authorization is not needed )
+          schema:
+            type: string
+      responses:
+        "200":
+          description: User profile information is given
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  profile:
+                    type: object
+                    description: This response is almost the same as the component "profile". It differs only in the "user" part. In this case the "user" is an object with 3 info (ID, name, username)
+                    properties:
+                      following:
+                        type: array
+                        items:
+                          type: string
+                        example: []
+                      followers:
+                        type: array
+                        items:
+                          type: string
+                        example: []
+                      likes:
+                        type: array
+                        items:
+                          type: string
+                        example: []
+                      retweets:
+                        type: array
+                        items:
+                          type: string
+                        example: []
+                      _id:
+                        type: string
+                        example: "658e6b711922c72fc0c600fe"
+                      user:
+                        type: object
+                        properties:
+                          _id:
+                            type: string
+                            example: "658e6b711922c72fc0c600fc"
+                          name:
+                            type: string
+                            example: "John"
+                          username:
+                            type: string
+                            example: "john"
+                      createdAt:
+                        type: string
+                        format: date-time
+                        example: "2023-12-29T06:47:13.846Z"
+                      updatedAt:
+                        type: string
+                        format: date-time
+                        example: "2023-12-29T08:17:15.079Z"
+                      __v:
+                        type: integer
+                        example: 28
+        "400":
+          description: |
+            This can occur if the profile's ID is wrong:
+              - \"userId\" must be a valid mongo id
     patch:
       summary: Update user profile information
       description: Update specific user profile details (bio, location, website, backgroundImage) based on the given user's ID.
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the user's profile
       requestBody:
         required: true
         content:
