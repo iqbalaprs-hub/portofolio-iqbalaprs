@@ -112,14 +112,21 @@ paths:
   /tweets:
     get:
       summary: Get a list of tweets
+      description: You do not need to be authenticated to use this endpoint.
       parameters:
         - name: page
           in: query
-          required: true
-          description: The number is which page containing tweets the user selected. The number is optional (The user can be anonymous, thus authorization is not needed )
+          required: false
+          description: The page number.
           schema:
             type: integer
             minimum: 1
+        - name: replyTo
+          in: query
+          description: The ID of the tweet being replied to. We selected the replies of this specific tweet
+          required: false
+          schema:
+            type: string
       responses:
         "200":
           description: All tweets are given
@@ -138,7 +145,7 @@ paths:
                     example: 1
                   limit:
                     type: integer
-                    description: If the limit is 10, thus each page will desplay 10 tweets
+                    description: If the limit is 10, thus each page will display 10 tweets
                     example: 10
                   totalPages:
                     type: integer
@@ -191,6 +198,31 @@ paths:
             Tweet was not created. This can occur if the user's token given is invalid:
             - You are not authenticated
   /tweets/{tweetId}:
+    get:
+      summary: Get a tweet by ID
+      parameters:
+        - name: tweetId
+          in: path
+          required: true
+          description: The ID of the tweet
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Specific tweet is given
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/TweetHome"
+        "400":
+          description: |
+            This can also occur also if the tweet's ID given is invalid:
+            - \"tweetId\" must be a valid mongo id
     delete:
       summary: Delete a tweet
       description: Endpoint to delete a specific tweet.
@@ -365,10 +397,6 @@ paths:
           description: |
             This can occur if the user's ID given is invalid:
             - You are not authorized
-        "500":
-          description: |
-            The user cannot leave the avatar textbox empty after it was filled :
-            - User validation failed: avatar: Avatar must be a valid URL
     delete:
       summary: Delete user's account
       description: Delete user's acccount
@@ -395,11 +423,12 @@ paths:
   /profiles/:
     get:
       summary: Get a list of user profiles
+      description: You do not need to be authenticated to use this endpoint.
       parameters:
         - name: page
           in: query
           required: false
-          description: The number is which page containing link to profiles the user selected. The number is optional (The user can be anonymous, thus authorization is not needed )
+          description: The page number.
           schema:
             type: integer
             minimum: 1
