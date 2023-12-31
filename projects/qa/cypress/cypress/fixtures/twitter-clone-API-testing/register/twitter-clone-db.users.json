@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "659112fe3ee4d0098ce6779e"
+  },
+  "role": "user",
+  "name": "John",
+  "email": "john@gmail.com",
+  "password": "$2a$10$W3GpYVFQ2rfUuHXO7nCrMucHo5c8p2J35xTGA6A4PcJB2GdoMlXoW",
+  "username": "john",
+  "createdAt": {
+    "$date": "2023-12-31T07:06:38.819Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-31T07:06:38.819Z"
+  },
+  "__v": 0
+}]
