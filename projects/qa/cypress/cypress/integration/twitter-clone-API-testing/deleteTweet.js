@@ -12,9 +12,11 @@ describe("Feature: Delete a tweet", () => {
     /*
             Prereq.:
         
-            Import the data in "twitter clone test data/3- CREATE TWEET" in mongoDb
+            Import the data in "twitter clone test data/DELETE TWEET" in mongoDb
             The data contains the users:
-              1- Name: John (username: john; email: john@gmail.com; password: Clonejohn23)
+                1- Name: John (username: john; email: john@gmail.com; password: Clonejohn23)
+
+                2- Name: Rony (username: rony; email: rony@gmail.com; password: Clonerony23)
             */
     cy.exec(
       ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-API-testing\\deleteTweet\\twitter-clone-db.users.json"

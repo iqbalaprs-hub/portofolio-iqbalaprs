@@ -8,7 +8,7 @@ describe("Feature: Create a tweet", () => {
     /*
           Prereq.:
       
-          Import the data in "twitter clone test data/3- CREATE TWEET" in mongoDb
+          Import the data in "twitter clone test data/CREATE TWEET" in mongoDb
           The data contains the users:
             1- Name: John (username: john; email: john@gmail.com; password: Clonejohn23)
           */

@@ -8,7 +8,7 @@ describe("Feature: Login", () => {
     /*
         Prereq.:
     
-        Import the data in "twitter clone test data/2- SIN IN" in mongoDb
+        Import the data in "twitter clone test data/ LOGIN" in mongoDb
         (The data contains a user named John with username "john", email "john@gmail.com" and password "Clonejohn23")
         */
     cy.exec(

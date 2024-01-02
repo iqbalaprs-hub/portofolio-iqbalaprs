@@ -8,7 +8,7 @@ describe("Feature: Register", () => {
     /*
       Prereq.:
   
-      Import the data in "twitter clone test data/1- Register" in mongoDb 
+      Import the data in "twitter clone test data/ REGISTER" in mongoDb 
       (The data contains a user named John with username "john", email "john@gmail.com" and password "Clonejohn23")
       */
     cy.exec(
