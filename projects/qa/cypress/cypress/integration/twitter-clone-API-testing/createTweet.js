@@ -54,7 +54,7 @@ describe("Feature: Create a tweet", () => {
         // Assertion 1: status is 201
         expect(tweetResponse.status).to.equal(201);
 
-        // Assert on the tweet details in the response body
+        // Assertion 2: content of the response body is true
         expect(tweetResponse.body.tweet.repliesCount).to.equal(0);
         expect(tweetResponse.body.tweet.likes).to.deep.equal([]);
         expect(tweetResponse.body.tweet.retweets).to.deep.equal([]);
@@ -65,6 +65,16 @@ describe("Feature: Create a tweet", () => {
         expect(tweetResponse.body.tweet.updatedAt).to.include(
           formattedDateTime
         );
+
+        const tweetId = tweetResponse.body.tweet._id;
+        cy.request({
+          method: "GET",
+          url: `http://localhost:3001/api/tweets/${tweetId}`,
+          failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
+        }).then((getTweetResponse) => {
+          expect(getTweetResponse.body.tweet.text).to.equal("Hello");
+          expect(getTweetResponse.body.tweet._id).to.equal(tweetId);
+        });
       });
     });
   });
@@ -130,7 +140,7 @@ describe("Feature: Create a tweet", () => {
         },
         failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
       }).then((tweetResponse) => {
-        // Assertion 1: status is 401
+        // Assertion 1: status is 400
         expect(tweetResponse.status).to.equal(400);
         // Assertion 2: error message is ""text" length must be less than or equal to 280 characters long"
         expect(tweetResponse.body.message).to.equal(
