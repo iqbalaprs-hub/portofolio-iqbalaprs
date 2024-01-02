@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "6593b615ec5d753864c03a7f"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "6593b615ec5d753864c03a7d"
+  },
+  "createdAt": {
+    "$date": "2024-01-02T07:07:01.360Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-02T07:07:01.360Z"
+  },
+  "__v": 0
+}]
