@@ -70,7 +70,6 @@ describe("Feature: Create a tweet", () => {
         cy.request({
           method: "GET",
           url: `http://localhost:3001/api/tweets/${tweetId}`,
-          failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
         }).then((getTweetResponse) => {
           expect(getTweetResponse.body.tweet.text).to.equal("Hello");
           expect(getTweetResponse.body.tweet._id).to.equal(tweetId);
