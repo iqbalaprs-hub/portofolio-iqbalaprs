@@ -8,15 +8,15 @@ describe("Feature: Create a tweet", () => {
     /*
           Prereq.:
       
-          Import the data in "twitter clone test data/CREATE TWEET" in mongoDb
+          Import the data in "twitter clone API testing/tweets_post" in mongoDb
           The data contains the users:
             1- Name: John (username: john; email: john@gmail.com; password: Clonejohn23)
           */
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-API-testing\\createTweet\\twitter-clone-db.users.json"
+      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-API-testing\\tweets_post\\twitter-clone-db.users.json"
     );
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat profiles .\\cypress\\fixtures\\twitter-clone--API-testing\\createTweet\\twitter-clone-db.profiles.json"
+      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat profiles .\\cypress\\fixtures\\twitter-clone--API-testing\\tweets_post\\twitter-clone-db.profiles.json"
     );
   });
 
@@ -28,7 +28,7 @@ describe("Feature: Create a tweet", () => {
     const year = currentDate.getFullYear();
     const formattedDateTime = `${year}-${month}-${day}`;
 
-    // John signs in
+    // John signs in in order to get John's token
     cy.request({
       method: "POST",
       url: "http://localhost:3001/api/auth/login",
@@ -38,9 +38,9 @@ describe("Feature: Create a tweet", () => {
       },
     }).then((response) => {
       expect(response.status).to.equal(200);
-      const token = response.body.token;
+      const johnToken = response.body.token;
 
-      // Create a tweet using the token
+      // Create a tweet using John's token
       cy.request({
         method: "POST",
         url: "http://localhost:3001/api/tweets",
@@ -48,13 +48,13 @@ describe("Feature: Create a tweet", () => {
           text: "Hello",
         },
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${johnToken}`,
         },
       }).then((tweetResponse) => {
-        // Assertion 1: status is 201
+        // Assertion 1: Status is 201
         expect(tweetResponse.status).to.equal(201);
 
-        // Assertion 2: content of the response body is true
+        // Assertion 2: Content of the response body is correct
         expect(tweetResponse.body.tweet.repliesCount).to.equal(0);
         expect(tweetResponse.body.tweet.likes).to.deep.equal([]);
         expect(tweetResponse.body.tweet.retweets).to.deep.equal([]);
@@ -66,6 +66,7 @@ describe("Feature: Create a tweet", () => {
           formattedDateTime
         );
 
+        // Assertion 3: The tweet is created
         const tweetId = tweetResponse.body.tweet._id;
         cy.request({
           method: "GET",
@@ -79,7 +80,7 @@ describe("Feature: Create a tweet", () => {
   });
 
   it("2- POST /tweets cannot create a tweet with an invalid user's token ", () => {
-    const token = "12345";
+    const wrongToken = "12345";
 
     // John signs in
     cy.request({
@@ -100,13 +101,13 @@ describe("Feature: Create a tweet", () => {
           text: "Hello",
         },
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${wrongToken}`,
         },
         failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
       }).then((tweetResponse) => {
-        // Assertion 1: status is 401
+        // Assertion 1: Status is 401
         expect(tweetResponse.status).to.equal(401);
-        // Assertion 2: error message is "You are not authenticated"
+        // Assertion 2: Error message is "You are not authenticated"
         expect(tweetResponse.body.message).to.equal(
           "You are not authenticated"
         );
@@ -114,7 +115,7 @@ describe("Feature: Create a tweet", () => {
     });
   });
 
-  it("3- POST /tweets cannot create a tweet with more than 280 characters ", () => {
+  it("3- POST /tweets cannot create a tweet without the user's token ", () => {
     // John signs in
     cy.request({
       method: "POST",
@@ -125,9 +126,40 @@ describe("Feature: Create a tweet", () => {
       },
     }).then((response) => {
       expect(response.status).to.equal(200);
-      const token = response.body.token;
 
       // Create a tweet using the token
+      cy.request({
+        method: "POST",
+        url: "http://localhost:3001/api/tweets",
+        body: {
+          text: "Hello",
+        },
+        failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
+      }).then((tweetResponse) => {
+        // Assertion 1: Status is 401
+        expect(tweetResponse.status).to.equal(401);
+        // Assertion 2: Error message is "You are not authenticated"
+        expect(tweetResponse.body.message).to.equal(
+          "You are not authenticated"
+        );
+      });
+    });
+  });
+
+  it("4- POST /tweets cannot create a tweet with more than 280 characters ", () => {
+    // John signs in
+    cy.request({
+      method: "POST",
+      url: "http://localhost:3001/api/auth/login",
+      body: {
+        username: "John",
+        password: "Clonejohn23",
+      },
+    }).then((response) => {
+      expect(response.status).to.equal(200);
+      const johnToken = response.body.token;
+
+      // Create a tweet using John's token
       cy.request({
         method: "POST",
         url: "http://localhost:3001/api/tweets",
@@ -135,13 +167,13 @@ describe("Feature: Create a tweet", () => {
           text: "Hello everyone. Today is a very beautiful morning. My breakfeast consisted of eggs and bacons and pancakes with syrup and a big glass of lemonade. I looked outside the window, the nature was green and clean, the sky was blue, there was no annoying car noises anywhere. I want to stay",
         },
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${johnToken}`,
         },
         failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
       }).then((tweetResponse) => {
-        // Assertion 1: status is 400
+        // Assertion 1: Status is 400
         expect(tweetResponse.status).to.equal(400);
-        // Assertion 2: error message is ""text" length must be less than or equal to 280 characters long"
+        // Assertion 2: Error message is ""text" length must be less than or equal to 280 characters long"
         expect(tweetResponse.body.message).to.equal(
           '"text" length must be less than or equal to 280 characters long'
         );
