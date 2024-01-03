@@ -8,18 +8,18 @@ describe("Feature: Login", () => {
     /*
         Prereq.:
     
-        Import the data in "twitter clone test data/ LOGIN" in mongoDb
+        Import the data in "twitter clone API testing/ auth_login_post" in mongoDb
         (The data contains a user named John with username "john", email "john@gmail.com" and password "Clonejohn23")
         */
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-API-testing\\login\\twitter-clone-db.users.json"
+      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-API-testing\\auth_login_post\\twitter-clone-db.users.json"
     );
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat profiles .\\cypress\\fixtures\\twitter-clone--API-testing\\login\\twitter-clone-db.profiles.json"
+      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat profiles .\\cypress\\fixtures\\twitter-clone--API-testing\\auth_login_post\\twitter-clone-db.profiles.json"
     );
   });
 
-  it("1- POST /auth/login signs in by typing the username", () => {
+  it("1- POST /auth/login signs in using the username", () => {
     cy.request({
       method: "POST",
       url: "http://localhost:3001/api/auth/login",
@@ -28,17 +28,20 @@ describe("Feature: Login", () => {
         password: "Clonejohn23",
       },
     }).then((response) => {
-      // Assertion 1: status is 200
+      // Assertion 1: Status is 200
       expect(response.status).to.equal(200);
 
-      // Assertion 2: Assert that the response body contains the correct data (name, email, username)
+      // Assertion 2: The response body contains the correct data (name, email, username)
       expect(response.body.user.name).to.equal("John");
       expect(response.body.user.email).to.equal("john@gmail.com");
       expect(response.body.user.username).to.equal("john");
+
+      // Assertion 3: The response body contains a token
+      expect(response.body.token).to.not.be.empty;
     });
   });
 
-  it("2- POST /auth/login signs in by typing the email", () => {
+  it("2- POST /auth/login signs in using the email", () => {
     cy.request({
       method: "POST",
       url: "http://localhost:3001/api/auth/login",
@@ -54,6 +57,9 @@ describe("Feature: Login", () => {
       expect(response.body.user.name).to.equal("John");
       expect(response.body.user.email).to.equal("john@gmail.com");
       expect(response.body.user.username).to.equal("john");
+
+      // Assertion 3: The response body contains a token
+      expect(response.body.token).to.not.be.empty;
     });
   });
 
@@ -67,9 +73,9 @@ describe("Feature: Login", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "Invalid login credentials"
+      // Assertion 2: Error message is "Invalid login credentials"
       expect(response.body.message).to.equal("Invalid login credentials");
     });
   });
@@ -84,9 +90,9 @@ describe("Feature: Login", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "Invalid login credentials"
+      // Assertion 2: Error message is "Invalid login credentials"
       expect(response.body.message).to.equal("Invalid login credentials");
     });
   });
@@ -101,9 +107,9 @@ describe("Feature: Login", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "\"password\" is not allowed to be empty"
+      // Assertion 2: Error message is "\"password\" is not allowed to be empty"
       expect(response.body.message).to.equal(
         '"password" is not allowed to be empty'
       );
@@ -119,9 +125,9 @@ describe("Feature: Login", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "\"password\" is required"
+      // Assertion 2: Error message is "\"password\" is required"
       expect(response.body.message).to.equal('"password" is required');
     });
   });
@@ -136,9 +142,9 @@ describe("Feature: Login", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "\"username\" is not allowed to be empty"
+      // Assertion 2: Error message is "\"username\" is not allowed to be empty"
       expect(response.body.message).to.equal(
         '"username" is not allowed to be empty'
       );
@@ -152,9 +158,9 @@ describe("Feature: Login", () => {
       body: {},
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "\"username\" is required"
+      // Assertion 2: Error message is "\"username\" is required"
       expect(response.body.message).to.equal('"username" is required');
     });
   });
