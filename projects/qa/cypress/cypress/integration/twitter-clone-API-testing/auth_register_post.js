@@ -87,9 +87,9 @@ describe("Feature: Register", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "Username already taken"
+      // Assertion 2: Error message is "Username already taken"
       expect(response.body.message).to.equal("Username already taken");
     });
   });
@@ -106,9 +106,9 @@ describe("Feature: Register", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "Email already taken"
+      // Assertion 2: Error message is "Email already taken"
       expect(response.body.message).to.equal("Email already taken");
     });
   });
@@ -184,9 +184,9 @@ describe("Feature: Register", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "\"email\" must be a valid email"
+      // Assertion 2: Error message is "\"email\" must be a valid email"
       expect(response.body.message).to.equal('"email" must be a valid email');
     });
   });
@@ -203,9 +203,9 @@ describe("Feature: Register", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "\"email\" is not allowed to be empty"
+      // Assertion 2: Error message is "\"email\" is not allowed to be empty"
       expect(response.body.message).to.equal(
         '"email" is not allowed to be empty'
       );
@@ -223,9 +223,9 @@ describe("Feature: Register", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "\"email\" is required"
+      // Assertion 2: Error message is "\"email\" is required"
       expect(response.body.message).to.equal('"email" is required');
     });
   });
@@ -242,9 +242,9 @@ describe("Feature: Register", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "password must be at least 8 characters"
+      // Assertion 2: Error message is "password must be at least 8 characters"
       expect(response.body.message).to.equal(
         "password must be at least 8 characters"
       );
@@ -263,9 +263,9 @@ describe("Feature: Register", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "password must contain at least 1 letter and 1 number"
+      // Assertion 2: Error message is "password must contain at least 1 letter and 1 number"
       expect(response.body.message).to.equal(
         "password must contain at least 1 letter and 1 number"
       );
@@ -284,9 +284,9 @@ describe("Feature: Register", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "\"password\" is not allowed to be empty"
+      // Assertion 2: Error message is "\"password\" is not allowed to be empty"
       expect(response.body.message).to.equal(
         '"password" is not allowed to be empty'
       );
@@ -304,9 +304,9 @@ describe("Feature: Register", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: status is 400
+      // Assertion 1: Status is 400
       expect(response.status).to.equal(400);
-      // Assertion 2: error message is "\"password\" is required"
+      // Assertion 2: Error message is "\"password\" is required"
       expect(response.body.message).to.equal('"password" is required');
     });
   });
@@ -323,11 +323,11 @@ describe("Feature: Register", () => {
       },
       failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
     }).then((response) => {
-      // Assertion 1: error message is "User validation failed: username: username must only contain numbers, letters, \".\", \"-\", \"_\""
+      // Assertion 1: Error message is "User validation failed: username: username must only contain numbers, letters, \".\", \"-\", \"_\""
       expect(response.body.message).to.equal(
         'User validation failed: username: username must only contain numbers, letters, ".", "-", "_"'
       );
-      // Assertion 2: status is 400
+      // Assertion 2: Status is 400
       expect(response.status).to.equal(400);
     });
   });
