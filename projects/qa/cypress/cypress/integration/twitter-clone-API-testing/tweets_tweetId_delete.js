@@ -13,17 +13,17 @@ describe("Feature: Delete a tweet", () => {
     /*
             Prereq.:
         
-            Import the data in "twitter clone API testing/delete_tweets_tweetId" in mongoDb
+            Import the data in "twitter clone API testing/tweets_tweetId_delete" in mongoDb
             The data contains the users:
                 1- Name: John (username: john; email: john@gmail.com; password: Clonejohn23)
 
                 2- Name: Rony (username: rony; email: rony@gmail.com; password: Clonerony23)
             */
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-API-testing\\delete_tweets_tweetId\\twitter-clone-db.users.json"
+      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-API-testing\\tweets_tweetId_delete\\twitter-clone-db.users.json"
     );
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat profiles .\\cypress\\fixtures\\twitter-clone--API-testing\\delete_tweets_tweetId\\twitter-clone-db.profiles.json"
+      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat profiles .\\cypress\\fixtures\\twitter-clone--API-testing\\tweets_tweetId_delete\\twitter-clone-db.profiles.json"
     );
 
     // Sign in as John in order to get John's token
