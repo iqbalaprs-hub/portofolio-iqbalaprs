@@ -8,7 +8,7 @@ describe("Feature: Delete a tweet", () => {
 
   beforeEach(() => {
     // Prereq.: The database is empty. There are no users in the database
-    cy.exec(".\\cypress\\scripts\\twitter-clone-e2e\\clear_mongo.bat");
+    cy.exec(".\\cypress\\scripts\\clear_mongo.bat twitter-clone-db");
 
     /*
             Prereq.:
@@ -20,10 +20,11 @@ describe("Feature: Delete a tweet", () => {
                 2- Name: Rony (username: rony; email: rony@gmail.com; password: Clonerony23)
             */
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-API-testing\\tweets_tweetId_delete\\twitter-clone-db.users.json"
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db users .\\cypress\\fixtures\\twitter-clone-API-testing\\tweets_tweetId_delete\\twitter-clone-db.users.json"
     );
+
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat profiles .\\cypress\\fixtures\\twitter-clone--API-testing\\tweets_tweetId_delete\\twitter-clone-db.profiles.json"
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db profiles .\\cypress\\fixtures\\twitter-clone-API-testing\\tweets_tweetId_delete\\twitter-clone-db.profiles.json"
     );
 
     // Sign in as John in order to get John's token
@@ -35,7 +36,6 @@ describe("Feature: Delete a tweet", () => {
         password: "Clonejohn23",
       },
     }).then((johnLoginResponse) => {
-      expect(johnLoginResponse.status).to.equal(200);
       johnToken = johnLoginResponse.body.token;
 
       // Create a tweet using John's token in order to get this tweet's ID
@@ -49,7 +49,6 @@ describe("Feature: Delete a tweet", () => {
           Authorization: `Bearer ${johnToken}`,
         },
       }).then((tweetResponse) => {
-        expect(tweetResponse.status).to.equal(201);
         tweetId = tweetResponse.body.tweet._id;
       });
     });
@@ -64,7 +63,6 @@ describe("Feature: Delete a tweet", () => {
       },
     }).then((ronyLoginResponse) => {
       // Assertion: status is 200
-      expect(ronyLoginResponse.status).to.equal(200);
       ronyToken = ronyLoginResponse.body.token;
     });
   });

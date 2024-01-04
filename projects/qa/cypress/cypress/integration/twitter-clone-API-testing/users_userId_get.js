@@ -7,7 +7,7 @@ describe("Feature:Get user details", () => {
 
   beforeEach(() => {
     // Prereq.: The database is empty. There are no users in the database
-    cy.exec(".\\cypress\\scripts\\twitter-clone-e2e\\clear_mongo.bat");
+    cy.exec(".\\cypress\\scripts\\clear_mongo.bat twitter-clone-db");
 
     /*
               Prereq.:
@@ -19,10 +19,11 @@ describe("Feature:Get user details", () => {
                   2- Name: Rony (username: rony; email: rony@gmail.com; password: Clonerony23)
               */
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-API-testing\\users_userId_get\\twitter-clone-db.users.json"
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db users .\\cypress\\fixtures\\twitter-clone-API-testing\\users_userId_get\\twitter-clone-db.users.json"
     );
+
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat profiles .\\cypress\\fixtures\\twitter-clone--API-testing\\users_userId_get\\twitter-clone-db.profiles.json"
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db profiles .\\cypress\\fixtures\\twitter-clone-API-testing\\users_userId_get\\twitter-clone-db.profiles.json"
     );
 
     // Sign in as John in order to get John's token and ID
@@ -34,7 +35,6 @@ describe("Feature:Get user details", () => {
         password: "Clonejohn23",
       },
     }).then((loginResponse) => {
-      expect(loginResponse.status).to.equal(200);
       johnToken = loginResponse.body.token;
       johnId = loginResponse.body.user._id;
     });

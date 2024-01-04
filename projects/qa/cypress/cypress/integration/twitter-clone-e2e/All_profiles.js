@@ -3,7 +3,7 @@
 describe("Feature: All profiles", () => {
   beforeEach(() => {
     // Prereq.: The database is empty. There are no users in the database
-    cy.exec(".\\cypress\\scripts\\twitter-clone-e2e\\clear_mongo.bat");
+    cy.exec(".\\cypress\\scripts\\clear_mongo.bat twitter-clone-db");
 
     /*
         Import the data in "twitter clone test data/5- VISIT ALL PROFILES" in mongoDb
@@ -15,10 +15,11 @@ describe("Feature: All profiles", () => {
             (5) Name: Julia (username: julia; email: julia@gmail.com; password: Clonejulia23)
     */
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-e2e\\visit_all_profiles\\twitter-clone-db.users.json"
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db users .\\cypress\\fixtures\\twitter-clone-e2e\\visit_all_profiles\\twitter-clone-db.users.json"
     );
+
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat profiles .\\cypress\\fixtures\\twitter-clone-e2e\\visit_all_profiles\\twitter-clone-db.profiles.json"
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db profiles .\\cypress\\fixtures\\twitter-clone-e2e\\visit_all_profiles\\twitter-clone-db.profiles.json"
     );
 
     // Prereq.: Open Twitter-Clone as an anonymous user

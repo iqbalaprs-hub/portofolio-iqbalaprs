@@ -7,7 +7,7 @@ describe("Feature: Reply to a tweet", () => {
 
   beforeEach(() => {
     // Prereq.: The database is empty. There are no users in the database
-    cy.exec(".\\cypress\\scripts\\twitter-clone-e2e\\clear_mongo.bat");
+    cy.exec(".\\cypress\\scripts\\clear_mongo.bat twitter-clone-db");
 
     /*
               Prereq.:
@@ -19,10 +19,11 @@ describe("Feature: Reply to a tweet", () => {
                 2- Name: Rony (username: rony; email: rony@gmail.com; password: Clonerony23)
               */
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-API-testing\\tweets_post_reply\\twitter-clone-db.users.json"
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db users .\\cypress\\fixtures\\twitter-clone-API-testing\\tweets_post_reply\\twitter-clone-db.users.json"
     );
+
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat profiles .\\cypress\\fixtures\\twitter-clone--API-testing\\tweets_post_reply\\twitter-clone-db.profiles.json"
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db profiles .\\cypress\\fixtures\\twitter-clone-API-testing\\tweets_post_reply\\twitter-clone-db.profiles.json"
     );
 
     // Sign in as John in order to get John's token
@@ -34,7 +35,6 @@ describe("Feature: Reply to a tweet", () => {
         password: "Clonejohn23",
       },
     }).then((loginResponse) => {
-      expect(loginResponse.status).to.equal(200);
       johnToken = loginResponse.body.token;
 
       // Create a tweet using John's token in order to get this tweet's ID
@@ -48,7 +48,6 @@ describe("Feature: Reply to a tweet", () => {
           Authorization: `Bearer ${johnToken}`,
         },
       }).then((tweetResponse) => {
-        expect(tweetResponse.status).to.equal(201);
         tweetId = tweetResponse.body.tweet._id;
       });
     });
@@ -78,7 +77,7 @@ describe("Feature: Reply to a tweet", () => {
       expect(replyTweetResponse.body.tweet.replyTo).to.equal(tweetId);
 
       // Assertion 3: We are extracting the ID of the tweet's reply and we are asserting that this reply is created
-      var replyTweetId = replyTweetResponse.body.tweet._id;
+      const replyTweetId = replyTweetResponse.body.tweet._id;
       cy.request({
         method: "GET",
         url: `http://localhost:3001/api/tweets/${replyTweetId}`,

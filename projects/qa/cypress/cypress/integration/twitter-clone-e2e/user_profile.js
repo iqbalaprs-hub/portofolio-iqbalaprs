@@ -3,7 +3,7 @@
 describe("Feature: User's profile", () => {
   beforeEach(() => {
     // Prereq.: The database is empty. There are no users in the database
-    cy.exec(".\\cypress\\scripts\\twitter-clone-e2e\\clear_mongo.bat");
+    cy.exec(".\\cypress\\scripts\\clear_mongo.bat twitter-clone-db");
 
     /*
            Import the data in "twitter clone test data/8- USER'S PROFILE" in mongoDb
@@ -20,13 +20,15 @@ describe("Feature: User's profile", () => {
                 5- We finish work early today at noon
     */
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-e2e\\users_profile\\twitter-clone-db.users.json"
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db users .\\cypress\\fixtures\\twitter-clone-e2e\\users_profile\\twitter-clone-db.users.json"
     );
+
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat profiles .\\cypress\\fixtures\\twitter-clone-e2e\\users_profile\\twitter-clone-db.profiles.json"
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db profiles .\\cypress\\fixtures\\twitter-clone-e2e\\users_profile\\twitter-clone-db.profiles.json"
     );
+
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat tweets .\\cypress\\fixtures\\twitter-clone-e2e\\users_profile\\twitter-clone-db.tweets.json"
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db tweets .\\cypress\\fixtures\\twitter-clone-e2e\\users_profile\\twitter-clone-db.tweets.json"
     );
 
     // Prereq.: Open Twitter-Clone and sign in as John

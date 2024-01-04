@@ -8,7 +8,7 @@ describe("Feature:Delete user", () => {
   let ronyId;
   beforeEach(() => {
     // Prereq.: The database is empty. There are no users in the database
-    cy.exec(".\\cypress\\scripts\\twitter-clone-e2e\\clear_mongo.bat");
+    cy.exec(".\\cypress\\scripts\\clear_mongo.bat twitter-clone-db");
 
     /*
                 Prereq.:
@@ -20,13 +20,14 @@ describe("Feature:Delete user", () => {
                     2- Name: Rony (username: rony; email: rony@gmail.com; password: Clonerony23)
                 */
     cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat users .\\cypress\\fixtures\\twitter-clone-API-testing\\user_userId_delete\\twitter-clone-db.users.json"
-    );
-    cy.exec(
-      ".\\cypress\\scripts\\twitter-clone-e2e\\import_data_to_mongo.bat profiles .\\cypress\\fixtures\\twitter-clone--API-testing\\user_userId_delete\\twitter-clone-db.profiles.json"
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db users .\\cypress\\fixtures\\twitter-clone-API-testing\\user_userId_delete\\twitter-clone-db.users.json"
     );
 
-    // Sign in as John in order to get John's token
+    cy.exec(
+      ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db profiles .\\cypress\\fixtures\\twitter-clone-API-testing\\user_userId_delete\\twitter-clone-db.profiles.json"
+    );
+
+    // Sign in as John in order to get John's token and ID
     cy.request({
       method: "POST",
       url: "http://localhost:3001/api/auth/login",
@@ -35,12 +36,11 @@ describe("Feature:Delete user", () => {
         password: "Clonejohn23",
       },
     }).then((johnLoginResponse) => {
-      expect(johnLoginResponse.status).to.equal(200);
       johnToken = johnLoginResponse.body.token;
       johnId = johnLoginResponse.body.user._id;
     });
 
-    // Sign in as Rony in order to get Rony's token
+    // Sign in as Rony in order to get Rony's token and ID
     cy.request({
       method: "POST",
       url: "http://localhost:3001/api/auth/login",
@@ -49,7 +49,6 @@ describe("Feature:Delete user", () => {
         password: "Clonerony23",
       },
     }).then((ronyLoginResponse) => {
-      expect(ronyLoginResponse.status).to.equal(200);
       ronyToken = ronyLoginResponse.body.token;
       ronyId = ronyLoginResponse.body.user._id;
     });

@@ -1,1 +1,0 @@
-mongosh twitter-clone-db --eval "db.getCollectionNames().forEach(function(c) { db[c].deleteMany({}); })"
