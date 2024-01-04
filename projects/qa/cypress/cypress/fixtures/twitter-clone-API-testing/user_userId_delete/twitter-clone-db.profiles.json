@@ -1,0 +1,38 @@
+[{
+  "_id": {
+    "$oid": "65965087e7f7b1363c200df5"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65965087e7f7b1363c200df3"
+  },
+  "createdAt": {
+    "$date": "2024-01-04T06:30:31.959Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-04T06:30:31.959Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6596509be7f7b1363c200dff"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "6596509be7f7b1363c200dfd"
+  },
+  "createdAt": {
+    "$date": "2024-01-04T06:30:51.747Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-04T06:30:51.747Z"
+  },
+  "__v": 0
+}]
