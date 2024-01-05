@@ -459,14 +459,14 @@ paths:
                     type: integer
                     description: total number of user profiles
                     example: 1
-  /profiles/{profileId}:
+  /profiles/{userId}:
     get:
       summary: Get user profile by using profile's ID
       parameters:
-        - name: profileId
+        - name: userId
           in: path
           required: true
-          description: user's profile ID used in order to retrieve profile information (The user can be anonymous, thus authorization is not needed )
+          description: user's ID used in order to retrieve profile information (The user can be anonymous, thus authorization is not needed )
           schema:
             type: string
       responses:
@@ -487,12 +487,12 @@ paths:
       summary: Update user profile information
       description: Update specific user profile details (bio, location, website, backgroundImage) based on the given user's ID.
       parameters:
-        - name: profileId
+        - name: userId
           in: path
           required: true
           schema:
             type: string
-          description: The ID of the user's profile
+          description: The ID of the user
       requestBody:
         required: true
         content:
@@ -557,13 +557,6 @@ paths:
           description: |
             This can occur if the user's ID given is invalid:
               - You are not authorized
-        "500":
-          description: |
-            The user cannot leave the website textbox empty after it was filled :
-              - Profile validation failed: website: Website must be a valid URL
-              
-            The user cannot leave the background image textbox empty after it was filled :
-              - Profile validation failed: backgroundImage: Background image must be a valid URL
   /profiles/follow/{profileId}:
     post:
       summary: Follow a user's profile
