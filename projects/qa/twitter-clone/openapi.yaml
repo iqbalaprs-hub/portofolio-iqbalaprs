@@ -112,7 +112,7 @@ paths:
   /tweets:
     get:
       summary: Get a list of tweets
-      description: You do not need to be authenticated to use this endpoint.
+      description: It returns a maximum of 10 tweets. If there are more than 10 tweets, they will be divided by pages. You do not need to be authenticated to use this endpoint.
       parameters:
         - name: page
           in: query
@@ -121,9 +121,10 @@ paths:
           schema:
             type: integer
             minimum: 1
+            default: 1
         - name: replyTo
           in: query
-          description: The ID of the tweet being replied to. We selected the replies of this specific tweet
+          description: It is crucial that the query parameter must have the ID of the tweet being replied to (for example /tweets?replyTo=65984eb581a8ab0ca4337727). In case there are too many replies and they are divided in more than one page, you can specify the page you want, for example "&page=1" (it is not obligatory, each page returns a maximum of 10 replies, it has a minimun value of 1 and it has no default number). Thus the endpoint can be written in this way "/tweets?replyTo=65984eb581a8ab0ca4337727&page=1".
           required: false
           schema:
             type: string
@@ -138,14 +139,14 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: "#/components/schemas/TweetHome"
+                      $ref: "#/components/schemas/TweetGet"
                   page:
                     type: integer
-                    description: Which page of tweets the user chosen
+                    description: The current page
                     example: 1
                   limit:
                     type: integer
-                    description: If the limit is 10, thus each page will display 10 tweets
+                    description: The maximum number of tweets in the response body
                     example: 10
                   totalPages:
                     type: integer
@@ -155,6 +156,16 @@ paths:
                     type: integer
                     description: total number of tweets
                     example: 1
+        "400":
+          description: |
+            This can occur if the query parameter "replyto" does not have an ID:
+            - \"replyTo\" is not allowed to be empty 
+
+            This can occur if the query parameter "replyto" does not have a valid ID:
+            - \"replyTo\" must be a valid mongo id
+
+            This can occur if the page in the query parameter "replyTo" has no number
+            - \"page\" must be a number
     post:
       summary: Create a New Tweet
       description: Endpoint to create a new tweet or reply to a tweet.
@@ -218,7 +229,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: "#/components/schemas/TweetHome"
+                      $ref: "#/components/schemas/TweetGet"
         "400":
           description: |
             This can also occur also if the tweet's ID given is invalid:
@@ -729,7 +740,7 @@ components:
           type: number
           example: 0
           description: ??????????????????????????????????????????????
-    TweetHome:
+    TweetGet:
       type: object
       properties:
         repliesCount:
