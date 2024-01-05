@@ -149,4 +149,33 @@ describe("Feature:Edit user profile by changing name and avatar", () => {
       );
     });
   });
+
+  it("6- POST /profiles/follow/{userId} cannot make a user follow another user twice in a row", () => {
+    // John follows Rony the first time
+    cy.request({
+      method: "POST",
+      url: `http://localhost:3001/api/profiles/follow/${ronyId}`,
+      headers: {
+        Authorization: `Bearer ${johnToken}`,
+      },
+    });
+
+    // John follows Rony the second time (activate the "follow" function the second time in a row)
+    cy.request({
+      method: "POST",
+      url: `http://localhost:3001/api/profiles/follow/${ronyId}`,
+      headers: {
+        Authorization: `Bearer ${johnToken}`,
+      },
+      failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
+    }).then((followUserResponse) => {
+      // Assertion 1: Status is 400
+      expect(followUserResponse.status).to.equal(400);
+
+      // Assertion 2: Error message is "You already follow that profile"
+      expect(followUserResponse.body.message).to.equal(
+        "You already follow that profile"
+      );
+    });
+  });
 });

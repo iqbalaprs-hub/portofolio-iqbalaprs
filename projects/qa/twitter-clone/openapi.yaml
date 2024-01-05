@@ -586,11 +586,13 @@ paths:
               
             This can occur if the user is trying to follow his own profile:
               - You cannot follow your own profile
+
+            This can occur if the user is following another user twice in a row:
+              - You already follow that profile
         "401":
           description: |
             This can occur if the user's token given is invalid:
               - You are not authenticated
-
     delete:
       summary: Unfollow a profile
       parameters:
@@ -619,6 +621,9 @@ paths:
               
             This can occur if the user is trying to unfollow his own profile:
               - You cannot unfollow your own profile
+              
+            This can occur if the user is unfollowing another user twice in a row:
+              - You do not follow that profile
         "401":
           description: |
             This can occur if the user's token given is invalid:
