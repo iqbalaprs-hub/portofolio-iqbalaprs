@@ -298,4 +298,20 @@ describe("Feature: Get tweets and replies", () => {
       );
     });
   });
+
+  it("11- GET /tweets?replyTo=65984eb581a8ab0ca4337727&page  gives no replies", () => {
+    cy.request({
+      method: "GET",
+      url: `http://localhost:3001/api/tweets?replyTo=65984eb581a8ab0ca4337727&page`,
+      failOnStatusCode: false, // Allows the test to continue even if the status code is not 2xx
+    }).then((getReplysresponse) => {
+      // Assertion 1: Status is 400
+      expect(getReplysresponse.status).to.equal(400);
+
+      // Assertion 2: Error message is "\"page\" must be a number"
+      expect(getReplysresponse.body.message).to.equal(
+        '"page" must be a number'
+      );
+    });
+  });
 });
