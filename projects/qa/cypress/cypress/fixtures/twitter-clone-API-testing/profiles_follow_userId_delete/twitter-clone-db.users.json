@@ -1,0 +1,34 @@
+[{
+  "_id": {
+    "$oid": "6597a5a121cc45189875275c"
+  },
+  "role": "user",
+  "name": "John",
+  "email": "john@gmail.com",
+  "password": "$2a$10$nhLqbFhmfGukaIpJptPmXu74DdoZBprjCq/H5b4Ll01nYHdd8pWnO",
+  "username": "john",
+  "createdAt": {
+    "$date": "2024-01-05T06:45:53.558Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T06:45:53.558Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6597a5bb21cc451898752766"
+  },
+  "role": "user",
+  "name": "Rony",
+  "email": "rony@gmail.com",
+  "password": "$2a$10$TugFsptYaqgVmgWqsBDPAOlI5vS.w6d/LtYOHyj.EFTy.xxLlwFUG",
+  "username": "rony",
+  "createdAt": {
+    "$date": "2024-01-05T06:46:19.602Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T06:46:19.602Z"
+  },
+  "__v": 0
+}]
