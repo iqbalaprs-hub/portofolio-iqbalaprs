@@ -557,14 +557,14 @@ paths:
           description: |
             This can occur if the user's ID given is invalid:
               - You are not authorized
-  /profiles/follow/{profileId}:
+  /profiles/follow/{userId}:
     post:
       summary: Follow a user's profile
       parameters:
-        - name: profileId
+        - name: userId
           in: path
           required: true
-          description: ID of the profile to follow
+          description: ID of the user to follow
           schema:
             type: string
       security:
@@ -581,7 +581,7 @@ paths:
                     $ref: "#/components/schemas/follow"
         "400":
           description: |
-            This can occur if the profile's ID is wrong:
+            This can occur if the user's ID is wrong:
               - \"userId\" must be a valid mongo id
               
             This can occur if the user is trying to follow his own profile:
@@ -594,10 +594,10 @@ paths:
     delete:
       summary: Unfollow a profile
       parameters:
-        - name: profileId
+        - name: userId
           in: path
           required: true
-          description: ID of the profile to unfollow
+          description: ID of the user to unfollow
           schema:
             type: string
       security:
@@ -614,7 +614,7 @@ paths:
                     $ref: "#/components/schemas/follow"
         "400":
           description: |
-            This can occur if the profile's ID is wrong:
+            This can occur if the user's ID is wrong:
               - \"userId\" must be a valid mongo id
               
             This can occur if the user is trying to unfollow his own profile:
