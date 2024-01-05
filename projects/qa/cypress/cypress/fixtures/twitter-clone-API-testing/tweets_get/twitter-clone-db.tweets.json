@@ -1,0 +1,645 @@
+[{
+  "_id": {
+    "$oid": "65984e8d81a8ab0ca43376e5"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet4",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:46:37.002Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:46:37.002Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984e9481a8ab0ca43376f1"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet6",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:46:44.696Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:46:44.696Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984e9081a8ab0ca43376eb"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet5",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:46:40.908Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:46:40.908Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984e9881a8ab0ca43376f7"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet7",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:46:48.975Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:46:48.975Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ea181a8ab0ca4337703"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet9",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:46:57.239Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:46:57.239Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ea581a8ab0ca4337709"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet10",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:01.447Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:01.447Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984eaf81a8ab0ca433771b"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet13",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:11.021Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:11.021Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ea881a8ab0ca433770f"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet11",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:04.773Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:04.773Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984eac81a8ab0ca4337715"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet12",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:08.509Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:08.509Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984e8981a8ab0ca43376df"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet3",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:46:33.303Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:46:33.303Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984eb181a8ab0ca4337721"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet14",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:13.976Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:13.976Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "repliesCount": 15,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet15",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:17.917Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:48:11.637Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984e8581a8ab0ca43376d9"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet2",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:46:29.746Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:46:29.746Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ec881a8ab0ca4337749"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply2",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:36.788Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:36.788Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ecb81a8ab0ca433775c"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply3",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:39.785Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:39.785Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ece81a8ab0ca433776f"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply4",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:42.319Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:42.319Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ed981a8ab0ca43377bb"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply8",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:53.179Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:53.179Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ec581a8ab0ca4337736"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply1",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:33.791Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:33.791Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ed381a8ab0ca4337795"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply6",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:47.333Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:47.333Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ede81a8ab0ca43377e1"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply10",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:58.174Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:58.174Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ee081a8ab0ca43377f4"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply11",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:48:00.438Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:48:00.438Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984edb81a8ab0ca43377ce"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply9",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:55.883Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:55.883Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ee481a8ab0ca433781a"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply13",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:48:04.810Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:48:04.810Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984e8181a8ab0ca43376d3"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet1",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:46:25.916Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:46:25.916Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ed081a8ab0ca4337782"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply5",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:44.799Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:44.799Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ee681a8ab0ca433782d"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply14",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:48:06.754Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:48:06.754Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984e9d81a8ab0ca43376fd"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Tweet8",
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:46:53.091Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:46:53.091Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ed681a8ab0ca43377a8"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply7",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:47:50.378Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:47:50.378Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984ee281a8ab0ca4337807"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply12",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:48:02.637Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:48:02.637Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65984eeb81a8ab0ca4337840"
+  },
+  "repliesCount": 0,
+  "edited": false,
+  "likes": [],
+  "retweets": [],
+  "text": "Reply15",
+  "replyTo": {
+    "$oid": "65984eb581a8ab0ca4337727"
+  },
+  "author": {
+    "$oid": "65984e7a81a8ab0ca43376ca"
+  },
+  "createdAt": {
+    "$date": "2024-01-05T18:48:11.630Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-05T18:48:11.630Z"
+  },
+  "__v": 0
+}]
