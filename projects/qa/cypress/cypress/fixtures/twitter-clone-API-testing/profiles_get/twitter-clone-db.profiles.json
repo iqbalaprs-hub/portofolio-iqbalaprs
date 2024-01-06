@@ -1,0 +1,285 @@
+[{
+  "_id": {
+    "$oid": "65994e3767042a0e8c289f26"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994e3767042a0e8c289f24"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T12:57:27.508Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T12:57:27.508Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994e5567042a0e8c289f30"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994e5467042a0e8c289f2e"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T12:57:57.070Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T12:57:57.070Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994e7167042a0e8c289f3a"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994e7167042a0e8c289f38"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T12:58:25.212Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T12:58:25.212Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994e9467042a0e8c289f47"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994e9467042a0e8c289f45"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T12:59:00.698Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T12:59:00.698Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994eb967042a0e8c289f51"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994eb967042a0e8c289f4f"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T12:59:37.529Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T12:59:37.529Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994ed767042a0e8c289f5e"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994ed767042a0e8c289f5c"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T13:00:07.240Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T13:00:07.240Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994ef367042a0e8c289f68"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994ef367042a0e8c289f66"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T13:00:35.909Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T13:00:35.909Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994f1267042a0e8c289f75"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994f1267042a0e8c289f73"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T13:01:06.731Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T13:01:06.731Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994f3867042a0e8c289f82"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994f3867042a0e8c289f80"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T13:01:44.847Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T13:01:44.847Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994f6467042a0e8c289f8f"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994f6467042a0e8c289f8d"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T13:02:28.377Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T13:02:28.377Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994f8867042a0e8c289f9c"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994f8867042a0e8c289f9a"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T13:03:04.811Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T13:03:04.811Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994fb167042a0e8c289fa6"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994fb067042a0e8c289fa4"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T13:03:45.065Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T13:03:45.065Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994fcb67042a0e8c289fb0"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994fcb67042a0e8c289fae"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T13:04:11.579Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T13:04:11.579Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65994fe767042a0e8c289fba"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "65994fe767042a0e8c289fb8"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T13:04:39.984Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T13:04:39.984Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6599500567042a0e8c289fc4"
+  },
+  "following": [],
+  "followers": [],
+  "likes": [],
+  "retweets": [],
+  "user": {
+    "$oid": "6599500567042a0e8c289fc2"
+  },
+  "createdAt": {
+    "$date": "2024-01-06T13:05:09.959Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-06T13:05:09.959Z"
+  },
+  "__v": 0
+}]
