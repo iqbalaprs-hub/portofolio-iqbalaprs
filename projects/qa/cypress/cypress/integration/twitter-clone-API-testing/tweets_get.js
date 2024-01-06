@@ -29,7 +29,7 @@ describe("Feature: GET /tweets", () => {
     );
   });
 
-  it("1- GET /tweets gives the newest 10 tweets of the the total of 15 tweets", () => {
+  it("1- GET /tweets returns the newest 10 tweets of the the total of 15 tweets", () => {
     cy.request({
       method: "GET",
       url: `http://localhost:3001/api/tweets`,
@@ -37,7 +37,7 @@ describe("Feature: GET /tweets", () => {
       // Assertion 1: Status is 200
       expect(getTweetsresponse.status).to.equal(200);
 
-      // Assertion 2: There is a total of 15 tweets. Even though the tweet with the text "Tweet15" has 15 replies, the endpoint gives 15 tweets
+      // Assertion 2: There is a total of 15 tweets. Even though the tweet with the text "Tweet15" has 15 replies, the endpoint returns 15 tweets
       expect(getTweetsresponse.body.totalResults).to.equal(15);
 
       // Assertion 3: GET /tweets should behave by default as /tweets?page=1, thus it should be the first page
@@ -48,7 +48,7 @@ describe("Feature: GET /tweets", () => {
       expect(getTweetsresponse.body.results).to.have.lengthOf(10);
       expect(getTweetsresponse.body.totalPages).to.equal(2);
 
-      // Assertion 5: The first page should display from the newest tweet, which is at the top of the page (this was tested adn proved in the Twitter-Clone End-to-end test). Thus there must be tweets from "Tweet15", "Tweet14"... "Tweet6"
+      // Assertion 5: The first page should display from the newest tweet, which is at the top of the page (this was tested and proved in the Twitter-Clone End-to-end test). Thus there must be tweets from "Tweet15", "Tweet14"... "Tweet6"
       expect(getTweetsresponse.body.results[0].text).to.equal("Tweet15");
       expect(getTweetsresponse.body.results[1].text).to.equal("Tweet14");
       expect(getTweetsresponse.body.results[2].text).to.equal("Tweet13");
@@ -62,7 +62,7 @@ describe("Feature: GET /tweets", () => {
     });
   });
 
-  it("2- GET /tweets?page=1 gives the newest 10 tweets of the the total of 15 tweets", () => {
+  it("2- GET /tweets?page=1 returns the newest 10 tweets of the the total of 15 tweets", () => {
     cy.request({
       method: "GET",
       url: `http://localhost:3001/api/tweets?page=1`,
@@ -71,10 +71,10 @@ describe("Feature: GET /tweets", () => {
       // Assertion 1: Status is 200
       expect(getTweetsresponse.status).to.equal(200);
 
-      // Assertion 2: There is a total of 15 tweets. Even though the tweet with the text "Tweet15" has 15 replies, the endpoint gives 15 tweets
+      // Assertion 2: There is a total of 15 tweets. Even though the tweet with the text "Tweet15" has 15 replies, the endpoint returns 15 tweets
       expect(getTweetsresponse.body.totalResults).to.equal(15);
 
-      // Assertion 3: GET /tweets?page=1 gives the first page
+      // Assertion 3: GET /tweets?page=1 returns the first page
       expect(getTweetsresponse.body.page).to.equal(1);
 
       // Assertion 4: The endpoint returns a maximum of 10 tweets (limit is 10). Since there are 15 tweets, they will be divided into 2 pages ( First page has 10 tweets and second page has 5 tweets(We will assert it in the testcase later)).
@@ -96,7 +96,7 @@ describe("Feature: GET /tweets", () => {
     });
   });
 
-  it("3- /tweets?page=2 gives the last 5 remaining tweets of the the total of 15 tweets", () => {
+  it("3- /tweets?page=2 returns the last 5 remaining tweets of the the total of 15 tweets", () => {
     cy.request({
       method: "GET",
       url: `http://localhost:3001/api/tweets?page=2`,
@@ -104,13 +104,13 @@ describe("Feature: GET /tweets", () => {
       // Assertion 1: Status is 200
       expect(getTweetsresponse.status).to.equal(200);
 
-      // Assertion 2: There is a total of 15 tweets. Even though the tweet with the text "Tweet15" has 15 replies, the endpoint gives 15 tweets
+      // Assertion 2: There is a total of 15 tweets. Even though the tweet with the text "Tweet15" has 15 replies, the endpoint returns 15 tweets
       expect(getTweetsresponse.body.totalResults).to.equal(15);
 
-      // Assertion 3: GET /tweets?page=2 gives the second page
+      // Assertion 3: GET /tweets?page=2 returns the second page
       expect(getTweetsresponse.body.page).to.equal(2);
 
-      // Assertion 4: The endpoint returns a maximum of 10 tweets (limit is 10). Since there are 15 tweets, they will be divided into 2 pages ( First page has 10 tweets (as shown in the testcase before) and second page has 5 tweets). Thus this endpoint gives 5 tweets
+      // Assertion 4: The endpoint returns a maximum of 10 tweets (limit is 10). Since there are 15 tweets, they will be divided into 2 pages ( First page has 10 tweets (as shown in the testcase before) and second page has 5 tweets). Thus this endpoint returns 5 tweets
       expect(getTweetsresponse.body.limit).to.equal(10);
       expect(getTweetsresponse.body.results).to.have.lengthOf(5);
       expect(getTweetsresponse.body.totalPages).to.equal(2);
@@ -124,7 +124,7 @@ describe("Feature: GET /tweets", () => {
     });
   });
 
-  it("4- /tweets?page=3 gives no tweets", () => {
+  it("4- /tweets?page=3 returns no tweets", () => {
     cy.request({
       method: "GET",
       url: `http://localhost:3001/api/tweets?page=3`,
@@ -132,20 +132,20 @@ describe("Feature: GET /tweets", () => {
       // Assertion 1: Status is 200
       expect(getTweetsresponse.status).to.equal(200);
 
-      // Assertion 2: There is a total of 15 tweets. Even though the tweet with the text "Tweet15" has 15 replies, the endpoint gives 15 tweets
+      // Assertion 2: There is a total of 15 tweets. Even though the tweet with the text "Tweet15" has 15 replies, the endpoint returns 15 tweets
       expect(getTweetsresponse.body.totalResults).to.equal(15);
 
-      // Assertion 3: GET /tweets?page=3 gives the third page
+      // Assertion 3: GET /tweets?page=3 returns the third page
       expect(getTweetsresponse.body.page).to.equal(3);
 
-      // Assertion 4: The endpoint returns a maximum of 10 tweets (limit is 10). Since there are 15 tweets, they will be divided into 2 pages ( First page has 10 tweets (as shown in the testcase before) and second page has 5 tweets (as shown in the testcase before)). Thus this endpoint gives no tweet
+      // Assertion 4: The endpoint returns a maximum of 10 tweets (limit is 10). Since there are 15 tweets, they will be divided into 2 pages ( First page has 10 tweets (as shown in the testcase before) and second page has 5 tweets (as shown in the testcase before)). Thus this endpoint returns no tweet
       expect(getTweetsresponse.body.limit).to.equal(10);
       expect(getTweetsresponse.body.results).to.be.empty;
       expect(getTweetsresponse.body.totalPages).to.equal(2);
     });
   });
 
-  it("5- GET /tweets?replyTo=65984eb581a8ab0ca4337727 gives the newest 10 replies from a total of 15 replies", () => {
+  it("5- GET /tweets?replyTo=65984eb581a8ab0ca4337727 returns the newest 10 replies from a total of 15 replies", () => {
     // In the query parameter "replyTo", you must write the tweet's ID. "65984eb581a8ab0ca4337727" is the ID of the newest tweet which has a text "Tweet15". This tweet has 15 replies
     cy.request({
       method: "GET",
@@ -179,7 +179,7 @@ describe("Feature: GET /tweets", () => {
     });
   });
 
-  it("6- GET /tweets?replyTo=65984eb581a8ab0ca4337727&page=1 gives the newest 10 replies from a total of 15 replies", () => {
+  it("6- GET /tweets?replyTo=65984eb581a8ab0ca4337727&page=1 returns the newest 10 replies from a total of 15 replies", () => {
     // In the query parameter "replyTo", you must write the tweet's ID. "65984eb581a8ab0ca4337727" is the ID of the newest tweet which has a text "Tweet15". This tweet has 15 replies
     cy.request({
       method: "GET",
@@ -191,10 +191,10 @@ describe("Feature: GET /tweets", () => {
       // Assertion 2: There is a total of 15 replies to the tweet with text "Tweet15".
       expect(getReplysresponse.body.totalResults).to.equal(15);
 
-      // Assertion 3: GET /tweets?replyTo=65984eb581a8ab0ca4337727&page=1 gives the first page
+      // Assertion 3: GET /tweets?replyTo=65984eb581a8ab0ca4337727&page=1 returns the first page
       expect(getReplysresponse.body.page).to.equal(1);
 
-      // Assertion 4: The endpoint returns a maximum of 10 tweets (limit is 10). Since there are 15 replies, they will be divided into 2 pages ( First page has 10 replies and second page has 5 replies (We will assert it in the testcase later)). Thus this endpoint gives 10 replies
+      // Assertion 4: The endpoint returns a maximum of 10 tweets (limit is 10). Since there are 15 replies, they will be divided into 2 pages ( First page has 10 replies and second page has 5 replies (We will assert it in the testcase later)). Thus this endpoint returns 10 replies
       expect(getReplysresponse.body.limit).to.equal(10);
       expect(getReplysresponse.body.results).to.have.lengthOf(10);
       expect(getReplysresponse.body.totalPages).to.equal(2);
@@ -213,7 +213,7 @@ describe("Feature: GET /tweets", () => {
     });
   });
 
-  it("7- GET /tweets?replyTo=65984eb581a8ab0ca4337727&page=2 gives the last 5 remaining replies of the the total of 15 replies", () => {
+  it("7- GET /tweets?replyTo=65984eb581a8ab0ca4337727&page=2 returns the last 5 remaining replies of the the total of 15 replies", () => {
     // In the query parameter "replyTo", you must write the tweet's ID. "65984eb581a8ab0ca4337727" is the ID of the newest tweet which has a text "Tweet15". This tweet has 15 replies
     cy.request({
       method: "GET",
@@ -225,10 +225,10 @@ describe("Feature: GET /tweets", () => {
       // Assertion 2: There is a total of 15 replies to the tweet with text "Tweet15".
       expect(getReplysresponse.body.totalResults).to.equal(15);
 
-      // Assertion 3: GET /tweets?replyTo=65984eb581a8ab0ca4337727&page=2 gives the second page
+      // Assertion 3: GET /tweets?replyTo=65984eb581a8ab0ca4337727&page=2 returns the second page
       expect(getReplysresponse.body.page).to.equal(2);
 
-      // Assertion 4: The endpoint returns a maximum of 10 tweets (limit is 10). Since there are 15 replies, they will be divided into 2 pages ( First page has 10 replies and second page has 5 replies (We will assert it in the testcase later)). Thus this endpoint gives 5 replies
+      // Assertion 4: The endpoint returns a maximum of 10 tweets (limit is 10). Since there are 15 replies, they will be divided into 2 pages ( First page has 10 replies and second page has 5 replies (We will assert it in the testcase later)). Thus this endpoint returns 5 replies
       expect(getReplysresponse.body.limit).to.equal(10);
       expect(getReplysresponse.body.results).to.have.lengthOf(5);
       expect(getReplysresponse.body.totalPages).to.equal(2);
@@ -242,7 +242,7 @@ describe("Feature: GET /tweets", () => {
     });
   });
 
-  it("8- GET /tweets?replyTo=65984eb581a8ab0ca4337727&page=3 gives no replies", () => {
+  it("8- GET /tweets?replyTo=65984eb581a8ab0ca4337727&page=3 returns no replies", () => {
     // In the query parameter "replyTo", you must write the tweet's ID. "65984eb581a8ab0ca4337727" is the ID of the newest tweet which has a text "Tweet15". This tweet has 15 replies
     cy.request({
       method: "GET",
@@ -254,17 +254,17 @@ describe("Feature: GET /tweets", () => {
       // Assertion 2: There is a total of 15 replies to the tweet with text "Tweet15".
       expect(getReplysresponse.body.totalResults).to.equal(15);
 
-      // Assertion 3: GET /tweets?replyTo=65984eb581a8ab0ca4337727&page=3 gives the third page
+      // Assertion 3: GET /tweets?replyTo=65984eb581a8ab0ca4337727&page=3 returns the third page
       expect(getReplysresponse.body.page).to.equal(3);
 
-      // Assertion 4: The endpoint returns a maximum of 10 tweets (limit is 10). Since there are 15 replies, they will be divided into 2 pages ( First page has 10 replies and second page has 5 replies). Thus this endpoint gives no replies (It is empty)
+      // Assertion 4: The endpoint returns a maximum of 10 tweets (limit is 10). Since there are 15 replies, they will be divided into 2 pages ( First page has 10 replies and second page has 5 replies). Thus this endpoint returns no replies (It is empty)
       expect(getReplysresponse.body.limit).to.equal(10);
       expect(getReplysresponse.body.results).to.be.empty;
       expect(getReplysresponse.body.totalPages).to.equal(2);
     });
   });
 
-  it("9- GET /tweets?replyTo=  gives no replies", () => {
+  it("9- GET /tweets?replyTo=  returns no replies", () => {
     // In the query parameter "replyTo", you must write the tweet's ID. But here it is empty
     cy.request({
       method: "GET",
@@ -281,7 +281,7 @@ describe("Feature: GET /tweets", () => {
     });
   });
 
-  it("10- GET /tweets?replyTo=(wrong tweet's ID)  gives no replies", () => {
+  it("10- GET /tweets?replyTo=(wrong tweet's ID)  returns no replies", () => {
     // In the query parameter "replyTo", you must write the tweet's ID. But here the tweet's ID is wrong
     const wrongTweetId = "12345";
     cy.request({
@@ -299,7 +299,7 @@ describe("Feature: GET /tweets", () => {
     });
   });
 
-  it("11- GET /tweets?replyTo=65984eb581a8ab0ca4337727&page  gives no replies", () => {
+  it("11- GET /tweets?replyTo=65984eb581a8ab0ca4337727&page  returns no replies", () => {
     cy.request({
       method: "GET",
       url: `http://localhost:3001/api/tweets?replyTo=65984eb581a8ab0ca4337727&page`,
