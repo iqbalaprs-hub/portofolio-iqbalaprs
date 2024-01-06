@@ -23,11 +23,11 @@ paths:
                 email:
                   type: string
                   format: email
-                  description: the email must be a valid email and must be unique to each user (two or more users cannot have the same email)
+                  description: The email must be a valid email and must be unique to each user (two or more users cannot have the same email)
                   example: john@gmail.com
                 username:
                   type: string
-                  description: the username must be unique to each user (two or more users cannot have the same email). Only the special characters (period, dash and underscore) are not allowed
+                  description: The username must be unique to each user (two or more users cannot have the same email). Only the special characters (period, dash and underscore) are not allowed
                   example: john
                 password:
                   type: string
@@ -150,11 +150,11 @@ paths:
                     example: 10
                   totalPages:
                     type: integer
-                    description: total number of pages
+                    description: Total number of pages
                     example: 1
                   totalResults:
                     type: integer
-                    description: total number of tweets
+                    description: Total number of tweets
                     example: 1
         "400":
           description: |
@@ -434,7 +434,7 @@ paths:
   /profiles/:
     get:
       summary: Get a list of user profiles
-      description: You do not need to be authenticated to use this endpoint.
+      description: It returns a maximum of 10 profiles. If there are more than 10 profiles, they will be divided by pages. You do not need to be authenticated to use this endpoint.
       parameters:
         - name: page
           in: query
@@ -443,6 +443,7 @@ paths:
           schema:
             type: integer
             minimum: 1
+            default: 1
       responses:
         "200":
           description: User profile information is given
@@ -457,18 +458,19 @@ paths:
                       $ref: "#/components/schemas/profile"
                   page:
                     type: integer
+                    description: The current page
                     example: 1
                   limit:
                     type: integer
-                    description: maximum number of profiles per page
+                    description: The maximum number of profiles in the response body
                     example: 10
                   totalPages:
                     type: integer
-                    description: total number of pages available
+                    description: Total number of pages
                     example: 1
                   totalResults:
                     type: integer
-                    description: total number of user profiles
+                    description: Total number of user profiles
                     example: 1
   /profiles/{userId}:
     get:
