@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Feature: GET /tweets/{tweetId}", () => {
+describe("GET /tweets/{tweetId}", () => {
   let johnToken;
   let tweetId;
   let tweetAuthorId;

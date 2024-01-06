@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Feature: GET /profiles/{userId}", () => {
+describe("GET /profiles/{userId}", () => {
   // Declaring the variables tweetId and JohnsToken here in order to be use in the entire test suite
   let johnToken;
   let johnId;

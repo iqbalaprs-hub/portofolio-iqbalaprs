@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Feature: DELETE /tweets/like/{tweetId}", () => {
+describe("DELETE /tweets/like/{tweetId}", () => {
   // Declaring the variables tweetId and JohnsToken here in order to be use in the entire test suite
   let johnToken;
   let johnId;
