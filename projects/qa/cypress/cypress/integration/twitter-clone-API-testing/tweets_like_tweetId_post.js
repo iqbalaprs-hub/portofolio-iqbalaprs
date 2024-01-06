@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Feature: Like a tweet", () => {
+describe("Feature: POST tweets/like/{tweetId}", () => {
   // Declaring the variables tweetId and JohnsToken here in order to be use in the entire test suite
   let johnToken;
   let johnId;

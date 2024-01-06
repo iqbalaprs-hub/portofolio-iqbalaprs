@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Feature: Register", () => {
+describe("Feature: POST /auth/register", () => {
   beforeEach(() => {
     // Prereq.: The database is empty. There are no users in the database
     cy.exec(".\\cypress\\scripts\\clear_mongo.bat twitter-clone-db");
