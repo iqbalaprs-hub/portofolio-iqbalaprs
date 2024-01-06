@@ -112,7 +112,7 @@ paths:
   /tweets:
     get:
       summary: Get a list of tweets
-      description: It returns a maximum of 10 tweets. If there are more than 10 tweets, they will be divided by pages. You do not need to be authenticated to use this endpoint.
+      description: It returns a maximum of 10 tweets. If there are more than 10 tweets, they will be divided by pages. The tweets are sorted from the newest to the oldest. You do not need to be authenticated to use this endpoint.
       parameters:
         - name: page
           in: query
@@ -124,7 +124,8 @@ paths:
             default: 1
         - name: replyTo
           in: query
-          description: It returns the replies of a specific tweet. It must have the tweet's ID being replied to (for example /tweets?replyTo=65984eb581a8ab0ca4337727). In case the replies are divided in more than one page because they are too many, you can specify the page you want, for example "&page=1" (it is not obligatory, each page returns a maximum of 10 replies, has a minimun value of 1 and has no default number). Thus the endpoint can be written in this way "/tweets?replyTo=65984eb581a8ab0ca4337727&page=1".
+          description: It returns the replies of a specific tweet. It must have the tweet's ID being replied to. The replies are sorted from the newest to the oldest.
+          example: 65984eb581a8ab0ca4337727
           required: false
           schema:
             type: string
@@ -434,7 +435,7 @@ paths:
   /profiles/:
     get:
       summary: Get a list of user profiles
-      description: It returns a maximum of 10 profiles. If there are more than 10 profiles, they will be divided by pages. You do not need to be authenticated to use this endpoint.
+      description: It returns a maximum of 10 profiles. If there are more than 10 profiles, they will be divided by pages. The profiles are sorted from the oldest to the newest. You do not need to be authenticated to use this endpoint.
       parameters:
         - name: page
           in: query
@@ -701,7 +702,6 @@ components:
         edited:
           type: boolean
           example: false
-          description: ?????????????????????????????????????????
         likes:
           type: array
           items:
@@ -741,7 +741,7 @@ components:
         __v:
           type: number
           example: 0
-          description: ??????????????????????????????????????????????
+          description: The MongoDb document version
     tweetGet:
       type: object
       properties:
@@ -752,7 +752,6 @@ components:
         edited:
           type: boolean
           example: false
-          description: ?????????????????????????????????????????
         likes:
           type: array
           items:
@@ -796,7 +795,7 @@ components:
         __v:
           type: number
           example: 0
-          description: ??????????????????????????????????????????????
+          description: The MongoDb document version
     follow:
       type: object
       properties:
@@ -844,7 +843,7 @@ components:
           example: "2023-12-29T06:53:20.208Z"
         __v:
           type: integer
-          description: ??????????????????????
+          description: The MongoDb document version
     profile:
       type: object
       description: This response is almost the same as the component "follow". It differs only in the "user" part. In this case the "user" is an object with 3 info (ID, name, username)
@@ -895,3 +894,4 @@ components:
         __v:
           type: integer
           example: 28
+          description: The MongoDb document version
