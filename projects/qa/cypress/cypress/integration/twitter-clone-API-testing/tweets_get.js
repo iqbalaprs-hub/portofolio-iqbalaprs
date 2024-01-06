@@ -264,7 +264,7 @@ describe("Feature: GET /tweets", () => {
     });
   });
 
-  it("9- GET /tweets?replyTo=  returns no replies", () => {
+  it("9- GET /tweets?replyTo= returns error 400", () => {
     // In the query parameter "replyTo", you must write the tweet's ID. But here it is empty
     cy.request({
       method: "GET",
@@ -281,7 +281,7 @@ describe("Feature: GET /tweets", () => {
     });
   });
 
-  it("10- GET /tweets?replyTo=(wrong tweet's ID)  returns no replies", () => {
+  it("10- GET /tweets?replyTo=(wrong tweet's ID) returns error 400", () => {
     // In the query parameter "replyTo", you must write the tweet's ID. But here the tweet's ID is wrong
     const wrongTweetId = "12345";
     cy.request({
@@ -299,7 +299,7 @@ describe("Feature: GET /tweets", () => {
     });
   });
 
-  it("11- GET /tweets?replyTo=65984eb581a8ab0ca4337727&page  returns no replies", () => {
+  it("11- GET /tweets?replyTo=65984eb581a8ab0ca4337727&page returns error 400", () => {
     cy.request({
       method: "GET",
       url: `http://localhost:3001/api/tweets?replyTo=65984eb581a8ab0ca4337727&page`,

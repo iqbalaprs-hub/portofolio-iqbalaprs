@@ -70,7 +70,7 @@ describe("Feature: PATCH users/{userId}", () => {
     });
   });
 
-  it("2- PATCH /users/{userId} cannot change the  avatar with an invalid URL", () => {
+  it("2- PATCH /users/{userId} cannot change the avatar with an invalid URL", () => {
     cy.request({
       method: "PATCH",
       url: `http://localhost:3001/api/users/${johnId}`,
