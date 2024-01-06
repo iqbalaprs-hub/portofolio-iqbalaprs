@@ -48,9 +48,9 @@ paths:
                 type: object
                 properties:
                   user:
-                    $ref: "#/components/schemas/User"
+                    $ref: "#/components/schemas/user"
                   token:
-                    $ref: "#/components/schemas/Token"
+                    $ref: "#/components/schemas/token"
         "400":
           description: |
             Registration not successfull (user was not created). This can occur for one of the following reasons:
@@ -98,9 +98,9 @@ paths:
                 type: object
                 properties:
                   user:
-                    $ref: "#/components/schemas/User"
+                    $ref: "#/components/schemas/user"
                   token:
-                    $ref: "#/components/schemas/Token"
+                    $ref: "#/components/schemas/token"
         "400":
           description: |
             Sign In not successfull (user was not created). This can occur for one of the following reasons:
@@ -124,7 +124,7 @@ paths:
             default: 1
         - name: replyTo
           in: query
-          description: It is crucial that the query parameter must have the ID of the tweet being replied to (for example /tweets?replyTo=65984eb581a8ab0ca4337727). In case there are too many replies and they are divided in more than one page, you can specify the page you want, for example "&page=1" (it is not obligatory, each page returns a maximum of 10 replies, it has a minimun value of 1 and it has no default number). Thus the endpoint can be written in this way "/tweets?replyTo=65984eb581a8ab0ca4337727&page=1".
+          description: It returns the replies of a specific tweet. It must have the tweet's ID being replied to (for example /tweets?replyTo=65984eb581a8ab0ca4337727). In case the replies are divided in more than one page because they are too many, you can specify the page you want, for example "&page=1" (it is not obligatory, each page returns a maximum of 10 replies, has a minimun value of 1 and has no default number). Thus the endpoint can be written in this way "/tweets?replyTo=65984eb581a8ab0ca4337727&page=1".
           required: false
           schema:
             type: string
@@ -139,7 +139,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: "#/components/schemas/TweetGet"
+                      $ref: "#/components/schemas/tweetGet"
                   page:
                     type: integer
                     description: The current page
@@ -197,7 +197,7 @@ paths:
                 type: object
                 properties:
                   tweet:
-                    $ref: "#/components/schemas/Tweet"
+                    $ref: "#/components/schemas/tweet"
         "400":
           description: |
             Tweet was not created. This can occur if the text has more than 280 characters:
@@ -229,7 +229,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: "#/components/schemas/TweetGet"
+                      $ref: "#/components/schemas/tweetGet"
         "400":
           description: |
             This can also occur also if the tweet's ID given is invalid:
@@ -255,7 +255,7 @@ paths:
                 type: object
                 properties:
                   tweet:
-                    $ref: "#/components/schemas/Tweet"
+                    $ref: "#/components/schemas/tweet"
         "400":
           description: |
             This can also occur also if the tweet's ID given is invalid:
@@ -294,7 +294,7 @@ paths:
                 type: object
                 properties:
                   tweet:
-                    $ref: "#/components/schemas/Tweet"
+                    $ref: "#/components/schemas/tweet"
         "400":
           description: |
             Tweet was not liked. This can occur if:
@@ -326,7 +326,7 @@ paths:
                 type: object
                 properties:
                   tweet:
-                    $ref: "#/components/schemas/Tweet"
+                    $ref: "#/components/schemas/tweet"
         "400":
           description: |
             Tweet was not created. This can occur also if the tweet's ID given is invalid:
@@ -357,7 +357,7 @@ paths:
                 type: object
                 properties:
                   user:
-                    $ref: "#/components/schemas/User"
+                    $ref: "#/components/schemas/user"
         "401":
           description: |
             We do not get the user. This can occur if the user's token given is invalid:
@@ -395,7 +395,7 @@ paths:
                 type: object
                 properties:
                   user:
-                    $ref: "#/components/schemas/User"
+                    $ref: "#/components/schemas/user"
         "400":
           description: |
             The user do not give a valid URL for the avatar:
@@ -422,7 +422,7 @@ paths:
                 type: object
                 properties:
                   user:
-                    $ref: "#/components/schemas/User"
+                    $ref: "#/components/schemas/user"
         "401":
           description: |
             This can occur if the user's token given is invalid:
@@ -646,7 +646,7 @@ components:
       in: header
       name: Authorization
   schemas:
-    User:
+    user:
       type: object
       properties:
         role:
@@ -685,11 +685,11 @@ components:
           type: string
           description: URL of an image that is used for the avatar (If the avatar textbox is empty, it do not appear in the response)
           example: "https://picsum.photos/70/70"
-    Token:
+    token:
       type: string
       description: It represents the identity of the user and it is used for authentication
       example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThhZjY2NmFmMWRlMjE4MTA5NjlhZDkiLCJpYXQiOjE3MDM2MDU4NjIsImV4cCI6MTcwMzYwOTQ2Mn0.FUvm5RJiUR6igTq9RY0mZlgRpo_Ctp4z8-8D9M70hjQ"
-    Tweet:
+    tweet:
       type: object
       properties:
         repliesCount:
@@ -740,7 +740,7 @@ components:
           type: number
           example: 0
           description: ??????????????????????????????????????????????
-    TweetGet:
+    tweetGet:
       type: object
       properties:
         repliesCount:
