@@ -1,7 +1,4 @@
-/* Restcountries intro */
-.twitter-Clone-intro img {
-  width: 200px;
-}
+/* Twitter-Clone intro */
 
 .twitter-Clone-intro p {
   margin-top: 0;
@@ -10,12 +7,6 @@
 .twitter-Clone-intro h1 {
   font-family: montserrat;
   color: rgb(80, 80, 80);
-}
-
-@media screen and (max-width: 1200px) {
-  .twitter-Clone-intro img {
-    width: 150px;
-  }
 }
 
 /* SECTION INTRO */
@@ -27,4 +18,66 @@
 
 .section-intro p {
   margin-top: var(--small-margin-value);
+}
+
+/* Accordion-item */
+.accordion-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: 1px solid #000;
+  cursor: pointer;
+}
+
+.accordion-item:hover {
+  background-color: var(--secondary-link-hover-color);
+}
+
+.accordion-item h4 {
+  margin-right: 0;
+  width: 90%;
+}
+
+@media screen and (max-width: 500px) {
+  .accordion-item h4 {
+    width: 85%;
+  }
+}
+
+.accordion-item .case-title {
+  font-weight: 700;
+}
+
+.accordion-item i {
+  transform: rotate(0deg);
+  transition: transform 0.5s;
+}
+
+/* The below is related to JavaScript */
+.accordion-item .hidden-content {
+  width: 100%;
+  overflow: hidden;
+  max-height: 0px;
+  border-collapse: collapse;
+  background-color: var(--body-bg-color);
+  white-space: nowrap;
+  transition: max-height 0.5s;
+}
+
+.accordion-item .hidden-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.accordion-item.open .hidden-content {
+  overflow: auto;
+  max-height: 450px;
+  transition: max-height 0.5s;
+  padding-bottom: var(--small-padding-value);
+}
+
+.accordion-item.open i {
+  transform: rotate(180deg);
+  transition: transform 0.5s;
 }
