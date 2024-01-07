@@ -168,7 +168,7 @@ Cypress.Commands.add("signInTwitterClone", (emailOrUsername, password) => {
 // It will get the current date in this particular formmat (day month year; for example: 15 December 2023)
 Cypress.Commands.add("getCurrentDate", () => {
   const currentDate = new Date();
-  const day = currentDate.getDate();
+  const day = currentDate.getDate().toString().padStart(2, "0");
   const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
     currentDate
   );
