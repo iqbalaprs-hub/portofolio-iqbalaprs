@@ -23,6 +23,7 @@
 
 ol {
   margin-left: 40px;
+  color: var(--primary-text-color);
 }
 img.bug1 {
   max-width: 150px;
