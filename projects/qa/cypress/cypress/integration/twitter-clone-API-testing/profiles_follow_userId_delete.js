@@ -158,7 +158,7 @@ describe("DELETE /profiles/follow/{userId}", () => {
     });
   });
 
-  it("6- POST /profiles/follow/{userId} cannot make a user unfollow another user twice in a row", () => {
+  it("6- DELETE /profiles/follow/{userId} cannot make a user unfollow another user twice in a row", () => {
     // John unfollows Rony the first time
     cy.request({
       method: "DELETE",

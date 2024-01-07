@@ -96,7 +96,7 @@ describe("GET /tweets", () => {
     });
   });
 
-  it("3- /tweets?page=2 returns the last 5 remaining tweets of the the total of 15 tweets", () => {
+  it("3- GET /tweets?page=2 returns the last 5 remaining tweets of the the total of 15 tweets", () => {
     cy.request({
       method: "GET",
       url: `http://localhost:3001/api/tweets?page=2`,
@@ -124,7 +124,7 @@ describe("GET /tweets", () => {
     });
   });
 
-  it("4- /tweets?page=3 returns no tweets", () => {
+  it("4- GET /tweets?page=3 returns no tweets", () => {
     cy.request({
       method: "GET",
       url: `http://localhost:3001/api/tweets?page=3`,
