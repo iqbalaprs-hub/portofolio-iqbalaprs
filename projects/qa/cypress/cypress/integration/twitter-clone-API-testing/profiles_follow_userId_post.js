@@ -1,9 +1,10 @@
 /// <reference types="Cypress" />
 
 describe("POST /profiles/follow/{userId}", () => {
-  // Declaring the variables tweetId and JohnsToken here in order to be use in the entire test suite
+  // Declaring the variables in order to be used in the entire test suite
   let johnToken;
   let johnId;
+  let ronyToken;
   let ronyId;
 
   beforeEach(() => {
@@ -28,30 +29,20 @@ describe("POST /profiles/follow/{userId}", () => {
     );
 
     // Sign in as John in order to get John's token and ID
-    cy.request({
-      method: "POST",
-      url: "http://localhost:3001/api/auth/login",
-      body: {
-        username: "John",
-        password: "Clonejohn23",
-      },
-    }).then((loginResponse) => {
-      johnToken = loginResponse.body.token;
-      johnId = loginResponse.body.user._id;
-    });
+    cy.signInAsJohnAndGetTokenAndIdAsJohnInTwitterCloneApiTesting(
+      (token, id) => {
+        johnToken = token;
+        johnId = id;
+      }
+    );
 
-    // Sign in as Rony in order to get Rony's token
-    cy.request({
-      method: "POST",
-      url: "http://localhost:3001/api/auth/login",
-      body: {
-        username: "Rony",
-        password: "Clonerony23",
-      },
-    }).then((ronyLoginResponse) => {
-      // Assertion: status is 200
-      ronyId = ronyLoginResponse.body.user._id;
-    });
+    // Sign in as Rony in order to get Rony's token and ID
+    cy.signInAsRonyAndGetTokenAndIdAsRonyInTwitterCloneApiTesting(
+      (token, id) => {
+        ronyToken = token;
+        ronyId = id;
+      }
+    );
   });
 
   it("1- POST /profiles/follow/{userId} make a user follow another user", () => {

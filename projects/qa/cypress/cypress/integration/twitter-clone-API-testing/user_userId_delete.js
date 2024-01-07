@@ -1,11 +1,12 @@
 /// <reference types="Cypress" />
 
 describe("DELETE user/{userId}", () => {
-  // Declaring the variables tweetId and JohnsToken here in order to be use in the entire test suite
+  // Declaring the variables in order to be used in the entire test suite
   let johnToken;
   let johnId;
   let ronyToken;
   let ronyId;
+
   beforeEach(() => {
     // Prereq.: The database is empty. There are no users in the database
     cy.exec(".\\cypress\\scripts\\clear_mongo.bat twitter-clone-db");
@@ -28,30 +29,20 @@ describe("DELETE user/{userId}", () => {
     );
 
     // Sign in as John in order to get John's token and ID
-    cy.request({
-      method: "POST",
-      url: "http://localhost:3001/api/auth/login",
-      body: {
-        username: "john",
-        password: "Clonejohn23",
-      },
-    }).then((johnLoginResponse) => {
-      johnToken = johnLoginResponse.body.token;
-      johnId = johnLoginResponse.body.user._id;
-    });
+    cy.signInAsJohnAndGetTokenAndIdAsJohnInTwitterCloneApiTesting(
+      (token, id) => {
+        johnToken = token;
+        johnId = id;
+      }
+    );
 
     // Sign in as Rony in order to get Rony's token and ID
-    cy.request({
-      method: "POST",
-      url: "http://localhost:3001/api/auth/login",
-      body: {
-        username: "rony",
-        password: "Clonerony23",
-      },
-    }).then((ronyLoginResponse) => {
-      ronyToken = ronyLoginResponse.body.token;
-      ronyId = ronyLoginResponse.body.user._id;
-    });
+    cy.signInAsRonyAndGetTokenAndIdAsRonyInTwitterCloneApiTesting(
+      (token, id) => {
+        ronyToken = token;
+        ronyId = id;
+      }
+    );
   });
 
   it("1- DELETE users/userId deletes a specific user using this user ID and token ", () => {

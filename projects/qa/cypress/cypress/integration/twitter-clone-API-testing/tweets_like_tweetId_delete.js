@@ -1,12 +1,13 @@
 /// <reference types="Cypress" />
 
 describe("DELETE /tweets/like/{tweetId}", () => {
-  // Declaring the variables tweetId and JohnsToken here in order to be use in the entire test suite
+  // Declaring the variables in order to be used in the entire test suite
   let johnToken;
   let johnId;
-  let tweetId;
   let ronyToken;
   let ronyId;
+  let tweetId;
+  let tweetAuthorId;
 
   beforeEach(() => {
     // Prereq.: The database is empty. There are no users in the database
@@ -29,32 +30,15 @@ describe("DELETE /tweets/like/{tweetId}", () => {
       ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db profiles .\\cypress\\fixtures\\twitter-clone-API-testing\\tweets_tweetId_delete\\twitter-clone-db.profiles.json"
     );
 
-    // Sign in as John in order to get John's token
-    cy.request({
-      method: "POST",
-      url: "http://localhost:3001/api/auth/login",
-      body: {
-        username: "John",
-        password: "Clonejohn23",
-      },
-    }).then((loginResponse) => {
-      johnToken = loginResponse.body.token;
-      johnId = loginResponse.body.user._id;
-
-      // Create a tweet using John's token in order to get this tweet's ID
-      cy.request({
-        method: "POST",
-        url: "http://localhost:3001/api/tweets",
-        body: {
-          text: "Hello",
-        },
-        headers: {
-          Authorization: `Bearer ${johnToken}`,
-        },
-      }).then((tweetResponse) => {
-        tweetId = tweetResponse.body.tweet._id;
-      });
-    });
+    // Sign in as John in order to get John's token and then create a tweet using John's token in order to get this tweet's ID
+    cy.signInAsJohnAndGetTokenAndIdAndCreateTweetAndGetTweetIdAndAuthorIdInTwitterCloneApiTesting(
+      (token, id, tId, tAuthorId) => {
+        johnToken = token;
+        johnId = id;
+        tweetId = tId;
+        tweetAuthorId = tAuthorId;
+      }
+    );
   });
 
   it("1- DELETE /tweets/like/{tweetId} removes the like", () => {

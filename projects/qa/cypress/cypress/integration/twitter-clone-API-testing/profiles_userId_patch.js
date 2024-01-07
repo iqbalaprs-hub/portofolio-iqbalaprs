@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe("PATCH /profiles/{userId}", () => {
-  // Declaring the variables tweetId and JohnsToken here in order to be use in the entire test suite
+  // Declaring the variables in order to be used in the entire test suite
   let johnToken;
   let johnId;
 
@@ -26,19 +26,12 @@ describe("PATCH /profiles/{userId}", () => {
     );
 
     // Sign in as John in order to get John's token and ID
-    cy.request({
-      method: "POST",
-      url: "http://localhost:3001/api/auth/login",
-      body: {
-        username: "John",
-        password: "Clonejohn23",
-      },
-    }).then((loginResponse) => {
-      johnToken = loginResponse.body.token;
-      johnId = loginResponse.body.user._id;
-      cy.log(johnToken);
-      cy.log(johnId);
-    });
+    cy.signInAsJohnAndGetTokenAndIdAsJohnInTwitterCloneApiTesting(
+      (token, id) => {
+        johnToken = token;
+        johnId = id;
+      }
+    );
   });
 
   it("1- PATCH /profiles/{userId} change the bio, location, website and background image of the user", () => {

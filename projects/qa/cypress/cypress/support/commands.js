@@ -105,7 +105,7 @@ Cypress.Commands.add("pickDate2dayslaterInTodolistme", () => {
   );
 });
 
-/*                                  TWITTER-CLONE PROJECT                           */
+/*                                  TWITTER-CLONE END-TO-END TESTING PROJECT                           */
 
 // This function shows the expected result of a sign Up in twitter-clone
 Cypress.Commands.add("assertSuccesfullSignUp", () => {
@@ -266,5 +266,84 @@ Cypress.Commands.add(
       .find('div[class*="TextContainer"]')
       .find("p:nth-child(2)")
       .should("have.text", "@julia");
+  }
+);
+
+/*                                  TWITTER-CLONE END-TO-END TESTING PROJECT                           */
+
+// Sign in as John in order to get John's token and ID
+Cypress.Commands.add(
+  "signInAsJohnAndGetTokenAndIdAsJohnInTwitterCloneApiTesting",
+  (callback) => {
+    cy.request({
+      method: "POST",
+      url: "http://localhost:3001/api/auth/login",
+      body: {
+        username: "John",
+        password: "Clonejohn23",
+      },
+    }).then((loginResponse) => {
+      let johnToken = loginResponse.body.token;
+      let johnId = loginResponse.body.user._id;
+
+      // Execute the callback with the values
+      callback(johnToken, johnId);
+    });
+  }
+);
+
+// Sign in as Rony in order to get Rony's token and ID
+Cypress.Commands.add(
+  "signInAsRonyAndGetTokenAndIdAsRonyInTwitterCloneApiTesting",
+  (callback) => {
+    cy.request({
+      method: "POST",
+      url: "http://localhost:3001/api/auth/login",
+      body: {
+        username: "rony",
+        password: "Clonerony23",
+      },
+    }).then((loginResponse) => {
+      let ronyToken = loginResponse.body.token;
+      let ronyId = loginResponse.body.user._id;
+
+      // Execute the callback with the values
+      callback(ronyToken, ronyId);
+    });
+  }
+);
+
+// Sign in as John in order to get John's token and ID and then create a tweet using John's token in order to get this tweet's ID and tweet author ID
+Cypress.Commands.add(
+  "signInAsJohnAndGetTokenAndIdAndCreateTweetAndGetTweetIdAndAuthorIdInTwitterCloneApiTesting",
+  (callback) => {
+    cy.request({
+      method: "POST",
+      url: "http://localhost:3001/api/auth/login",
+      body: {
+        username: "John",
+        password: "Clonejohn23",
+      },
+    }).then((johnLoginResponse) => {
+      const johnToken = johnLoginResponse.body.token;
+      const johnId = johnLoginResponse.body.user._id;
+
+      cy.request({
+        method: "POST",
+        url: "http://localhost:3001/api/tweets",
+        body: {
+          text: "Hello",
+        },
+        headers: {
+          Authorization: `Bearer ${johnToken}`,
+        },
+      }).then((tweetResponse) => {
+        const tweetId = tweetResponse.body.tweet._id;
+        const tweetAuthorId = tweetResponse.body.tweet.author;
+
+        // Execute the callback with the values
+        callback(johnToken, johnId, tweetId, tweetAuthorId);
+      });
+    });
   }
 );

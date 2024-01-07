@@ -1,9 +1,10 @@
 /// <reference types="Cypress" />
 
 describe("DELETE /profiles/follow/{userId}", () => {
-  // Declaring the variables tweetId and JohnsToken here in order to be use in the entire test suite
+  // Declaring the variables in order to be used in the entire test suite
   let johnToken;
   let johnId;
+  let ronyToken;
   let ronyId;
 
   beforeEach(() => {
@@ -27,18 +28,13 @@ describe("DELETE /profiles/follow/{userId}", () => {
       ".\\cypress\\scripts\\import_data_to_mongo.bat twitter-clone-db profiles .\\cypress\\fixtures\\twitter-clone-API-testing\\profiles_follow_userId_delete\\twitter-clone-db.profiles.json"
     );
 
-    // Sign in as Rony in order to get Rony's ID
-    cy.request({
-      method: "POST",
-      url: "http://localhost:3001/api/auth/login",
-      body: {
-        username: "Rony",
-        password: "Clonerony23",
-      },
-    }).then((ronyLoginResponse) => {
-      // Assertion: status is 200
-      ronyId = ronyLoginResponse.body.user._id;
-    });
+    // Sign in as Rony in order to get Rony's token and ID
+    cy.signInAsRonyAndGetTokenAndIdAsRonyInTwitterCloneApiTesting(
+      (token, id) => {
+        ronyToken = token;
+        ronyId = id;
+      }
+    );
 
     // Sign in as John in order to get John's token and ID
     cy.request({
@@ -144,7 +140,7 @@ describe("DELETE /profiles/follow/{userId}", () => {
     });
   });
 
-  it("-5 DELETE /profiles/follow/{userId} cannot make a user unfollow another user without a user's token", () => {
+  it("5- DELETE /profiles/follow/{userId} cannot make a user unfollow another user without a user's token", () => {
     // Create a user's ID
     const wrongToken = "12345";
     cy.request({
