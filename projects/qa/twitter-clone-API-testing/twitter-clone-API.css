@@ -19,6 +19,12 @@
 .section-intro p {
   margin-top: var(--small-margin-value);
 }
+/* SPECIFIC TO TWITTER-CLONE */
+
+ol {
+  margin-left: 40px;
+  color: var(--primary-text-color);
+}
 
 /* Accordion-item */
 .accordion-item {
