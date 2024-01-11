@@ -269,55 +269,53 @@
             My tests found 1 bug related to the API testing of the Twitter-Clone
             app. The bug can be transferred to the development team for fixing
           </p>
-
-          <ul>
-            <li class="accordion-item">
-              <h4>
-                Bug 1: When registering using API testing tool (like Postman),
-                username must contain numbers, letters and only ".", "-", "_" as
-                special characters. If the user writes in the payload an invalid
-                username, for example "johnny#", the error should be 400 instead
-                of 500'
-              </h4>
-              <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-              <div class="hidden-content">
-                <h5>Summary</h5>
-                <p>
-                  When entering a username with special characters other than
-                  ".", "-"and "_", the error should be 400 instead of 500
-                </p>
-
-                <h5>Steps to reproduce</h5>
-                <ol>
-                  <li>
-                    Activate Twitter-Clone web application in order for the API
-                    testing to work
-                  </li>
-                  <li>
-                    Open Postman, which I used for the Twitter-Clone API
-                    testing, or any other tools that can be used for API testing
-                  </li>
-                  <li>
-                    Insert the following information: (1) POST, (2) url:
-                    "http://localhost:3001/api/auth/register", (3) body: { name:
-                    "Johnny", email: "johnny@gmail.com", username: "johnny#",
-                    password: "Clonejohnny23", }
-                  </li>
-                  <li>Click the button "Send"</li>
-                </ol>
-
-                <h5>Actual result 🐞</h5>
-                <p>
-                  Since "#" is an invalid special character to be used in the
-                  username, the error is 500
-                </p>
-
-                <h5>Expected result</h5>
-                <p>The error is 400</p>
-              </div>
-            </li>
-          </ul>
         </div>
+        <ul>
+          <li class="accordion-item">
+            <h4>
+              Bug 1: Register using username with special characters other than
+              ".", "-"and "_" gives an error of 500 instead of 400
+            </h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <h5>Summary</h5>
+              <p>
+                When registering, username must contain numbers, letters and
+                only ".", "-", "_" as special characters.<br />
+                If the user writes an invalid username, for example "johnny#",
+                the error should be 400 instead of 500.
+              </p>
+
+              <h5>Steps to reproduce</h5>
+              <ol>
+                <li>
+                  Activate Twitter-Clone web application in order for the API
+                  testing to work
+                </li>
+                <li>
+                  Open Postman, which I used for the Twitter-Clone API testing,
+                  or any other tools that can be used for API testing
+                </li>
+                <li>
+                  Insert the following information: (1) POST, (2) url:
+                  "http://localhost:3001/api/auth/register", (3) body: { name:
+                  "Johnny", email: "johnny@gmail.com", username: "johnny#",
+                  password: "Clonejohnny23", }
+                </li>
+                <li>Click the button "Send"</li>
+              </ol>
+
+              <h5>Actual result 🐞</h5>
+              <p>
+                Since "#" is an invalid special character to be used in the
+                username, the error is 500
+              </p>
+
+              <h5>Expected result</h5>
+              <p>The error is 400</p>
+            </div>
+          </li>
+        </ul>
       </section>
     </main>
   </body>
