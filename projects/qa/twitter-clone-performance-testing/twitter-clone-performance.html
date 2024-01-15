@@ -10,6 +10,7 @@
     ></script>
     <link rel="stylesheet" href="twitter-clone-performance.css" />
     <link rel="stylesheet" href="../../../common.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script src="twitter-clone-performance.js" defer></script>
   </head>
   <body>
@@ -162,7 +163,37 @@
               <img
                 style="max-width: 100%; min-width: 1000px; max-width: 1200px"
                 src="images/screenshotOfJmeter.png"
-                title="ScreenshotOfJmeter"
+                title="Screenshot of performance test in Jmeter"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-intro">
+          <h1>Performance Test Results</h1>
+          <p>
+            Twitter-Clone failed to scale with 1000 users. Actually, starting
+            with 300 users, the response time of each request exceeded the
+            required 500ms, as shown in the graph below
+          </p>
+
+          <canvas id="graph-response-time-per-user-number"></canvas>
+
+          <div class="accordion-item">
+            <h4>
+              Although, I noted as positive points: 1) Even under high load, the
+              application always returned the correct response, 2) Following the
+              load peak, the application returned to an acceptable response
+              time. (Click to reveal):
+            </h4>
+            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+            <div class="hidden-content">
+              <img
+                style="max-width: 100%; min-width: 1000px; max-width: 1200px"
+                src="images/Response Time Graph.png"
+                title="Response time graph"
               />
             </div>
           </div>
