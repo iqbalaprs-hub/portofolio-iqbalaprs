@@ -31,14 +31,14 @@
   --large-margin-value: 80px;
   --Xlarge-margin-value: 120px;
 
-  --text-font-size-value: 14px;
+  --text-font-size-value: 12px;
   --contact-font-size-value: 16px;
-  --h1-font-size-value: 28px;
-  --h2-font-size-value: 24px;
-  --h3-font-size-value: 20px;
-  --h4-font-size-value: 16px;
-  --h5-font-size-value: 14px;
-  --h6-font-size-value: 10px;
+  --h1-font-size-value: 26px;
+  --h2-font-size-value: 22px;
+  --h3-font-size-value: 18px;
+  --h4-font-size-value: 14px;
+  --h5-font-size-value: 12px;
+  --h6-font-size-value: 8px;
 }
 
 /* ELEMENTS */
@@ -101,7 +101,7 @@ h3 {
 
 h4 {
   font-size: var(--h4-font-size-value);
-  margin: var(--small-margin-value);
+  margin: 10px;
 }
 
 h5 {
@@ -113,6 +113,7 @@ p {
   font-size: var(--text-font-size-value);
   line-height: 1.5;
   margin: var(--small-margin-value);
+  margin-bottom: 0;
   max-width: 800px;
   text-align: justify;
 }
@@ -401,6 +402,10 @@ button:hover:after {
   width: 90%;
 }
 
+li.accordion-item {
+  margin-top: 0;
+}
+
 .accordion-item .case-title {
   font-weight: 700;
 }
@@ -455,8 +460,17 @@ button:hover:after {
     --h1-font-size-value: 30px;
     --h2-font-size-value: 26px;
     --h3-font-size-value: 22px;
-    --h4-font-size-value: 20px;
-    --h5-font-size-value: 16px;
+    --h4-font-size-value: 16px;
+    --h5-font-size-value: 14px;
+    --h6-font-size-value: 10px;
+  }
+
+  h4 {
+    margin: var(--small-margin-value);
+  }
+
+  p {
+    margin-bottom: var(--small-margin-value);
   }
 
   button {
@@ -512,5 +526,6 @@ button:hover:after {
     --h3-font-size-value: 26px;
     --h4-font-size-value: 18px;
     --h5-font-size-value: 16px;
+    --h6-font-size-value: 12px;
   }
 }
