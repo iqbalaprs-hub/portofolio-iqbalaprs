@@ -21,12 +21,12 @@ li {
   margin-bottom: 10px;
 }
 
-/* SPECIFIC TO BILLZER */
-img {
+/* BUG SECTION */
+.billzer-bugImage-layout1 {
   max-width: 500px;
   margin: var(--small-margin-value);
 }
 
-img.Bug2 {
+.billzer-bugImage-layout2 {
   max-width: 250px;
 }
