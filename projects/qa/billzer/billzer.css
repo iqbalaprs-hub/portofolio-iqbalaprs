@@ -14,13 +14,6 @@
   }
 }
 
-/* SPECIFICATIONS */
-.specifications ul,
-li {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 /* BUG SECTION */
 .billzer-bugImage-layout1 {
   max-width: 500px;

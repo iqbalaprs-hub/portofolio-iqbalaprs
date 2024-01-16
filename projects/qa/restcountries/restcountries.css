@@ -3,10 +3,6 @@
   width: 200px;
 }
 
-.restcountries-intro p {
-  margin-top: 0;
-}
-
 .restcountries-intro h1 {
   font-family: montserrat;
   color: rgb(80, 80, 80);
@@ -16,10 +12,4 @@
   .restcountries-intro img {
     width: 150px;
   }
-}
-
-/* SPECIFIC TO RESTCOUNTRIES */
-img {
-  max-width: 500px;
-  margin: var(--small-margin-value);
 }

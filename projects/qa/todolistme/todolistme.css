@@ -3,10 +3,6 @@
   width: 200px;
 }
 
-.todolistme-intro p {
-  margin-top: 0;
-}
-
 .todolistme-intro h1 {
   font-family: montserrat;
   color: rgb(80, 80, 80);
@@ -16,11 +12,4 @@
   .todolistme-intro img {
     width: 150px;
   }
-}
-
-/* SPECIFICATIONS */
-.specifications ul,
-li {
-  margin-top: 10px;
-  margin-bottom: 10px;
 }

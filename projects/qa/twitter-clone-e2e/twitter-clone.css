@@ -1,8 +1,4 @@
 /* twitterClone-intro */
-.twitterClone-intro p {
-  margin-top: 0;
-}
-
 .twitterClone-intro h1 {
   font-family: montserrat;
   color: rgb(80, 80, 80);
@@ -34,11 +30,4 @@ ol {
 .twitter-Clone-bugimage-layout4 {
   max-width: 450px;
   margin: var(--small-margin-value);
-}
-
-/* SPECIFICATIONS */
-.specifications ul,
-li {
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
