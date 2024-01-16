@@ -3,3 +3,12 @@
   font-family: montserrat;
   color: rgb(80, 80, 80);
 }
+
+/* Scenario outline */
+.scenario-outline .parent-menu {
+  font-weight: 500;
+}
+
+#graph-response-time-per-user-number {
+  padding-bottom: var(--medium-padding-value);
+}
