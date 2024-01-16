@@ -15,27 +15,6 @@
 }
 
 /* SPECIFICATIONS */
-
-.specifications .parent-menu {
-  font-weight: 700;
-  margin-left: 20px;
-  color: var(--primary-text-color);
-}
-.specifications .submenu {
-  margin-left: 40px;
-  font-weight: 500;
-}
-
-.specifications .sub-submenu {
-  margin-left: 60px;
-  font-weight: 500;
-}
-
-.specifications .sub-sub-submenu {
-  margin-left: 80px;
-  font-weight: 500;
-}
-
 .specifications ul,
 li {
   margin-top: 10px;
