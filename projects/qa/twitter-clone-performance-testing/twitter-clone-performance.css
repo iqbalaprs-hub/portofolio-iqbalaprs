@@ -9,6 +9,21 @@
   font-weight: 500;
 }
 
-#graph-response-time-per-user-number {
-  padding-bottom: var(--medium-padding-value);
+/* CANVAS */
+#chart-container {
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scrollbar when needed */
+  overflow-y: auto; /* Enable vertical scrollbar when needed */
+}
+
+@media screen and (max-width: 800px) {
+  #chart-container {
+    overflow-x: scroll; /* Force horizontal scrollbar for smaller screens */
+    overflow-y: scroll; /* Force vertical scrollbar for smaller screens */
+  }
+}
+
+canvas {
+  display: block;
+  margin: auto;
 }

@@ -167,7 +167,7 @@
           <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
           <div class="hidden-content">
             <img
-              style="max-width: 100%; min-width: 1000px; max-width: 1200px"
+              style="max-width: 100%; min-width: 1400px"
               src="images/screenshotOfJmeter.png"
               title="Screenshot of performance test in Jmeter"
             />
@@ -187,8 +187,18 @@
         </div>
 
         <!-- Content -->
-        <div>
-          <canvas id="graph-response-time-per-user-number"></canvas>
+        <div class="accordion-item open">
+          <h4>Average response time (ms) vs number of simultaneous users:</h4>
+          <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
+          <div class="hidden-content" style="padding-bottom: 0">
+            <div id="chart-container">
+              <canvas
+                id="graph-response-time-per-user-number"
+                width="800"
+                height="400"
+              ></canvas>
+            </div>
+          </div>
         </div>
 
         <!-- Intro -->
@@ -206,7 +216,7 @@
           <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
           <div class="hidden-content">
             <img
-              style="max-width: 100%; min-width: 1000px; max-width: 1200px"
+              style="max-width: 100%; min-width: 1400px"
               src="images/Response Time Graph.png"
               title="Response time graph"
             />

@@ -84,3 +84,10 @@ new Chart(canvas, {
     },
   },
 });
+
+// Refresh page when resized
+// Add an event listener to the window resize event
+window.addEventListener("resize", function () {
+  // Reload the page when the screen size changes
+  location.reload();
+});
