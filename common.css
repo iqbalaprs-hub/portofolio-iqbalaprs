@@ -149,6 +149,7 @@ img {
 .button {
   display: flex;
   justify-content: space-around;
+  padding: var(--small-padding-value);
 }
 
 button {
@@ -398,7 +399,6 @@ button:hover:after {
 }
 
 .accordion-item h4 {
-  margin-right: 0;
   width: 90%;
 }
 
