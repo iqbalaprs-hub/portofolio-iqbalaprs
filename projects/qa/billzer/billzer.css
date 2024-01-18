@@ -21,13 +21,3 @@ section {
 section h1 {
   padding: var(--small-padding-value);
 }
-
-/* BUG SECTION */
-.billzer-bugImage-layout1 {
-  max-width: 500px;
-  margin: var(--small-margin-value);
-}
-
-.billzer-bugImage-layout2 {
-  max-width: 250px;
-}

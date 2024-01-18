@@ -135,7 +135,7 @@ h5 {
 p {
   font-size: var(--text-font-size-value);
   line-height: 1.5;
-  max-width: 800px;
+  /* max-width: 800px; */
   text-align: justify;
 }
 
@@ -497,4 +497,28 @@ li.accordion-item {
 .accordion-item.open i {
   transform: rotate(180deg);
   transition: transform 0.5s;
+}
+
+/* ---------------      BUG REPORT    ----------------------- */
+.bug-report h5 {
+  padding: var(--Xsmall-padding-value);
+}
+
+.bug-report p {
+  padding: var(--Xsmall-padding-value);
+}
+
+.bug-report .bugImage-layout1 {
+  max-width: 500px;
+  margin: var(--Xsmall-margin-value);
+}
+
+.bug-report .bugImage-layout2 {
+  max-width: 170px;
+  margin: var(--Xsmall-margin-value);
+}
+
+.bug-report .bugImage-layout3 {
+  max-width: 70px;
+  margin: var(--Xsmall-margin-value);
 }

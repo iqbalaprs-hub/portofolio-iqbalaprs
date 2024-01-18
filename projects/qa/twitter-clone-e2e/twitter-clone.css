@@ -16,24 +16,3 @@ ol {
   margin-left: 40px;
   color: var(--primary-text-color);
 }
-
-/* BUG SECTION */
-.twitter-Clone-bugimage-layout1 {
-  max-width: 150px;
-  margin: var(--small-margin-value);
-}
-
-.twitter-Clone-bugimage-layout2 {
-  max-width: 70px;
-  margin: var(--small-margin-value);
-}
-
-.twitter-Clone-bugimage-layout3 {
-  max-width: 350px;
-  margin: var(--small-margin-value);
-}
-
-.twitter-Clone-bugimage-layout4 {
-  max-width: 450px;
-  margin: var(--small-margin-value);
-}
