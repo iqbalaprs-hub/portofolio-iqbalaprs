@@ -127,17 +127,14 @@ p {
 section {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   gap: var(--small-padding-value);
-  background-color: var(--section-bg-color);
   margin-bottom: var(--medium-margin-value);
-  padding: 30px;
+  padding: var(--small-padding-value);
 }
 
 img {
   width: 100%;
   height: 100%;
-  /* object-fit: cover; */
 }
 
 /* BUTTON */

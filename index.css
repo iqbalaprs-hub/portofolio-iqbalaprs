@@ -4,6 +4,7 @@ html {
 
 section {
   align-items: center;
+  background-color: var(--section-bg-color);
 }
 
 section h1 {

@@ -1,3 +1,11 @@
+section {
+  background-color: var(--section-bg-color);
+}
+
+section h1 {
+  padding: var(--small-padding-value);
+}
+
 /* twitterClone-intro */
 .twitterClone-intro h1 {
   font-family: montserrat;
