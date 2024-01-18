@@ -93,30 +93,25 @@
         </div>
 
         <!-- Content -->
-        <div class="accordion-item open">
-          <h4>
-            To answer this question, I adopted the following scenario plan:
-          </h4>
-          <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-          <div class="hidden-content">
-            <ul class="parent-menu">
-              <li>1. With a pool of 1000 distinct users</li>
-              <li>
-                2. Each user will perform the following 3 actions in sequence:
-                <ul class="submenu">
-                  <li>a. Log-in to the Twitter-Clone platform</li>
-                  <ul class="sub-submenu">
-                    <li>1. Create and post a Tweet</li>
-                    <li>2. Visit the Home Page to read tweets</li>
-                  </ul>
+        <div>
+          <p>To answer this question, I adopted the following scenario plan:</p>
+          <ul class="parent-menu">
+            <li>1. With a pool of 1000 distinct users</li>
+            <li>
+              2. Each user will perform the following 3 actions in sequence:
+              <ul class="submenu">
+                <li>a. Log-in to the Twitter-Clone platform</li>
+                <ul class="sub-submenu">
+                  <li>1. Create and post a Tweet</li>
+                  <li>2. Visit the Home Page to read tweets</li>
                 </ul>
-              </li>
-              <li>
-                3. I will include a ramp-up period of 20s (i.e. every 20ms, a
-                new user will login)
-              </li>
-            </ul>
-          </div>
+              </ul>
+            </li>
+            <li>
+              3. I will include a ramp-up period of 20s (i.e. every 20ms, a new
+              user will login)
+            </li>
+          </ul>
         </div>
 
         <!-- Intro -->
@@ -125,21 +120,18 @@
         </div>
 
         <!-- Content -->
-        <div class="accordion-item open">
-          <h4>
+        <div>
+          <p>
             I will consider that Twitter-Clone is scalable based on the
             following benchmark for each request:
-          </h4>
-          <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-          <div class="hidden-content">
-            <ul class="parent-menu">
-              <li>
-                1- The user receives a successful response (there's no error
-                coming from the server)
-              </li>
-              <li>2- The response time is less than 500ms</li>
-            </ul>
-          </div>
+          </p>
+          <ul class="parent-menu">
+            <li>
+              1- The user receives a successful response (there's no error
+              coming from the server)
+            </li>
+            <li>2- The response time is less than 500ms</li>
+          </ul>
         </div>
       </section>
 
@@ -204,11 +196,9 @@
         <!-- Intro -->
         <div class="section-intro">
           <p>
-            Although, I noted as positive points:<br />
-            1) Even under high load, the application always returned the correct
-            response<br />
-            2) Following the load peak, the application returned to an
-            acceptable response time.
+            Although, I noted as positive points: 1) Even under high load, the
+            application always returned the correct response 2) Following the
+            load peak, the application returned to an acceptable response time.
           </p>
         </div>
 
