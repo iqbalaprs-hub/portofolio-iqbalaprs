@@ -1,11 +1,3 @@
-section {
-  background-color: var(--section-bg-color);
-}
-
-section h1 {
-  padding: var(--small-padding-value);
-}
-
 /* Twitter-Clone intro */
 .twitter-Clone-intro h1 {
   font-family: montserrat;
@@ -13,8 +5,17 @@ section h1 {
 }
 
 /* Scenario outline */
+.blue-section.scenario-outline h1 {
+  padding: 0;
+}
+
 .scenario-outline .parent-menu {
   font-weight: 500;
+}
+
+.scenario-outline .scenario {
+  background-color: var(--body-bg-color);
+  padding: var(--Xsmall-padding-value);
 }
 
 /* CANVAS */
