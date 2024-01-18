@@ -4,20 +4,8 @@
   margin-bottom: 0;
 }
 
-.billzer-intro p {
-  margin-top: 0;
-}
-
 @media screen and (max-width: 1200px) {
   .billzer-intro img {
     width: 120px;
   }
-}
-
-section {
-  background-color: var(--section-bg-color);
-}
-
-section h1 {
-  padding: var(--small-padding-value);
 }
