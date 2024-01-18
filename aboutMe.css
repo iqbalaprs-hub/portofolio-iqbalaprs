@@ -1,23 +1,29 @@
-main {
+.index-section {
+  align-items: center;
+}
+
+/* Picture */
+.picture-of-me {
+  background-color: var(--body-bg-color);
+  max-width: 500px;
+  margin-bottom: 0;
+  order: 2;
+}
+
+/* Introduction */
+.introduction {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Section picture */
-section.picture-of-me {
-  background-color: var(--body-bg-color);
-  max-width: 500px;
-  margin-bottom: 0;
+.introduction h1 {
+  padding: var(--small-padding-value);
+  padding-top: 0;
 }
 
-/* Section introduction */
-section.introduction {
-  background-color: var(--body-bg-color);
-  text-align: center;
-}
-
-/* Section tools logo */
+/* Tools logo */
 .tools-logo ul {
   display: flex;
   flex-wrap: wrap;
@@ -36,16 +42,29 @@ section.introduction {
   width: 120px;
 }
 
-@media screen and (min-width: 900px) {
-  main {
-    flex-direction: row;
+@media screen and (max-width: 950px) {
+  .aboutMe-section {
+    flex-direction: column;
+    align-items: center;
   }
 
   .picture-of-me {
     order: 2;
+    width: 100%;
   }
 
-  section.introduction {
+  .introduction {
     order: 1;
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .picture-of-me {
+    width: 45%;
+  }
+
+  .introduction {
+    width: 55%;
   }
 }
