@@ -2,16 +2,11 @@ html {
   scroll-behavior: smooth;
 }
 
-section {
+.index-section {
   align-items: center;
-  background-color: var(--section-bg-color);
 }
 
-section h1 {
-  padding: var(--small-padding-value);
-}
-
-/* Aboutme button */
+/* --------------------  COMPONENT: Aboutme button ---------------------------- */
 .aboutMe-button {
   width: 100%;
   display: flex;
@@ -46,7 +41,7 @@ section h1 {
   right: 120px;
 }
 
-/* Portfolio list projects */
+/* ---------------------    COMPONENT: Portfolio list projects    --------------------------  */
 .portfolio .list-projects {
   display: flex;
   flex-direction: column;
@@ -54,7 +49,16 @@ section h1 {
   padding-bottom: var(--small-padding-value);
 }
 
-.portfolio .list-projects figure {
+@media screen and (min-width: 600px) {
+  .portfolio .list-projects {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+/* ------------   COMPONENT: Portfolio project link   -------------------*/
+.portfolio .project-link {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,13 +66,13 @@ section h1 {
   box-shadow: 0 1px 4px 0 var(--secondary-link-hover-color);
 }
 
-.portfolio .list-projects figcaption {
+.portfolio .project-link figcaption {
   border-top: 1px solid var(--secondary-link-hover-color);
   width: 100%;
   text-align: center;
 }
 
-.portfolio .list-projects figure img {
+.portfolio .project-link img {
   width: 100%;
   object-fit: cover;
 }
@@ -78,24 +82,19 @@ section h1 {
 }
 
 @media screen and (min-width: 600px) {
-  .portfolio .list-projects {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  .portfolio .list-projects figure {
+  .portfolio .project-link {
     width: 42%;
   }
 }
 
 @media screen and (min-width: 900px) {
-  .portfolio .list-projects figure {
+  .portfolio .project-link {
     width: 32%;
   }
 }
 
 @media screen and (min-width: 1100px) {
-  .portfolio .list-projects figure {
+  .portfolio .project-link {
     width: 23%;
   }
 }
