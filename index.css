@@ -6,6 +6,49 @@ section {
   align-items: center;
 }
 
+section h1 {
+  padding: var(--small-padding-value);
+}
+
+/* Aboutme button */
+.aboutMe-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: var(--small-padding-value);
+}
+
+.aboutMe-button button {
+  width: 100%;
+  max-width: 500px;
+  height: 50px;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: solid 2px var(--button-bg-color);
+  box-shadow: 0 5px 10px -8px rgba(0, 0, 0, 0.7);
+}
+
+.aboutMe-button button:after {
+  content: "»";
+  position: absolute;
+  opacity: 0;
+  right: 20px;
+  transition: 0.5s;
+}
+
+.aboutMe-button button:hover {
+  background-color: var(--secondary-link-hover-color);
+  color: var(--button-bg-color);
+  padding-right: 24px;
+  padding-left: 8px;
+}
+
+.aboutMe-button button:hover:after {
+  opacity: 1;
+  right: 120px;
+}
+
+/* Portfolio list projects */
 .portfolio .list-projects {
   display: flex;
   flex-direction: column;
@@ -30,6 +73,10 @@ section {
 .portfolio .list-projects figure img {
   width: 100%;
   object-fit: cover;
+}
+
+.portfolio .list-projects h4 {
+  padding: var(--small-padding-value);
 }
 
 @media screen and (min-width: 600px) {
