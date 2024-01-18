@@ -83,11 +83,6 @@ main {
 
 ul {
   list-style: none;
-  margin-top: 10px;
-}
-
-li {
-  margin-top: 10px;
 }
 
 tr {
@@ -135,8 +130,12 @@ h5 {
 p {
   font-size: var(--text-font-size-value);
   line-height: 1.5;
-  /* max-width: 800px; */
   text-align: justify;
+}
+
+img {
+  width: 100%;
+  height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -149,18 +148,28 @@ p {
   border-radius: 10px;
 }
 
-/* -------------------    Components    ---------------------   */
-section {
+/* -------------------    COMPONENTS: SECTION (aboutMe-section blue-section)    ---------------------   */
+
+.aboutMe-section {
+  display: flex;
+  gap: var(--small-padding-value);
+  margin-bottom: var(--medium-margin-value);
+  padding: var(--small-padding-value);
+  background-color: var(--body-bg-color);
+}
+
+.blue-section {
   display: flex;
   flex-direction: column;
   gap: var(--small-padding-value);
   margin-bottom: var(--medium-margin-value);
   padding: var(--small-padding-value);
+  background-color: var(--section-bg-color);
 }
 
-img {
-  width: 100%;
-  height: 100%;
+.blue-section h1 {
+  padding: var(--small-padding-value);
+  text-align: center;
 }
 
 /* BUTTON */
@@ -186,7 +195,7 @@ button {
   color: var(--button-bg-color);
 }
 
-/* navigation bar */
+/*  ------------------     COMPONENT: NAVIGATION BAR ------------------    */
 .navigation-bar {
   width: 100%;
   max-width: 1300px;
@@ -205,7 +214,7 @@ button {
   display: none;
 }
 
-/* LOGO */
+/* -------------------- COMPONENT: LOGO   ---------------------------*/
 .logo {
   margin-left: var(--small-margin-value);
   cursor: pointer;
@@ -216,26 +225,7 @@ button {
   font-family: Aclonica, sans-serif;
 }
 
-/* -------------      GET IN TOUCH  ------------------ */
-.get-in-touch {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.get-in-touch h1 {
-  padding: var(--Xsmall-padding-value);
-}
-
-.get-in-touch h4 {
-  padding: var(--Xsmall-padding-value);
-}
-
-.get-in-touch p {
-  padding: var(--Xsmall-padding-value);
-}
-
-/*  -------------     HAMBURGER-MENU ---------------    */
+/*  ------------------     COMPONENT: HAMBURGER-MENU ------------------    */
 .hamburger-menu {
   height: 20px;
   width: 30px;
@@ -391,15 +381,6 @@ button {
   }
 }
 
-/* CONTACT ME */
-.contact-me {
-  gap: 0;
-}
-
-.contact-me p {
-  margin: 5px;
-}
-
 /* -------------------------   SECTION-INTRO ---------------------------------- */
 .section-intro {
   display: flex;
@@ -407,7 +388,7 @@ button {
   align-items: center;
 }
 
-/* --------------------  CSS REPRESENTATION OF NESTED ELEMENTS  ------------------------*/
+/* -------------------------  CSS REPRESENTATION OF NESTED ELEMENTS WITH EACH ITS OWN TAB LENGHT  ------------------------*/
 .parent-menu {
   font-weight: 700;
   margin-left: 20px;
@@ -458,14 +439,6 @@ button {
   }
 }
 
-li.accordion-item {
-  margin-top: 0;
-}
-
-.accordion-item .case-title {
-  font-weight: 700;
-}
-
 .accordion-item i {
   transform: rotate(0deg);
   transition: transform 0.5s;
@@ -497,6 +470,12 @@ li.accordion-item {
 .accordion-item.open i {
   transform: rotate(180deg);
   transition: transform 0.5s;
+}
+
+/* -------------      SPECIFICATIONS  ----------------------- */
+.specifications ul,
+li {
+  margin-top: var(--Xsmall-margin-value);
 }
 
 /* ---------------      BUG REPORT    ----------------------- */
