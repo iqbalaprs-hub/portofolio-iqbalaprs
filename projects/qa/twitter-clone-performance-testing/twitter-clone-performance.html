@@ -93,7 +93,7 @@
         </div>
 
         <!-- Content -->
-        <div class="scenario">
+        <div class="white-background">
           <p>To answer this question, I adopted the following scenario plan:</p>
           <ul class="parent-menu">
             <li>1. With a pool of 1000 distinct users</li>
@@ -120,17 +120,17 @@
         </div>
 
         <!-- Content -->
-        <div class="scenario">
+        <div class="white-background">
           <p>
             I will consider that Twitter-Clone is scalable based on the
             following benchmark for each request:
           </p>
           <ul class="parent-menu">
             <li>
-              1- The user receives a successful response (there's no error
+              1. The user receives a successful response (there's no error
               coming from the server)
             </li>
-            <li>2- The response time is less than 500ms</li>
+            <li>2. The response time is less than 500ms</li>
           </ul>
         </div>
       </section>
@@ -183,7 +183,7 @@
           <h4>Average response time (ms) vs number of simultaneous users:</h4>
           <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
           <div class="hidden-content" style="padding-bottom: 0">
-            <div id="chart-container">
+            <div class="chart-container">
               <canvas
                 id="graph-response-time-per-user-number"
                 width="800"
@@ -207,11 +207,13 @@
           <h4>The graph below proves the positive points:</h4>
           <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
           <div class="hidden-content">
-            <img
-              style="max-width: 100%; min-width: 1400px"
-              src="images/Response Time Graph.png"
-              title="Response time graph"
-            />
+            <div class="chart-container">
+              <canvas
+                id="graph-response-time-300-users-20s-rampup"
+                width="800"
+                height="400"
+              ></canvas>
+            </div>
           </div>
         </div>
       </section>
@@ -220,12 +222,13 @@
         <!-- Intro -->
         <div class="section-intro">
           <h1>Recommendations</h1>
-
+        </div>
+        <div class="white-background">
           <p>
-            For more accurate results, performance tests should be rerun on a
+            1. For more accurate results, performance tests should be rerun on a
             more powerful server (the tests above were done on my Laptop).<br />
-            Developers should work on identifying and correcting the performance
-            issues and bottlenecks.
+            2. Developers should work on identifying and correcting the
+            performance issues and bottlenecks.
           </p>
         </div>
       </section>

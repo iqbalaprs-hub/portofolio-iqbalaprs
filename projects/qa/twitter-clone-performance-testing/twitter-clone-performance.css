@@ -4,7 +4,7 @@
   color: rgb(80, 80, 80);
 }
 
-/* Scenario outline */
+/* ------------------     Scenario outline --------------------   */
 .blue-section.scenario-outline h1 {
   padding: 0;
 }
@@ -13,20 +13,15 @@
   font-weight: 500;
 }
 
-.scenario-outline .scenario {
-  background-color: var(--body-bg-color);
-  padding: var(--Xsmall-padding-value);
-}
-
-/* CANVAS */
-#chart-container {
+/* ----------------------   CANVAS ----------------------------   */
+.chart-container {
   width: 100%;
   overflow-x: auto; /* Enable horizontal scrollbar when needed */
   overflow-y: auto; /* Enable vertical scrollbar when needed */
 }
 
 @media screen and (max-width: 800px) {
-  #chart-container {
+  .chart-container {
     overflow-x: scroll; /* Force horizontal scrollbar for smaller screens */
     overflow-y: scroll; /* Force vertical scrollbar for smaller screens */
   }
@@ -35,4 +30,10 @@
 canvas {
   display: block;
   margin: auto;
+}
+
+/* Class white-background */
+.white-background {
+  background-color: var(--body-bg-color);
+  padding: var(--Xsmall-padding-value);
 }
