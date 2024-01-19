@@ -1,3 +1,11 @@
+.aboutMe-section {
+  display: flex;
+  gap: var(--small-padding-value);
+  margin-bottom: var(--medium-margin-value);
+  padding: var(--small-padding-value);
+  background-color: var(--body-bg-color);
+}
+
 .index-section {
   align-items: center;
 }

@@ -148,30 +148,6 @@ img {
   border-radius: 10px;
 }
 
-/* -------------------    COMPONENTS: SECTION (aboutMe-section blue-section)    ---------------------   */
-
-.aboutMe-section {
-  display: flex;
-  gap: var(--small-padding-value);
-  margin-bottom: var(--medium-margin-value);
-  padding: var(--small-padding-value);
-  background-color: var(--body-bg-color);
-}
-
-.blue-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--small-padding-value);
-  margin-bottom: var(--medium-margin-value);
-  padding: var(--small-padding-value);
-  background-color: var(--section-bg-color);
-}
-
-.blue-section h1 {
-  padding: var(--small-padding-value);
-  text-align: center;
-}
-
 /* BUTTON */
 button {
   cursor: pointer;
@@ -190,9 +166,34 @@ button {
   }
 }
 
-/* GITHUB ICON */
-.fa-github {
-  color: var(--button-bg-color);
+/* -------------------    COMPONENTS: SECTION (aboutMe-section blue-section)    ---------------------   */
+
+.blue-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--medium-padding-value);
+  margin-bottom: var(--medium-margin-value);
+  padding: var(--small-padding-value);
+  background-color: var(--section-bg-color);
+}
+
+.blue-section h1 {
+  padding: var(--small-padding-value);
+  text-align: center;
+}
+
+/* -------------------------   SECTION-INTRO ---------------------------------- */
+.section-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0% 5%;
+}
+
+@media screen and (max-width: 700px) {
+  .section-intro {
+    padding: 0;
+  }
 }
 
 /*  ------------------     COMPONENT: NAVIGATION BAR ------------------    */
@@ -218,11 +219,26 @@ button {
 .logo {
   margin-left: var(--small-margin-value);
   cursor: pointer;
+  flex: 1; /* It is related to centering the GITHUB ICON in the navigation bar */
 }
 
 .logo h3 {
   color: var(--button-bg-color);
   font-family: Aclonica, sans-serif;
+}
+
+/* --------------------  GITHUB ICON   ------------------------------*/
+.fa-github {
+  color: var(--button-bg-color);
+  flex: 1; /* It is related to centering the GITHUB ICON in the navigation bar */
+}
+
+/*  This part is only related to the Centering the GITHUB ICON on the navigation bar with any screen width */
+@media screen and (max-width: 700px) {
+  .logo,
+  .fa-github {
+    flex: 0;
+  }
 }
 
 /*  ------------------     COMPONENT: HAMBURGER-MENU ------------------    */
@@ -350,7 +366,7 @@ button {
   .navigation-bar .menu {
     display: flex;
     align-items: center;
-    /* width: clamp(500px, 50%, 1000px); */
+    flex: 1; /* It is related to centering the GITHUB ICON in the navigation bar */
   }
 
   .navigation-bar .menu a:first-of-type {
@@ -379,13 +395,6 @@ button {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
-}
-
-/* -------------------------   SECTION-INTRO ---------------------------------- */
-.section-intro {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 /* -------------------------  CSS REPRESENTATION OF NESTED ELEMENTS WITH EACH ITS OWN TAB LENGHT  ------------------------*/
