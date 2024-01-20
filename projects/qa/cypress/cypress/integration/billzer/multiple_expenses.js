@@ -1118,7 +1118,7 @@ describe("Feature: Multiple expenses", () => {
       .type("40");
     cy.get(".calc .userwrap").eq(2).find(".total").should("have.value", "150");
 
-    // 7.22: Click on the minus icon of the second expense field of Person2 (Gas, 25)
+    // 7.22: Click on the minus icon of the third expense field of Person2 (Gas, 25)
     // Expected result: The total sum next to the Person2 name is 125
     cy.get(".calc .userwrap")
       .eq(1)

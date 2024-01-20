@@ -505,7 +505,7 @@ describe("Feature: Edit profile", () => {
     // 9.3: The user clicks on "edit profile" button
     cy.get('a[class*="EditProfileButton"]').click();
 
-    // 9.4: The user writes in the avatar textbox: "https://fastly.picsum.photos/id/237/200/300" (This URL gives a photo of a black dog)
+    // 9.4: The user writes in the avatar textbox: "https://picsum.photos/id/237/200/300" (This URL gives a photo of a black dog)
     cy.get('form[class*="StyledForm"]')
       .contains("label", "Avatar (URL):")
       .next("input")
@@ -814,7 +814,7 @@ describe("Feature: Edit profile", () => {
     // 15.3: The user clicks on "edit profile" button
     cy.get('a[class*="EditProfileButton"]').click();
 
-    // 15.4: The user writes in the avatar textbox: "https://fastly.picsum.photos/id/237/200/300" (This URL gives a photo of a black dog)
+    // 15.4: The user writes in the avatar textbox: "https://picsum.photos/id/237/200/300" (This URL gives a photo of a black dog)
     cy.get('form[class*="StyledForm"]')
       .contains("label", "Avatar (URL):")
       .next("input")

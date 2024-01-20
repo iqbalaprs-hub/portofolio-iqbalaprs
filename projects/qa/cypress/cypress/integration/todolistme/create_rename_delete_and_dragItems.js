@@ -460,7 +460,7 @@ describe("Feature: Create, rename, delete and drag items", () => {
     "Task1" is unchecked
 
     The item "Task5" is in the to-do-items
-    "Task1" is unchecked
+    "Task5" is unchecked
 
     The item "Task2" is in the done-items
     "Task2" is checked
@@ -469,7 +469,7 @@ describe("Feature: Create, rename, delete and drag items", () => {
     "Task3" is checked
 
     The item "Task4" is in the done-items
-    "Task3" is checked
+    "Task4" is checked
 
     NB: I had to do the assert this way because the ID of the items are changing when dragged
     */
