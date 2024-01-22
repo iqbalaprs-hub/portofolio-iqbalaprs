@@ -12,9 +12,7 @@
 
 /* Picture */
 .picture-of-me {
-  background-color: var(--body-bg-color);
   max-width: 500px;
-  margin-bottom: 0;
   order: 2;
 }
 

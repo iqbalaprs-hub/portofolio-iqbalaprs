@@ -68,12 +68,10 @@ html {
 
 .portfolio .project-link figcaption {
   border-top: 1px solid var(--secondary-link-hover-color);
-  width: 100%;
   text-align: center;
 }
 
 .portfolio .project-link img {
-  width: 100%;
   object-fit: cover;
 }
 

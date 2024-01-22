@@ -13,6 +13,11 @@
   font-weight: 500;
 }
 
+/* ----------------     scenario-implementation   -------------------  */
+.scenario-implementation-screenshot {
+  min-width: 1400px;
+}
+
 /* ----------------------   CANVAS ----------------------------   */
 .chart-container {
   width: 100%;

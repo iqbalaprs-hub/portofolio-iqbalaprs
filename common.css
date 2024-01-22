@@ -134,8 +134,7 @@ p {
 }
 
 img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
 }
 
 iframe {
@@ -245,6 +244,18 @@ button {
   .fa-github {
     flex: 0;
   }
+}
+
+/* --------------------   ICON-AND-TEXT   ----------------------------   */
+
+.icon-and-text {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.icon-and-text img {
+  width: var(--text-font-size-value);
+  align-self: center;
 }
 
 /*  ------------------     COMPONENT: HAMBURGER-MENU ------------------    */
