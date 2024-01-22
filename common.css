@@ -443,24 +443,30 @@ button {
   background-color: var(--secondary-link-hover-color);
 }
 
-.accordion-item h4 {
+.accordion-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.accordion-title h4 {
   width: 90%;
   margin: var(--Xsmall-margin-value);
 }
 
 @media screen and (max-width: 500px) {
-  .accordion-item h4 {
+  .accordion-title h4 {
     width: 85%;
   }
 }
 
-.accordion-item i {
+.accordion-title i {
   transform: rotate(0deg);
   transition: transform 0.5s;
 }
 
 /* The below is related to JavaScript */
-.accordion-item .hidden-content {
+.accordion-item .accordion-hidden-content {
   width: 100%;
   overflow: hidden;
   max-height: 0px;
@@ -470,19 +476,19 @@ button {
   transition: max-height 0.5s;
 }
 
-.accordion-item .hidden-content table {
+.accordion-item .accordion-hidden-content table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.accordion-item.open .hidden-content {
+.accordion-item.open .accordion-hidden-content {
   overflow: auto;
   max-height: 450px;
   transition: max-height 0.5s;
   padding-bottom: var(--small-padding-value);
 }
 
-.accordion-item.open i {
+.accordion-item.open .accordion-title i {
   transform: rotate(180deg);
   transition: transform 0.5s;
 }

@@ -2,7 +2,8 @@
 
 const accordionItemList = document.getElementsByClassName("accordion-item");
 for (const accordionItem of accordionItemList) {
-  accordionItem.addEventListener("click", function () {
+  const accordionTitle = accordionItem.querySelector(".accordion-title");
+  accordionTitle.addEventListener("click", function () {
     accordionItem.classList.toggle("open");
   });
 }
