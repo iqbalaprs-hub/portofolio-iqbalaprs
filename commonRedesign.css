@@ -17,28 +17,78 @@
   --primary-text-color: #24292e;
 
   --text-font-size-value: 14px;
+  --h1-font-size-value: 24px;
+  --h2-font-size-value: 20px;
+  --h3-font-size-value: 18px;
 
   --navigationBar-lineHeight: 20px;
+  --h1-lineHeight: 32px;
+  --h2-lineHeight: 28px;
+  --h3-lineHeight: 28px;
+  --p--lineHeight: 28px;
 
   --navigationBar-padding: 16px;
+  --section-padding: 80px;
+
+  --header-margin-bottom: 80px;
 }
 
 @media screen and (min-width: 768px) {
   :root {
     --text-font-size-value: 16px;
+    --h1-font-size-value: 36px;
+    --h2-font-size-value: 30px;
+    --h3-font-size-value: 24px;
 
     --navigationBar-lineHeight: 24px;
+    --h1-lineHeight: 40px;
+    --h2-lineHeight: 36px;
+    --h3-lineHeight: 32px;
   }
 }
 
 /*      --------------------        ELEMENTS        -----------------------------       */
+header {
+  margin-bottom: var(--header-margin-bottom);
+}
 
 body {
   background-color: var(--body-bg-color);
 }
 
+img {
+  max-width: 100%;
+}
+
 a {
   text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-size: var(--h1-font-size-value);
+  line-height: var(--h1-lineHeight);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--h2-font-size-value);
+  line-height: var(--h2-lineHeight);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: var(--h3-font-size-value);
+  line-height: var(--h3-lineHeight);
+  font-weight: 700;
+}
+
+p {
+  line-height: var(--p--lineHeight);
+  font-weight: 400;
 }
 
 /*      --------------------        COMPONENTS        -----------------------------       */
@@ -47,6 +97,10 @@ a {
   margin-left: auto;
   margin-right: auto;
   width: 91.666667%;
+}
+
+.section-properties {
+  padding-top: var(--section-padding);
 }
 
 .topScreen-line-decoration {
@@ -91,12 +145,12 @@ a {
 .navigation-bar .menu {
   display: flex;
   align-items: center;
+  gap: 16px;
 }
 
 .navigation-bar .menu a {
   padding-top: var(--navigationBar-padding);
   padding-bottom: var(--navigationBar-padding);
-  padding-right: var(--navigationBar-padding);
   line-height: var(--navigationBar-lineHeight);
   font-weight: 500;
 }

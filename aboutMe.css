@@ -1,71 +1,67 @@
 .aboutMe-section {
   display: flex;
-  gap: var(--small-padding-value);
-  margin-bottom: var(--medium-margin-value);
-  padding: var(--small-padding-value);
-  background-color: var(--body-bg-color);
-}
-
-.index-section {
+  flex-direction: column;
   align-items: center;
+  gap: 30px;
 }
 
 /* Picture */
 .picture-of-me {
-  max-width: 500px;
   order: 2;
+  width: 100%;
 }
 
 /* Introduction */
 .introduction {
-  text-align: center;
+  order: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 20px;
+  align-self: flex-start;
 }
 
 .introduction h1 {
-  padding: var(--small-padding-value);
-  padding-top: 0;
+  display: inline;
+  background: linear-gradient(
+    to right top,
+    rgba(0, 232, 135, 0.4),
+    rgba(0, 232, 135, 0.4),
+    rgba(0, 224, 243, 0.4)
+  );
 }
 
+/* Tools-part */
+.tools-part {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 /* Tools logo */
 .tools-logo ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  gap: 20px;
 }
 
 .tools-logo li img {
   aspect-ratio: auto;
-  width: 50px;
+  width: 40px;
   margin: var(--small-margin-value);
 }
 
 .tools-logo li img.long-logo {
   aspect-ratio: auto;
-  width: 120px;
+  width: 90px;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (min-width: 768px) {
   .aboutMe-section {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
   }
 
-  .picture-of-me {
-    order: 2;
-    width: 100%;
-  }
-
-  .introduction {
-    order: 1;
-    width: 90%;
-  }
-}
-
-@media screen and (min-width: 950px) {
   .picture-of-me {
     width: 45%;
   }
