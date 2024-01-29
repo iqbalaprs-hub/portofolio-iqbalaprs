@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+  font-size: var(--text-font-size-value);
+  color: var(--primary-text-color);
+}
+
+:root {
+  --body-bg-color: #fff;
+
+  --border-color: #e5e7eb;
+
+  --primary-text-color: #24292e;
+
+  --text-font-size-value: 14px;
+
+  --navigationBar-lineHeight: 20px;
+
+  --navigationBar-padding: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --text-font-size-value: 16px;
+
+    --navigationBar-lineHeight: 24px;
+  }
+}
+
+/*      --------------------        ELEMENTS        -----------------------------       */
+
+body {
+  background-color: var(--body-bg-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+/*      --------------------        COMPONENTS        -----------------------------       */
+.section-layout {
+  max-width: 68rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 91.666667%;
+}
+
+.topScreen-line-decoration {
+  width: 100%;
+  height: 8px;
+  position: fixed;
+  top: 0;
+  z-index: 150;
+  background: linear-gradient(
+    to right top,
+    rgb(219, 255, 0),
+    rgb(0, 232, 135),
+    rgb(0, 224, 243)
+  );
+}
+
+/* NAVIGATION BAR */
+.navigation-bar-parent {
+  background-color: var(--body-bg-color);
+  height: calc(
+    2 * var(--navigationBar-padding) + 2 * var(--navigationBar-lineHeight)
+  ); /* Height of padding-top + padding-bottom + line-height of menu a */
+  width: 100%;
+  position: fixed;
+  z-index: 90;
+}
+.navigation-bar {
+  padding-top: var(--navigationBar-padding);
+  padding-bottom: var(--navigationBar-padding);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background-color: var(--body-bg-color);
+}
+
+/* MENU BAR */
+.navigation-bar .menu {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-bar .menu a {
+  padding-top: var(--navigationBar-padding);
+  padding-bottom: var(--navigationBar-padding);
+  padding-right: var(--navigationBar-padding);
+  line-height: var(--navigationBar-lineHeight);
+  font-weight: 500;
+}
+
+/* GITHUB ICON */
+.navigation-bar .fa-github {
+  border: 1px solid var(--border-color);
+  padding: 4px;
+}

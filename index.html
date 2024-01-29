@@ -22,50 +22,36 @@
       src="https://kit.fontawesome.com/0d4f931e5e.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="common.css" />
+    <!-- <link rel="stylesheet" href="index.css" /> -->
+    <!-- <link rel="stylesheet" href="common.css" /> -->
+    <link rel="stylesheet" href="commonRedesign.css" />
   </head>
 
   <body>
-    <!-- NAVIGATION BAR -->
     <header>
-      <div class="navigation-bar">
-        <a href="index.html" class="logo">
-          <h3>Rony</h3>
-        </a>
-        <a href="https://github.com/ronyelhourani/portfolio" target="_blank"
-          ><i class="fa-brands fa-github fa-2x" title="My Git Repository"> </i>
-        </a>
+      <!-- Top colored line  -->
+      <div class="topScreen-line-decoration"></div>
+      <!-- NAVIGATION BAR -->
+      <div class="navigation-bar-parent">
+        <div class="navigation-bar section-layout">
+          <!-- Menu -->
+          <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="aboutMe.html">About me</a>
+          </div>
 
-        <div class="menu">
-          <a href="#QA-portfolio">QA</a>
-          <a href="#webdev-portfolio">Web design</a>
-          <a href="aboutMe.html">About me</a>
+          <!-- Github repository link -->
+          <a href="https://github.com/ronyelhourani/portfolio" target="_blank"
+            ><i class="fa-brands fa-github fa-2x" title="My Git Repository">
+            </i>
+          </a>
         </div>
-
-        <input type="checkbox" class="checkbox-toggler" id="nav" />
-        <label for="nav" class="hamburger-menu">
-          <span class="nav-icon"></span>
-        </label>
-        <div class="nav-bg"></div>
-        <nav class="navigation">
-          <ul class="nav-list">
-            <li>
-              <a href="index.html" class="nav-link">Homepage</a>
-            </li>
-
-            <li>
-              <a href="aboutMe.html" class="nav-link">About me</a>
-            </li>
-          </ul>
-        </nav>
       </div>
     </header>
 
     <main>
-      <!-- INTRODUCTION -->
-      <section class="index-section blue-section">
-        <!-- Intro -->
+      <!-- <section class="index-section blue-section">
         <div class="section-intro">
           <h1>Hello, I am Rony</h1>
           <p>
@@ -79,11 +65,10 @@
             <button type="button">About me</button>
           </a>
         </div>
-      </section>
+      </section> -->
 
-      <section class="portfolio index-section blue-section" id="QA-portfolio">
-        <!-- QA PORTFOLIO -->
-        <!-- Intro -->
+      <!-- <section class="portfolio index-section blue-section" id="QA-portfolio">
+        
         <div class="section-intro">
           <h1>QA portfolio</h1>
           <p>
@@ -93,14 +78,11 @@
           </p>
         </div>
 
-        <!-- Content -->
         <div>
-          <!-- Intro -->
           <div class="section-intro">
             <h3>End-to-end testing</h3>
           </div>
 
-          <!-- Content -->
           <div class="list-projects">
             <figure class="project-link">
               <a href="projects/qa/twitter-clone-e2e/twitter-clone.html"
@@ -132,12 +114,10 @@
             </figure>
           </div>
 
-          <!-- Intro -->
           <div class="section-intro">
             <h3>API testing</h3>
           </div>
 
-          <!-- Content -->
           <div class="list-projects">
             <figure class="project-link">
               <a
@@ -159,12 +139,10 @@
             </figure>
           </div>
 
-          <!-- Intro -->
           <div class="section-intro">
             <h3>Performance testing</h3>
           </div>
 
-          <!-- Content -->
           <div class="list-projects">
             <figure class="project-link">
               <a
@@ -179,14 +157,13 @@
             </figure>
           </div>
         </div>
-      </section>
+      </section> -->
 
-      <section
+      <!-- <section
         class="portfolio index-section blue-section"
         id="webdev-portfolio"
       >
-        <!-- WEB DEVELOPMENT PORTFOLIO -->
-        <!-- Intro -->
+       
         <div class="section-intro">
           <h1>Web design portfolio</h1>
           <p>
@@ -197,7 +174,6 @@
           </p>
         </div>
 
-        <!-- Content -->
         <div class="list-projects">
           <figure class="project-link">
             <a
@@ -208,11 +184,10 @@
             <figcaption><h4>Wine shop web app</h4></figcaption>
           </figure>
         </div>
-      </section>
+      </section> -->
 
       <!-- CONTACT ME -->
-      <section class="index-section blue-section">
-        <!-- Intro -->
+      <!-- <section class="index-section blue-section">
         <div class="section-intro">
           <h1>Get in touch</h1>
           <p>
@@ -224,7 +199,6 @@
             <i class="fa-regular fa-envelope fa-lg"></i> ronyhourani@gmail.com
           </p>
         </div>
-        <!-- Content -->
         <div>
           <p>
             <strong
@@ -233,7 +207,7 @@
             ></strong>
           </p>
         </div>
-      </section>
+      </section> -->
     </main>
 
     <!-- FOOTER -->
