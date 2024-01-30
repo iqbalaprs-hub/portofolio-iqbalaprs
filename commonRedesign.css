@@ -14,9 +14,12 @@
 
   --border-color: #e5e7eb;
 
-  --primary-text-color: #24292e;
+  --primary-text-color: #374151;
+  --navigationlink-text-color: #000;
+  --headline-text-color: #000;
 
   --text-font-size-value: 14px;
+  --navigationBar-logo-font-size-value: 18px;
   --h1-font-size-value: 24px;
   --h2-font-size-value: 20px;
   --h3-font-size-value: 18px;
@@ -27,6 +30,10 @@
   --h3-lineHeight: 28px;
   --p--lineHeight: 28px;
 
+  --headline-font-weight: 700;
+  --navigationlink-font-weight: 500;
+  --normalText-font-weight: 400;
+
   --navigationBar-padding: 16px;
   --section-padding: 80px;
 
@@ -36,6 +43,7 @@
 @media screen and (min-width: 768px) {
   :root {
     --text-font-size-value: 16px;
+    --navigationBar-logo-font-size-value: 20px;
     --h1-font-size-value: 36px;
     --h2-font-size-value: 30px;
     --h3-font-size-value: 24px;
@@ -71,24 +79,27 @@ ul {
 h1 {
   font-size: var(--h1-font-size-value);
   line-height: var(--h1-lineHeight);
-  font-weight: 700;
+  color: var(--headline-text-color);
+  font-weight: var(--headline-font-weight);
 }
 
 h2 {
   font-size: var(--h2-font-size-value);
   line-height: var(--h2-lineHeight);
-  font-weight: 700;
+  color: var(--headline-text-color);
+  font-weight: var(--headline-font-weight);
 }
 
 h3 {
   font-size: var(--h3-font-size-value);
   line-height: var(--h3-lineHeight);
-  font-weight: 700;
+  color: var(--headline-text-color);
+  font-weight: var(--headline-font-weight);
 }
 
 p {
   line-height: var(--p--lineHeight);
-  font-weight: 400;
+  font-weight: var(--normalText-font-weight);
 }
 
 /*      --------------------        COMPONENTS        -----------------------------       */
@@ -152,11 +163,14 @@ p {
   padding-top: var(--navigationBar-padding);
   padding-bottom: var(--navigationBar-padding);
   line-height: var(--navigationBar-lineHeight);
-  font-weight: 500;
+  font-weight: var(--navigationlink-font-weight);
+  color: var(--navigationlink-text-color);
 }
 
 /* GITHUB ICON */
 .navigation-bar .fa-github {
+  font-size: var(--navigationBar-logo-font-size-value);
   border: 1px solid var(--border-color);
-  padding: 4px;
+  border-radius: 6px;
+  padding: 10px;
 }
