@@ -1,33 +1,10 @@
 .aboutMe-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 30px;
+  gap: 15px;
 }
 
-/* Picture */
-.picture-of-me {
-  order: 2;
-  width: 100%;
-}
-
-.picture-of-me img {
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-    rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
-}
-
-/* Introduction */
-.introduction {
-  order: 1;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-self: flex-start;
-}
-
-.introduction h1 {
+.aboutMe-section .intro h1 {
   display: inline;
   background: linear-gradient(
     to right top,
@@ -37,25 +14,60 @@
   );
 }
 
+/* Picture */
+.picture-of-me {
+  max-height: 325px;
+  min-width: 200px;
+  width: 35%;
+  float: right;
+  margin-left: 20px;
+}
+
+.picture-of-me img {
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
+}
+
+.aboutMe-section .aboutMe-info p {
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
 /* Tools-part */
 .tools-part {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-bottom: 30px;
+  align-self: flex-start;
+}
+
+.tools-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 /* Tools logo */
 .tools-logo ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  align-self: flex-start;
+  width: 100%;
   align-items: center;
-  gap: 20px;
+}
+
+.tools-logo ul.logos-line1 {
+  gap: 15px;
+}
+
+.tools-logo ul.logos-line2 {
+  gap: 30px;
 }
 
 .tools-logo li img {
   aspect-ratio: auto;
   width: 40px;
-  margin: var(--small-margin-value);
 }
 
 .tools-logo li img.long-logo {
@@ -63,16 +75,39 @@
   width: 90px;
 }
 
-@media screen and (min-width: 768px) {
-  .aboutMe-section {
-    flex-direction: row;
+@media screen and (max-width: 450px) {
+  .aboutMe-section .aboutMe-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .picture-of-me {
-    width: 45%;
+    order: 3;
+    width: 100%;
+    margin: auto;
   }
 
-  .introduction {
-    width: 55%;
+  .tools-part {
+    width: 100%;
+  }
+
+  .tools-logo ul {
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .tools-logo li img {
+    width: 30px;
+  }
+
+  .tools-logo li img.long-logo {
+    width: 75px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .tools-logo ul.logos-line2 {
+    gap: 15px;
   }
 }
