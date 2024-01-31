@@ -39,6 +39,7 @@
   --section-mobile-padding: 40px;
 
   --header-margin-bottom: 80px;
+  --contact-margin-bottom: 80px;
 }
 
 @media screen and (min-width: 768px) {
@@ -179,4 +180,12 @@ p {
   border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 10px;
+}
+
+/* -----------------      CONTACT -------------------------    */
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: var(--contact-margin-bottom);
 }
