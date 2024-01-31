@@ -11,30 +11,38 @@
 
 :root {
   --body-bg-color: #fff;
-
   --border-color: #e5e7eb;
-
+  --button-bg-color: #fff;
   --primary-text-color: #374151;
   --navigationlink-text-color: #000;
   --headline-text-color: #000;
+  --button-border-color: #d1d5db;
+  --text-and-icons-list-color: #4b5563;
 
   --text-font-size-value: 14px;
   --navigationBar-logo-font-size-value: 18px;
-  --h1-font-size-value: 24px;
-  --h2-font-size-value: 20px;
+  --button-font-size-value: 14px;
+
+  --h1-font-size-value: 30px;
+  --h2-font-size-value: 24px;
   --h3-font-size-value: 18px;
 
   --navigationBar-lineHeight: 20px;
-  --h1-lineHeight: 32px;
-  --h2-lineHeight: 28px;
+  --button-lineHeight: 20px;
+  --h1-lineHeight: 36px;
+  --h2-lineHeight: 32px;
   --h3-lineHeight: 28px;
   --p--lineHeight: 28px;
 
   --headline-font-weight: 700;
+  --button-font-weight: 700;
   --navigationlink-font-weight: 500;
+  --text-and-icons-weight: 500;
   --normalText-font-weight: 400;
 
   --navigationBar-padding: 16px;
+  --button-top-bottom-padding: 8px;
+  --button-left-right-padding: 16px;
   --section-destkop-padding: 80px;
   --section-mobile-padding: 40px;
 
@@ -46,14 +54,27 @@
   :root {
     --text-font-size-value: 16px;
     --navigationBar-logo-font-size-value: 20px;
-    --h1-font-size-value: 36px;
-    --h2-font-size-value: 30px;
+    --button-font-size-value: 18px;
+    --h1-font-size-value: 48px;
+    --h2-font-size-value: 36px;
     --h3-font-size-value: 24px;
 
     --navigationBar-lineHeight: 24px;
-    --h1-lineHeight: 40px;
-    --h2-lineHeight: 36px;
+    --button-lineHeight: 28px;
+    --h1-lineHeight: 48px;
+    --h2-lineHeight: 40px;
     --h3-lineHeight: 32px;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  :root {
+    --text-font-size-value: 18px;
+    --h1-font-size-value: 60px;
+    --h2-font-size-value: 48px;
+
+    --h1-lineHeight: 60px;
+    --h2-lineHeight: 48px;
   }
 }
 
@@ -104,6 +125,19 @@ p {
   font-weight: var(--normalText-font-weight);
 }
 
+/* BUTTON */
+button {
+  padding: var(--button-top-bottom-padding) var(--button-left-right-padding);
+  font-size: var(--button-font-size-value);
+  line-height: var(--button-lineHeight);
+  font-weight: var(--button-font-weight);
+  border-radius: 4px;
+  border: 1px solid var(--button-border-color);
+  background-color: var(--button-bg-color);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+
 /*      --------------------        COMPONENTS        -----------------------------       */
 .section-layout {
   max-width: 68rem;
@@ -113,6 +147,8 @@ p {
 }
 
 .section-properties {
+  display: flex;
+  flex-direction: column;
   padding-top: var(--section-mobile-padding);
 }
 
@@ -136,7 +172,20 @@ p {
   );
 }
 
-/* NAVIGATION BAR */
+.text-and-icons-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.text-and-icon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: var(--text-and-icons-weight);
+}
+
+/* ----------------------------     NAVIGATION BAR ---------------------------------    */
 .navigation-bar-parent {
   background-color: var(--body-bg-color);
   height: 5px;
@@ -184,8 +233,6 @@ p {
 
 /* -----------------      CONTACT -------------------------    */
 .contact {
-  display: flex;
-  flex-direction: column;
   gap: 15px;
   margin-bottom: var(--contact-margin-bottom);
 }

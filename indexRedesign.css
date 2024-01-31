@@ -1,0 +1,40 @@
+.homepage-intro h1 {
+  margin-top: 16px;
+}
+
+.homepage-intro h2 {
+  margin-top: 4px;
+}
+
+.homepage-intro p {
+  margin-top: 12px;
+  max-width: 896px;
+}
+
+.homepage-intro h1 span {
+  font-size: var(--h1-font-size-value);
+  background: linear-gradient(
+    to right top,
+    rgba(0, 232, 135, 0.4),
+    rgba(0, 232, 135, 0.4),
+    rgba(0, 224, 243, 0.4)
+  );
+}
+
+.homepage-intro button {
+  margin-top: 32px;
+}
+
+.homepage-intro .text-and-icons-list {
+  margin-top: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .homepage-intro h1 {
+    margin-top: 24px;
+  }
+
+  .homepage-intro .text-and-icons-list {
+    margin-top: 32px;
+  }
+}
