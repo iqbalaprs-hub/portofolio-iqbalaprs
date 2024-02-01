@@ -1,15 +1,6 @@
-.aboutMe-section {
-  gap: 15px;
-}
-
 .aboutMe-section .intro h1 {
   display: inline;
-  background: linear-gradient(
-    to right top,
-    rgba(0, 232, 135, 0.4),
-    rgba(0, 232, 135, 0.4),
-    rgba(0, 224, 243, 0.4)
-  );
+  background: var(--headline-background-color);
   font-size: 24px;
   line-height: 32px;
 }
