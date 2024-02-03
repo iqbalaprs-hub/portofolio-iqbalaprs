@@ -22,7 +22,7 @@
       src="https://kit.fontawesome.com/0d4f931e5e.js"
       crossorigin="anonymous"
     ></script>
-    <!-- <link rel="stylesheet" href="restcountries.css" /> -->
+    <link rel="stylesheet" href="restcountries.css" />
     <!-- <link rel="stylesheet" href="../../../common.css" /> -->
     <!-- <script src="../../../commonScript.js" defer></script> -->
     <link rel="stylesheet" href="../../../commonRedesign.css" />
@@ -50,6 +50,247 @@
       </div>
     </header>
     <main>
+      <section class="project-details section-layout section-properties">
+        <!-- Intro -->
+        <div class="project-intro">
+          <!-- Project-name -->
+          <h1 class="project-name">Rest Countries</h1>
+          <!-- Project introduction -->
+          <p class="project-introduction">
+            The
+            <a href="https://restcountries.com/" target="_blank"
+              >Rest Countries</a
+            >
+            Public API is a free online service that provides information about
+            countries around the world. It offers data such as country names,
+            capital cities, population, currency, languages, and more,
+            accessible through simple HTTP requests for easy integration into
+            various applications.<br />The objective of this project is to write
+            API tests that evaluates the endpoints exposed by this API, and
+            report bugs discovered during the tests.
+          </p>
+          <!-- Project Text-and-icons-list -->
+          <div class="text-and-icons-list">
+            <span class="text-and-icon"
+              ><i class="fa-brands fa-github"></i>
+              <a
+                href="https://github.com/ronyelhourani/portfolio/blob/main/projects/qa/restcountries/openapi.yaml"
+                target="_blank"
+                >OpenAPI Github repository</a
+              ></span
+            >
+            <span>-</span>
+            <span class="text-and-icon"
+              ><i class="fa-brands fa-github"></i>
+              <a
+                href="https://github.com/ronyelhourani/portfolio/tree/main/projects/qa/cypress/cypress/integration/restCountries"
+                target="_blank"
+                >Test cases Github repository</a
+              ></span
+            >
+            <span>-</span>
+
+            <span class="text-and-icon">
+              <img src="images/swagger-logo-card.png" class="logo-image" />
+              <a href="swaggerRestCountries.html" target="_blank">Swagger UI</a>
+            </span>
+
+            <span>-</span>
+
+            <span class="text-and-icon">
+              <img src="images/youtube-logo-card.png" class="logo-image" />
+              <a
+                href="https://www.youtube.com/embed/GGUXjlED7AY?si=ngWFLUn3tOYMegoG"
+                target="_blank"
+                >Youtube video</a
+              >
+            </span>
+          </div>
+          <!-- Project <hr> -->
+          <hr />
+        </div>
+
+        <!-- Project-content: there are 2 parts (1) Project-content-main and (2) Table-of-contents-->
+        <div class="project-content">
+          <!-- Project-content-main -->
+          <ul class="project-content-main">
+            <!-- Specifications -->
+            <li>
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="title first-section-title">Specifications</h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    I examined the documentation of Rest Countries API. I then
+                    rewrote it in OpenAPI using Swagger. You can read the
+                    OpenAPI documentation using the
+                    <span class="text-and-icon">
+                      <img
+                        src="images/swagger-logo-card.png"
+                        class="logo-image"
+                      />
+                      <a href="swaggerRestCountries.html" target="_blank"
+                        >Swagger UI</a
+                      >
+                    </span>
+                    or directly in my
+                    <span class="text-and-icon"
+                      ><i class="fa-brands fa-github"></i>
+                      <a
+                        href="https://github.com/ronyelhourani/portfolio/blob/main/projects/qa/restcountries/openapi.yaml"
+                        target="_blank"
+                        >Github repository</a
+                      ></span
+                    >.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <!-- Test cases -->
+            <li>
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="title">Test cases</h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    I created 66 test cases for the 10 endpoints, first using
+                    Postman. I then automated them using Cypress. You can find
+                    all the automated test cases for Rest Countries in my
+                    <span class="text-and-icon"
+                      ><i class="fa-brands fa-github"></i>
+                      <a
+                        href="https://github.com/ronyelhourani/portfolio/tree/main/projects/qa/cypress/cypress/integration/restCountries"
+                        target="_blank"
+                        >Github repository</a
+                      ></span
+                    >.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <!-- Test execution (Cypress) -->
+            <li>
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="title">Test execution (Cypress)</h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    You can find below a video capture showcasing the execution
+                    of all Cypress tests.
+                  </p>
+                  <iframe
+                    class="project-video"
+                    src="https://www.youtube.com/embed/GGUXjlED7AY?si=ngWFLUn3tOYMegoG"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  >
+                  </iframe>
+                </div>
+              </div>
+            </li>
+            <!-- Test reports -->
+            <li>
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="title">Test cases</h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    Here's below, the results of running "npx cypress run". No
+                    bugs were found.
+                  </p>
+                  <div class="project-test-report">
+                    <p style="font-family: monospace; color: #ffffff">
+                      ====================================================================================================<br />
+                      <br />
+                      &nbsp;&nbsp;(Run&nbsp;Finished)<br />
+                      <br />
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tests&nbsp;&nbsp;Passing&nbsp;&nbsp;Failing&nbsp;&nbsp;Pending&nbsp;&nbsp;Skipped&nbsp;&nbsp;<br />
+                      &nbsp;&nbsp;┌────────────────────────────────────────────────────────────────────────────────────────────────┐<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;all.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >3</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;alpha.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >12</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;capital.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;881ms&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >4</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;currency.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:02&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >7</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;demonym.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >5</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;language.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:02&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >7</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;name.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:02&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >11</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;region.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >6</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;subregion.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;737ms&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >3</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;translation.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >8</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;└────────────────────────────────────────────────────────────────────────────────────────────────┘<br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;All&nbsp;specs&nbsp;passed!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:22&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >66</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <!-- Table-of-contents -->
+          <div class="table-of-contents"></div>
+        </div>
+      </section>
       <!-- <section class="restcountries-intro blue-section">
         <div class="section-intro">
           <a
