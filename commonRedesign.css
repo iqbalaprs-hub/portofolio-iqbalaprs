@@ -66,13 +66,13 @@
   /* Specific to project details */
   --h1-project-details-font-size-value: 24px;
   --h2-project-details-font-size-value: 24px;
+  --h3-project-details-font-size-value: 20px;
   --p-project-details-font-size-value: 16px;
   --project-details-projectIntro-normal-text-font-size-value: 14px;
 
-  /* --h1-project-details-lineHeight: 32px;
-  --p-project-details-lineHeight: 28px; */
-
+  --h3-project-details-color: #111827;
   --a-project-details-color: #006bff;
+  --a-table-of-contents-color: #9ca3af;
 }
 
 @media screen and (min-width: 768px) {
@@ -95,8 +95,6 @@
 
     /* Specific to project details */
     --h1-project-details-font-size-value: 36px;
-
-    /* --h1-project-details-lineHeight: 40px; */
   }
 }
 
@@ -168,7 +166,6 @@ p {
 button {
   padding: var(--button-top-bottom-padding) var(--button-left-right-padding);
   font-size: var(--button-font-size-value);
-  /* line-height: var(--button-lineHeight); */
   font-weight: var(--button-font-weight);
   border-radius: 4px;
   border: 1px solid var(--button-border-color);
@@ -178,9 +175,19 @@ button {
     rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
 /*      --------------------        COMPONENTS        -----------------------------       */
 .section-layout {
-  max-width: 68rem;
+  max-width: 1224px;
   margin-left: auto;
   margin-right: auto;
   width: 91.666667%;
@@ -213,7 +220,7 @@ button {
   );
 }
 
-/* Text-and-icons */
+/* COMPONENT: Text-and-icons */
 .text-and-icons-list {
   display: flex;
   flex-wrap: wrap;
@@ -221,6 +228,7 @@ button {
   gap: 12px;
 }
 
+/* COMPONENT: text-and-icon */
 .text-and-icon {
   display: inline-flex;
   align-items: baseline;
@@ -232,12 +240,13 @@ button {
   font-weight: var(--text-and-icons-weight);
 }
 
+/* COMPONENT: logo-image (only in component text-and-icon)*/
 .text-and-icon .logo-image {
   width: 16px;
   align-self: center;
 }
 
-/* Logos-card */
+/* COMPONENT: logos-list-card */
 .logos-list-card {
   display: flex;
   flex-wrap: wrap;
@@ -245,6 +254,7 @@ button {
   gap: 8px;
 }
 
+/* COMPONENT: logo-card */
 .logo-card {
   width: var(--logo-width-value);
   height: var(--logo-height-value);
@@ -304,57 +314,74 @@ button {
 
 /* -------  Project-intro ------ */
 
-/* Project name */
-.project-details .project-intro .project-name {
+/* COMPONENT: Project name */
+.project-name {
   font-size: var(--h1-project-details-font-size-value);
 }
 
-/* Project  introduction*/
-.project-details .project-intro .project-introduction {
+/* COMPONENT: project-introduction*/
+.project-intro .project-introduction {
   margin-top: 8px;
+}
+
+.project-introduction {
   font-size: var(--project-details-projectIntro-normal-text-font-size-value);
 }
-.project-details .project-intro .project-introduction a {
+
+.project-introduction a {
   color: var(--a-project-details-color);
   font-size: var(--project-details-projectIntro-normal-text-font-size-value);
 }
 
-/* Project text-and-icons-list */
-.project-details .project-intro .text-and-icons-list {
+/* COMPONENT: text-and-icons-list in project-intro*/
+.project-intro .text-and-icons-list {
   margin-top: 8px;
   font-size: var(--project-details-projectIntro-normal-text-font-size-value);
 }
 
-.project-details .project-intro .text-and-icons-list .text-and-icon a {
+.project-intro .text-and-icons-list .text-and-icon a {
   font-size: var(--project-details-projectIntro-normal-text-font-size-value);
 }
 
-/* Project <hr> */
-.project-details .project-intro hr {
+/* Project-intro <hr> */
+.project-intro hr {
   margin-top: 16px;
   border-top: 1px var(--border-color);
 }
 
 /* ------- Project-content ------ */
+/* COMPONENT: project-content */
 .project-content {
   display: flex;
   gap: 32px;
 }
 
-.project-content .project-content-main {
+/* COMPONENT:  project-content-main */
+.project-content-main {
   max-width: 800px;
+  width: 100%;
 }
 
-/* Project title */
-.project-content .project-content-main .project-content-section .title {
-  font-size: var(--h2-project-details-font-size-value);
+/* COMPONENT: project-content-section */
+.project-content-main .project-content-section {
+  /* margin-bottom: 20px; */
+  /* We added a transparent border in order to prevent margin-collapse */
+  border: 1px solid transparent;
+}
+
+/* COMPONENT: project-section-title */
+.project-content-section .project-section-title {
   margin-top: 25px;
   margin-bottom: 25px;
+}
+
+.project-section-title {
+  font-size: var(--h2-project-details-font-size-value);
   padding-left: 16px;
   position: relative;
 }
 
-.project-content .project-content-main .project-content-section .title::before {
+.project-section-title::before {
   content: "";
   position: absolute;
   top: 0;
@@ -369,72 +396,87 @@ button {
   );
 }
 
-.project-content
-  .project-content-main
-  .project-content-section
-  .title.first-section-title {
+.project-content-section .project-section-title.first-section-title {
   margin-top: 0;
 }
 
-/* project-section-details */
-.project-content
-  .project-content-main
-  .project-content-section
-  .project-section-details {
+/* COMPONENT: project-section-details */
+.project-content-section .project-section-details {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.project-content
-  .project-content-main
-  .project-content-section
-  .project-section-details
-  p {
+.project-section-details p {
   font-size: 16px;
 }
 
-.project-content
-  .project-content-main
-  .project-content-section
-  .project-section-details
-  a {
+.project-section-details a {
   color: var(--a-project-details-color);
   font-size: 16px;
   font-weight: 400;
 }
 
-.project-content
-  .project-content-main
-  .project-content-section
-  .project-section-details
-  .project-video {
+/* COMPONENT: project-video */
+.project-video {
   width: 100%;
   height: 400px;
   margin-top: 20px;
   border: 0;
 }
 
-.project-content
-  .project-content-main
-  .project-content-section
-  .project-section-details
-  .project-test-report {
+/* COMPONENT: project-test-report */
+.project-test-report {
   width: 100%;
   max-height: 500px;
   overflow: auto;
-  margin-top: 20px;
   background-color: #000000;
 }
 
-/* Table of contents */
+.project-test-report p {
+  font-family: monospace;
+  color: #ffffff;
+}
 
-.project-content .table-of-contents {
+.project-section-details .project-test-report {
+  margin-top: 20px;
+}
+
+/* -----------  COMPONENT: Table of contents --------  */
+.table-of-contents {
   display: none;
 }
 
 @media screen and (min-width: 1024px) {
-  .project-content .table-of-contents {
+  .table-of-contents {
     display: block;
     width: 250px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    position: sticky;
+    top: 150px;
   }
+}
+
+/* COMPONENT: table-of-contents-title */
+.table-of-contents-title h3 {
+  font-size: var(--h3-project-details-font-size-value);
+  color: var(--h3-project-details-color);
+}
+
+/* COMPONENT: table-of-contents-content */
+.table-of-contents .table-of-contents-content {
+  margin-top: 16px;
+}
+
+.table-of-contents-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* COMPONENT: table-of-contents-section-title */
+.table-of-contents-section-title {
+  color: var(--a-table-of-contents-color);
+  font-size: 14px;
+  font-weight: 500;
 }

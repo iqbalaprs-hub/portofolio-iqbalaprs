@@ -24,7 +24,7 @@
     ></script>
     <link rel="stylesheet" href="restcountries.css" />
     <!-- <link rel="stylesheet" href="../../../common.css" /> -->
-    <!-- <script src="../../../commonScript.js" defer></script> -->
+    <script src="../../../commonScript.js" defer></script>
     <link rel="stylesheet" href="../../../commonRedesign.css" />
   </head>
   <body>
@@ -115,11 +115,13 @@
           <!-- Project-content-main -->
           <ul class="project-content-main">
             <!-- Specifications -->
-            <li>
+            <li id="specifications">
               <!-- Project-content-section -->
               <div class="project-content-section">
                 <!-- Project-content-section title -->
-                <h2 class="title first-section-title">Specifications</h2>
+                <h2 class="project-section-title first-section-title">
+                  Specifications
+                </h2>
                 <!-- project-section-details -->
                 <div class="project-section-details">
                   <p>
@@ -149,11 +151,11 @@
               </div>
             </li>
             <!-- Test cases -->
-            <li>
+            <li id="test-cases">
               <!-- Project-content-section -->
               <div class="project-content-section">
                 <!-- Project-content-section title -->
-                <h2 class="title">Test cases</h2>
+                <h2 class="project-section-title">Test cases</h2>
                 <!-- project-section-details -->
                 <div class="project-section-details">
                   <p>
@@ -173,11 +175,11 @@
               </div>
             </li>
             <!-- Test execution (Cypress) -->
-            <li>
+            <li id="test-execution">
               <!-- Project-content-section -->
               <div class="project-content-section">
                 <!-- Project-content-section title -->
-                <h2 class="title">Test execution (Cypress)</h2>
+                <h2 class="project-section-title">Test execution (Cypress)</h2>
                 <!-- project-section-details -->
                 <div class="project-section-details">
                   <p>
@@ -196,11 +198,11 @@
               </div>
             </li>
             <!-- Test reports -->
-            <li>
+            <li id="test-reports">
               <!-- Project-content-section -->
               <div class="project-content-section">
                 <!-- Project-content-section title -->
-                <h2 class="title">Test cases</h2>
+                <h2 class="project-section-title">Test reports</h2>
                 <!-- project-section-details -->
                 <div class="project-section-details">
                   <p>
@@ -208,7 +210,7 @@
                     bugs were found.
                   </p>
                   <div class="project-test-report">
-                    <p style="font-family: monospace; color: #ffffff">
+                    <p>
                       ====================================================================================================<br />
                       <br />
                       &nbsp;&nbsp;(Run&nbsp;Finished)<br />
@@ -288,7 +290,34 @@
             </li>
           </ul>
           <!-- Table-of-contents -->
-          <div class="table-of-contents"></div>
+          <!-- The empty DIV which is the direct parent for the table of contents was added so that position: sticky works -->
+          <div>
+            <div class="table-of-contents">
+              <!-- Intro -->
+              <div class="table-of-contents-title">
+                <h3>Table of contents</h3>
+              </div>
+              <!-- Content -->
+              <div class="table-of-contents-content">
+                <a
+                  href="#specifications"
+                  class="table-of-contents-section-title"
+                  >Specifications</a
+                >
+                <a href="#test-cases" class="table-of-contents-section-title"
+                  >Test cases</a
+                >
+                <a
+                  href="#test-execution"
+                  class="table-of-contents-section-title"
+                  >Test execution (Cypress)</a
+                >
+                <a href="#test-reports" class="table-of-contents-section-title"
+                  >Test reports</a
+                >
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <!-- <section class="restcountries-intro blue-section">

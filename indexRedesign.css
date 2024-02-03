@@ -1,4 +1,4 @@
-/* Properties specific to homepage-intro */
+/* COMPONENTS: homepage-intro */
 .homepage-intro {
   gap: 0;
 }
@@ -41,7 +41,7 @@
   }
 }
 
-/* Properties specific to project list */
+/* COMPONENTS: projects-list-section-intro */
 .projects-list-section-intro h1 {
   display: inline;
   background: var(--headline-background-color);
@@ -50,14 +50,19 @@
   margin-top: 8px;
 }
 
+/* COMPONENTS: project-cards-list*/
 .projects-list-section .project-cards-list {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+}
+
+.projects-list-section .project-cards-list {
   margin-top: 9px;
 }
 
-.projects-list-section .project-card {
+/* COMPONENTS: project-card*/
+.project-card {
   border: 1px solid var(--border-color);
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
@@ -67,41 +72,50 @@
 }
 
 @media screen and (min-width: 640px) and (max-width: 1280px) {
-  .projects-list-section .project-card {
+  .project-card {
     width: 48%;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .projects-list-section .project-card {
+  .project-card {
     width: 32%;
   }
 }
 
-.projects-list-section .project-card-link {
+/* COMPONENTS: project-card-link*/
+.project-card-link {
   display: flex;
   flex-direction: column;
 }
 
+/* COMPONENTS: project-card-link-description*/
+@media screen and (min-width: 768px) {
+  .project-card-link-description {
+    font-size: 14px;
+  }
+}
+
+/* COMPONENTS: logos-list-card in projects-list-section*/
 .projects-list-section .logos-list-card {
   margin-top: 8px;
 }
 
-.projects-list-section .project-card-image {
-  margin-top: 12px;
+/* COMPONENTS: project-card-image */
+.project-card-image {
   border-radius: 4px;
   border: 1px var(--button-border-color);
   box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 3px 0 rgba(0, 0, 0, 0.1),
     0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
-.projects-list-section .see-more {
+
+.projects-list-section .project-card-image {
+  margin-top: 12px;
+}
+
+/* COMPONENTS:  see-more*/
+.see-more {
   color: var(--navigationlink-text-color);
   font-weight: var(--navigationlink-font-weight);
   margin-top: 8px;
-}
-
-@media screen and (min-width: 768px) {
-  .projects-list-section .project-card-link .project-card-link-description {
-    font-size: 14px;
-  }
 }

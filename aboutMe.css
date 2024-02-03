@@ -1,16 +1,15 @@
+/* COMPONENT: aboutMe-section */
 .aboutMe-section .intro h1 {
   display: inline;
   background: var(--headline-background-color);
   font-size: 24px;
-  /* line-height: 32px; */
 }
 
 .aboutMe-section .intro h2 {
   font-size: 20px;
-  /* line-height: 28px; */
 }
 
-/* Picture */
+/* COMPONENT: picture-of-me */
 .picture-of-me {
   max-height: 325px;
   min-width: 200px;
@@ -25,12 +24,13 @@
     rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
 }
 
-.aboutMe-section .aboutMe-info p {
+/* COMPONENT: aboutMe-info */
+.aboutMe-info p {
   margin-bottom: 20px;
   text-align: justify;
 }
 
-/* Tools-part */
+/* COMPONENT: Tools-part */
 .tools-part {
   display: flex;
   flex-direction: column;
@@ -39,12 +39,13 @@
   align-self: flex-start;
 }
 
+/* COMPONENT: tools-logo */
 .tools-logo {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-/* Tools logo */
+
 .tools-logo ul {
   display: flex;
   flex-wrap: wrap;
@@ -74,12 +75,10 @@
 @media screen and (min-width: 768px) {
   .aboutMe-section .intro h1 {
     font-size: 36px;
-    /* line-height: 40px; */
   }
 
   .aboutMe-section .intro h2 {
     font-size: 30px;
-    /* line-height: 36px; */
   }
 }
 
