@@ -62,17 +62,6 @@
 
   --header-margin-bottom: 80px;
   --contact-margin-bottom: 80px;
-
-  /* Specific to project details */
-  --h1-project-details-font-size-value: 24px;
-  --h2-project-details-font-size-value: 24px;
-  --h3-project-details-font-size-value: 20px;
-  --p-project-details-font-size-value: 16px;
-  --project-details-projectIntro-normal-text-font-size-value: 14px;
-
-  --h3-project-details-color: #111827;
-  --a-project-details-color: #006bff;
-  --a-table-of-contents-color: #9ca3af;
 }
 
 @media screen and (min-width: 768px) {
@@ -92,9 +81,6 @@
     --h2-lineHeight: 40px;
     --h3-lineHeight: 32px;
     --h4-lineHeight: 28px;
-
-    /* Specific to project details */
-    --h1-project-details-font-size-value: 36px;
   }
 }
 
@@ -312,35 +298,58 @@ button {
 
 /* -------------------    PROJECT DETAILS ------------------    */
 
+.project-details h1 {
+  font-size: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .project-details h1 {
+    font-size: 36px;
+  }
+}
+
+.project-details h2 {
+  font-size: 24px;
+}
+
+.project-details h3 {
+  font-size: 20px;
+  color: #111827;
+}
+
+.project-details h4 {
+  font-size: 18px;
+}
+
+.project-details h5 {
+  font-size: 16px;
+}
+
 /* -------  Project-intro ------ */
 
-/* COMPONENT: Project name */
-.project-name {
-  font-size: var(--h1-project-details-font-size-value);
+.project-intro p {
+  font-size: 14px;
 }
+
+/* COMPONENT: Project name */
 
 /* COMPONENT: project-introduction*/
 .project-intro .project-introduction {
   margin-top: 8px;
 }
 
-.project-introduction {
-  font-size: var(--project-details-projectIntro-normal-text-font-size-value);
-}
-
 .project-introduction a {
-  color: var(--a-project-details-color);
-  font-size: var(--project-details-projectIntro-normal-text-font-size-value);
+  color: #006bff;
+  font-size: 14px;
 }
 
 /* COMPONENT: text-and-icons-list in project-intro*/
 .project-intro .text-and-icons-list {
   margin-top: 8px;
-  font-size: var(--project-details-projectIntro-normal-text-font-size-value);
 }
 
 .project-intro .text-and-icons-list .text-and-icon a {
-  font-size: var(--project-details-projectIntro-normal-text-font-size-value);
+  font-size: 14px;
 }
 
 /* Project-intro <hr> */
@@ -356,6 +365,10 @@ button {
   gap: 32px;
 }
 
+.project-content p {
+  font-size: 16px;
+}
+
 /* COMPONENT:  project-content-main */
 .project-content-main {
   max-width: 800px;
@@ -364,7 +377,6 @@ button {
 
 /* COMPONENT: project-content-section */
 .project-content-main .project-content-section {
-  /* margin-bottom: 20px; */
   /* We added a transparent border in order to prevent margin-collapse */
   border: 1px solid transparent;
 }
@@ -376,7 +388,6 @@ button {
 }
 
 .project-section-title {
-  font-size: var(--h2-project-details-font-size-value);
   padding-left: 16px;
   position: relative;
 }
@@ -406,12 +417,8 @@ button {
   margin-bottom: 20px;
 }
 
-.project-section-details p {
-  font-size: 16px;
-}
-
 .project-section-details a {
-  color: var(--a-project-details-color);
+  color: #006bff;
   font-size: 16px;
   font-weight: 400;
 }
@@ -441,6 +448,34 @@ button {
   margin-top: 20px;
 }
 
+/* COMPONENT: project-bug-report */
+.project-bug-report {
+  width: 100%;
+  overflow: auto;
+
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bug {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bug-description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bug-description ol {
+  padding-left: 40px;
+}
+
 /* -----------  COMPONENT: Table of contents --------  */
 .table-of-contents {
   display: none;
@@ -457,12 +492,6 @@ button {
   }
 }
 
-/* COMPONENT: table-of-contents-title */
-.table-of-contents-title h3 {
-  font-size: var(--h3-project-details-font-size-value);
-  color: var(--h3-project-details-color);
-}
-
 /* COMPONENT: table-of-contents-content */
 .table-of-contents .table-of-contents-content {
   margin-top: 16px;
@@ -476,7 +505,7 @@ button {
 
 /* COMPONENT: table-of-contents-section-title */
 .table-of-contents-section-title {
-  color: var(--a-table-of-contents-color);
+  color: #9ca3af;
   font-size: 14px;
   font-weight: 500;
 }

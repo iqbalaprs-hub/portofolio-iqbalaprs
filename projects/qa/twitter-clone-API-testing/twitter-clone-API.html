@@ -22,9 +22,9 @@
       src="https://kit.fontawesome.com/0d4f931e5e.js"
       crossorigin="anonymous"
     ></script>
-    <!-- <link rel="stylesheet" href="twitter-clone-API.css" /> -->
+    <link rel="stylesheet" href="twitter-clone-API.css" />
     <!-- <link rel="stylesheet" href="../../../common.css" /> -->
-    <!-- <script src="../../../commonScript.js" defer></script> -->
+    <script src="../../../commonScript.js" defer></script>
     <link rel="stylesheet" href="../../../commonRedesign.css" />
   </head>
   <body>
@@ -51,6 +51,404 @@
     </header>
 
     <main>
+      <section class="project-details section-layout section-properties">
+        <!-- Intro -->
+        <div class="project-intro">
+          <!-- Project-name -->
+          <h1 class="project-name">Twitter-Clone</h1>
+          <!-- Project introduction -->
+          <p class="project-introduction">
+            <a
+              href="https://github.com/mateuszwszola/twitter-clone"
+              target="_blank"
+              >Twitter-Clone</a
+            >
+            is an open-source simplified version of the Twitter/X social media
+            platform developed by
+            <a href="https://github.com/mateuszwszola" target="_blank"
+              >mateuszwszola</a
+            >. It is written with React (front), Node (back) and MongoDB
+            (database).<br />The objective of this project is to write API tests
+            that evaluates the endpoints used to communicate with the backend,
+            and report bugs discovered during the tests.
+          </p>
+          <!-- Project Text-and-icons-list -->
+          <div class="text-and-icons-list">
+            <span class="text-and-icon"
+              ><i class="fa-brands fa-github"></i>
+              <a
+                href="https://github.com/ronyelhourani/portfolio/blob/main/projects/qa/twitter-clone-API-testing/openapi.yaml"
+                target="_blank"
+                >OpenAPI Github repository</a
+              ></span
+            >
+            <span>-</span>
+            <span class="text-and-icon"
+              ><i class="fa-brands fa-github"></i>
+              <a
+                href="https://github.com/ronyelhourani/portfolio/tree/main/projects/qa/cypress/cypress/integration/twitter-clone-API-testing"
+                target="_blank"
+                >Test cases Github repository</a
+              ></span
+            >
+            <span>-</span>
+
+            <span class="text-and-icon">
+              <img src="images/swagger-logo-card.png" class="logo-image" />
+              <a href="swaggerTwitterClone.html" target="_blank">Swagger UI</a>
+            </span>
+
+            <span>-</span>
+
+            <span class="text-and-icon">
+              <img src="images/youtube-logo-card.png" class="logo-image" />
+              <a
+                href="https://www.youtube.com/watch?v=mfBp3adJD4I"
+                target="_blank"
+                >Youtube video</a
+              >
+            </span>
+          </div>
+          <!-- Project <hr> -->
+          <hr />
+        </div>
+
+        <!-- Project-content: there are 2 parts (1) Project-content-main and (2) Table-of-contents-->
+        <div class="project-content">
+          <!-- Project-content-main -->
+          <ul class="project-content-main">
+            <!-- Specifications -->
+            <li id="specifications">
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="project-section-title first-section-title">
+                  Specifications
+                </h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    Using Developer tools and examining the code, I explored the
+                    API exposed by the backend. I then documented it in OpenAPI
+                    using Swagger. You can read the OpenAPI documentation using
+                    the
+                    <span class="text-and-icon">
+                      <img
+                        src="images/swagger-logo-card.png"
+                        class="logo-image"
+                      />
+                      <a href="swaggerTwitterClone.html" target="_blank"
+                        >Swagger UI</a
+                      >
+                    </span>
+                    or directly in my
+                    <span class="text-and-icon"
+                      ><i class="fa-brands fa-github"></i>
+                      <a
+                        href="https://github.com/ronyelhourani/portfolio/blob/main/projects/qa/twitter-clone-API-testing/openapi.yaml"
+                        target="_blank"
+                        >Github repository</a
+                      ></span
+                    >.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <!-- Test cases -->
+            <li id="test-cases">
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="project-section-title">Test cases</h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    I created 94 test cases for the 16 endpoints, first using
+                    Postman. I then automated them using Cypress. You can find
+                    all the automated test cases for Twitter-Clone in my
+                    <span class="text-and-icon"
+                      ><i class="fa-brands fa-github"></i>
+                      <a
+                        href="https://github.com/ronyelhourani/portfolio/tree/main/projects/qa/cypress/cypress/integration/twitter-clone-API-testing"
+                        target="_blank"
+                        >Github repository</a
+                      ></span
+                    >.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <!-- Test execution (Cypress) -->
+            <li id="test-execution">
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="project-section-title">Test execution (Cypress)</h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    You can find below a video capture showcasing the execution
+                    of all Cypress tests.
+                  </p>
+                  <iframe
+                    class="project-video"
+                    src="https://www.youtube.com/embed/mfBp3adJD4I?si=tkSpkHfINhLW0FGZ"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  >
+                  </iframe>
+                </div>
+              </div>
+            </li>
+            <!-- Test reports -->
+            <li id="test-reports">
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="project-section-title">Test reports</h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>Here's below, the results of running "npx cypress run".</p>
+                  <div class="project-test-report">
+                    <p>
+                      ====================================================================================================<br />
+                      <br />
+                      &nbsp;&nbsp;(Run&nbsp;Finished)<br />
+                      <br />
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tests&nbsp;&nbsp;Passing&nbsp;&nbsp;Failing&nbsp;&nbsp;Pending&nbsp;&nbsp;Skipped&nbsp;&nbsp;<br />
+                      &nbsp;&nbsp;┌────────────────────────────────────────────────────────────────────────────────────────────────┐<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;auth_login_post.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >8</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: red">×</span
+                      >&nbsp;&nbsp;auth_register_post.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >11</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: red"
+                        >1</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;profiles_follow_userId_delete.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >6</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;profiles_follow_userId_post.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >6</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;profiles_get.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:06&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >4</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;profiles_userId_get.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:03&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >2</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;profiles_userId_patch.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >8</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;tweets_get.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >11</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;tweets_like_tweetId_delete.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:07&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >4</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;tweets_like_tweetId_post.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >5</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;tweets_post.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:06&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >4</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;tweets_post_reply.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:06&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >4</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;tweets_tweetId_delete.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:09&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >5</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;tweets_tweetId_get.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:03&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >2</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;users_userId_get.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:06&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >4</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;users_userId_patch.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:07&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >5</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;├────────────────────────────────────────────────────────────────────────────────────────────────┤<br />
+                      &nbsp;&nbsp;│&nbsp;<span style="color: green">√</span
+                      >&nbsp;&nbsp;user_userId_delete.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:06&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >4</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;│<br />
+                      &nbsp;&nbsp;└────────────────────────────────────────────────────────────────────────────────────────────────┘<br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red"
+                        >×&nbsp;&nbsp;1&nbsp;of&nbsp;17&nbsp;failed&nbsp;(6%)</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;02:38&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;94&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: green"
+                        >93</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: red"
+                        >1</span
+                      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li id="Bug-reports">
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="project-section-title">Bug reports</h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    My tests found 1 bug in the Twitter-Clone API. The bug can
+                    be transferred to the development team for fixing.
+                  </p>
+                  <ul class="project-bug-report">
+                    <li class="bug">
+                      <h4 class="bug-title">
+                        Bug 1: Register using username with special characters
+                        other than ".", "-"and "_" gives an error of 500 instead
+                        of 400
+                      </h4>
+                      <div class="bug-description">
+                        <div class="bug-description-section">
+                          <h5>Summary</h5>
+                          <p>
+                            When registering, username must contain numbers,
+                            letters and only ".", "-", "_" as special
+                            characters.<br />
+                            If the user writes an invalid username, for example
+                            "johnny#", the error should be 400 instead of 500.
+                          </p>
+                        </div>
+
+                        <div class="bug-description-section">
+                          <h5>Steps to reproduce</h5>
+                          <ol>
+                            <li>
+                              <p>
+                                Activate Twitter-Clone web application in order
+                                for the API testing to work
+                              </p>
+                            </li>
+                            <li>
+                              <p>
+                                Open Postman, which I used for the Twitter-Clone
+                                API testing, or any other tools that can be used
+                                for API testing
+                              </p>
+                            </li>
+                            <li>
+                              <p>
+                                Insert the following information: (1) POST, (2)
+                                url: "http://localhost:3001/api/auth/register",
+                                (3) body: { name: "Johnny", email:
+                                "johnny@gmail.com", username: "johnny#",
+                                password: "Clonejohnny23", }
+                              </p>
+                            </li>
+                            <li><p>Click the button "Send"</p></li>
+                          </ol>
+                        </div>
+
+                        <div class="bug-description-section">
+                          <h5>Actual result 🐞</h5>
+                          <p>
+                            Since "#" is an invalid special character to be used
+                            in the username, the error is 500
+                          </p>
+                        </div>
+
+                        <div class="bug-description-section">
+                          <h5>Expected result</h5>
+                          <p>The error is 400</p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <!-- Table-of-contents -->
+          <!-- The empty DIV which is the direct parent for the table of contents was added so that position: sticky works -->
+          <div>
+            <div class="table-of-contents">
+              <!-- Intro -->
+              <div class="table-of-contents-title">
+                <h3>Table of contents</h3>
+              </div>
+              <!-- Content -->
+              <div class="table-of-contents-content">
+                <a
+                  href="#specifications"
+                  class="table-of-contents-section-title"
+                  >Specifications</a
+                >
+                <a href="#test-cases" class="table-of-contents-section-title"
+                  >Test cases</a
+                >
+                <a
+                  href="#test-execution"
+                  class="table-of-contents-section-title"
+                  >Test execution (Cypress)</a
+                >
+                <a href="#test-reports" class="table-of-contents-section-title"
+                  >Test reports</a
+                >
+                <a href="#Bug-reports" class="table-of-contents-section-title"
+                  >Bug reports</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- <section class="twitter-Clone-intro blue-section">
         <div class="section-intro">
           <a
