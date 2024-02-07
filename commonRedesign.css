@@ -365,7 +365,7 @@ button {
   gap: 32px;
 }
 
-.project-content p {
+.project-content * {
   font-size: 16px;
 }
 
@@ -415,6 +415,9 @@ button {
 .project-content-section .project-section-details {
   margin-top: 20px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .project-section-details a {
@@ -427,8 +430,54 @@ button {
 .project-video {
   width: 100%;
   height: 400px;
-  margin-top: 20px;
   border: 0;
+}
+
+/* COMPONENT: project-test-cases */
+.project-test-cases {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.test-suite {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.test-suite-table {
+  width: 100%;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.test-suite-table tr {
+  box-shadow: 0 1px 4px 0 var(--border-color);
+}
+
+.test-suite-table th,
+.test-suite-table td {
+  padding: 10px;
+}
+
+.test-case-plan-column {
+  width: 20%;
+  min-width: 50px;
+}
+
+.test-case-action-column {
+  width: 40%;
+  min-width: 300px;
+}
+
+.test-case-expectedResults-column {
+  width: 40%;
+  min-width: 300px;
+}
+
+.test-case-title {
+  font-weight: 700;
 }
 
 /* COMPONENT: project-test-report */
@@ -444,15 +493,8 @@ button {
   color: #ffffff;
 }
 
-.project-section-details .project-test-report {
-  margin-top: 20px;
-}
-
 /* COMPONENT: project-bug-report */
 .project-bug-report {
-  width: 100%;
-  overflow: auto;
-
   padding-top: 20px;
   border-top: 1px solid var(--border-color);
   display: flex;
@@ -464,6 +506,11 @@ button {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  width: 100%;
+  overflow: auto;
+  max-height: 500px;
 }
 
 .bug-description {
@@ -474,6 +521,21 @@ button {
 
 .bug-description ol {
   padding-left: 40px;
+}
+
+/* COMPONENT: project-specifications */
+
+.project-specifications {
+  width: 100%;
+  overflow: auto;
+  max-height: 700px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.project-specifications li {
+  padding-left: 20px;
 }
 
 /* -----------  COMPONENT: Table of contents --------  */
