@@ -1,12 +1,19 @@
 // Accordion behavior
 
-// const accordionItemList = document.getElementsByClassName("accordion-item");
-// for (const accordionItem of accordionItemList) {
-//   const accordionTitle = accordionItem.querySelector(".accordion-title");
-//   accordionTitle.addEventListener("click", function () {
-//     accordionItem.classList.toggle("open");
-//   });
-// }
+const accordionItemList = document.getElementsByClassName("accordion-item");
+for (const accordionItem of accordionItemList) {
+  const accordionTitle = accordionItem.querySelector(".accordion-title");
+  const accordionIcon = accordionTitle.querySelector(".accordion-title-icon");
+  accordionTitle.addEventListener("click", function () {
+    accordionItem.classList.toggle("open");
+
+    if (accordionItem.classList.contains("open")) {
+      accordionIcon.textContent = "-";
+    } else {
+      accordionIcon.textContent = "+";
+    }
+  });
+}
 
 // Purpose of the code below: when a link in the table of contents is clicked, the script prevents the default behavior, calculates the position of the target element, and smoothly scrolls the window to the position of the target element on the screen.
 document.addEventListener("DOMContentLoaded", function () {
