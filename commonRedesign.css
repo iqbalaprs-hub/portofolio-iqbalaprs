@@ -211,7 +211,8 @@ button {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
+  row-gap: 6px;
+  column-gap: 12px;
 }
 
 /* COMPONENT: text-and-icon */
@@ -300,6 +301,7 @@ button {
 .accordion-item {
   cursor: pointer;
   gap: 0;
+  transition: gap 0.2s;
 }
 
 .accordion-title {
@@ -310,6 +312,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-align: justify;
 }
 
 /* The below is related to JavaScript */
@@ -322,17 +325,19 @@ button {
 
 .accordion-item.open {
   gap: 20px;
+  transition: gap 0.2s;
 }
 .accordion-item.open .accordion-hidden-content {
   overflow: auto;
-  max-height: 500px;
+  max-height: 400px;
   transition: max-height 0.5s;
 }
 
 .accordion-title .accordion-title-icon {
   font-size: 20px;
   padding-right: 10px;
-  padding-left: 10px;
+  padding-left: 30px;
+  align-self: flex-start;
 }
 
 /* -------------------    PROJECT DETAILS ------------------    */
@@ -357,7 +362,13 @@ button {
 }
 
 .project-details h4 {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .project-details h4 {
+    font-size: 18px;
+  }
 }
 
 .project-details h5 {
@@ -368,6 +379,7 @@ button {
 
 .project-intro p {
   font-size: 14px;
+  text-align: justify;
 }
 
 /* COMPONENT: Project name */
@@ -452,7 +464,7 @@ button {
 }
 
 .project-content-section .project-section-title.first-section-title {
-  margin-top: 0;
+  margin-top: 20px;
 }
 
 /* COMPONENT: project-section-details */
@@ -468,6 +480,10 @@ button {
   color: #006bff;
   font-size: 16px;
   font-weight: 400;
+}
+
+.project-section-details p {
+  text-align: justify;
 }
 
 /* COMPONENT: project-video */
@@ -491,7 +507,7 @@ button {
 
 .test-suite-table {
   width: 100%;
-  max-height: 500px;
+  max-height: 400px;
   overflow: auto;
 }
 
@@ -526,7 +542,7 @@ button {
 /* COMPONENT: project-test-report */
 .project-test-report {
   width: 100%;
-  max-height: 500px;
+  max-height: 400px;
   overflow: auto;
   background-color: #000000;
 }
@@ -563,12 +579,11 @@ button {
 /* COMPONENT: project-specifications */
 
 .project-specifications {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   overflow: auto;
-  max-height: 700px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border: 1px solid var(--border-color);
+  max-height: 400px;
 }
 
 .project-specifications li {
