@@ -102,6 +102,7 @@ header {
 
 body {
   background-color: var(--body-bg-color);
+  padding-bottom: 40px;
 }
 
 img {
@@ -279,7 +280,6 @@ button {
 .navigation-bar .menu a {
   padding-top: var(--navigationBar-padding);
   padding-bottom: var(--navigationBar-padding);
-  /* line-height: var(--navigationBar-lineHeight); */
   font-weight: var(--navigationlink-font-weight);
   color: var(--navigationlink-text-color);
 }
@@ -622,4 +622,40 @@ button {
   color: #9ca3af;
   font-size: 14px;
   font-weight: 500;
+}
+
+/* ------------       PERFORMANCE   ----------------   */
+/* Scenario implementation */
+.scenario-implementation {
+  display: flex;
+  flex-direction: column;
+}
+
+.scenario-implementation img {
+  max-width: 1200px;
+}
+
+/* Canvas */
+.chart-container {
+  width: 100%;
+  /* Enable horizontal scrollbar when needed */
+  overflow-x: auto;
+  /* Enable vertical scrollbar when needed */
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .chart-container {
+    /* Force horizontal scrollbar for smaller screens */
+    overflow-x: scroll;
+    /* Force vertical scrollbar for smaller screens */
+    overflow-y: scroll;
+  }
+}
+
+canvas {
+  display: block;
+  margin: auto;
+  width: 800px;
+  height: 400px;
 }

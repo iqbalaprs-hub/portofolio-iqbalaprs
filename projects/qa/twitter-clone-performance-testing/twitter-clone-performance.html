@@ -22,11 +22,9 @@
       src="https://kit.fontawesome.com/0d4f931e5e.js"
       crossorigin="anonymous"
     ></script>
-    <!-- <link rel="stylesheet" href="twitter-clone-performance.css" /> -->
-    <!-- <link rel="stylesheet" href="../../../common.css" /> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script> -->
-    <!-- <script src="twitter-clone-performance.js" defer></script> -->
-    <!-- <script src="../../../commonScript.js" defer></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="twitter-clone-performance.js" defer></script>
+    <script src="../../../commonScript.js" defer></script>
     <link rel="stylesheet" href="../../../commonRedesign.css" />
   </head>
   <body>
@@ -39,7 +37,6 @@
           <!-- Menu -->
           <div class="menu">
             <a href="../../../index.html">Home</a>
-            <a href="#projects">Projects</a>
             <a href="../../../aboutMe.html">About</a>
           </div>
 
@@ -53,16 +50,13 @@
     </header>
 
     <main>
-      <!-- <section class="twitter-Clone-intro blue-section">
-        <div class="section-intro">
-          <a
-            class="intro-title"
-            href="https://github.com/mateuszwszola/twitter-clone"
-            target="_blank"
-            ><h1>Twitter-Clone</h1>
-          </a>
-
-          <p>
+      <section class="project-details section-layout section-properties">
+        <!-- Intro -->
+        <div class="project-intro">
+          <!-- Project-name -->
+          <h1 class="project-name">Twitter-Clone</h1>
+          <!-- Project introduction -->
+          <p class="project-introduction">
             <a
               href="https://github.com/mateuszwszola/twitter-clone"
               target="_blank"
@@ -72,163 +66,261 @@
             platform developed by
             <a href="https://github.com/mateuszwszola" target="_blank"
               >mateuszwszola</a
-            >.It is written with React (front), Node (back) and MongoDB
+            >. It is written with React (front), Node (back) and MongoDB
             (database).
           </p>
-        </div>
-      </section> -->
-
-      <!-- <section class="blue-section">
-        <div class="section-intro">
-          <h1>Objectives</h1>
-
-          <p>
-            The aim of this project is to explore the scalability of
-            Twitter-Clone. More specifically, I will answer the question: Does
-            Twitter-Clone support a load of 1000 users accessing and actively
-            using the platform at the same time?
-          </p>
-        </div>
-      </section> -->
-
-      <!-- <section class="scenario-outline blue-section">
-        <div class="section-intro">
-          <h1>Scenario outline</h1>
-        </div>
-
-        <div class="white-background">
-          <p>To answer this question, I adopted the following scenario plan:</p>
-          <ul class="parent-menu">
-            <li>1. With a pool of 1000 distinct users</li>
-            <li>
-              2. Each user will perform the following 3 actions in sequence:
-              <ul class="submenu">
-                <li>a. Log-in to the Twitter-Clone platform</li>
-                <li>b. Create and post a Tweet</li>
-                <li>c. Visit the Home Page to read tweets</li>
-              </ul>
-            </li>
-            <li>
-              3. I will include a ramp-up period of 20s (i.e. every 20ms, a new
-              user will login)
-            </li>
-          </ul>
-        </div>
-
-        <div class="section-intro">
-          <h3>Evaluation criteria and Expected result</h3>
-        </div>
-
-        <div class="white-background">
-          <p>
-            I will consider that Twitter-Clone is scalable based on the
-            following benchmark for each request:
-          </p>
-          <ul class="parent-menu">
-            <li>
-              1. The user receives a successful response (there's no error
-              coming from the server)
-            </li>
-            <li>2. The response time is less than 500ms</li>
-          </ul>
-        </div>
-      </section> -->
-
-      <!-- <section class="blue-section">
-        <div class="section-intro">
-          <h1>Scenario implementation</h1>
-
-          <p>
-            I implemented the scenario using JMeter. You can access the test
-            plan file in my <i class="fa-brands fa-github"></i>
-            <a
-              href="https://github.com/ronyelhourani/portfolio/blob/main/projects/qa/twitter-clone-performance-testing/login_and_create_tweet.jmx"
-              target="_blank"
-              >Github repository</a
+          <!-- Project Text-and-icons-list -->
+          <div class="text-and-icons-list">
+            <span class="text-and-icon"
+              ><i class="fa-brands fa-github"></i>
+              <a
+                href="https://github.com/ronyelhourani/portfolio/blob/main/projects/qa/twitter-clone-performance-testing/login_and_create_tweet.jmx"
+                target="_blank"
+                >JMeter test code</a
+              ></span
             >
-          </p>
+          </div>
+          <!-- Project <hr> -->
+          <hr />
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-title">
-            <h4>Performance test plan on JMeter (Click to reveal):</h4>
-            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-          </div>
-          <div class="accordion-hidden-content">
-            <img
-              class="scenario-implementation-screenshot"
-              src="images/screenshotOfJmeter.png"
-              title="Screenshot of performance test in Jmeter"
-            />
-          </div>
-        </div>
-      </section> -->
-
-      <!-- <section class="blue-section">
-        <div class="section-intro">
-          <h1>Performance Test Results</h1>
-          <p>
-            Twitter-Clone failed to scale with 1000 users. Actually, starting
-            with 300 users, the response time of each request exceeded the
-            required 500ms, as shown in the graph below
-          </p>
-        </div>
-
-        <div class="accordion-item open">
-          <div class="accordion-title">
-            <h4>Average response time (ms) vs number of simultaneous users:</h4>
-            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-          </div>
-          <div class="accordion-hidden-content" style="padding-bottom: 0">
-            <div class="chart-container">
-              <canvas
-                id="graph-response-time-per-user-number"
-                width="800"
-                height="400"
-              ></canvas>
+        <!-- Project-content: there are 2 parts (1) Project-content-main and (2) Table-of-contents-->
+        <div class="project-content">
+          <!-- Project-content-main -->
+          <ul class="project-content-main">
+            <!-- Objectives -->
+            <li id="objectives">
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="project-section-title first-section-title">
+                  Objectives
+                </h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    The aim of this project is to explore the scalability of
+                    Twitter-Clone. More specifically, I will answer the
+                    question: Does Twitter-Clone support a load of 1000 users
+                    accessing and actively using the platform at the same time?
+                  </p>
+                </div>
+              </div>
+            </li>
+            <!-- Scenario outline -->
+            <li id="scenario-outline">
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="project-section-title first-section-title">
+                  Scenario outline
+                </h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    To answer this question, I adopted the following scenario
+                    plan:
+                  </p>
+                  <ul>
+                    <li>1. With a pool of 1000 distinct users</li>
+                    <li>
+                      2. Each user will perform the following 3 actions in
+                      sequence:
+                      <ul>
+                        <li>
+                          &nbsp;&nbsp;&nbsp;&nbsp;a. Log-in to the Twitter-Clone
+                          platform
+                        </li>
+                        <li>
+                          &nbsp;&nbsp;&nbsp;&nbsp;b. Create and post a Tweet
+                        </li>
+                        <li>
+                          &nbsp;&nbsp;&nbsp;&nbsp;c. Visit the Home Page to read
+                          tweets
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      3. I will include a ramp-up period of 20s (i.e. every
+                      20ms, a new user will login)
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <!-- Evaluation criteria and Expected result -->
+            <li id="evaluation-criteria-and-Expected-result">
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="project-section-title first-section-title">
+                  Evaluation criteria and Expected result
+                </h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    I will consider that Twitter-Clone is scalable based on the
+                    following benchmark for each request:
+                  </p>
+                  <ul>
+                    <li>
+                      &nbsp;&nbsp;&nbsp;&nbsp;1. The user receives a successful
+                      response (there's no error coming from the server)
+                    </li>
+                    <li>
+                      &nbsp;&nbsp;&nbsp;&nbsp;2. The response time is less than
+                      500ms
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <!-- Scenario implementation -->
+            <li id="scenario-implementation">
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="project-section-title">Scenario implementation</h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    I implemented the scenario using JMeter. You can access the
+                    test plan file in my
+                    <span class="text-and-icon"
+                      ><i class="fa-brands fa-github"></i>
+                      <a
+                        href="https://github.com/ronyelhourani/portfolio/blob/main/projects/qa/twitter-clone-performance-testing/login_and_create_tweet.jmx"
+                        target="_blank"
+                        >Github repository</a
+                      ></span
+                    >.
+                  </p>
+                  <div>
+                    <div class="scenario-implementation accordion-item">
+                      <h4 class="accordion-title">
+                        Performance test plan on JMeter
+                        <span class="accordion-title-icon">+</span>
+                      </h4>
+                      <div class="accordion-hidden-content">
+                        <img
+                          src="images/screenshotOfJmeter.png"
+                          title="Screenshot of performance test in Jmeter"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- Performance Test Results -->
+            <li id="performance-test-results">
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="project-section-title">Performance Test Results</h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    Twitter-Clone failed to scale with 1000 users. Actually,
+                    starting with 300 users, the response time of each request
+                    exceeded the required 500ms, as shown in the graph below.
+                  </p>
+                  <div>
+                    <div class="scenario-implementation accordion-item">
+                      <h4 class="accordion-title">
+                        Average response time (ms) vs number of simultaneous
+                        users:
+                        <span class="accordion-title-icon">+</span>
+                      </h4>
+                      <div class="accordion-hidden-content">
+                        <div class="chart-container">
+                          <canvas
+                            id="graph-response-time-per-user-number"
+                          ></canvas>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    Although, I note as positive points:
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;1. Even under high load, the
+                    application always returned the correct response.
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;2. Following the load peak,
+                    the application returned to an acceptable response time, as
+                    shown in the graph below.
+                  </p>
+                  <div>
+                    <div class="scenario-implementation accordion-item">
+                      <h4 class="accordion-title">
+                        Evolution of average response time as test progresses:
+                        <span class="accordion-title-icon">+</span>
+                      </h4>
+                      <div class="accordion-hidden-content">
+                        <div class="chart-container">
+                          <canvas
+                            id="graph-response-time-300-users-20s-rampup"
+                          ></canvas>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- Recommendations -->
+            <li id="recommendations">
+              <!-- Project-content-section -->
+              <div class="project-content-section">
+                <!-- Project-content-section title -->
+                <h2 class="project-section-title first-section-title">
+                  Recommendations
+                </h2>
+                <!-- project-section-details -->
+                <div class="project-section-details">
+                  <p>
+                    1. For more accurate results, performance tests should be
+                    rerun on a more powerful server (the tests above were done
+                    on my Laptop).<br />
+                    2. Developers should work on identifying and correcting the
+                    performance issues and bottlenecks.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <!-- Table-of-contents -->
+          <!-- The empty DIV which is the direct parent for the table of contents was added so that position: sticky works -->
+          <div>
+            <div class="table-of-contents">
+              <!-- Intro -->
+              <div class="table-of-contents-title">
+                <h3>Table of contents</h3>
+              </div>
+              <!-- Content -->
+              <div class="table-of-contents-content">
+                <a href="#objectives" class="reach-section-title">Objectives</a>
+                <a href="#scenario-outline" class="reach-section-title"
+                  >Scenario outline</a
+                >
+                <a
+                  href="#evaluation-criteria-and-Expected-result"
+                  class="reach-section-title"
+                  >Evaluation criteria and Expected result</a
+                >
+                <a href="#scenario-implementation" class="reach-section-title"
+                  >Scenario implementation</a
+                >
+                <a href="#performance-test-results" class="reach-section-title"
+                  >Performance Test Results</a
+                >
+                <a href="#performance-test-results" class="reach-section-title"
+                  >Recommendations</a
+                >
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="section-intro">
-          <p>
-            Although, I note as positive points: <br />1. Even under high load,
-            the application always returned the correct response. <br />2.
-            Following the load peak, the application returned to an acceptable
-            response time, as shown in the graph below.
-          </p>
-        </div>
-
-        <div class="accordion-item open">
-          <div class="accordion-title">
-            <h4>Evolution of average response time as test progresses:</h4>
-            <i class="fa-solid fa-angle-down" style="color: #1d344b"></i>
-          </div>
-          <div class="accordion-hidden-content">
-            <div class="chart-container">
-              <canvas
-                id="graph-response-time-300-users-20s-rampup"
-                width="800"
-                height="400"
-              ></canvas>
-            </div>
-          </div>
-        </div>
-      </section> -->
-
-      <!-- <section class="blue-section">
-        <div class="section-intro">
-          <h1>Recommendations</h1>
-        </div>
-        <div class="white-background">
-          <p>
-            1. For more accurate results, performance tests should be rerun on a
-            more powerful server (the tests above were done on my Laptop).<br />
-            2. Developers should work on identifying and correcting the
-            performance issues and bottlenecks.
-          </p>
-        </div>
-      </section> -->
+      </section>
     </main>
   </body>
 </html>
