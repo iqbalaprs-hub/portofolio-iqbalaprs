@@ -1,11 +1,1 @@
-/* billzer-intro */
-.billzer-intro img {
-  width: 150px;
-  margin-bottom: 0;
-}
 
-@media screen and (max-width: 1200px) {
-  .billzer-intro img {
-    width: 120px;
-  }
-}
