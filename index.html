@@ -22,10 +22,9 @@
       src="https://kit.fontawesome.com/0d4f931e5e.js"
       crossorigin="anonymous"
     ></script>
-    <!-- <link rel="stylesheet" href="index.css" /> -->
-    <!-- <link rel="stylesheet" href="common.css" /> -->
     <link rel="stylesheet" href="commonRedesign.css" />
     <link rel="stylesheet" href="indexRedesign.css" />
+    <script src="commonScript.js" defer></script>
   </head>
 
   <body>
@@ -38,7 +37,7 @@
           <!-- Menu -->
           <div class="menu">
             <a href="index.html">Home</a>
-            <a href="#projects">Projects</a>
+            <a href="#projects" class="reach-section-title">Projects</a>
             <a href="aboutMe.html">About</a>
           </div>
 
@@ -75,7 +74,7 @@
       <section class="projects-list-section section-layout section-properties">
         <!-- Intro -->
         <div class="projects-list-section-intro">
-          <h1>QA portfolio</h1>
+          <h1 id="projects">QA portfolio</h1>
           <p>
             This is my QA portfolio, where I showcase my journey in crafting
             test plans, documenting bug reports, and working with test
@@ -222,6 +221,13 @@
                     title="OpenAPI / Swagger"
                   />
                 </li>
+                <li class="logo-card">
+                  <img
+                    src="images/mongoDB-logo-card.png"
+                    alt="MongoDB"
+                    title="MongoDB"
+                  />
+                </li>
               </ul>
               <figure class="project-card-image">
                 <img
@@ -268,6 +274,13 @@
                     src="images/swagger-logo-card.png"
                     alt="OpenAPI / Swagger"
                     title="OpenAPI / Swagger"
+                  />
+                </li>
+                <li class="logo-card">
+                  <img
+                    src="images/mongoDB-logo-card.png"
+                    alt="MongoDB"
+                    title="MongoDB"
                   />
                 </li>
               </ul>
@@ -363,6 +376,13 @@
                     title="JavaScript"
                   />
                 </li>
+                <li class="logo-card">
+                  <img
+                    src="images/figma-logo-card.png"
+                    alt="Figma"
+                    title="Figma"
+                  />
+                </li>
               </ul>
               <figure class="project-card-image">
                 <img src="images/Wine E-commerce.png" alt="Wine E-commerce" />
@@ -372,140 +392,6 @@
           </li>
         </ul>
       </section>
-      <!-- <section class="index-section blue-section">
-        <div class="section-intro">
-          <h1>Hello, I am Rony</h1>
-          <p>
-            Hello everyone, my name is Rony El Hourani. I am a passionate
-            self-taught QA engineer and Front-end integrator. You can check out
-            my
-            <a href="#QA-portfolio">QA portfolio projects</a> and my
-            <a href="#webdev-portfolio">web design portfolio projects</a>.
-          </p>
-          <a href="aboutMe.html" class="aboutMe-button">
-            <button type="button">About me</button>
-          </a>
-        </div>
-      </section> -->
-
-      <!-- <section class="portfolio index-section blue-section" id="QA-portfolio">
-        
-        <div class="section-intro">
-          <h1>QA portfolio</h1>
-          <p>
-            This is my QA portfolio, where I showcase my journey in crafting
-            test plans, documenting bug reports, and working with test
-            automation tools, primarily Cypress.
-          </p>
-        </div>
-
-        <div>
-          <div class="section-intro">
-            <h3>End-to-end testing</h3>
-          </div>
-
-          <div class="list-projects">
-            <figure class="project-link">
-              <a href="projects/qa/twitter-clone-e2e/twitter-clone.html"
-                ><img
-                  src="images/twitter-Clone-Logo.png"
-                  alt="Twitter-Clone-end-to-end-testing"
-              /></a>
-              <figcaption>
-                <h4>End-to-end testing of Twitter-Clone</h4>
-              </figcaption>
-            </figure>
-
-            <figure class="project-link">
-              <a href="projects/qa/billzer/billzer.html"
-                ><img src="images/billzer.png" alt="billzer"
-              /></a>
-              <figcaption>
-                <h4>End-to-end testing of Billzer app</h4>
-              </figcaption>
-            </figure>
-
-            <figure class="project-link">
-              <a href="projects/qa/todolistme/todolistme.html"
-                ><img src="images/todolistme-logo.png" alt="testtodolistme"
-              /></a>
-              <figcaption>
-                <h4>End-to-end testing of TodoListMe app</h4>
-              </figcaption>
-            </figure>
-          </div>
-
-          <div class="section-intro">
-            <h3>API testing</h3>
-          </div>
-
-          <div class="list-projects">
-            <figure class="project-link">
-              <a
-                href="projects/qa/twitter-clone-API-testing/twitter-clone-API.html"
-                ><img
-                  src="images/twitter-Clone-Logo.png"
-                  alt="Twitter-Clone-API-testing"
-              /></a>
-              <figcaption>
-                <h4>API testing of Twitter-Clone</h4>
-              </figcaption>
-            </figure>
-
-            <figure class="project-link">
-              <a href="projects/qa/restcountries/restcountries.html"
-                ><img src="images/restcountries-logo.png" alt="RestCountries"
-              /></a>
-              <figcaption><h4>API testing of REST Countries</h4></figcaption>
-            </figure>
-          </div>
-
-          <div class="section-intro">
-            <h3>Performance testing</h3>
-          </div>
-
-          <div class="list-projects">
-            <figure class="project-link">
-              <a
-                href="projects/qa/twitter-clone-performance-testing/twitter-clone-performance.html"
-                ><img
-                  src="images/twitter-Clone-Logo.png"
-                  alt="Twitter-Clone-Performance-testing"
-              /></a>
-              <figcaption>
-                <h4>Performance testing of Twitter-Clone</h4>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </section> -->
-
-      <!-- <section
-        class="portfolio index-section blue-section"
-        id="webdev-portfolio"
-      >
-       
-        <div class="section-intro">
-          <h1>Web design portfolio</h1>
-          <p>
-            Here is my web design portfolio. It highlights my journey in
-            designing websites and web applications that prioritize both visual
-            appeal and user experience, crafting mockups and implementating them
-            using recent CSS features.
-          </p>
-        </div>
-
-        <div class="list-projects">
-          <figure class="project-link">
-            <a
-              href="projects/web_design/ecommerce_wine/ecommerce_wine.html"
-              target="_blank"
-              ><img src="images/Wine E-commerce.png" alt="Wine-Ecommerce"
-            /></a>
-            <figcaption><h4>Wine shop web app</h4></figcaption>
-          </figure>
-        </div>
-      </section> -->
 
       <!-- CONTACT ME -->
       <section class="contact section-layout section-properties">
@@ -517,27 +403,6 @@
           ronyhourani@gmail.com
         </p>
       </section>
-      <!-- <section class="index-section blue-section">
-        <div class="section-intro">
-          <h1>Get in touch</h1>
-          <p>
-            Hello, if you want to talk to me about your project, I would love to
-            hear from you. Feel free to send me an email
-          </p>
-          <br />
-          <p>
-            <i class="fa-regular fa-envelope fa-lg"></i> ronyhourani@gmail.com
-          </p>
-        </div>
-        <div>
-          <p>
-            <strong
-              >Thank you for your time
-              <i class="fa-regular fa-face-smile fa-lg"></i
-            ></strong>
-          </p>
-        </div>
-      </section> -->
     </main>
   </body>
 </html>
