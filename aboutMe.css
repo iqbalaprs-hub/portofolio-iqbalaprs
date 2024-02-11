@@ -118,3 +118,10 @@
     gap: 15px;
   }
 }
+
+/* Contact me */
+.about-me-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
