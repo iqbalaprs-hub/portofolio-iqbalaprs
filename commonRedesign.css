@@ -226,6 +226,13 @@ button:hover {
   );
 }
 
+/* THe goal of this class is to remove some content when reading the portfolio on a small screen so that the small screen is not filled with long paragraphs */
+@media screen and (max-width: 800px) {
+  .sentences-removed-on-small-screen {
+    display: none;
+  }
+}
+
 /* COMPONENT: Text-and-icons */
 .text-and-icons-list {
   display: flex;
@@ -288,10 +295,11 @@ button:hover {
 /* ----------------------------     NAVIGATION BAR ---------------------------------    */
 .navigation-bar-parent {
   background-color: var(--body-bg-color);
-  height: 5px;
+  top: 0;
+  height: 92px;
   width: 100%;
-  position: fixed;
   z-index: 90;
+  position: fixed;
 }
 
 .navigation-bar {
@@ -419,7 +427,8 @@ button:hover {
 
 /* -------  Project-intro ------ */
 
-.project-intro p {
+.project-intro p,
+.project-intro span {
   font-size: 14px;
   text-align: justify;
 }
@@ -616,6 +625,10 @@ button:hover {
 
 .bug-description ol {
   padding-left: 40px;
+}
+
+.bug img {
+  max-width: 500px;
 }
 
 /* COMPONENT: project-specifications */
