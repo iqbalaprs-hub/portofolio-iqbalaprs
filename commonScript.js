@@ -1,4 +1,4 @@
-// Accordion behavior
+// (1) Accordion behavior
 
 const accordionItemList = document.getElementsByClassName("accordion-item");
 for (const accordionItem of accordionItemList) {
@@ -15,7 +15,9 @@ for (const accordionItem of accordionItemList) {
   });
 }
 
-// Purpose of the code below: when a link in the table of contents is clicked, the script prevents the default behavior, calculates the position of the target element, and smoothly scrolls the window to the position of the target element on the screen.
+// ----------------------------------------------------------------------------------------------------
+
+// (2) Purpose of the code below: when a link in the table of contents is clicked, the script prevents the default behavior, calculates the position of the target element, and smoothly scrolls the window to the position of the target element on the screen.
 document.addEventListener("DOMContentLoaded", function () {
   // This selects all elements with the class table-of-contents-section-title, which are the links in the table of contents
   const links = document.querySelectorAll(".reach-section-title");

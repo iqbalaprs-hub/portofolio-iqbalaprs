@@ -17,15 +17,25 @@
   --button-border-color: #d1d5db;
   --primary-text-color: #374151;
   --navigationlink-text-color: #000;
+  --navigation-link-background-hover-color: #ccfae7;
   --button-text-color: #1f2937;
   --headline-text-color: #000;
   --text-and-icons-color: #4b5563;
+  --text-and-icons-hover-color: linear-gradient(
+    to right top,
+    rgba(0, 232, 135),
+    rgba(0, 232, 135),
+    rgba(0, 224, 243)
+  );
   --headline-background-color: linear-gradient(
     to right top,
     rgba(0, 232, 135, 0.4),
     rgba(0, 232, 135, 0.4),
     rgba(0, 224, 243, 0.4)
   );
+  --table-of-contents-link-color: #9ca3af;
+  --table-of-contents-link-hover-color: #111827;
+  --table-of-contents-link-focus-color: #111827;
 
   --text-font-size-value: 14px;
   --navigationBar-logo-font-size-value: 18px;
@@ -51,6 +61,7 @@
   --headline-font-weight: 700;
   --button-font-weight: 700;
   --navigationlink-font-weight: 500;
+  --table-of-contents-link-weight: 500;
   --text-and-icons-weight: 500;
   --normalText-font-weight: 400;
 
@@ -160,6 +171,14 @@ button {
   background-color: var(--button-bg-color);
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.2) 0px 1px 4px 0px;
 }
 
 ::-webkit-scrollbar {
@@ -221,6 +240,25 @@ button {
   display: inline-flex;
   align-items: baseline;
   gap: 4px;
+  position: relative;
+}
+
+.text-and-icon::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-image: var(--text-and-icons-hover-color);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.text-and-icon:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .text-and-icon a {
@@ -282,6 +320,10 @@ button {
   padding-bottom: var(--navigationBar-padding);
   font-weight: var(--navigationlink-font-weight);
   color: var(--navigationlink-text-color);
+}
+
+.navigation-bar .menu a span:hover {
+  background-color: var(--navigation-link-background-hover-color);
 }
 
 /* GITHUB ICON */
@@ -619,9 +661,17 @@ button {
 
 /* COMPONENT: table-of-contents-section-title */
 .table-of-contents-section-title {
-  color: #9ca3af;
+  color: var(--table-of-contents-link-color);
+  font-weight: var(--table-of-contents-link-weight);
   font-size: 14px;
-  font-weight: 500;
+}
+
+.table-of-contents-section-title:hover {
+  color: var(--table-of-contents-link-hover-color);
+}
+
+.table-of-contents-section-title:focus {
+  color: var(--table-of-contents-link-focus-color);
 }
 
 /* ------------       PERFORMANCE   ----------------   */
