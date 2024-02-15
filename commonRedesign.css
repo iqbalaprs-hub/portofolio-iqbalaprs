@@ -39,6 +39,7 @@
 
   --text-font-size-value: 14px;
   --navigationBar-logo-font-size-value: 18px;
+  --navigationLink-font-size-value: 16px;
   --button-font-size-value: 14px;
   --h1-font-size-value: 30px;
   --h2-font-size-value: 24px;
@@ -193,7 +194,7 @@ button:hover {
 
 /*      --------------------        COMPONENTS        -----------------------------       */
 .section-layout {
-  max-width: 1224px;
+  max-width: 1088px;
   margin-left: auto;
   margin-right: auto;
   width: 91.666667%;
@@ -326,8 +327,12 @@ button:hover {
 .navigation-bar .menu a {
   padding-top: var(--navigationBar-padding);
   padding-bottom: var(--navigationBar-padding);
+}
+
+.navigation-bar .menu a span {
   font-weight: var(--navigationlink-font-weight);
   color: var(--navigationlink-text-color);
+  font-size: var(--navigationLink-font-size-value);
 }
 
 .navigation-bar .menu a span:hover {

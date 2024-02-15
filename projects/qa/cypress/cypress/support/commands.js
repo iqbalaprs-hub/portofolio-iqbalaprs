@@ -269,7 +269,7 @@ Cypress.Commands.add(
   }
 );
 
-/*                                  TWITTER-CLONE END-TO-END TESTING PROJECT                           */
+/*                                  TWITTER-CLONE API TESTING PROJECT                           */
 
 // Sign in as John in order to get John's token and ID
 Cypress.Commands.add(
