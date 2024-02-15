@@ -171,6 +171,10 @@ button {
   }
 }
 
+.case-title {
+  font-weight: 700;
+}
+
 /* -------------------    COMPONENTS: SECTION (aboutMe-section blue-section)    ---------------------   */
 
 .blue-section {
