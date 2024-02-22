@@ -42,7 +42,7 @@
 }
 
 /* COMPONENTS: projects-list-section-intro */
-.projects-list-section-intro h1 {
+.projects-list-section-intro h2 {
   display: inline;
   background: var(--headline-background-color);
 }
