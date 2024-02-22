@@ -33,6 +33,10 @@
     rgba(0, 232, 135, 0.4),
     rgba(0, 224, 243, 0.4)
   );
+  --chip-projectCard-e2e-background-color: #f2c6a1;
+  --chip-projectCard-API-background-color: #ffeea8;
+  --chip-projectCard-performance-background-color: #99d689;
+
   --table-of-contents-link-color: #9ca3af;
   --table-of-contents-link-hover-color: #111827;
   --table-of-contents-link-focus-color: #111827;
@@ -42,6 +46,7 @@
   --navigationBar-logo-font-size-value: 18px;
   --navigationLink-font-size-value: 16px;
   --button-font-size-value: 14px;
+  --chip-projectCard-font-size-value: 12px;
   --h1-font-size-value: 30px;
   --h2-font-size-value: 24px;
   --h3-font-size-value: 18px;
@@ -54,6 +59,7 @@
   --navigationBar-lineHeight: 20px;
   --button-lineHeight: 20px;
   --logo-card-lineHeight: 20px;
+  --chip-projectCard-lineHeight: 24px;
   --h1-lineHeight: 36px;
   --h2-lineHeight: 32px;
   --h3-lineHeight: 28px;
@@ -65,6 +71,7 @@
   --navigationlink-font-weight: 500;
   --table-of-contents-link-weight: 500;
   --text-and-icons-weight: 500;
+  --chip-projectCard-font-weight: 500;
   --normalText-font-weight: 400;
 
   --navigationBar-padding: 16px;
@@ -90,6 +97,7 @@
     --navigationBar-lineHeight: 24px;
     --button-lineHeight: 28px;
     --logo-card-lineHeight: 24px;
+    --chip-projectCard-lineHeight: 28px;
     --h1-lineHeight: 48px;
     --h2-lineHeight: 40px;
     --h3-lineHeight: 32px;
