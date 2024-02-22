@@ -36,6 +36,7 @@
   --table-of-contents-link-color: #9ca3af;
   --table-of-contents-link-hover-color: #111827;
   --table-of-contents-link-focus-color: #111827;
+  --fa-github-navigation-bar-hover-color: #00e887;
 
   --text-font-size-value: 14px;
   --navigationBar-logo-font-size-value: 18px;
@@ -345,6 +346,11 @@ button:hover {
   border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 10px;
+}
+
+.navigation-bar .fa-github:hover {
+  border: 1px solid var(--fa-github-navigation-bar-hover-color);
+  color: var(--fa-github-navigation-bar-hover-color);
 }
 
 /* -----------------      CONTACT -------------------------    */
