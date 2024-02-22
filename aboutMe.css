@@ -30,7 +30,31 @@
   text-align: justify;
 }
 
-/* COMPONENT: Tools-part */
+@media screen and (max-width: 450px) {
+  .aboutMe-section .aboutMe-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .picture-of-me {
+    order: 3;
+    width: 100%;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .aboutMe-section .intro h1 {
+    font-size: 36px;
+  }
+
+  .aboutMe-section .intro h2 {
+    font-size: 30px;
+  }
+}
+
+/* ------------------------------    COMPONENT: Tools-part -------------------------------   */
 .tools-part {
   display: flex;
   flex-direction: column;
@@ -44,7 +68,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 10px;
+  gap: 15px;
 }
 
 .tools-logo .text-and-icon .logo-image {
@@ -53,89 +77,46 @@
 
 .tools-logo .text-and-icons-list {
   justify-content: space-between;
-
-  row-gap: 20px;
-  column-gap: 15px;
+  row-gap: 15px;
 }
 
 .tools-logo .text-and-icon::after {
-  bottom: -5px;
+  width: 0;
 }
 
-/* .tools-logo ul {
-  display: flex;
-  flex-wrap: wrap;
-  align-self: flex-start;
-  width: 100%;
-  align-items: center;
-} */
+.tools-logo .text-and-icons-list .text-and-icon {
+  width: 45%;
+}
 
-/* .tools-logo ul.logos-line1 {
-  column-gap: 15px;
-} */
-
-/* .tools-logo ul.logos-line2 {
-  gap: 30px;
-} */
-
-/* .tools-logo li img {
-  aspect-ratio: auto;
-  width: 40px;
-} */
-
-/* .tools-logo li img.long-logo {
-  aspect-ratio: auto;
-  width: 90px;
-} */
-
-@media screen and (min-width: 768px) {
-  .aboutMe-section .intro h1 {
-    font-size: 36px;
-  }
-
-  .aboutMe-section .intro h2 {
-    font-size: 30px;
+@media screen and (min-width: 450px) {
+  .tools-logo .text-and-icons-list .text-and-icon {
+    width: 30%;
   }
 }
 
-@media screen and (max-width: 450px) {
-  .aboutMe-section .aboutMe-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@media screen and (min-width: 600px) {
+  .tools-logo .text-and-icons-list .text-and-icon {
+    width: 22%;
   }
-
-  .picture-of-me {
-    order: 3;
-    width: 100%;
-    margin: auto;
-  }
-
-  /* .tools-part {
-    width: 100%;
-  } */
-
-  /* .tools-logo ul {
-    justify-content: space-between;
-    gap: 0;
-  } */
-
-  /* .tools-logo li img {
-    width: 30px;
-  } */
-
-  /* .tools-logo li img.long-logo {
-    width: 75px;
-  } */
 }
 
-@media screen and (max-width: 300px) {
-  /* .tools-logo ul.logos-line2 {
-    gap: 15px;
-  } */
+@media screen and (min-width: 662px) {
+  .tools-logo .text-and-icons-list .text-and-icon {
+    width: 30%;
+  }
 }
 
-/* Contact me */
+@media screen and (min-width: 800px) {
+  .tools-logo .text-and-icons-list .text-and-icon {
+    width: 22%;
+  }
+
+  .tools-logo {
+    gap: 25px;
+  }
+}
+
+/* -------------------------    Contact me    --------------------------    */
 .about-me-contact {
   display: flex;
   flex-direction: column;

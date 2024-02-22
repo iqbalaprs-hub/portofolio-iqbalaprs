@@ -247,7 +247,7 @@ button:hover {
 .text-and-icon {
   display: inline-flex;
   align-items: baseline;
-  gap: 4px;
+  gap: 6px;
   position: relative;
 }
 
