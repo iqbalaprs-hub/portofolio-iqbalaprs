@@ -33,9 +33,9 @@
     rgba(0, 232, 135, 0.4),
     rgba(0, 224, 243, 0.4)
   );
-  --chip-projectCard-e2e-background-color: #f2c6a1;
-  --chip-projectCard-API-background-color: #ffeea8;
-  --chip-projectCard-performance-background-color: #99d689;
+  --chip-projectCard-e2e-background-color: #e6def3;
+  --chip-projectCard-API-background-color: #ffead1;
+  --chip-projectCard-performance-background-color: #c2ebc2;
 
   --table-of-contents-link-color: #9ca3af;
   --table-of-contents-link-hover-color: #111827;
@@ -97,7 +97,6 @@
     --navigationBar-lineHeight: 24px;
     --button-lineHeight: 28px;
     --logo-card-lineHeight: 24px;
-    --chip-projectCard-lineHeight: 28px;
     --h1-lineHeight: 48px;
     --h2-lineHeight: 40px;
     --h3-lineHeight: 32px;

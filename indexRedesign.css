@@ -47,7 +47,7 @@
   background: var(--headline-background-color);
 }
 .projects-list-section-intro p {
-  margin-top: 8px;
+  margin-top: 15px;
 }
 
 /* COMPONENTS: project-cards-list*/
