@@ -84,7 +84,7 @@
                 class="logo-image"
               />
               <a
-                href="https://www.youtube.com/embed/JUJnTq0Nof0?si=V5xi88khNX6BDamf"
+                href="https://www.youtube.com/watch?v=JUJnTq0Nof0"
                 target="_blank"
                 >Test run</a
               >
@@ -3519,8 +3519,7 @@
                     <!-- BUG 2 -->
                     <li class="bug accordion-item">
                       <h4 class="bug-title accordion-title">
-                        Bug 2: In manual tests, not in Cypress, typing a letter
-                        in the Member count input triggers a bug<span
+                        Bug 2 : User can type a letter in the Member count<span
                           class="accordion-title-icon"
                           >+</span
                         >
@@ -3530,7 +3529,8 @@
                           <h5>Summary</h5>
                           <p>
                             Member count input only accepts numbers. But the
-                            user can type the letter "e"
+                            user can type the letter "e" (Bug only appears in
+                            manual tests)
                           </p>
                         </div>
 
@@ -3566,16 +3566,16 @@
                     <!-- BUG 3 -->
                     <li class="bug accordion-item">
                       <h4 class="bug-title accordion-title">
-                        Bug 3: When the Member count input is empty, an error
-                        tooltip should appear instead of displaying the error on
-                        a new page.<span class="accordion-title-icon">+</span>
+                        Bug 3: Error tooltip should appear when Member count is
+                        empty<span class="accordion-title-icon">+</span>
                       </h4>
                       <div class="bug-description accordion-hidden-content">
                         <div class="bug-description-section">
                           <h5>Summary</h5>
                           <p>
-                            The way of telling that the user cannot leave Member
-                            count input is wrong
+                            When the Member count input is empty, an error
+                            tooltip should appear instead of displaying the
+                            error on a new page.
                           </p>
                         </div>
 
@@ -3672,18 +3672,16 @@
                     <!-- BUG 5 -->
                     <li class="bug accordion-item">
                       <h4 class="bug-title accordion-title">
-                        Bug 5: In manual tests, not in Cypress, typing a
-                        negative sign in the expense amount triggers a bug<span
-                          class="accordion-title-icon"
-                          >+</span
-                        >
+                        Bug 5 : Negative expense amounts should not be
+                        allowed.<span class="accordion-title-icon">+</span>
                       </h4>
                       <div class="bug-description accordion-hidden-content">
                         <div class="bug-description-section">
                           <h5>Summary</h5>
                           <p>
                             Negative sign should not be allowed to be typed in
-                            the expense amount
+                            the expense amount. (Bug only appears in manual
+                            tests)
                           </p>
                         </div>
 
