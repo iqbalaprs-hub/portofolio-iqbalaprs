@@ -380,7 +380,6 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  text-align: justify;
 }
 
 /* The below is related to JavaScript */
