@@ -192,7 +192,7 @@ describe("API test for endpoint GET /alpha/{code}", () => {
   it("8- Test the properties 'cca2', 'ccn3', 'cca3' and 'cioc' by showing that the endpoint with more than 3 letters gives a response error of 400", () => {
     cy.request({
       method: "GET",
-      url: "https://restcountries.com/v3.1/alpha/e",
+      url: "https://restcountries.com/v3.1/alpha/espa",
       failOnStatusCode: false, // Do not fail the test on non-2xx status codes
     }).then((response) => {
       // Assertion 1: Response is 400
